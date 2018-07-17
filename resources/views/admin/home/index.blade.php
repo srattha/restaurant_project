@@ -34,8 +34,8 @@ th{
         <!-- /.panel-heading -->
         <div class="panel-body">
           <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover">
-
+           <!--  <table class="table table-striped table-bordered table-hover"> -->
+              <table  class="table table-striped table-bordered table-hover" id="dataTables-example">
              <thead>
               <tr>
                 <th>#</th>
@@ -88,4 +88,12 @@ th{
 </div>
 
 @endsection
-@section('javascript') @endsection
+@section('javascript')
+<script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    </script>
+@endsection

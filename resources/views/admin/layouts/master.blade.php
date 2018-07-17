@@ -19,6 +19,11 @@
     <!-- Toastr CSS -->
     <link href="{{ asset('/vendor/toastr/css/toastr.min.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('/vendor/datatables-plugins/dataTables.bootstrap.css') }}" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="{{ asset('/vendor/datatables-responsive/dataTables.responsive.css') }}" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="{{ asset('/assets/css/sb-admin-2.css') }}" rel="stylesheet">
 
@@ -33,11 +38,12 @@
     @yield('css')
 
     <style type="text/css">
-        a {
-    color: #333333;
-    text-decoration: none;
-}
-    </style>
+    a {
+        color: #333333;
+        text-decoration: none;
+    }
+
+</style>
 
 </head>
 
@@ -54,8 +60,8 @@
 
   <div id="wrapper">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+    <!-- <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -65,8 +71,6 @@
             </button>
 
         </div>
-        <!-- /.navbar-header -->
-
         <ul class="nav navbar-top-links navbar-right">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -85,11 +89,9 @@
                 {{ csrf_field() }}
             </form>
         </ul>
-        <!-- /.dropdown-user -->
     </li>
-    <!-- /.dropdown -->
+
 </ul>
-<!-- /.navbar-top-links -->
 
 <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse">
@@ -101,23 +103,11 @@
             <li>
                 <a href="{{ route('foodmenu.all_foodmanu') }}"><i class="fa fa-wpforms fa-fw"></i> จัดการเมนูอาหาร</a>
             </li>
-
-            <!-- <li>
-                <a href=""><i class="fa fa-wpforms fa-fw"></i> จัดการเมนูอาหาร<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{ route('foodmenu.all_foodmanu') }}"><i class="fa fa-share" aria-hidden="true"></i> เมนูอาหารทั้งหมด</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('foodmenu.recommended_menu')}}"><i class="fa fa-share" aria-hidden="true"></i> เมนูอาหารแนะนำ</a>
-                    </li>
-                </ul>
-            </li> -->
             <li>
                 <a href=""><i class="fa fa-book" aria-hidden="true"></i> แสดงรายงานการ จอง<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{ route('reportbooking.table_reservation') }}"><i class="fa fa-share" aria-hidden="true"></i> จัดการ โต๊ะอาหาร</a>
+                        <a href="{{ route('diningtable.dining_table') }}"><i class="fa fa-share" aria-hidden="true"></i> จัดการ โต๊ะอาหาร</a>
                     </li>
                     <li>
                         <a href="{{ route('foodmenu.recommended_menu')}}"><i class="fa fa-share" aria-hidden="true"></i> รายงานยอด</a>
@@ -127,10 +117,116 @@
             <li>
                 <a href="{{ route('home.index') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> จัดการโปรโมชั่น</a>
             </li>
-           
+
 
             <li>
                 <a href=""><i class="fa fa-file-text-o fa-fw"></i> Log</a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+</nav> -->
+
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+    </div>
+    <!-- /.navbar-header -->
+
+    <ul class="nav navbar-top-links navbar-right">
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-user fa-fw"></i>  <span>{{Auth::user()->name}}</span> <i class="fa fa-caret-down"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-user">
+            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+            </li>
+            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+            </li>
+            <li class="divider"></li>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+        </li>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
+    </ul>
+</li>
+
+</ul>
+<!-- /.navbar-top-links -->
+
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+
+            <li>
+                <a href="{{ route('home.index') }}"><i class="fa fa-users" aria-hidden="true"></i> จัดการข้อมูลสมาชิก</a>
+            </li>
+             <li>
+                <a href="{{ route('foodmenu.all_foodmanu') }}"><i class="fa fa-wpforms fa-fw"></i> จัดการเมนูอาหาร</a>
+            </li>
+            <li>
+               <!--  <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a> -->
+                <a href=""><i class="fa fa-book" aria-hidden="true"></i> แสดงรายงานการ จอง<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="/dining_table"><i class="fa fa-share" aria-hidden="true"></i> จัดการ โต๊ะอาหาร</a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa fa-share" aria-hidden="true"></i> รายงานยอด</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#">Second Level Item</a>
+                    </li>
+                    <li>
+                        <a href="#">Second Level Item</a>
+                    </li>
+                    <li>
+                        <a href="#">Third Level <span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>
+                                <a href="#">Third Level Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Third Level Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Third Level Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Third Level Item</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-third-level -->
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="blank.html">Blank Page</a>
+                    </li>
+                    <li>
+                        <a href="login.html">Login Page</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
             </li>
         </ul>
     </div>
@@ -140,7 +236,7 @@
 </nav>
 
 <!-- Page Content -->
-<div id="page-wrapper">
+<div id="page-wrapper" style="min-height: 923px;">
     <div class="container-fluid">
         @yield('content')
     </div>
@@ -165,6 +261,10 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="{{ asset('/assets/js/sb-admin-2.js') }}"></script>
+
+<script src="{{ asset('/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/vendor/datatables-plugins/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ asset('/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
 
 
 @yield('javascript')

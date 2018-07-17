@@ -36,7 +36,12 @@ Route::get('/recommended_menu', 'RecommendedmenuController@index')->name('foodme
 Route::get('/addrecommended_menu', 'RecommendedmenuController@create')->name('foodmenu.addrecommended_menu');
 Route::post('addrecommended_menu', 'RecommendedmenuController@store');
 //reporttbooking
-Route::get('/tablereservation', 'TablereservationController@index')->name('reportbooking.table_reservation');
+Route::get('/dining_table', 'DiningtableController@index')->name('diningtable.dining_table');
+Route::get('/add_dining_table', 'DiningtableController@create')->name('diningtable.add_dining_table');
+Route::post('add_dining_table', 'DiningtableController@store');
+Route::post('/dining_table/update/{id}', 'DiningtableController@update')->name('diningtable.update_dining_table')->where('id', '[0-9]+');
+Route::get('/dining_table/edit/{id}', 'DiningtableController@edit')->name('diningtable.edit_dining_table')->where('id', '[0-9]+');
+Route::get('/dining_table/delete/{id}', 'DiningtableController@destroy')->name('diningtable.delete')->where('id', '[0-9]+');
 
 
 

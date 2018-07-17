@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class TablereservationController extends Controller
+use App\Dining_table;
+class DiningtableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,9 @@ class TablereservationController extends Controller
      */
     public function index()
     {
-         return view('admin.reportbooking.table_reservation');
-        
+        $dining_table = Dining_table::get();
+        return view('admin.diningtable.dining_table',['dining_table'=> $dining_table]);
+
     }
 
     /**
@@ -24,7 +25,7 @@ class TablereservationController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.diningtable.add_dining_table');
     }
 
     /**
@@ -35,8 +36,19 @@ class TablereservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $arr = new Dining_table;
+        $arr->name = $request->name;
+        $arr->seating = $request->seating;
+        $arr->status = $request->status;
+        $arr->color = 'success';
+        $arr->save();
+        if ($arr) {
+         return redirect()->route('diningtable.dining_table');
+     }else{
+        return ["satus"=>false,"msg"=>"Can't save data"];
     }
+
+}
 
     /**
      * Display the specified resource.
