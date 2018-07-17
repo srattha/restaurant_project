@@ -1,4 +1,23 @@
 @extends('admin.layouts.master')
+@section('css') 
+<style>
+div.upload {
+  width: 157px;
+  height: 57px;
+  background: url(https://lh6.googleusercontent.com/-dqTIJRTqEAQ/UJaofTQm3hI/AAAAAAAABHo/w7ruR1SOIsA/s157/upload.png);
+  overflow: hidden;
+}
+
+div.upload input {
+  display: block !important;
+  width: 157px !important;
+  height: 57px !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+}
+</style>
+
+@endsection
 
 @section('content')
 <div class="row">
@@ -22,29 +41,33 @@
           {{ csrf_field() }}
           <div>
             <label for="exampleInputFile">รูป</label>
-            <input type="file" name="file" class="form-control">
+            <div class="upload">
+              <input type="file" name="file"/>
+            </div>
+           <!--  <input type="file" name="file" class="form-control"> -->
           </div>
           <br>
           <div>
             <label>ชื่อ</label>
+
             <input type="text" class="form-control" name="name" placeholder="ชื่อ">
           </div>
           <br>
           <div>
             <label>ประเภท</label>
-           <select name="food_type"  class="form-control">
+            <select name="food_type"  class="form-control">
               @foreach ($food_type as $index => $food_types)
               <option value="{{$food_types->id}}">{{$food_types->name}}</option>
               @endforeach
-          </select>
+            </select>
+          </div>
+          <br>
+          <div>
+           <div class="checkbox">
+            <input type="hidden" name="guide" value="0" />
+            <label><input type="checkbox" name="guide"  value="1"> เมนูแนะนำ</label>
+          </div>
         </div>
-        <br>
-        <div>
-         <div class="checkbox">
-          <input type="hidden" name="guide" value="0" />
-          <label><input type="checkbox" name="guide"  value="1"> เมนูแนะนำ</label>
-        </div>
-      </div>
         <br>
         <div>
           <label>ราคา</label>

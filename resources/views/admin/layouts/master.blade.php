@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>laeavel</title>
+    <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -42,8 +42,76 @@
         color: #333333;
         text-decoration: none;
     }
+  #overlay{
+            position:fixed;
+            z-index:99999;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            background:#f5f5f7;
+            transition: 1s 0.4s;
+        }
+        #progress{
+            height:5px;
+            background:#333333;
+            position:absolute;
+            width:0;                
+            top:50%;
+        }
+        #progstat{
+            font-size:24px;
+            letter-spacing: 3px;
+            position:absolute;
+            top:50%;
+            margin-top:-40px;
+            width:100%;
+            text-align:center;
+            color:#333333;
+        }
 
 </style>
+
+    <script type="text/javascript">
+        ;(function(){
+            function id(v){ return document.getElementById(v); }
+            function loadbar() {
+                var ovrl = id("overlay"),
+                prog = id("progress"),
+                stat = id("progstat"),
+                img = document.images,
+                c = 0,
+                tot = img.length;
+                if(tot == 0) return doneLoading();
+
+                function imgLoaded(){
+                    c += 1;
+                    var perc = ((100/tot*c) << 0) +"%";
+                    prog.style.width = perc;
+                    stat.innerHTML = "Loading "+ perc;
+                    if(c===tot) return doneLoading();
+                }
+                function doneLoading(){
+                    ovrl.style.opacity = 0;
+                    setTimeout(function(){ 
+                        $('.sidebar-category').fadeIn();
+                        $('.navbar-right').fadeIn();
+                    }, 300);
+                    
+                    setTimeout(function(){ 
+                        ovrl.style.display = "none";
+                    }, 1500);
+                }
+                for(var i=0; i<tot; i++) {
+                    var tImg     = new Image();
+                    tImg.onload  = imgLoaded;
+                    tImg.onerror = imgLoaded;
+                    tImg.src     = img[i].src;
+                }    
+            }
+            document.addEventListener('DOMContentLoaded', loadbar, false);
+        }());
+    </script>
 
 </head>
 
@@ -57,76 +125,12 @@
           <div class="rect5"></div>
       </div>
   </div>
-
-  <div id="wrapper">
-
-
-    <!-- <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-        </div>
-        <ul class="nav navbar-top-links navbar-right">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  <i class="fa fa-user fa-fw"></i>  <span>{{Auth::user()->name}}</span> <i class="fa fa-caret-down"></i>
-              </a>
-              <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                </li>
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                </li>
-                <li class="divider"></li>
-                <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-            </li>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-            </form>
-        </ul>
-    </li>
-
-</ul>
-
-<div class="navbar-default sidebar" role="navigation">
-    <div class="sidebar-nav navbar-collapse">
-        <ul class="nav" id="side-menu">
-            <li>
-                <a href="{{ route('home.index') }}"><i class="fa fa-users" aria-hidden="true"></i> จัดการข้อมูลสมาชิก</a>
-            </li>
-
-            <li>
-                <a href="{{ route('foodmenu.all_foodmanu') }}"><i class="fa fa-wpforms fa-fw"></i> จัดการเมนูอาหาร</a>
-            </li>
-            <li>
-                <a href=""><i class="fa fa-book" aria-hidden="true"></i> แสดงรายงานการ จอง<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{ route('diningtable.dining_table') }}"><i class="fa fa-share" aria-hidden="true"></i> จัดการ โต๊ะอาหาร</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('foodmenu.recommended_menu')}}"><i class="fa fa-share" aria-hidden="true"></i> รายงานยอด</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="{{ route('home.index') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> จัดการโปรโมชั่น</a>
-            </li>
-
-
-            <li>
-                <a href=""><i class="fa fa-file-text-o fa-fw"></i> Log</a>
-            </li>
-        </ul>
+  <div id="overlay">
+        <div id="progstat"></div>
+        <div id="progress"></div>
     </div>
 
-</div>
-</nav> -->
+  <div id="wrapper">
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
@@ -168,66 +172,22 @@
         <ul class="nav" id="side-menu">
 
             <li>
-                <a href="{{ route('home.index') }}"><i class="fa fa-users" aria-hidden="true"></i> จัดการข้อมูลสมาชิก</a>
+                <a href="{{ route('home.index') }}"><i class="fa fa-users" aria-hidden="true"></i> จัดการ ข้อมูลสมาชิก</a>
             </li>
              <li>
-                <a href="{{ route('foodmenu.all_foodmanu') }}"><i class="fa fa-wpforms fa-fw"></i> จัดการเมนูอาหาร</a>
+                <a href="{{ route('foodmenu.all_foodmanu') }}"><i class="fa fa-cutlery"></i> จัดการ เมนูอาหาร</a>
+            </li>
+             <li>
+                <a href="/dining_table"><i class="fa fa-wpforms fa-fw"></i> จัดการ โต๊ะอาหาร</a>
             </li>
             <li>
-               <!--  <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a> -->
-                <a href=""><i class="fa fa-book" aria-hidden="true"></i> แสดงรายงานการ จอง<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="/dining_table"><i class="fa fa-share" aria-hidden="true"></i> จัดการ โต๊ะอาหาร</a>
-                    </li>
-                    <li>
-                        <a href=""><i class="fa fa-share" aria-hidden="true"></i> รายงานยอด</a>
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
+                 <a href="/dining_table"><i class="fa fa-bullhorn"></i> จัดการ โปรโมชั่น</a>
             </li>
-            <li>
-                <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
-                    <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
-                    <li>
-                        <a href="#">Third Level <span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level">
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-third-level -->
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
+             <li>
+                 <a href="/dining_table"><i class="fa fa-picture-o"></i> จัดการ รูปภาพบรรยากาศ</a>
             </li>
-            <li>
-                <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="blank.html">Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="login.html">Login Page</a>
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
+            
+            
         </ul>
     </div>
     <!-- /.sidebar-collapse -->

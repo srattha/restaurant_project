@@ -39,7 +39,7 @@ class DiningtableController extends Controller
         $arr = new Dining_table;
         $arr->name = $request->name;
         $arr->seating = $request->seating;
-        $arr->status = $request->status;
+        // $arr->status = $request->status;
         $arr->color = 'success';
         $arr->save();
         if ($arr) {
@@ -69,7 +69,9 @@ class DiningtableController extends Controller
      */
     public function edit($id)
     {
-        //
+      
+         $dining_table = Dining_table::where('id', $id)->first();
+        return view('admin.diningtable.edit_dining_table', ['dining_table' => $dining_table]);
     }
 
     /**
@@ -81,7 +83,18 @@ class DiningtableController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = Dining_table::where('id',$id)->first();
+        $update->name = $request->name;
+        $update->seating = $request->seating;
+        // $update->status = $request->status;
+        $update->color = 'success';
+        $update->save();
+        if ($update) {
+         return redirect()->route('diningtable.dining_table');
+     }else{
+        return ["satus"=>false,"msg"=>"Can't save data"];
+    }
+        
     }
 
     /**
@@ -92,6 +105,12 @@ class DiningtableController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dining_table_delete = Dining_table::where('id',$id)->delete();
+        if($dining_table_delete){
+            return redirect()->route('diningtable.dining_table');
+
+       }else{
+        return ["satus"=>false,"msg"=>"Can't delete data"];
+    }
     }
 }
