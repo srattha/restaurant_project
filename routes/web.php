@@ -43,6 +43,10 @@ Route::post('/dining_table/update/{id}', 'DiningtableController@update')->name('
 Route::get('/dining_table/edit/{id}', 'DiningtableController@edit')->name('diningtable.edit_dining_table')->where('id', '[0-9]+');
 Route::get('/dining_table/delete/{id}', 'DiningtableController@destroy')->name('diningtable.delete')->where('id', '[0-9]+');
 
+//Promotion
+Route::get('/promotion', 'PromotionController@index')->name('promotion.promotion');
+Route::get('/addpromotion', 'PromotionController@create')->name('promotion.addpromotion');
+Route::post('addpromotion', 'PromotionController@store');
 
 
 

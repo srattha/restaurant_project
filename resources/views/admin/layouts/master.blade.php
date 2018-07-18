@@ -42,7 +42,7 @@
         color: #333333;
         text-decoration: none;
     }
-  #overlay{
+/*  #overlay{
             position:fixed;
             z-index:99999;
             top:0;
@@ -56,7 +56,7 @@
             height:5px;
             background:#333333;
             position:absolute;
-            width:0;                
+            width:0;
             top:50%;
         }
         #progstat{
@@ -68,11 +68,11 @@
             width:100%;
             text-align:center;
             color:#333333;
-        }
+        }*/
 
 </style>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         ;(function(){
             function id(v){ return document.getElementById(v); }
             function loadbar() {
@@ -93,12 +93,12 @@
                 }
                 function doneLoading(){
                     ovrl.style.opacity = 0;
-                    setTimeout(function(){ 
+                    setTimeout(function(){
                         $('.sidebar-category').fadeIn();
                         $('.navbar-right').fadeIn();
                     }, 300);
-                    
-                    setTimeout(function(){ 
+
+                    setTimeout(function(){
                         ovrl.style.display = "none";
                     }, 1500);
                 }
@@ -107,11 +107,11 @@
                     tImg.onload  = imgLoaded;
                     tImg.onerror = imgLoaded;
                     tImg.src     = img[i].src;
-                }    
+                }
             }
             document.addEventListener('DOMContentLoaded', loadbar, false);
         }());
-    </script>
+    </script> -->
 
 </head>
 
@@ -181,13 +181,13 @@
                 <a href="/dining_table"><i class="fa fa-wpforms fa-fw"></i> จัดการ โต๊ะอาหาร</a>
             </li>
             <li>
-                 <a href="/dining_table"><i class="fa fa-bullhorn"></i> จัดการ โปรโมชั่น</a>
+                 <a href="{{ route('promotion.promotion') }}"><i class="fa fa-bullhorn"></i> จัดการ โปรโมชั่น</a>
             </li>
              <li>
                  <a href="/dining_table"><i class="fa fa-picture-o"></i> จัดการ รูปภาพบรรยากาศ</a>
             </li>
-            
-            
+
+
         </ul>
     </div>
     <!-- /.sidebar-collapse -->
