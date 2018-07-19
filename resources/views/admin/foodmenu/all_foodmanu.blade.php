@@ -68,13 +68,13 @@ img{
       @endif
     </td>
     <td>
-      @if($food_menu->guide == 1)
+      @if($food_menu->is_recommend == 1)
       <span class="label label-success">อาหารแนะนำ</span>
       @else
 
       @endif
     </td>
-    <td>{{$food_menu->rates}}</td>
+    <td>{{$food_menu->price}}</td>
     <td>{{$food_menu->is_active}}</td>
     <td>{{$food_menu->created_at}}</td>
     <td>{{$food_menu->updated_at}}</td>

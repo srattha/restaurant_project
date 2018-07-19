@@ -24,6 +24,7 @@ th{
     <tr>
       <th>#</th>
       <th>ชื่อ</th>
+      <th>เบอร์โทร</th>
       <th>อีเมล</th>
       <th>สถนะ</th>
       <th>status </th>
@@ -37,6 +38,7 @@ th{
       @foreach ($user as $index => $users)
       <td>{{$users->id}}</td>
       <td>{{$users->name}}</td>
+      <td>{{$users->telephone_number}}</td>
       <td>{{$users->email}}</td>
       <td>
         @if($users->user_type_id == 1)

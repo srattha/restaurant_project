@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFoodMenusesTable extends Migration
+class CreateDiningTableTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateFoodMenusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('food_menu', function (Blueprint $table) {
+         Schema::create('dining_table', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('image');
-            $table->string('food_name');
-            $table->string('is_recommend');
-            $table->string('food_type');
-            $table->string('price');
+            $table->string('name');
+            $table->string('qrimage');
+            $table->string('seating');
+            $table->string('color');
             $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
         });
@@ -32,6 +31,6 @@ class CreateFoodMenusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('food_menu');
+         Schema::dropIfExists('dining_table');
     }
 }

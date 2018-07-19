@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFoodMenusesTable extends Migration
+class CreateUsersTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateFoodMenusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('food_menu', function (Blueprint $table) {
+         Schema::create('users_type', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('image');
-            $table->string('food_name');
-            $table->string('is_recommend');
-            $table->string('food_type');
-            $table->string('price');
+            $table->string('name');
             $table->tinyInteger('is_active')->default(1);
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateFoodMenusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('food_menu');
+         Schema::dropIfExists('users_type');
     }
 }

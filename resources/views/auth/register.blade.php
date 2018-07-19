@@ -74,7 +74,7 @@
             <div class="offer offer-default">
                 <div class="shape">
                   <div class="shape-text">
-                    
+
                   </div>
               </div>
               <div class="offer-content">
@@ -95,6 +95,13 @@
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">Phone</label>
+                            <div class="col-md-6">
+                                <input id="phone" type="number" class="form-control" name="telephone_number" value="{{ old('telephone_number') }}" required autofocus>
                             </div>
                         </div>
 

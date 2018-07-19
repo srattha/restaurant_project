@@ -23,18 +23,16 @@ class FoodmenuController extends Controller
         $this->middleware('auth');
 
     }
-    
+
     public function index()
     {
-        $all_food = [];
-        $food_menus = $this->Food_menusModel->get();
-        
-    $name = DB::table('food_menu')->where('guide', 1)->get();
+        $food_menus = $this->Food_menusModel->limit(4)->get();
+       // $name = DB::table('food_menu')->where('guide', 1)->get();
 
       // return $test = Food_menus::where('food_type',1)->ger();
-       
-    
-    
+
+
+
     return view('admin.foodmenu.all_foodmanu', ['food_menus' => $food_menus]);
 }
 
@@ -71,7 +69,7 @@ class FoodmenuController extends Controller
             $arr->is_active = $request->is_active;
             $arr->save();
             if ($arr) {
-               return redirect()->route('foodmenu.all_foodmanu'); 
+               return redirect()->route('foodmenu.all_foodmanu');
            }else{
             return ["satus"=>false,"msg"=>"Can't save data"];
         }
@@ -114,7 +112,7 @@ class FoodmenuController extends Controller
      */
     public function edit($id)
     {
-      
+
         $edit_menu = Food_menus::where('id', $id)->first();
         $food_type = Food_type::get();
         return view('admin.foodmenu.edit_menu', ['edit_menu' => $edit_menu, 'food_type'=> $food_type]);
@@ -146,7 +144,7 @@ class FoodmenuController extends Controller
             $update_menu->is_active = $request->is_active;
             $update_menu->save();
             if ($update_menu) {
-               return redirect()->route('foodmenu.all_foodmanu'); 
+               return redirect()->route('foodmenu.all_foodmanu');
            }else{
             return ["satus"=>false,"msg"=>"Can't update data"];
         }
