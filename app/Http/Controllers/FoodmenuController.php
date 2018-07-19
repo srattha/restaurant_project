@@ -27,7 +27,7 @@ class FoodmenuController extends Controller
     public function index()
     {
         $food_menus = $this->Food_menusModel->limit(4)->get();
-       // $name = DB::table('food_menu')->where('guide', 1)->get();
+       // $name = DB::table('food_menu')->where('is_recommend', 1)->get();
 
       // return $test = Food_menus::where('food_type',1)->ger();
 
@@ -62,10 +62,10 @@ class FoodmenuController extends Controller
             $request->file->storeAs('public/Food_menus',$filename);
             $arr = new Food_menus;
             $arr->image = $filename;
-            $arr->name = $request->name;
-            $arr->guide = $request->guide;
+            $arr->food_name = $request->food_name;
+            $arr->is_recommend = $request->is_recommend;
             $arr->food_type = $request->food_type;
-            $arr->rates = $request->rates;
+            $arr->price = $request->price;
             $arr->is_active = $request->is_active;
             $arr->save();
             if ($arr) {
@@ -79,10 +79,10 @@ class FoodmenuController extends Controller
     //return $request->all();
         $arr = new Food_menus;
         $arr->image = "noimage.png";
-        $arr->name = $request->name;
-        $arr->guide = $request->guide;
+        $arr->food_name = $request->food_name;
+        $arr->is_recommend = $request->is_recommend;
         $arr->food_type = $request->food_type;
-        $arr->rates = $request->rates;
+        $arr->price = $request->price;
         $arr->is_active = $request->is_active;
         $arr->save();
         if ($arr) {
@@ -114,7 +114,7 @@ class FoodmenuController extends Controller
     {
 
         $edit_menu = Food_menus::where('id', $id)->first();
-        $food_type = Food_type::get();
+       return $food_type = Food_type::get();
         return view('admin.foodmenu.edit_menu', ['edit_menu' => $edit_menu, 'food_type'=> $food_type]);
     }
 
@@ -137,10 +137,10 @@ class FoodmenuController extends Controller
             // $arr = new Food_menus;
             $update_menu = Food_menus::where('id',$id)->first();
             $update_menu->image = $filename;
-            $update_menu->name = $request->name;
-            $update_menu->guide = $request->guide;
+            $update_menu->food_name = $request->food_name;
+            $update_menu->is_recommend = $request->is_recommend;
             $update_menu->food_type = $request->food_type;
-            $update_menu->rates = $request->rates;
+            $update_menu->price = $request->price;
             $update_menu->is_active = $request->is_active;
             $update_menu->save();
             if ($update_menu) {
@@ -152,10 +152,10 @@ class FoodmenuController extends Controller
 
     }else{
         $update_menu = Food_menus::where('id',$id)->first();
-        $update_menu->name = $request->name;
+        $update_menu->food_name = $request->food_name;
         $update_menu->food_type = $request->food_type;
-        $update_menu->guide = $request->guide;
-        $update_menu->rates = $request->rates;
+        $update_menu->is_recommend = $request->is_recommend;
+        $update_menu->price = $request->price;
         $update_menu->is_active = $request->is_active;
         $update_menu->save();
         if ($update_menu) {

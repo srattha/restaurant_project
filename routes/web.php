@@ -48,6 +48,11 @@ Route::get('/promotion', 'PromotionController@index')->name('promotion.promotion
 Route::get('/addpromotion', 'PromotionController@create')->name('promotion.addpromotion');
 Route::post('addpromotion', 'PromotionController@store');
 
+//reservation
+Route::get('/reservation', 'ReservationController@index')->name('reservations.reservations');
+
+//Counter staff
+Route::get('/counter_staff', 'CounterstaffController@index')->name('counterstaff.index');
 
 
 Auth::routes();

@@ -42,7 +42,7 @@
         color: #333333;
         text-decoration: none;
     }
-/*  #overlay{
+  #overlay{
             position:fixed;
             z-index:99999;
             top:0;
@@ -68,11 +68,11 @@
             width:100%;
             text-align:center;
             color:#333333;
-        }*/
+        }
 
 </style>
 
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
         ;(function(){
             function id(v){ return document.getElementById(v); }
             function loadbar() {
@@ -111,7 +111,7 @@
             }
             document.addEventListener('DOMContentLoaded', loadbar, false);
         }());
-    </script> -->
+    </script>
 
 </head>
 
@@ -185,6 +185,9 @@
             </li>
              <li>
                  <a href="/dining_table"><i class="fa fa-picture-o"></i> จัดการ รูปภาพบรรยากาศ</a>
+            </li>
+            <li>
+                 <a href="/reservation"><i class="fa fa-cutlery"></i> แสดงรายงาน การจอง</a>
             </li>
 
 

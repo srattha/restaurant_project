@@ -31,45 +31,51 @@
         </div>
         <br>
         <div>
+          <label>Phone</label>
+           <input id="phone" type="number" class="form-control" name="telephone_number" value="{{$edit_user->telephone_number}}" required>
+       </div>
+       <br>
+       <div>
          <label>กำหนดระดับผู้ใช้งาน </label>
          <select name="users_type_id" class="form-control">
-            @foreach($user_type as $user_types)
-            <option value="{{ $user_types->id }}" {{$edit_user->user_type_id  == $user_types->id ? "selected" : "" }}>{{ $user_types->name}}</option>
-            @endforeach
-          </select>
-        </div>
-        <br>
-           <!--  <div>
-              <label>Password</label>
-              <input type="password" class="form-control" name="password" placeholder="Password">
-            </div>
-            <br>
-            <div>
-              <label for="password-confirm">Confirm Password</label>
-              <input id="password-confirm" type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation" required>
-            </div>
-            <br> -->
-            <div>
-              <div class="checkbox">
-                <label>
-                  <input type="hidden" name="is_active" value="0" />
-                  <input type="checkbox" name="is_active" value="1" {{ $edit_user->is_active ? 'checked' : '' }}> <span class="label label-default">เปิด / ปิด</span>
+          @foreach($user_type as $user_types)
+          <option value="{{ $user_types->id }}" {{$edit_user->user_type_id  == $user_types->id ? "selected" : "" }}>{{ $user_types->name}}</option>
+          @endforeach
+        </select>
+      </div>
+      <br>
+      <div>
+        <label>Password</label>
+        <input type="password" class="form-control" name="password" value="{{$edit_user->password}}" placeholder="Password">
+      </div>
+      <br>
+      <div>
+        <label for="password-confirm">Confirm Password</label>
+        <input id="password-confirm" type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation">
+      </div>
+      <br>
+      <div>
+        <div class="checkbox">
+          <label>
+            <input type="hidden" name="is_active" value="0" />
+            <input type="checkbox" name="is_active" value="1" {{ $edit_user->is_active ? 'checked' : '' }}> <span class="label label-default">เปิด / ปิด</span>
 
-                </label>
-              </div>
-            </div>
-
-            <div style="text-align: right;padding-top: 10px;">
-              <button type="submit" class="btn btn-primary">
-                Register
-              </button>
-            </div>
-
-          </form>
-
+          </label>
         </div>
       </div>
-    </div>
+
+      <div style="text-align: right;padding-top: 10px;">
+        <button type="submit" class="btn btn-primary">
+          Register
+        </button>
+      </div>
+
+    </form>
+
   </div>
-  @endsection
-  @section('javascript') @endsection
+</div>
+</div>
+</div>
+@endsection
+@section('javascript')
+@endsection

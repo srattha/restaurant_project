@@ -22,27 +22,33 @@
   </div>
 </div>
 <div class="row">
-   @foreach ($dining_table as $index => $dining_tables)
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-    <div class="offer offer-radius offer-{{$dining_tables->color}}">
-      <div class="shape">
-        <div class="shape-text">
-          <i class="fa fa-window-close fa-2x" aria-hidden="true" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('diningtable.delete',['id'=>$dining_tables->id]) }}'"></i>
-        </div>
+ @foreach ($dining_table as $index => $dining_tables)
+ <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+  <div class="offer offer-radius offer-{{$dining_tables->color}}">
+    <div class="shape">
+      <div class="shape-text">
+        <i class="fa fa-window-close fa-2x" aria-hidden="true" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('diningtable.delete',['id'=>$dining_tables->id]) }}'"></i>
       </div>
-      <div class="offer-content">
-        <h3 class="lead">
-         <span class="label label-{{$dining_tables->color}}">ว่าง</span>
-       </h3>
-       <p style="text-align: center;">
-        <img src="/assets/img/interview.png">
-      </p>
-      <p>โต๊ะ: {{$dining_tables-> name}}</p>
-      <p>จำนวนที่นั่ง: {{$dining_tables->seating}}</p>
-      <!-- <p>รายการอาหาร</p> -->
-      <div><button type="button" class="btn btn-primary btn-block" onclick="location.href='{{ route('diningtable.edit_dining_table',['id'=>$dining_tables->id]) }}'">แก้ไข</button></div>
     </div>
+    <div class="offer-content">
+      <h3 class="lead">
+       <span class="label label-{{$dining_tables->color}}">
+        @if($dining_tables->status == 1)
+        ว่าง
+        @else
+        ไม่ว่าง
+        @endif
+      </span>
+    </h3>
+    <p style="text-align: center;">
+      <img src="/assets/img/interview.png">
+    </p>
+    <p>โต๊ะ: {{$dining_tables-> name}}</p>
+    <p>จำนวนที่นั่ง: {{$dining_tables->seating}}</p>
+    <!-- <p>รายการอาหาร</p> -->
+    <div><button type="button" class="btn btn-primary btn-block" onclick="location.href='{{ route('diningtable.edit_dining_table',['id'=>$dining_tables->id]) }}'">แก้ไข</button></div>
   </div>
+</div>
 </div>
 @endforeach
 <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -71,10 +77,10 @@
 @endsection
 @section('javascript')
 <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true
-        });
+  $(document).ready(function() {
+    $('#dataTables-example').DataTable({
+      responsive: true
     });
-    </script>
- @endsection
+  });
+</script>
+@endsection

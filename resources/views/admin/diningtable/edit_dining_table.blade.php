@@ -29,30 +29,32 @@
             <label>จำนวนที่นั่ง</label>
             <input type="text" class="form-control" name="seating" value="{{$dining_table->seating}}"  placeholder="จำนวนที่นั่ง" required>
           </div>
-          <!-- <br>
-          <div class="checkbox">
-            <input type="hidden" name="status" value="0" />
-            <label><input type="checkbox" name="status"  value="1"> ว่าง/ไม่ว่าง</label>
-          </div> -->
           <br>
           <div class="checkbox">
-            <label>
-              <input type="hidden" name="is_active" value="0" />
-              <input type="checkbox" name="is_active" value="1" {{ $dining_table->is_active ? 'checked' : '' }}> <span class="label label-default">เปิด / ปิด</span>
-
-            </label>
+           <label>
+            <input type="hidden" name="status" value="0" />
+            <input type="checkbox" name="status" value="1" {{ $dining_table->status ? 'checked' : '' }}> <span class="label label-default">ว่าง/ไม่ว่าง</span>
           </div>
-          <div style="text-align: right;padding-top: 10px;">
-            <button type="submit" class="btn btn-primary">
-              OK
-            </button>
-          </div>
+        </label>
+        <br>
+        <div class="checkbox">
+          <label>
+            <input type="hidden" name="is_active" value="0" />
+            <input type="checkbox" name="is_active" value="1" {{ $dining_table->is_active ? 'checked' : '' }}> <span class="label label-default">เปิด / ปิด</span>
 
-        </form>
+          </label>
+        </div>
+        <div style="text-align: right;padding-top: 10px;">
+          <button type="submit" class="btn btn-primary">
+            OK
+          </button>
+        </div>
 
-      </div>
+      </form>
+
     </div>
   </div>
+</div>
 </div>
 
 @endsection

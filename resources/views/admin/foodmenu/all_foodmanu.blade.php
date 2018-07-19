@@ -47,7 +47,7 @@ img{
      <td>
       <img src="{{ asset('storage/Food_menus/'.$food_menu->image) }}" alt="">
     </td>
-    <td>{{$food_menu->name}}</td>
+    <td>{{$food_menu->food_name}}</td>
     <td>
       @if($food_menu->food_type == 1)
       <span class="label label-default">อาหารประเภท ผัด</span>

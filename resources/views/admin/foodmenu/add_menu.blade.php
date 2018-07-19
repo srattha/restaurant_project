@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('css') 
+@section('css')
 <style>
 div.upload {
   width: 157px;
@@ -64,14 +64,14 @@ div.upload input {
           <br>
           <div>
            <div class="checkbox">
-            <input type="hidden" name="guide" value="0" />
-            <label><input type="checkbox" name="guide"  value="1"> เมนูแนะนำ</label>
+            <input type="hidden" name="is_recommend" value="0" />
+            <label><input type="checkbox" name="is_recommend"  value="1"> เมนูแนะนำ</label>
           </div>
         </div>
         <br>
         <div>
           <label>ราคา</label>
-          <input type="numbel" class="form-control" name="rates" placeholder="ราคา">
+          <input type="numbel" class="form-control" name="price" placeholder="ราคา">
         </div>
         <br>
         <div>

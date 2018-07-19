@@ -24,11 +24,10 @@ class AdminController extends Controller
 			break;
 			case '2':
 			$user = User::paginate(15);
-			
 			return view('admin.home.index', ['user' => $user]);
 			break;
 			case '3':
-			return redirect("/waitress");
+			return redirect("/counter_staff");
 			break;
 			case '4':
 			return redirect("/counter_staff");

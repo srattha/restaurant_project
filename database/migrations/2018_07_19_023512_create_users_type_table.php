@@ -17,7 +17,6 @@ class CreateUsersTypeTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->tinyInteger('is_active')->default(1);
-            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@
       </div>
       <div class="offer-content">
         <h3 class="lead">
-          A default offer
+          เพิ่มผู้ใช้งาน
         </h3>
         <form class="form-horizontal" method="POST" action="{{ route('home.adduser') }}">
           {{ csrf_field() }}
@@ -31,15 +31,17 @@
           </div>
           <br>
           <div>
+            <label for="name">Phone</label>
+            <input id="phone" type="number" class="form-control" placeholder="123456789" name="telephone_number" value="{{ old('telephone_number') }}" required>
+          </div>
+          <br>
+          <div>
            <label>กำหนดระดับผู้ใช้งาน</label>
            <select name="users_type_id"  class="form-control" required>
-              @foreach ($user_type as $index => $user_types)
-              <option value="{{$user_types->id}}">{{$user_types->name}}</option>
-           <!--  <option value="1">ลูกค้า</option>
-            <option value="2">ผู้ดูแลระบบ</option>
-            <option value="3">พนักงานเสริฟ</option>
-            <option value="4">พนักงานเคาน์เตอร์</option> -->
-              @endforeach
+            @foreach ($user_type as $index => $user_types)
+            <option value="{{$user_types->id}}">{{$user_types->name}}</option>
+
+            @endforeach
           </select>
         </div>
         <br>

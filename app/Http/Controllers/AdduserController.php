@@ -43,21 +43,22 @@ class AdduserController extends Controller
     public function store(Request $request)
     {
 
-    $add_user = new User;
-    $add_user->name = $request->name;
-    $add_user->user_type_id = $request->users_type_id;
-    $add_user->email = $request->email;
-    $add_user->is_active = $request->is_active;
-    $add_user->password = bcrypt($request->password);
-    $add_user->save();
-    if($add_user){
-      return redirect()->route('home.index');
-  }else{
-      return "error message..";
-  }
+        $add_user = new User;
+        $add_user->name = $request->name;
+        $add_user->user_type_id = $request->users_type_id;
+        $add_user->telephone_number = $request->telephone_number;
+        $add_user->email = $request->email;
+        $add_user->is_active = $request->is_active;
+        $add_user->password = bcrypt($request->password);
+        $add_user->save();
+        if($add_user){
+          return redirect()->route('home.index');
+      }else{
+          return "error message..";
+      }
 
-  return $request->all();
-}
+      return $request->all();
+  }
 
     /**
      * Display the specified resource.
@@ -82,8 +83,8 @@ class AdduserController extends Controller
         $edit_user = User::where('id', $id)->first();
         $user_type = User_type::get();
         return view('admin.home.edituser', ['edit_user' => $edit_user,
-                                            'user_type' => $user_type
-    ]);
+            'user_type' => $user_type
+        ]);
     }
 
     /**
@@ -97,18 +98,40 @@ class AdduserController extends Controller
     {
         //return $request->is_active;
        if($id){
-        $update_user = User::where('id',$id)->first();
-        $update_user->name = $request->name;
-        $update_user->email = $request->email;
-        $update_user->user_type_id = $request->users_type_id;
-        $update_user->is_active = $request->is_active;
-        $update_user->save();
-        if($update_user){
+        if ($request->password) {
+            $update_user = User::where('id',$id)->first();
+            $update_user->name = $request->name;
+            $update_user->email = $request->email;
+            $update_user->telephone_number = $request->telephone_number;
+            $update_user->password = $request->password;
+            $update_user->user_type_id = $request->users_type_id;
+            $update_user->is_active = $request->is_active;
+            $update_user->save();
+            if($update_user){
+             return redirect()->route('home.index');
+
+         }else{
+            return "error message..";
+        }
+    }else{
+       $update_user = User::where('id',$id)->first();
+       $update_user->name = $request->name;
+       $update_user->email = $request->email;
+       $update_user->telephone_number = $request->telephone_number;
+       $update_user->user_type_id = $request->users_type_id;
+       $update_user->is_active = $request->is_active;
+       $update_user->save();
+       if($update_user){
          return redirect()->route('home.index');
 
      }else{
         return "error message..";
     }
+}
+
+
+
+
 }
 
 }
