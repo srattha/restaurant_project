@@ -34,10 +34,11 @@
     <link href="{{ asset('/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <!-- styel Css -->
     <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
+     <link href="{{ asset('/assets/css/lightbox.css') }}" rel="stylesheet">
 
     @yield('css')
 
-    <style type="text/css">
+   <!--  <style type="text/css">
     a {
         color: #333333;
         text-decoration: none;
@@ -70,9 +71,9 @@
             color:#333333;
         }
 
-</style>
+</style> -->
 
-    <script type="text/javascript">
+  <!--   <script type="text/javascript">
         ;(function(){
             function id(v){ return document.getElementById(v); }
             function loadbar() {
@@ -111,7 +112,7 @@
             }
             document.addEventListener('DOMContentLoaded', loadbar, false);
         }());
-    </script>
+    </script> -->
 
 </head>
 
@@ -184,7 +185,7 @@
                  <a href="{{ route('promotion.promotion') }}"><i class="fa fa-bullhorn"></i> จัดการ โปรโมชั่น</a>
             </li>
              <li>
-                 <a href="/dining_table"><i class="fa fa-picture-o"></i> จัดการ รูปภาพบรรยากาศ</a>
+                 <a href="/shop_atmosphere"><i class="fa fa-picture-o"></i> จัดการ รูปภาพบรรยากาศ</a>
             </li>
             <li>
                  <a href="/reservation"><i class="fa fa-cutlery"></i> แสดงรายงาน การจอง</a>
@@ -225,6 +226,7 @@
 <!-- Custom Theme JavaScript -->
 <script src="{{ asset('/assets/js/sb-admin-2.js') }}"></script>
 
+<script src="{{ asset('/assets/js/lightbox.js') }}"></script>
 <script src="{{ asset('/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('/vendor/datatables-plugins/dataTables.bootstrap.min.js') }}"></script>
 <script src="{{ asset('/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>

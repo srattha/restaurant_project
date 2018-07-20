@@ -34,16 +34,16 @@ class HomeController extends Controller
             return view('home');
             break;
             case '2':
-           return redirect("/admin");
+            return redirect("/admin");
             break;
             case '3':
-            return redirect("/waitress");
+            return redirect("/counter_staff");
             break;
             case '4':
             return redirect("/counter_staff");
             break;
 
         }
-        
+
     }
 }

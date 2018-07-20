@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class PromotionController extends Controller
 {
     /**
@@ -11,10 +11,32 @@ class PromotionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
+     $user = Auth::user();
+     $users_type_id = $user->user_type_id;
+     switch ($users_type_id) {
+        case '1':
+        return view('home');
+        break;
+        case '2':
         return view('admin.promotion.promotion');
+        break;
+        case '3':
+        return redirect("/counter_staff");
+        break;
+        case '4':
+        return redirect("/counter_staff");
+        break;
+
     }
+
+}
 
     /**
      * Show the form for creating a new resource.
@@ -23,7 +45,24 @@ class PromotionController extends Controller
      */
     public function create()
     {
-        return view('admin.promotion.add_promotion');
+        $user = Auth::user();
+        $users_type_id = $user->user_type_id;
+        switch ($users_type_id) {
+            case '1':
+            return view('home');
+            break;
+            case '2':
+            return view('admin.promotion.add_promotion');
+            break;
+            case '3':
+            return redirect("/counter_staff");
+            break;
+            case '4':
+            return redirect("/counter_staff");
+            break;
+
+        }
+
     }
 
     /**

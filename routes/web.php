@@ -32,9 +32,9 @@ Route::post('/menu/update/{id}', 'FoodmenuController@update')->name('foodmenu.up
 Route::get('/menu/delete/{id}', 'FoodmenuController@destroy')->name('foodmenu.delete')->where('id', '[0-9]+');
 
 // Recommendedmenu
-Route::get('/recommended_menu', 'RecommendedmenuController@index')->name('foodmenu.recommended_menu');
-Route::get('/addrecommended_menu', 'RecommendedmenuController@create')->name('foodmenu.addrecommended_menu');
-Route::post('addrecommended_menu', 'RecommendedmenuController@store');
+// Route::get('/recommended_menu', 'RecommendedmenuController@index')->name('foodmenu.recommended_menu');
+// Route::get('/addrecommended_menu', 'RecommendedmenuController@create')->name('foodmenu.addrecommended_menu');
+// Route::post('addrecommended_menu', 'RecommendedmenuController@store');
 //reporttbooking
 Route::get('/dining_table', 'DiningtableController@index')->name('diningtable.dining_table');
 Route::get('/add_dining_table', 'DiningtableController@create')->name('diningtable.add_dining_table');
@@ -54,6 +54,9 @@ Route::get('/reservation', 'ReservationController@index')->name('reservations.re
 //Counter staff
 Route::get('/counter_staff', 'CounterstaffController@index')->name('counterstaff.index');
 
+//Shopatmosphere
+Route::get('/shop_atmosphere', 'ShopatmosphereController@index')->name('shopatmosphere.index');
+Route::post('addshop_atmosphere', 'ShopatmosphereController@store')->name('addshopatmosphere');
 
 Auth::routes();
 

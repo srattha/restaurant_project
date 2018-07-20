@@ -42,15 +42,16 @@ div.upload input {
           <div>
             <label for="exampleInputFile">รูป</label>
             <div class="upload">
-              <input type="file" name="file"/>
+              <input type="file"  id="imgInp" name="file"/ >
             </div>
+            <img id="blah" src="/assets/img/no-img.png" style="width: 25%; height: 25%;">
            <!--  <input type="file" name="file" class="form-control"> -->
           </div>
           <br>
           <div>
             <label>ชื่อ</label>
 
-            <input type="text" class="form-control" name="name" placeholder="ชื่อ">
+            <input type="text" class="form-control" name="food_name" placeholder="ชื่อ">
           </div>
           <br>
           <div>
@@ -93,4 +94,24 @@ div.upload input {
 </div>
 </div>
 @endsection
-@section('javascript') @endsection
+@section('javascript')
+ <script>
+    function readURL(input) {
+
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#imgInp").change(function() {
+      readURL(this);
+    });
+
+  </script>
+@endsection

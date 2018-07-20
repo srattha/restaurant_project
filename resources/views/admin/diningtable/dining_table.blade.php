@@ -46,7 +46,7 @@
     <p>โต๊ะ: {{$dining_tables-> name}}</p>
     <p>จำนวนที่นั่ง: {{$dining_tables->seating}}</p>
     <!-- <p>รายการอาหาร</p> -->
-    <div><button type="button" class="btn btn-primary btn-block" onclick="location.href='{{ route('diningtable.edit_dining_table',['id'=>$dining_tables->id]) }}'">แก้ไข</button></div>
+    <div><button type="button" class="btn btn-{{$dining_tables->color}} btn-block" onclick="location.href='{{ route('diningtable.edit_dining_table',['id'=>$dining_tables->id]) }}'">แก้ไข</button></div>
   </div>
 </div>
 </div>

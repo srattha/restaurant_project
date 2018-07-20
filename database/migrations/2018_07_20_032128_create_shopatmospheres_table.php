@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDiningTableTypeTable extends Migration
+class CreateShopatmospheresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateDiningTableTypeTable extends Migration
      */
     public function up()
     {
-         Schema::create('dining_table', function (Blueprint $table) {
+        Schema::create('shopatmospheres', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('qrimage');
-            $table->string('seating');
-            $table->string('color');
-            $table->string('status');
-            $table->tinyInteger('is_active')->default(1);
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class CreateDiningTableTypeTable extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('dining_table');
+        Schema::dropIfExists('shopatmospheres');
     }
 }

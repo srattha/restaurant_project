@@ -3,23 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class RecommendedmenuController extends Controller
+use App\Shopatmosphere;
+use Illuminate\Support\Facades\Auth;
+class ShopatmosphereController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-      public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
 
     public function index()
     {
-        return view('admin.foodmenu.recommended_menu');
+       $user = Auth::user();
+       $users_type_id = $user->user_type_id;
+       switch ($users_type_id) {
+        case '1':
+        return view('home');
+        break;
+        case '2':
+        $show_image = Shopatmosphere::select('image')->get();
+        return view('admin.shopatmosphere.index', ['show_image' => $show_image]);
+        break;
+        case '3':
+        return redirect("/counter_staff");
+        break;
+        case '4':
+        return redirect("/counter_staff");
+        break;
+
     }
+
+
+}
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +48,7 @@ class RecommendedmenuController extends Controller
      */
     public function create()
     {
-        return view('admin.foodmenu.add_recommended_menu');
+        //
     }
 
     /**
@@ -39,8 +59,19 @@ class RecommendedmenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->hasFile('file')) {
+         $filename = $request->file->getClientOriginalName();
+         $request->file->storeAs('public/Shopatmosphere',$filename);
+         $arr = new Shopatmosphere;
+         $arr->image = $filename;
+         $arr->save();
+         if ($arr) {
+             return redirect()->route('shopatmosphere.index');
+         }else{
+            return ["satus"=>false,"msg"=>"Can't save data"];
+        }
     }
+}
 
     /**
      * Display the specified resource.

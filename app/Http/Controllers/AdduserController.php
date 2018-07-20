@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Carbon\Carbon;
 use App\User_type;
+use Illuminate\Support\Facades\Auth;
 class AdduserController extends Controller
 {
 
@@ -20,8 +21,25 @@ class AdduserController extends Controller
      */
     public function index()
     {
-        $user_type = User_type::get();
-        return view('admin.home.adduser', ['user_type' => $user_type]);
+        $user = Auth::user();
+        $users_type_id = $user->user_type_id;
+        switch ($users_type_id) {
+            case '1':
+            return view('home');
+            break;
+            case '2':
+            $user_type = User_type::get();
+            return view('admin.home.adduser', ['user_type' => $user_type]);
+            break;
+            case '3':
+            return redirect("/counter_staff");
+            break;
+            case '4':
+            return redirect("/counter_staff");
+            break;
+
+        }
+
     }
 
     /**
@@ -97,7 +115,7 @@ class AdduserController extends Controller
     public function update(Request $request, $id)
     {
         //return $request->is_active;
-       if($id){
+     if($id){
         if ($request->password) {
             $update_user = User::where('id',$id)->first();
             $update_user->name = $request->name;
@@ -108,25 +126,25 @@ class AdduserController extends Controller
             $update_user->is_active = $request->is_active;
             $update_user->save();
             if($update_user){
-             return redirect()->route('home.index');
+               return redirect()->route('home.index');
 
-         }else{
+           }else{
             return "error message..";
         }
     }else{
-       $update_user = User::where('id',$id)->first();
-       $update_user->name = $request->name;
-       $update_user->email = $request->email;
-       $update_user->telephone_number = $request->telephone_number;
-       $update_user->user_type_id = $request->users_type_id;
-       $update_user->is_active = $request->is_active;
-       $update_user->save();
-       if($update_user){
-         return redirect()->route('home.index');
+     $update_user = User::where('id',$id)->first();
+     $update_user->name = $request->name;
+     $update_user->email = $request->email;
+     $update_user->telephone_number = $request->telephone_number;
+     $update_user->user_type_id = $request->users_type_id;
+     $update_user->is_active = $request->is_active;
+     $update_user->save();
+     if($update_user){
+       return redirect()->route('home.index');
 
-     }else{
-        return "error message..";
-    }
+   }else{
+    return "error message..";
+}
 }
 
 
@@ -147,9 +165,9 @@ class AdduserController extends Controller
 
         $user_delete = User::where('id',$id)->delete();
         if($user_delete){
-         return redirect()->route('home.index');
+           return redirect()->route('home.index');
 
-     }else{
+       }else{
         return "error message..";
     }
 }

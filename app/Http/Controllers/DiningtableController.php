@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Dining_table;
+use Illuminate\Support\Facades\Auth;
 class DiningtableController extends Controller
 {
     /**
@@ -11,10 +12,31 @@ class DiningtableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        $dining_table = Dining_table::get();
-        return view('admin.diningtable.dining_table',['dining_table'=> $dining_table]);
+        $user = Auth::user();
+        $users_type_id = $user->user_type_id;
+        switch ($users_type_id) {
+            case '1':
+            return view('home');
+            break;
+            case '2':
+            $dining_table = Dining_table::get();
+            return view('admin.diningtable.dining_table',['dining_table'=> $dining_table]);
+            break;
+            case '3':
+            return redirect("/counter_staff");
+            break;
+            case '4':
+            return redirect("/counter_staff");
+            break;
+
+        }
+
 
     }
 
@@ -25,7 +47,24 @@ class DiningtableController extends Controller
      */
     public function create()
     {
-        return view('admin.diningtable.add_dining_table');
+        $user = Auth::user();
+        $users_type_id = $user->user_type_id;
+        switch ($users_type_id) {
+            case '1':
+            return view('home');
+            break;
+            case '2':
+            return view('admin.diningtable.add_dining_table');
+            break;
+            case '3':
+            return redirect("/counter_staff");
+            break;
+            case '4':
+            return redirect("/counter_staff");
+            break;
+
+        }
+
     }
 
     /**
@@ -39,21 +78,21 @@ class DiningtableController extends Controller
 
         if ($request->status == 1) {
            $color = "success";
-        }else{
+       }else{
          $color = "danger";
-        }
-       if ($request->hasFile('file')) {
+     }
+     if ($request->hasFile('file')) {
 
        $filename = $request->file->getClientOriginalName();
-        $request->file->storeAs('public/QRcode',$filename);
-        $arr = new Dining_table;
-        $arr->name = $request->name;
-        $arr->qrimage = $filename;
-        $arr->seating = $request->seating;
-        $arr->status = $request->status;
-        $arr->color = $color;
-        $arr->save();
-        if ($arr) {
+       $request->file->storeAs('public/QRcode',$filename);
+       $arr = new Dining_table;
+       $arr->name = $request->name;
+       $arr->qrimage = $filename;
+       $arr->seating = $request->seating;
+       $arr->status = $request->status;
+       $arr->color = $color;
+       $arr->save();
+       if ($arr) {
            return redirect()->route('diningtable.dining_table');
        }else{
         return ["satus"=>false,"msg"=>"Can't save data"];
