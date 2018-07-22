@@ -51,27 +51,6 @@
 </div>
 </div>
 @endforeach
-<!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-  <div class="offer offer-radius offer-danger">
-    <div class="shape">
-      <div class="shape-text">
-        <i class="fa fa-window-close fa-2x" aria-hidden="true"></i>
-      </div>
-    </div>
-    <div class="offer-content">
-      <h3 class="lead">
-        <span class="label label-danger">ไม่ว่าง</span>
-      </h3>
-      <p style="text-align: center;">
-       <img src="/assets/img/interview.png">
-     </p>
-     <p>โต๊ะ: 2</p>
-     <p>จำนวนที่นั่ง: 2</p>
-     <div><button type="button" class="btn btn-primary btn-block" disabled>ยืนยันสถานะ</button></div>
-   </div>
- </div>
-</div> -->
-
 </div>
 
 @endsection

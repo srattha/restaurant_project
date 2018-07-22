@@ -53,6 +53,7 @@ Route::get('/reservation', 'ReservationController@index')->name('reservations.re
 
 //Counter staff
 Route::get('/counter_staff', 'CounterstaffController@index')->name('counterstaff.index');
+Route::post('counter_staff', 'CounterstaffController@search');
 
 //Shopatmosphere
 Route::get('/shop_atmosphere', 'ShopatmosphereController@index')->name('shopatmosphere.index');

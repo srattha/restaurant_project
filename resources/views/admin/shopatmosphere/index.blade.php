@@ -43,7 +43,7 @@ div.upload input {
 <div class="row">
   @foreach ($show_image as $show_images)
   <div class="col-md-3 col-lg-3 col-md-3 col-sm-3 col-xs-6 filter">
-    <a class="example-image-link" width="304" height="304" style="height: 300px;" href="{{ asset('storage/Shopatmosphere/'.$show_images->image) }}"
+    <a class="example-image-link" width="304" height="304" style="height: 100%;" href="{{ asset('storage/Shopatmosphere/'.$show_images->image) }}"
       data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
       <img class="example-image img-thumbnail" src="{{ asset('storage/Shopatmosphere/'.$show_images->image) }}"  alt="Cinque Terre" width="304" height="304" style="height: 300px;"/></a>
       <!--  <img src="{{ asset('storage/Shopatmosphere/'.$show_images->image) }}" class="img-thumbnail" alt="Cinque Terre" width="304" height="304" style="height: 300px;"> -->

@@ -100,7 +100,7 @@ class DiningtableController extends Controller
 }else{
     $arr = new Dining_table;
     $arr->name = $request->name;
-        // $arr->qrimage = $filename;
+    $arr->qrimage = "noimage.png";
     $arr->seating = $request->seating;
     $arr->status = $request->status;
     $arr->color = $color;
