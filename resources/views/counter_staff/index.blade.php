@@ -157,8 +157,8 @@
          }
          .image-checkbox .fa {
          position: absolute;
-         color: #4A79A3;
-         background-color: #fff;
+        color: #ffffff;
+        background-color: rgba(0,0,0,.5);
          padding: 10px;
          top: 0;
          right: 0;
@@ -484,7 +484,7 @@
                                                         @foreach ($food_type_vegetable as $index => $food_type_vegetables)
                                                       <div class="col-xs-4 col-sm-3 col-md-2 nopad text-center">
                                                          <label class="image-checkbox">
-                                                         <img src="{{ asset('storage/Food_menus/'.$food_type_vegetables->image) }}" / style="width: 130px;height: 100px;">
+                                                         <img class="img-responsive" src="{{ asset('storage/Food_menus/'.$food_type_vegetables->image) }}" / style="width: 130px;height: 100px;">
                                                          <input type="checkbox" name="image[]" value="{{$food_type_vegetables->id}}" />
                                                          <i class="fa fa-check hidden"></i>
                                                          </label>

@@ -32,7 +32,7 @@ class CounterstaffController extends Controller
             $dining_table = Dining_table::get();
             $food_type = Food_type::get();
             //$food_menus = Food_menus::get();
-            $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
+            $food_type_vegetable = DB::table('food_menu')->where('food_type', 3)->get();
             return view('counter_staff.index',['dining_table'=> $dining_table,
                                                 'user'=> $user,
                                                 'food_type'=> $food_type,
