@@ -35,7 +35,7 @@ class FoodmenuController extends Controller
         return view('home');
         break;
         case '2':
-        $food_menus = $this->Food_menusModel->limit(4)->get();
+        $food_menus = $this->Food_menusModel->get();
        // $name = DB::table('food_menu')->where('is_recommend', 1)->get();
       // return $test = Food_menus::where('food_type',1)->ger();
         return view('admin.foodmenu.all_foodmanu', ['food_menus' => $food_menus]);

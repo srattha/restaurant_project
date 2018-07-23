@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Dining_table;
+use App\Food_type;
+use App\Food_menus;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 class CounterstaffController extends Controller
 {
@@ -27,9 +30,13 @@ class CounterstaffController extends Controller
             break;
             case '3':
             $dining_table = Dining_table::get();
-            
+            $food_type = Food_type::get();
+            //$food_menus = Food_menus::get();
+            $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
             return view('counter_staff.index',['dining_table'=> $dining_table,
-                                                'user'=> $user
+                                                'user'=> $user,
+                                                'food_type'=> $food_type,
+                                                'food_type_vegetable'=> $food_type_vegetable
         ]);
             break;
             case '4':
@@ -48,4 +55,11 @@ class CounterstaffController extends Controller
         $dining_table = Dining_table::where('name', 'LIKE', '%' . $search . '%')->get();
         return view('counter_staff.index',['dining_table'=> $dining_table]);
     }
+
+     public function store(Request $request)
+    {
+        $users = Auth::user();
+        $users_type_id = $users->user_type_id;
+      return $request->all();
+  }
 }
