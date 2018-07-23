@@ -20,9 +20,6 @@ class CreateReservationsTable extends Migration
             $table->string('reserve_date');
             $table->string('reserve_by');
             $table->string('reserve_mobile');
-            // $table->string('created_date');
-            // $table->string('created_by');
-            // $table->string('created_date');
             $table->timestamps();
         });
     }
