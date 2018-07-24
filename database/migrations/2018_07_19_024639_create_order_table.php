@@ -16,7 +16,6 @@ class CreateOrderTable extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('reservationld_id');
-            $table->string('image');
             $table->string('orde_date');
             $table->string('is_paid');
             $table->string('amount');
