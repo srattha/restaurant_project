@@ -274,7 +274,10 @@
                <div class="panel-body">
                   <div class="row">
                      @foreach ($dining_table as $index => $dining_tables)
-                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg4">
+                     @if($dining_tables == "")
+                        ไม่มีข้อมูล
+                      @else
+                      <div class="col-xs-12 col-sm-6 col-md-4 col-lg4">
                         <div class="offer offer-radius offer-{{$dining_tables->color}}">
                            <div class="shape" style="border-width: 0 70px 50px 0;">
                               <div class="shape-text">
@@ -311,6 +314,8 @@
                            </div>
                         </div>
                      </div>
+                       @endif
+
                      @endforeach
                   </div>
                   <div id="confirm_status" class="modal fade" role="dialog">
@@ -440,7 +445,7 @@
                                           <div id="start">
                                              <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                <input type='text'  name="date" id="date"  class="form-control first_login"  />
+                                                <input type='text'  name="reserve_date" id="date"  class="form-control first_login"  />
                                              </div>
                                           </div>
                                        </div>
@@ -459,7 +464,7 @@
                                        <div id="start">
                                           <div class="input-group">
                                              <span class="input-group-addon"><i class="fa fa-phone-square" aria-hidden="true"></i></span>
-                                             <input type='number'  name="phone" id="time"  class="form-control first_login"  / required="">
+                                             <input type='number'  name="reserve_mobile" id="time"  class="form-control first_login"  / required="">
                                           </div>
                                        </div>
                                     </div>
@@ -486,9 +491,11 @@
                                                          <label class="image-checkbox">
                                                          <img class="img-responsive" src="{{ asset('storage/Food_menus/'.$food_type_vegetables->image) }}" / style="width: 130px;height: 100px;">
                                                          <input type="checkbox" name="image[]" value="{{$food_type_vegetables->id}}" />
+                                                          <input type="checkbox" name="price[]" value="{{$food_type_vegetables->price}}" />
                                                          <i class="fa fa-check hidden"></i>
                                                          </label>
-                                                         <p>{{$food_type_vegetables->food_name}}</p>
+                                                         <p>{{$food_type_vegetables->food_name}} ราคา {{$food_type_vegetables->price}}</p>
+
                                                       </div>
                                                        @endforeach
                                                    </div>
