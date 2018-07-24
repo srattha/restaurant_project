@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-	return view('welcome');
+ Route::get('/', function () {
+	return view('home');
 });
 // Admin
 Route::get('/admin', 'AdminController@index')->name('home.index');
@@ -61,6 +61,7 @@ Route::post('reservation', 'CounterstaffController@store')->name('counterstaff.r
 Route::get('/shop_atmosphere', 'ShopatmosphereController@index')->name('shopatmosphere.index');
 Route::post('addshop_atmosphere', 'ShopatmosphereController@store')->name('addshopatmosphere');
 
+Route::get('/food','FoodController@index')->name('foodmenu');
 Auth::routes();
 
 
