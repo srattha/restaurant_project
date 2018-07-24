@@ -62,18 +62,16 @@ class CounterstaffController extends Controller
         $users_type_id = $users->user_type_id;
         $user = $users->name;
         return view('counter_staff.index',['dining_table'=> $dining_table,
-                                            'user'=> $user,
-                                            'food_type'=> $food_type,
-                                            'food_type_vegetable'=> $food_type_vegetable
-                                        ]);
+            'user'=> $user,
+            'food_type'=> $food_type,
+            'food_type_vegetable'=> $food_type_vegetable
+        ]);
     }
 
     public function store(Request $request)
     {
 
         $price = 0;
-
-
         $reserve_date = $request->reserve_date.$request->time;
         $dining_table_id = $request->dining_table_id;
         $users = Auth::user();
@@ -91,37 +89,39 @@ class CounterstaffController extends Controller
           $update_dining_table->color = 'danger';
           $update_dining_table->save();
           if ($update_dining_table) {
-           foreach ( $request->price as $key => $value) {
-            $price += $value;
-        }
-
-        $add_order = new Order;
-        $add_order->reservationld_id = $reservation_id;
-        $add_order->orde_date = $reserve_date;
-        $add_order->is_paid = 0;
-        $add_order->amount = $price;
-        $add_order->save();
-        $order_id = $add_order->id;
-        if ($add_order) {
-            foreach ($request->image as $key => $value) {
-                $add_order_details = new Order_details;
-                $add_order_details->order_Id = $order_id;
-                $add_order_details->food_id = $value;
-                $add_order_details->totaorder = 1;
-                $add_order_details->is_cook = 0;
-                $add_order_details->save();
+            if (!$request->image) {
+                return redirect()->route('counterstaff.index');
             }
-            if ($add_order_details) {
-               return redirect()->route('counterstaff.index');
+            foreach ( $request->price as $key => $value) {
+                $price += $value;
             }
 
+            $add_order = new Order;
+            $add_order->reservationld_id = $reservation_id;
+            $add_order->orde_date = $reserve_date;
+            $add_order->is_paid = 0;
+            $add_order->amount = $price;
+            $add_order->save();
+            $order_id = $add_order->id;
+            if ($add_order) {
+                foreach ($request->image as $key => $value) {
+                    $add_order_details = new Order_details;
+                    $add_order_details->order_Id = $order_id;
+                    $add_order_details->food_id = $value;
+                    $add_order_details->totaorder = 1;
+                    $add_order_details->is_cook = 0;
+                    $add_order_details->save();
+                }
+                if ($add_order_details) {
+                 return redirect()->route('counterstaff.index');
+             }
 
-        }
 
-    }else{
+         }
+
+     }else{
         return ["satus"=>false,"msg"=>"Can't save data"];
     }
-   // return redirect()->route('counterstaff.index');
 }else{
   return "error message..";
 }
