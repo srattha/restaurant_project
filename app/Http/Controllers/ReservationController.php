@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Dining_table;
+use App\Food_type;
+use App\Food_menus;
+use App\Reservation;
+use App\Order;
+use App\Order_details;
 
 class ReservationController extends Controller
 {
@@ -37,6 +43,19 @@ class ReservationController extends Controller
 
     }
 
+    public function search(Request $request, $id){
+
+        return $table_name = Dining_table::where('id', $id)->first();
+
+         $data = [
+               'name' => $table_name,
+
+         ];
+         return $data;
+
+
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -49,5 +68,5 @@ class ReservationController extends Controller
       return $request->all();
   }
 
-    /**
+
 }

@@ -308,7 +308,7 @@
                                  @if($dining_tables->status == 1)
                                  <button type="button" class="btn btn-{{$dining_tables->color}} btn-block"  data-toggle="modal" data-target="#reservations" onclick="data_print('{{$dining_tables->id}}', '{{$dining_tables->name}}', '{{$dining_tables->seating}}')" >จอง</button>
                                  @else
-                                 <button type="button" class="btn btn-{{$dining_tables->color}} btn-block"  data-toggle="modal" data-target="#confirm_status" onclick="data_print('{{$dining_tables}}')">ยืนยันสถานะ</button>
+                                 <button type="button" class="btn btn-{{$dining_tables->color}} btn-block" onclick="location.href='{{ route('reservation_report',['id'=>$dining_tables->id]) }}'">ยืนยันสถานะ</button>
                                  @endif
                               </div>
                            </div>

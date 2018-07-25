@@ -9,6 +9,8 @@ use App\Food_menus;
 use App\Reservation;
 use App\Order;
 use App\Order_details;
+use App\User;
+use App\Helper;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 class CounterstaffController extends Controller
@@ -75,10 +77,10 @@ class CounterstaffController extends Controller
         $reserve_date = $request->reserve_date.$request->time;
         $dining_table_id = $request->dining_table_id;
         $users = Auth::user();
-        $users_type_id = $users->user_type_id;
+        $users_id = $users->id;
         $add_reservation = new Reservation;
         $add_reservation->dining_table_id = $dining_table_id;
-        $add_reservation->user_id = $users_type_id;
+        $add_reservation->user_id = $users_id;
         $add_reservation->reserve_date = $reserve_date ;
         $add_reservation->reserve_mobile = $request->reserve_mobile;
         $add_reservation->save();
@@ -95,7 +97,6 @@ class CounterstaffController extends Controller
             foreach ( $request->price as $key => $value) {
                 $price += $value;
             }
-
             $add_order = new Order;
             $add_order->reservationld_id = $reservation_id;
             $add_order->orde_date = $reserve_date;
@@ -126,5 +127,69 @@ class CounterstaffController extends Controller
   return "error message..";
 }
 
+}
+
+
+public function reservation_report(Request $request, $id)
+{
+
+
+    $table_name = Dining_table::where('id',$id)->first()->name;
+    $reservation = Reservation::where('dining_table_id', $id)->orderBy('id','desc')->first();
+     $order = Order::where('reservationld_id', $reservation['id'])->first();
+    $order_details = Order_details::where('order_Id',$order['id'] )->get();
+    foreach ($order_details as $key => $order_detail) {
+         $order_details[$key]['food_detail'] = Food_menus::where('id',$order_detail->food_id)->first();
+    }
+
+   // return $order_details;
+
+    $user_id =  $reservation['user_id'];
+    $user = User::where('id', $user_id)->first();
+    $date = $reservation['reserve_date'];
+    $reserve_mobile =$reservation['reserve_mobile'];
+    // $reservations_id = $reservations->id;
+    // $order=Order::where('reservationld_id',$reservations_id )->first();
+    // $order_id = $order->id;
+    // $order_details = Order_details::where('order_Id',$order_id )->get();
+
+    // foreach ($order_details as $key => $value) {
+    //      $food_id = $value->food_id;
+    //      $order_details[$key]['food'] = Food_menus::where('id',$food_id )->get();
+    // }
+
+    //return $order_details;
+
+    $strYear = date("Y",strtotime($date))+543;
+    $strMonth= date("n",strtotime($date));
+    $strDay= date("j",strtotime($date));
+    $strHour= date("H",strtotime($date));
+    $strMinute= date("i",strtotime($date));
+    $strSeconds= date("s",strtotime($date));
+    $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+    $strMonthThai=$strMonthCut[$strMonth];
+    $datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
+    return view('counter_staff.reservation_report',['table_name'=> $table_name,
+        'user'=> $user,
+        'datas'=> $datas,
+        'order'=> $order,
+        'food'=>$order_details,
+        'reserve_mobile'=>$reserve_mobile,
+
+    ]);
+
+}
+
+function formatDateThat($strDate)
+{
+    $strYear = date("Y",strtotime($strDate))+543;
+    $strMonth= date("n",strtotime($strDate));
+    $strDay= date("j",strtotime($strDate));
+    $strHour= date("H",strtotime($strDate));
+    $strMinute= date("i",strtotime($strDate));
+    $strSeconds= date("s",strtotime($strDate));
+    $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+    $strMonthThai=$strMonthCut[$strMonth];
+    return "$strDay $strMonthThai $strYear $strHour:$strMinute";
 }
 }

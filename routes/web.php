@@ -52,10 +52,13 @@ Route::post('addpromotion', 'PromotionController@store');
 Route::get('/reservation', 'ReservationController@index')->name('reservations.reservations');
 Route::post('reservation', 'ReservationController@store')->name('reservations');
 
+
 //Counter staff
 Route::get('/counter_staff', 'CounterstaffController@index')->name('counterstaff.index');
 Route::post('counter_staff', 'CounterstaffController@search');
 Route::post('reservation', 'CounterstaffController@store')->name('counterstaff.reservation');
+Route::get('reservation_report/{id}', 'CounterstaffController@reservation_report')->name('reservation_report')->where('id', '[0-9]+');
+
 
 //Shopatmosphere
 Route::get('/shop_atmosphere', 'ShopatmosphereController@index')->name('shopatmosphere.index');
