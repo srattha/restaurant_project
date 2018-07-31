@@ -18,6 +18,7 @@ class CreateOrderDetailsTable extends Migration
             $table->integer('order_Id');
             $table->integer('food_id');
             $table->string('totalorder');
+             $table->string('amount');
             $table->string('is_cook');
             $table->timestamps();
         });

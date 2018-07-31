@@ -25,8 +25,8 @@
   <link href="{{ asset('/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
   <!-- styel Css -->
   <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
-  <link href="{{ asset('/vendor/sweetalert/sweetalert.css') }}" rel="stylesheet">
-  <script src="{{ asset('/vendor/sweetalert/sweetalert.js') }}"></script>
+  <!-- <link href="{{ asset('/vendor/sweetalert/sweetalert.css') }}" rel="stylesheet">
+  <script src="{{ asset('/vendor/sweetalert/sweetalert.js') }}"></script> -->
   <!-- jQuery -->
   <script src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
   <!-- Bootstrap Core JavaScript -->
@@ -38,7 +38,7 @@
 
 
   @yield('css')
-      <!--  <style type="text/css">
+       <style type="text/css">
          a {
              color: #333333;
              text-decoration: none;
@@ -139,7 +139,7 @@
              display: none;
          }
 
-       </style> -->
+       </style>
        <style type="text/css">
        .nopad {
          padding-left: 0 !important;

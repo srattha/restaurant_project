@@ -23,86 +23,89 @@ class CounterstaffController extends Controller
 	public function index()
 	{
 
-        $users = Auth::user();
-        $users_type_id = $users->user_type_id;
-        $user = $users->name;
-        switch ($users_type_id) {
-            case '1':
-            return redirect("/");
-            break;
-            case '2':
-            return redirect("/admin");
-            break;
-            case '3':
-            $dining_table = Dining_table::get();
-            $food_type = Food_type::get();
+    $users = Auth::user();
+    $users_type_id = $users->user_type_id;
+    $user = $users->name;
+    switch ($users_type_id) {
+      case '1':
+      return redirect("/");
+      break;
+      case '2':
+      return redirect("/admin");
+      break;
+      case '3':
+      $dining_table = Dining_table::get();
+      $food_type = Food_type::get();
             //$food_menus = Food_menus::get();
-            $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
-            return view('counter_staff.index',['dining_table'=> $dining_table,
-                'user'=> $user,
-                'food_type'=> $food_type,
-                'food_type_vegetable'=> $food_type_vegetable,
-            ]);
-            break;
-            case '4':
-            return redirect("/counter_staff");
-            break;
-
-        }
-
-
-
+      $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
+      return view('counter_staff.index',['dining_table'=> $dining_table,
+        'user'=> $user,
+        'food_type'=> $food_type,
+        'food_type_vegetable'=> $food_type_vegetable,
+      ]);
+      break;
+      case '4':
+      return redirect("/counter_staff");
+      break;
 
     }
 
-    public function search(Request $request){
-        $search = $request->search;
-        $dining_table = Dining_table::where('name', 'LIKE', '%' . $search . '%')->get();
-        $food_type = Food_type::get();
-        $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
-        $users = Auth::user();
-        $users_type_id = $users->user_type_id;
-        $user = $users->name;
-        return view('counter_staff.index',['dining_table'=> $dining_table,
-            'user'=> $user,
-            'food_type'=> $food_type,
-            'food_type_vegetable'=> $food_type_vegetable
-        ]);
-    }
 
-    public function store(Request $request)
-    {
-        //return $request->all();
-        $price = 0;
-        $reserve_date = $request->reserve_date.$request->time;
-        $dining_table_id = $request->dining_table_id;
-        $users = Auth::user();
-        $users_id = $users->id;
-        $add_reservation = new Reservation;
-        $add_reservation->dining_table_id = $dining_table_id;
-        $add_reservation->user_id = $users_id;
-        $add_reservation->reserve_date = $reserve_date ;
-        $add_reservation->reserve_mobile = $request->reserve_mobile;
-        $add_reservation->save();
-        $reservation_id = $add_reservation->id;
-        if($add_reservation){
-          $update_dining_table = Dining_table::where('id',$dining_table_id)->first();
-          $update_dining_table->status = 0;
-          $update_dining_table->color = 'danger';
-          $update_dining_table->save();
-          $dining_id = $update_dining_table->id;
-          if ($update_dining_table) {
-            $users = Auth::user();
-            $users_type_id = $users->user_type_id;
-            $user = $users->name;
-             $dining_table = Dining_table::where('id', $dining_id)->first();
-            $food_type = Food_type::get();
-            $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
-            return view('counter_staff.reservation_food',['dining_table'=> $dining_table,
-                'user'=> $user,
-                'food_type'=> $food_type,
-                'food_type_vegetable'=> $food_type_vegetable,
-            ]);
+
+
+  }
+
+  public function search(Request $request){
+    $search = $request->search;
+    $dining_table = Dining_table::where('name', 'LIKE', '%' . $search . '%')->get();
+    $food_type = Food_type::get();
+    $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
+    $users = Auth::user();
+    $users_type_id = $users->user_type_id;
+    $user = $users->name;
+    return view('counter_staff.index',['dining_table'=> $dining_table,
+      'user'=> $user,
+      'food_type'=> $food_type,
+      'food_type_vegetable'=> $food_type_vegetable
+    ]);
+  }
+
+  public function store(Request $request)
+  {
+      //  return $request->all();
+
+    $price = 0;
+    $reserve_date = $request->reserve_date.$request->time;
+    $dining_table_id = $request->dining_table_id;
+    $users = Auth::user();
+    $users_id = $users->id;
+    $add_reservation = new Reservation;
+    $add_reservation->dining_table_id = $dining_table_id;
+    $add_reservation->user_id = $users_id;
+    $add_reservation->reserve_date = $reserve_date;
+    $add_reservation->reserve_mobile = $request->reserve_mobile;
+    $add_reservation->save();
+    $reservation_id = $add_reservation->id;
+    if($add_reservation){
+      $update_dining_table = Dining_table::where('id',$dining_table_id)->first();
+      $update_dining_table->status = 0;
+      $update_dining_table->color = 'danger';
+      $update_dining_table->save();
+      $dining_id = $update_dining_table->id;
+      if ($update_dining_table) {
+       return redirect()->route('reservation_food',['id'=>$reservation_id]);
+            // $users = Auth::user();
+            // $users_type_id = $users->user_type_id;
+            // $user = $users->name;
+            // $dining_table = Dining_table::where('id', $dining_id)->first();
+            // $food_type = Food_type::get();
+            //  $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
+            // return view('counter_staff.reservation_food',['dining_table'=> $dining_table,
+            //     'user'=> $user,
+            //     'food_type'=> $food_type,
+            //     'food_type_vegetable'=> $food_type_vegetable,
+            //     'reservation_id'=> $reservation_id,
+            // ]);
 
            //  if (!$request->image) {
            //      return redirect()->route('counterstaff.index');
@@ -133,12 +136,12 @@ class CounterstaffController extends Controller
 
            // }
 
-       }else{
-        return ["satus"=>false,"msg"=>"Can't save data"];
+     }else{
+      return ["satus"=>false,"msg"=>"Can't save data"];
     }
-}else{
-  return "error message..";
-}
+  }else{
+    return "error message..";
+  }
 
 }
 
@@ -146,21 +149,22 @@ class CounterstaffController extends Controller
 public function reservation_report(Request $request, $id)
 {
 
+  $amount = 0;
+  $table_name = Dining_table::where('id',$id)->first()->name;
+  $reservation = Reservation::where('dining_table_id', $id)->orderBy('id','desc')->first();
+  $order = Order::where('reservationld_id', $reservation['id'])->first();
+  $order_details = Order_details::where('order_Id',$order['id'] )->get();
+ 
+  foreach ($order_details as $key => $order_detail) {
+   $order_details[$key]['food_detail'] = Food_menus::where('id',$order_detail->food_id)->first();
+  $amount += $order_detail['amount'];
+ }
 
-    $table_name = Dining_table::where('id',$id)->first()->name;
-    $reservation = Reservation::where('dining_table_id', $id)->orderBy('id','desc')->first();
-    $order = Order::where('reservationld_id', $reservation['id'])->first();
-    $order_details = Order_details::where('order_Id',$order['id'] )->get();
-    foreach ($order_details as $key => $order_detail) {
-       $order_details[$key]['food_detail'] = Food_menus::where('id',$order_detail->food_id)->first();
-   }
 
-   // return $order_details;
-
-   $user_id =  $reservation['user_id'];
-   $user = User::where('id', $user_id)->first();
-   $date = $reservation['reserve_date'];
-   $reserve_mobile =$reservation['reserve_mobile'];
+ $user_id =  $reservation['user_id'];
+ $user = User::where('id', $user_id)->first();
+ $date = $reservation['reserve_date'];
+ $reserve_mobile =$reservation['reserve_mobile'];
     // $reservations_id = $reservations->id;
     // $order=Order::where('reservationld_id',$reservations_id )->first();
     // $order_id = $order->id;
@@ -171,23 +175,24 @@ public function reservation_report(Request $request, $id)
     //      $order_details[$key]['food'] = Food_menus::where('id',$food_id )->get();
     // }
 
-    //return $order_details;
+   // return $order_details;
 
-   $strYear = date("Y",strtotime($date))+543;
-   $strMonth= date("n",strtotime($date));
-   $strDay= date("j",strtotime($date));
-   $strHour= date("H",strtotime($date));
-   $strMinute= date("i",strtotime($date));
-   $strSeconds= date("s",strtotime($date));
-   $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
-   $strMonthThai=$strMonthCut[$strMonth];
-   $datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
-   return view('counter_staff.reservation_report',['table_name'=> $table_name,
-    'user'=> $user,
-    'datas'=> $datas,
-    'order'=> $order,
-    'food'=>$order_details,
-    'reserve_mobile'=>$reserve_mobile,
+ $strYear = date("Y",strtotime($date))+543;
+ $strMonth= date("n",strtotime($date));
+ $strDay= date("j",strtotime($date));
+ $strHour= date("H",strtotime($date));
+ $strMinute= date("i",strtotime($date));
+ $strSeconds= date("s",strtotime($date));
+ $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+ $strMonthThai=$strMonthCut[$strMonth];
+ $datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
+ return view('counter_staff.reservation_report',['table_name'=> $table_name,
+  'user'=> $user,
+  'datas'=> $datas,
+  'order'=> $order,
+  'food'=>$order_details,
+  'reserve_mobile'=>$reserve_mobile,
+  'amount'=>$amount,
 
 ]);
 
@@ -210,17 +215,63 @@ public function reservation_report(Request $request, $id)
 public function reservation_food(Request $request, $id)
 {
 
-    $users = Auth::user();
-    $users_type_id = $users->user_type_id;
-    $user = $users->name;
-    $dining_table = Dining_table::where('id', $id)->first();
-    $food_type = Food_type::get();
-    $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
-    return view('counter_staff.reservation_food',['dining_table'=> $dining_table,
-        'user'=> $user,
-        'food_type'=> $food_type,
-        'food_type_vegetable'=> $food_type_vegetable,
-    ]);
+  $reservation = Reservation::where('id', $id)->first();
+  $users = Auth::user();
+  $users_type_id = $users->user_type_id;
+  $user = $users->name;
+  $dining_table = Dining_table::where('id', $reservation['dining_table_id'])->first();
+  $food_type = Food_type::get();
+  $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
+  return view('counter_staff.reservation_food',['dining_table'=> $dining_table,
+    'user'=> $user,
+    'food_type'=> $food_type,
+    'food_type_vegetable'=> $food_type_vegetable,
+    'reservation_id'=> $reservation['id'],
+    'reserve_date'=> $reservation['reserve_date'],
+  ]);
+
+}
+
+public function order_food(Request $request){
+  //return $request->all();
+  $price = $request->price *  $request->totalorder;
+  
+  $order = Order::where('reservationld_id', $request->reservation_id)->first();
+  if (!$order) {
+
+   $add_order = new Order;
+   $add_order->reservationld_id = $request->reservation_id;
+   $add_order->orde_date = $request->orde_date;
+   $add_order->is_paid = 0;
+   // $add_order->amount = $price;
+   $add_order->save();
+   $order_id = $add_order->id;
+   if ($add_order) {
+    $add_order_details = new Order_details;
+    $add_order_details->order_Id = $order_id;
+    $add_order_details->food_id = $request->food_id;
+    $add_order_details->totalorder = $request->totalorder;
+     $add_order_details->amount = $price;
+    $add_order_details->is_cook = 0;
+    $add_order_details->save();
+    if ($add_order_details) {
+     return redirect()->route('reservation_food',['id'=>$request->reservation_id]);
+   }
+  }
+  
+ 
+ }else{
+  $add_order_details = new Order_details;
+  $add_order_details->order_Id = $order['id'];
+  $add_order_details->food_id = $request->food_id;
+  $add_order_details->totalorder = $request->totalorder;
+  $add_order_details->amount = $price;
+  $add_order_details->is_cook = 0;
+  $add_order_details->save();
+  if ($add_order_details) {
+   return redirect()->route('reservation_food',['id'=>$request->reservation_id]);
+ }
+ }
 
 }
 
