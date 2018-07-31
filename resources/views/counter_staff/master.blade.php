@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,13 +25,18 @@
   <link href="{{ asset('/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
   <!-- styel Css -->
   <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
+  <link href="{{ asset('/vendor/sweetalert/sweetalert.css') }}" rel="stylesheet">
+  <script src="{{ asset('/vendor/sweetalert/sweetalert.js') }}"></script>
   <!-- jQuery -->
   <script src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
   <!-- Bootstrap Core JavaScript -->
   <script src="{{ asset('/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('/vendor/moment/moment.min.js') }}"></script>
   <script src="{{ asset('/vendor/bootstrapdatapicker/bootstrapdatetimepicker.min.js') }}"></script>
-  <script src="{{ asset('/vendor/sweetalert/switchery.min.js') }}"></script>
+<!--   <script src="{{ asset('/vendor/sweetalert/switchery.min.js') }}"></script> -->
+
+
+
   @yield('css')
       <!--  <style type="text/css">
          a {
@@ -166,50 +172,63 @@
        .image-checkbox-checked .fa {
          display: block !important;
        }
-     </style>
-     <script type="text/javascript">
-       (function(){
 
-         function id(v){ return document.getElementById(v); }
-         function loadbar() {
-           var ovrl = id("overlay"),
-           prog = id("progress"),
-           stat = id("progstat"),
-           img = document.images,
-           c = 0,
-           tot = img.length;
-           if(tot == 0) return doneLoading();
+      /* button {
+        margin: 4px;
+        cursor: pointer;
+      }*/
+      .qty {
+        text-align: center;
+        width: 40px;
+        /* margin: 4px;*/
+        color: #333;
+      }
+    </style>
+    <script type="text/javascript">
+     (function(){
 
-           function imgLoaded(){
-             c += 1;
-             var perc = ((100/tot*c) << 0) +"%";
-             prog.style.width = perc;
-             stat.innerHTML = "Loading "+ perc;
-             if(c===tot) return doneLoading();
-           }
-           function doneLoading(){
-             ovrl.style.opacity = 0;
-             setTimeout(function(){
-               $('.sidebar-category').fadeIn();
-               $('.navbar-right').fadeIn();
-             }, 300);
+       function id(v){ return document.getElementById(v); }
+       function loadbar() {
+         var ovrl = id("overlay"),
+         prog = id("progress"),
+         stat = id("progstat"),
+         img = document.images,
+         c = 0,
+         tot = img.length;
+         if(tot == 0) return doneLoading();
 
-             setTimeout(function(){
-               ovrl.style.display = "none";
-             }, 1500);
-           }
-           for(var i=0; i<tot; i++) {
-             var tImg     = new Image();
-             tImg.onload  = imgLoaded;
-             tImg.onerror = imgLoaded;
-             tImg.src     = img[i].src;
-           }
+         function imgLoaded(){
+           c += 1;
+           var perc = ((100/tot*c) << 0) +"%";
+           prog.style.width = perc;
+           stat.innerHTML = "Loading "+ perc;
+           if(c===tot) return doneLoading();
          }
-         document.addEventListener('DOMContentLoaded', loadbar, false);
-       }());
-     </script>
-   </head>
-   <body>
+         function doneLoading(){
+           ovrl.style.opacity = 0;
+           setTimeout(function(){
+             $('.sidebar-category').fadeIn();
+             $('.navbar-right').fadeIn();
+           }, 300);
+
+           setTimeout(function(){
+             ovrl.style.display = "none";
+           }, 1500);
+         }
+         for(var i=0; i<tot; i++) {
+           var tImg     = new Image();
+           tImg.onload  = imgLoaded;
+           tImg.onerror = imgLoaded;
+           tImg.src     = img[i].src;
+         }
+       }
+       document.addEventListener('DOMContentLoaded', loadbar, false);
+     }());
+   </script>
+ </head>
+
+ <body>
+
     <div id="overlay">
      <div id="progstat"></div>
      <div id="progress"></div>
@@ -246,127 +265,11 @@
  </li>
 </ul>
 </nav>
-<div class="container page" style="padding:10px;">
- <div class="panel-group">
-  <div class="panel panel-default">
-   <div class="panel-heading" style="padding: 20px 15px;">
-    <div class="row">
-     <div class="col-md-6">
-      ตาราง รายงานการจอง
-    </div>
-    <div class="col-md-6" style="text-align: right;">
-      <button type="button" class="btn btn-default" onclick="window.print()"> <i class="fa fa-print" aria-hidden="true"></i> พิมพ์</button>
-      <button type="button" class="btn btn-default" onclick="window.print()"> <i class="fa fa-print" aria-hidden="true"></i> พิมพ์</button>
-    </div>
-  </div>
-</div>
-<div class="panel-body">
-  <div class="row">
-    <div class="col-md-3">
-      <div class="panel panel-success">
-        <div class="panel-heading">วันที่</div>
-        <div class="panel-body">
-          {{$datas}}
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="panel panel-success">
-        <div class="panel-heading">โต๊ะ</div>
-        <div class="panel-body">
-          {{$table_name}}
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="panel panel-success">
-        <div class="panel-heading">ชื่อ</div>
-        <div class="panel-body">{{$user->name}}</div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="panel panel-success">
-        <div class="panel-heading">เบอร์โทร</div>
-        <div class="panel-body">{{$reserve_mobile}}</div>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div class="table-responsive">
-   <table class="table table-bordered">
-    <thead>
-     <tr>
-      <th>
-       <h5>ลำดับ</h5>
-     </th>
-     <th>
-       <h5>สิ้นค้า</h5>
-     </th>
-     <th>
-       <h5>จำนวน</h5>
-     </th>
-     <th>
-       <h5>ราคาต่อหน่วย</h5>
-     </th>
-     <th>
-       <h5>จำนวนเงิน</h5>
-     </th>
-   </tr>
- </thead>
- <tbody>
-   @foreach ($food as $index => $f)
-   <tr>
-    <td>{{$index+1}}</td>
-    <td>
-     <p>{{$f->food_detail->food_name}}</p>
-   </td>
-   <td>1</td>
-   <td></td>
-   <td>{{$f->food_detail->price}}</td>
- </tr>
-  @endforeach
 
-<tr>
-  <td colspan="4">
-   <div style="text-align: center;">
-    <h5>ยอดรวม</h5>
-  </div>
-</td>
-<td>{{$order->amount}}</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div>
- <form>
-  <div class="row">
-   <div class="col-md-6">
-    <label class="switch">
-      <input type="hidden" name="is_paid" value="{{$order->is_paid}}" />
-      <input type="checkbox" id="IsPaid"  name="is_paid"  value="$order->is_paid">
-      <span class="slider round"></span>
-    </label>
-    <h3><span id="have_not_paid" class="label label-danger">ยังไม่ได้จ่าย</span>
-     <span id="pay" class="label label-success" style="display: none;">จ่าย แล้ว</span>
-   </h3>
- </div>
- <div class="col-md-6" style="text-align: right;">
-  <button type="submit" id="submit" class="btn  btn-primary" style="display: none;"> ยืนยัน</button>
-</div>
-</div>
-</form>
-</div>
+    @yield('content')
 
 
-</div>
-</div>
-</div>
-
-</div>
-<div class="print-page">
- dddd
-</div>
-<!-- Metis Menu Plugin JavaScript -->
+<!-- jQuery -->
 <script src="{{ asset('/vendor/metisMenu/metisMenu.min.js') }}"></script>
 <!-- Toastr JavaScript -->
 <script src="{{ asset('/vendor/toastr/js/toastr.min.js') }}"></script>
@@ -375,66 +278,8 @@
 <script src="{{ asset('/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('/vendor/datatables-plugins/dataTables.bootstrap.min.js') }}"></script>
 <script src="{{ asset('/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
-<script type="text/javascript">
- $(document).ready(function(){
-   $('#date').datetimepicker({
-    format: "DD-MM-YYYY",
-    defaultDate: new Date()
-  });
-   $('#time').datetimepicker({
-    format: "hh:mm ",
-    defaultDate: new Date()
-  });
-   $('#IsPaid').change(function() {
-    if(this.checked != true){
-      $("#have_not_paid").show();
-      $("#pay").hide();
-      $("#submit").hide();
-    }
-    else{
-      $("#pay").show();
-      $("#submit").show();
-      $("#have_not_paid").hide();
-      $("#submit").remove('disabled')
-    }
-  });
 
-   $(".image-checkbox").each(function () {
-    if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
-      $(this).addClass('image-checkbox-checked');
-    }
-    else {
-      $(this).removeClass('image-checkbox-checked');
-    }
-  });
-
-         // sync the state to the input
-         $(".image-checkbox").on("click", function (e) {
-          $(this).toggleClass('image-checkbox-checked');
-          var $checkbox = $(this).find('input[type="checkbox"]');
-          $checkbox.prop("checked",!$checkbox.prop("checked"))
-
-          e.preventDefault();
-        });
-
-
-       });
-
- function data_print($id, $name, $seating){
-
-  var dining_table_id = $id;
-  var name = $name;
-  var seating = $seating;
-  console.log(dining_table_id)
-  document.getElementById("name").innerHTML = name;
-  document.getElementById("dining_table_id").value = dining_table_id;
-  document.getElementById("seating").innerHTML = seating;
-}
-
-
-
-
-
-</script>
+@yield('javascript')
 </body>
+
 </html>

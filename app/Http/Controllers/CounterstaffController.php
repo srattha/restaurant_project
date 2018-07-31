@@ -41,7 +41,7 @@ class CounterstaffController extends Controller
             return view('counter_staff.index',['dining_table'=> $dining_table,
                 'user'=> $user,
                 'food_type'=> $food_type,
-                'food_type_vegetable'=> $food_type_vegetable
+                'food_type_vegetable'=> $food_type_vegetable,
             ]);
             break;
             case '4':
@@ -72,7 +72,7 @@ class CounterstaffController extends Controller
 
     public function store(Request $request)
     {
-
+        //return $request->all();
         $price = 0;
         $reserve_date = $request->reserve_date.$request->time;
         $dining_table_id = $request->dining_table_id;
@@ -90,37 +90,50 @@ class CounterstaffController extends Controller
           $update_dining_table->status = 0;
           $update_dining_table->color = 'danger';
           $update_dining_table->save();
+          $dining_id = $update_dining_table->id;
           if ($update_dining_table) {
-            if (!$request->image) {
-                return redirect()->route('counterstaff.index');
-            }
-            foreach ( $request->price as $key => $value) {
-                $price += $value;
-            }
-            $add_order = new Order;
-            $add_order->reservationld_id = $reservation_id;
-            $add_order->orde_date = $reserve_date;
-            $add_order->is_paid = 0;
-            $add_order->amount = $price;
-            $add_order->save();
-            $order_id = $add_order->id;
-            if ($add_order) {
-                foreach ($request->image as $key => $value) {
-                    $add_order_details = new Order_details;
-                    $add_order_details->order_Id = $order_id;
-                    $add_order_details->food_id = $value;
-                    $add_order_details->totaorder = 1;
-                    $add_order_details->is_cook = 0;
-                    $add_order_details->save();
-                }
-                if ($add_order_details) {
-                 return redirect()->route('counterstaff.index');
-             }
+            $users = Auth::user();
+            $users_type_id = $users->user_type_id;
+            $user = $users->name;
+             $dining_table = Dining_table::where('id', $dining_id)->first();
+            $food_type = Food_type::get();
+            $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
+            return view('counter_staff.reservation_food',['dining_table'=> $dining_table,
+                'user'=> $user,
+                'food_type'=> $food_type,
+                'food_type_vegetable'=> $food_type_vegetable,
+            ]);
+
+           //  if (!$request->image) {
+           //      return redirect()->route('counterstaff.index');
+           //  }
+           //  foreach ( $request->price as $key => $value) {
+           //      $price += $value;
+           //  }
+           //  $add_order = new Order;
+           //  $add_order->reservationld_id = $reservation_id;
+           //  $add_order->orde_date = $reserve_date;
+           //  $add_order->is_paid = 0;
+           //  $add_order->amount = $price;
+           //  $add_order->save();
+           //  $order_id = $add_order->id;
+           //  if ($add_order) {
+           //      foreach ($request->image as $key => $value) {
+           //          $add_order_details = new Order_details;
+           //          $add_order_details->order_Id = $order_id;
+           //          $add_order_details->food_id = $value;
+           //          $add_order_details->totalorder = 1;
+           //          $add_order_details->is_cook = 0;
+           //          $add_order_details->save();
+           //      }
+           //      if ($add_order_details) {
+           //         return redirect()->route('counterstaff.index');
+           //     }
 
 
-         }
+           // }
 
-     }else{
+       }else{
         return ["satus"=>false,"msg"=>"Can't save data"];
     }
 }else{
@@ -136,18 +149,18 @@ public function reservation_report(Request $request, $id)
 
     $table_name = Dining_table::where('id',$id)->first()->name;
     $reservation = Reservation::where('dining_table_id', $id)->orderBy('id','desc')->first();
-     $order = Order::where('reservationld_id', $reservation['id'])->first();
+    $order = Order::where('reservationld_id', $reservation['id'])->first();
     $order_details = Order_details::where('order_Id',$order['id'] )->get();
     foreach ($order_details as $key => $order_detail) {
-         $order_details[$key]['food_detail'] = Food_menus::where('id',$order_detail->food_id)->first();
-    }
+       $order_details[$key]['food_detail'] = Food_menus::where('id',$order_detail->food_id)->first();
+   }
 
    // return $order_details;
 
-    $user_id =  $reservation['user_id'];
-    $user = User::where('id', $user_id)->first();
-    $date = $reservation['reserve_date'];
-    $reserve_mobile =$reservation['reserve_mobile'];
+   $user_id =  $reservation['user_id'];
+   $user = User::where('id', $user_id)->first();
+   $date = $reservation['reserve_date'];
+   $reserve_mobile =$reservation['reserve_mobile'];
     // $reservations_id = $reservations->id;
     // $order=Order::where('reservationld_id',$reservations_id )->first();
     // $order_id = $order->id;
@@ -160,36 +173,55 @@ public function reservation_report(Request $request, $id)
 
     //return $order_details;
 
-    $strYear = date("Y",strtotime($date))+543;
-    $strMonth= date("n",strtotime($date));
-    $strDay= date("j",strtotime($date));
-    $strHour= date("H",strtotime($date));
-    $strMinute= date("i",strtotime($date));
-    $strSeconds= date("s",strtotime($date));
-    $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
-    $strMonthThai=$strMonthCut[$strMonth];
-    $datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
-    return view('counter_staff.reservation_report',['table_name'=> $table_name,
-        'user'=> $user,
-        'datas'=> $datas,
-        'order'=> $order,
-        'food'=>$order_details,
-        'reserve_mobile'=>$reserve_mobile,
+   $strYear = date("Y",strtotime($date))+543;
+   $strMonth= date("n",strtotime($date));
+   $strDay= date("j",strtotime($date));
+   $strHour= date("H",strtotime($date));
+   $strMinute= date("i",strtotime($date));
+   $strSeconds= date("s",strtotime($date));
+   $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+   $strMonthThai=$strMonthCut[$strMonth];
+   $datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
+   return view('counter_staff.reservation_report',['table_name'=> $table_name,
+    'user'=> $user,
+    'datas'=> $datas,
+    'order'=> $order,
+    'food'=>$order_details,
+    'reserve_mobile'=>$reserve_mobile,
 
+]);
+
+}
+
+// function formatDateThat($strDate)
+// {
+//     $strYear = date("Y",strtotime($strDate))+543;
+//     $strMonth= date("n",strtotime($strDate));
+//     $strDay= date("j",strtotime($strDate));
+//     $strHour= date("H",strtotime($strDate));
+//     $strMinute= date("i",strtotime($strDate));
+//     $strSeconds= date("s",strtotime($strDate));
+//     $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+//     $strMonthThai=$strMonthCut[$strMonth];
+//     return "$strDay $strMonthThai $strYear $strHour:$strMinute";
+// }
+
+
+public function reservation_food(Request $request, $id)
+{
+
+    $users = Auth::user();
+    $users_type_id = $users->user_type_id;
+    $user = $users->name;
+    $dining_table = Dining_table::where('id', $id)->first();
+    $food_type = Food_type::get();
+    $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
+    return view('counter_staff.reservation_food',['dining_table'=> $dining_table,
+        'user'=> $user,
+        'food_type'=> $food_type,
+        'food_type_vegetable'=> $food_type_vegetable,
     ]);
 
 }
 
-function formatDateThat($strDate)
-{
-    $strYear = date("Y",strtotime($strDate))+543;
-    $strMonth= date("n",strtotime($strDate));
-    $strDay= date("j",strtotime($strDate));
-    $strHour= date("H",strtotime($strDate));
-    $strMinute= date("i",strtotime($strDate));
-    $strSeconds= date("s",strtotime($strDate));
-    $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
-    $strMonthThai=$strMonthCut[$strMonth];
-    return "$strDay $strMonthThai $strYear $strHour:$strMinute";
-}
 }

@@ -58,6 +58,8 @@ Route::get('/counter_staff', 'CounterstaffController@index')->name('counterstaff
 Route::post('counter_staff', 'CounterstaffController@search');
 Route::post('reservation', 'CounterstaffController@store')->name('counterstaff.reservation');
 Route::get('reservation_report/{id}', 'CounterstaffController@reservation_report')->name('reservation_report')->where('id', '[0-9]+');
+Route::get('reservation_food/{id}', 'CounterstaffController@reservation_food')->name('reservation_food')->where('id', '[0-9]+');
+
 
 
 //Shopatmosphere
