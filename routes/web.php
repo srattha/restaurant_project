@@ -60,6 +60,7 @@ Route::post('reservation', 'CounterstaffController@store')->name('counterstaff.r
 Route::get('reservation_report/{id}', 'CounterstaffController@reservation_report')->name('reservation_report')->where('id', '[0-9]+');
 Route::get('reservation_food/{id}', 'CounterstaffController@reservation_food')->name('reservation_food')->where('id', '[0-9]+');
 Route::post('order_food', 'CounterstaffController@order_food')->name('order_food');
+Route::post('confirm_payment', 'CounterstaffController@confirm_payment')->name('confirm_payment');
 
 
 

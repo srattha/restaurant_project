@@ -31,7 +31,7 @@
       <div class="panel panel-success">
         <div class="panel-heading">โต๊ะ</div>
         <div class="panel-body">
-          {{$table_name}}
+          {{$table_name->name}}
         </div>
       </div>
     </div>
@@ -95,12 +95,15 @@
 </table>
 </div>
 <div>
- <form>
+ <form class="form-horizontal" method="POST" action="{{ route('confirm_payment') }}">
+       {{ csrf_field() }}
+       <input type="hidden" name="order" value="{{$order->id}}" />
+       <input type="hidden" name="table_id" value="{{$table_name->id}}" />
   <div class="row">
    <div class="col-md-6">
     <label class="switch">
-      <input type="hidden" name="is_paid" value="{{$order->is_paid}}" />
-      <input type="checkbox" id="IsPaid"  name="is_paid"  value="$order->is_paid">
+      <!-- <input type="hidden" name="is_paid" value="1" /> -->
+      <input type="checkbox" id="IsPaid"  name="is_paid"  value="1">
       <span class="slider round"></span>
     </label>
     <h3><span id="have_not_paid" class="label label-danger">ยังไม่ได้จ่าย</span>

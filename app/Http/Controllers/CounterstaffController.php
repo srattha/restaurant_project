@@ -150,14 +150,14 @@ public function reservation_report(Request $request, $id)
 {
 
   $amount = 0;
-  $table_name = Dining_table::where('id',$id)->first()->name;
+  $table_name = Dining_table::where('id',$id)->first();
   $reservation = Reservation::where('dining_table_id', $id)->orderBy('id','desc')->first();
   $order = Order::where('reservationld_id', $reservation['id'])->first();
   $order_details = Order_details::where('order_Id',$order['id'] )->get();
- 
+
   foreach ($order_details as $key => $order_detail) {
    $order_details[$key]['food_detail'] = Food_menus::where('id',$order_detail->food_id)->first();
-  $amount += $order_detail['amount'];
+   $amount += $order_detail['amount'];
  }
 
 
@@ -165,17 +165,6 @@ public function reservation_report(Request $request, $id)
  $user = User::where('id', $user_id)->first();
  $date = $reservation['reserve_date'];
  $reserve_mobile =$reservation['reserve_mobile'];
-    // $reservations_id = $reservations->id;
-    // $order=Order::where('reservationld_id',$reservations_id )->first();
-    // $order_id = $order->id;
-    // $order_details = Order_details::where('order_Id',$order_id )->get();
-
-    // foreach ($order_details as $key => $value) {
-    //      $food_id = $value->food_id;
-    //      $order_details[$key]['food'] = Food_menus::where('id',$food_id )->get();
-    // }
-
-   // return $order_details;
 
  $strYear = date("Y",strtotime($date))+543;
  $strMonth= date("n",strtotime($date));
@@ -251,16 +240,16 @@ public function order_food(Request $request){
     $add_order_details->order_Id = $order_id;
     $add_order_details->food_id = $request->food_id;
     $add_order_details->totalorder = $request->totalorder;
-     $add_order_details->amount = $price;
+    $add_order_details->amount = $price;
     $add_order_details->is_cook = 0;
     $add_order_details->save();
     if ($add_order_details) {
      return redirect()->route('reservation_food',['id'=>$request->reservation_id]);
    }
-  }
-  
+ }
+
  
- }else{
+}else{
   $add_order_details = new Order_details;
   $add_order_details->order_Id = $order['id'];
   $add_order_details->food_id = $request->food_id;
@@ -271,8 +260,26 @@ public function order_food(Request $request){
   if ($add_order_details) {
    return redirect()->route('reservation_food',['id'=>$request->reservation_id]);
  }
- }
+}
 
+}
+
+public function confirm_payment(Request $request){
+  //return $request->all();
+  $update_order = Order::where('id', $request->order)->first();
+  $update_order->is_paid = $request->is_paid;
+  $update_order->save();
+  if ($update_order) {
+   $update_table = Dining_table::where('id', $request->table_id)->first();
+   $update_table->status = 1;
+   $update_table->color = "success";
+   $update_table->save();
+   if ($update_table) {
+     return redirect()->route('counterstaff.index');
+   }else{
+     return ["satus"=>false,"msg"=>"Can't update_table data"];
+   }
+ }
 }
 
 }
