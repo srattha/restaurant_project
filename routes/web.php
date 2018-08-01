@@ -68,7 +68,15 @@ Route::post('confirm_payment', 'CounterstaffController@confirm_payment')->name('
 Route::get('/shop_atmosphere', 'ShopatmosphereController@index')->name('shopatmosphere.index');
 Route::post('addshop_atmosphere', 'ShopatmosphereController@store')->name('addshopatmosphere');
 
-Route::get('/food','FoodController@index')->name('foodmenu');
+Route::get('/food','FoodController@index');
+Route::get('/status','StatusController@index');
+Route::get('/reser', 'ReserController@index');
+Route::get('/image', 'ImageController@index');
+Route::get('/contact', 'ContactController@index');
+Route::get('/formdata', 'FormdataController@index');
+
+//Book_tableController
+Route::post('book_table', 'Book_tableController@store')->name('booktable');
 Auth::routes();
 
 

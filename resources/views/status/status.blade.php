@@ -1,880 +1,132 @@
 @extends('layouts.master')
 @section('css')
-	
 @endsection
 @section('content')
-<style type="text/css">
-    body {
-        background: url(img/a1.png) no-repeat center center fixed;
-        background-size: cover;
-    }
-</style>
 <div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-12">
-      <div class="offer offer-default">
-        <div class="shape">
-          <div class="shape-text">
-                         
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-        <img src="/img/m1.jpg">
-        </div>
-      </div>
-    </div>
-	
-	
+  <h1 style="text-align: center;">สถานะโต๊ะ</h1>
+  <div class="row">
+    <div class="row" style="padding: 1px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-3 col-sm-3 col-md-12 col-lg-12">
+            <div class="offer offer-radius offer-success">
+              <div class="picture">
+                <div class="shape">
+                  <div class="shape-text">
+
+                  </div>
+                </div>
+
+                <div class="offer-content">
+                  <div class="row">
+                    @foreach ($table_status as $index => $table_statu)
+
+                    <div class=" col-md-2"> 
+                      @if($table_statu->status == 1)
+                      <img src="img/sofa1.png" data-color="violet" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" style="width: 35%; height: 35%" />
+                      {{$table_statu->name}}
+
+                      จำนวนที่นั่ง: {{$table_statu->seating}}
+                      @else
+                      <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 35%; height: 35%" /> 
+                      @endif
+                    </div>
+
+                    @endforeach
+
+                  </div>
+                </div>
+                <div id="reservations" class="modal fade" role="dialog">
+                 <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                   <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><span id="name"></span> จำนวน <span id="seating"></span> ที่ </h4>
+                  </div>
+                  <div class="modal-body">
+                    
+                    <div style="padding-top: 10px;">
+                     <form class="form-horizontal" method="POST" action="{{ route('booktable') }}">
+                      {{ csrf_field() }}
+
+                      <input type='hidden'  name="dining_table_id" id="dining_table_id" value="dining_table_id">
+                      <div class="form-group">
+                       <div class="col-sm-6">
+                        <label><b>วันที่ </b></label>
+                        <div id="start">
+                         <div class="input-group">
+                          <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                          <input type='text'  name="reserve_date" id="date"  class="form-control first_login"  />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <label><b>เวลา </b></label>
+                      <div id="start">
+                       <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        <input type='text'  name="time" id="time"  class="form-control first_login"  />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                 <label><b>เบอร์โทร ติดต่อ </b></label>
+                 <div id="start">
+                  <div class="input-group">
+                   <span class="input-group-addon"><i class="fa fa-phone-square" aria-hidden="true"></i></span>
+                   <input type='number'  name="reserve_mobile" id="time"  class="form-control first_login"  / required="">
+                 </div>
+               </div>
+             </div>
+             <div class="modal-footer">
+               <button type="submit" class="btn btn-primary swa-confirm"> ตกลง</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+             </div>
+           </form>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
 </div>
-<h1>สถานะโต๊ะ</h1>
- <div class="row">
-  <div class="row" style="padding: 10px;">
-    <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-          <div class="col-md-4">
-           <img src="/img/true.png" style="width: 100%;">
-         </div>
-         <div class="col-md-8">
-          <span class="label bg-success heading-text">ว่าง</span>
-        </div>
-      </div>
-      <img src="/img/table.png">
-      <div class="caption">
-       <p>โต๊ะ: 2</p>
-       <p>จำนวนที่นั่ง: 2</p>
-     </div>
-     <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-success heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-          <div class="col-md-4">
-           <img src="/img/true.png" style="width: 100%;">
-         </div>
-         <div class="col-md-8">
-          <span class="label bg-success heading-text">ว่าง</span>
-        </div>
-      </div>
-      <img src="/img/table.png">
-      <div class="caption">
-       <p>โต๊ะ: 2</p>
-       <p>จำนวนที่นั่ง: 2</p>
-     </div>
-     <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-          <div class="col-md-4">
-           <img src="/img/true.png" style="width: 100%;">
-         </div>
-         <div class="col-md-8">
-          <span class="label bg-success heading-text">ว่าง</span>
-        </div>
-      </div>
-      <img src="/img/table.png">
-      <div class="caption">
-       <p>โต๊ะ: 2</p>
-       <p>จำนวนที่นั่ง: 2</p>
-     </div>
-     <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
- <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
- <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-          <div class="col-md-4">
-           <img src="/img/true.png" style="width: 100%;">
-         </div>
-         <div class="col-md-8">
-          <span class="label bg-success heading-text">ว่าง</span>
-        </div>
-      </div>
-      <img src="/img/table.png">
-      <div class="caption">
-       <p>โต๊ะ: 2</p>
-       <p>จำนวนที่นั่ง: 2</p>
-     </div>
-     <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-          <div class="col-md-4">
-           <img src="/img/true.png" style="width: 100%;">
-         </div>
-         <div class="col-md-8">
-          <span class="label bg-success heading-text">ว่าง</span>
-        </div>
-      </div>
-      <img src="/img/table.png">
-      <div class="caption">
-       <p>โต๊ะ: 2</p>
-       <p>จำนวนที่นั่ง: 2</p>
-     </div>
-     <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
- <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-          <div class="col-md-4">
-           <img src="/img/true.png" style="width: 100%;">
-         </div>
-         <div class="col-md-8">
-          <span class="label bg-success heading-text">ว่าง</span>
-        </div>
-      </div>
-      <img src="/img/table.png">
-      <div class="caption">
-       <p>โต๊ะ: 2</p>
-       <p>จำนวนที่นั่ง: 2</p>
-     </div>
-     <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-          <div class="col-md-4">
-           <img src="/img/true.png" style="width: 100%;">
-         </div>
-         <div class="col-md-8">
-          <span class="label bg-success heading-text">ว่าง</span>
-        </div>
-      </div>
-      <img src="/img/table.png">
-      <div class="caption">
-       <p>โต๊ะ: 2</p>
-       <p>จำนวนที่นั่ง: 2</p>
-     </div>
-     <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
- <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
- <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-danger">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม            
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-            <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="width: 100%;">
-     </div>
-     <div class="col-md-8">
-      <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-    </div>
-  </div>
-  <img src="/img/table.png">
-  <div class="caption">
-   <p>โต๊ะ: 4</p>
-   <p>จำนวนที่นั่ง: 6</p>
- </div>
- <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-  </h3>           
-  </div>
-  </div>
-  </div>
-
-<div class="container">
-  <div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-danger">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม            
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-            <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="width: 100%;">
-     </div>
-     <div class="col-md-8">
-      <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-    </div>
-  </div>
-  <img src="/img/table.png">
-  <div class="caption">
-   <p>โต๊ะ: 4</p>
-   <p>จำนวนที่นั่ง: 6</p>
- </div>
- <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-  </h3>           
- </div>
-  </div>
-  </div>
-
-<div class="container">
-  <div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-danger">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม            
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-            <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="width: 100%;">
-     </div>
-     <div class="col-md-8">
-      <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-    </div>
-  </div>
-  <img src="/img/table.png">
-  <div class="caption">
-   <p>โต๊ะ: 4</p>
-   <p>จำนวนที่นั่ง: 6</p>
- </div>
- <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-  </h3>           
-  </div>
-  </div>
-  </div>
-
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="offer offer-radius offer-success">
-        <div class="shape">
-          <div class="shape-text">
-            เพิ่ม              
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="lead">
-             <div class="row">
-      <div class="col-md-4">
-       <img src="/img/false.png" style="    width: 100%;">
-     </div>
-     <div class="col-md-8">
-       <span class="label bg-danger-400 heading-text">ไม่ว่าง</span>
-     </div>
-   </div>
-   <img src="/img/table.png" alt="Boats at Phi Phi, Thailand">
-   <div class="caption">
-     <p>โต๊ะ: 5</p>
-     <p>จำนวนที่นั่ง: 8</p>
-   </div>
-   <div><a href="/formdata" class="btn btn-primary btn-block" role="button">จองโต๊ะ</a></div>
-    </h3>          
-    </div>
-    </div>
-    </div>
+</div>
 
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+
+
 @endsection
-@section('script')
+@section('javascript')
+<script type="text/javascript">
+ $(document).ready(function(){
+   $('#date').datetimepicker({
+    format: "DD-MM-YYYY",
+    defaultDate: new Date()
+  });
+   $('#time').datetimepicker({
+    format: "hh:mm ",
+    defaultDate: new Date()
+  });
+ 
+});
 
+  function data_print($id, $name, $seating){
+
+    var dining_table_id = $id;
+    var name = $name;
+    var seating = $seating;
+    document.getElementById("name").innerHTML = name;
+    document.getElementById("dining_table_id").value = dining_table_id;
+    document.getElementById("seating").innerHTML = seating;
+  }
+
+
+
+</script>
 @endsection

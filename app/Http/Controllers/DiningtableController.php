@@ -75,7 +75,7 @@ class DiningtableController extends Controller
      */
     public function store(Request $request)
     {
-
+        return $request->all();
         if ($request->status == 1) {
          $color = "success";
      }else{
@@ -150,7 +150,7 @@ class DiningtableController extends Controller
         $update = Dining_table::where('id',$id)->first();
         $update->name = $request->name;
         $update->seating = $request->seating;
-        // $update->status = $request->status;
+        $update->status = $request->status;
         $update->color = 'success';
         $update->save();
         if ($update) {

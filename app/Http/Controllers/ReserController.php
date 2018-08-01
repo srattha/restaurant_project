@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Dining_table;
-use Illuminate\Support\Facades\Auth;
 
-class StatusController extends Controller
+class ReserController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -15,7 +13,7 @@ class StatusController extends Controller
      */
     public function __construct()
     {
-       //$this->middleware('auth');
+       // $this->middleware('auth');
     }
 
     /**
@@ -25,12 +23,6 @@ class StatusController extends Controller
      */
     public function index()
     {
-        
-        $table_status = Dining_table::get();
-        return view('status.status',['table_status'=> $table_status, 
-                                        
-    ]);
-
+        return view('reser.reser');
     }
-
 }
