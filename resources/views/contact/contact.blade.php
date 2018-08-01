@@ -30,7 +30,7 @@
   </div>
 
   <div class="item">
-    <img src="/img/d14.jpg" alt="New York" style="width:100%;">
+    <img src="/img/d20.jpg" alt="New York" style="width:100%;">
     <div class="carousel-caption">
       <h3>New York</h3>
       <p>We love the Big Apple!</p>
@@ -141,7 +141,7 @@
         </div>
 
       </div>
-
+<br>
 @endsection
 @section('javascript')
 </br>
