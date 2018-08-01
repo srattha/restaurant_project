@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
 <div >
@@ -90,7 +90,7 @@
    <span class="line"></span>
    <br>
    <div class="list-group">
-    
+
   </div>
 </div>
 </div>

@@ -49,7 +49,7 @@ Route::get('/addpromotion', 'PromotionController@create')->name('promotion.addpr
 Route::post('addpromotion', 'PromotionController@store');
 
 //reservation
-Route::get('/reservation', 'ReservationController@index')->name('reservations.reservations');
+Route::get('/report_reservation', 'ReservationController@index')->name('reservations.report_reservation');
 Route::post('reservation', 'ReservationController@store')->name('reservations');
 
 
@@ -72,4 +72,4 @@ Route::get('/food','FoodController@index')->name('foodmenu');
 Auth::routes();
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');

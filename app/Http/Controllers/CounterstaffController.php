@@ -160,7 +160,7 @@ public function reservation_report(Request $request, $id)
    $amount += $order_detail['amount'];
  }
 
-
+//return $order_details;
  $user_id =  $reservation['user_id'];
  $user = User::where('id', $user_id)->first();
  $date = $reservation['reserve_date'];
@@ -224,10 +224,8 @@ public function reservation_food(Request $request, $id)
 public function order_food(Request $request){
   //return $request->all();
   $price = $request->price *  $request->totalorder;
-  
   $order = Order::where('reservationld_id', $request->reservation_id)->first();
   if (!$order) {
-
    $add_order = new Order;
    $add_order->reservationld_id = $request->reservation_id;
    $add_order->orde_date = $request->orde_date;
@@ -244,11 +242,12 @@ public function order_food(Request $request){
     $add_order_details->is_cook = 0;
     $add_order_details->save();
     if ($add_order_details) {
+      session()->flash('add_order_details', $request->food_name);
      return redirect()->route('reservation_food',['id'=>$request->reservation_id]);
    }
  }
 
- 
+
 }else{
   $add_order_details = new Order_details;
   $add_order_details->order_Id = $order['id'];
@@ -258,6 +257,7 @@ public function order_food(Request $request){
   $add_order_details->is_cook = 0;
   $add_order_details->save();
   if ($add_order_details) {
+    session()->flash('add_order_details', $request->food_name);
    return redirect()->route('reservation_food',['id'=>$request->reservation_id]);
  }
 }
@@ -266,20 +266,40 @@ public function order_food(Request $request){
 
 public function confirm_payment(Request $request){
   //return $request->all();
-  $update_order = Order::where('id', $request->order)->first();
-  $update_order->is_paid = $request->is_paid;
-  $update_order->save();
-  if ($update_order) {
-   $update_table = Dining_table::where('id', $request->table_id)->first();
-   $update_table->status = 1;
-   $update_table->color = "success";
-   $update_table->save();
-   if ($update_table) {
-     return redirect()->route('counterstaff.index');
-   }else{
+  if ($request->order) {
+   $update_order = Order::where('id', $request->order)->first();
+   $update_order->is_paid = $request->is_paid;
+   $update_order->save();
+   if ($update_order) {
+     $update_table = Dining_table::where('id', $request->table_id)->first();
+     $update_table->status = 1;
+     $update_table->color = "success";
+     $update_table->save();
+     if ($update_table) {
+      session()->flash('update_table', 'ยืนยันสถานะสำเร็จ');
+      return redirect()->route('counterstaff.index');
+    }else{
      return ["satus"=>false,"msg"=>"Can't update_table data"];
    }
  }
+}else{
+  $update_table = Dining_table::where('id', $request->table_id)->first();
+  $update_table->status = 1;
+  $update_table->color = "success";
+  $update_table->save();
+  if ($update_table) {
+   session()->flash('update_table', 'ยืยันสถานะสำเร็จ');
+   return redirect()->route('counterstaff.index');
+ }else{
+   return ["satus"=>false,"msg"=>"Can't update_table data"];
+ }
 }
+
+
+
+
+
+}
+
 
 }

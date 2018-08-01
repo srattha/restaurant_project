@@ -14,6 +14,15 @@ th{
 <div class="row">
   <h1 class="page-header">จัดการข้อมูลสมาชิก</h1>
 </div>
+@if(session()->has('notif'))
+<br>
+<div class="row">
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>เพิ่มสมาชิก</strong> {{ session()->get('notif') }}
+  </div>
+</div>
+@endif
 <div class="row">
  <button type="button" class="btn btn-success" onclick="location.href='{{ route('home.adduser') }}'" ><i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่ม </button>
 </div>

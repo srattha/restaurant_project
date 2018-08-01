@@ -34,7 +34,7 @@
     <link href="{{ asset('/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <!-- styel Css -->
     <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
-     <link href="{{ asset('/assets/css/lightbox.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/lightbox.css') }}" rel="stylesheet">
 
     @yield('css')
 
@@ -71,7 +71,7 @@
             color:#333333;
         }
 
-</style> -->
+    </style> -->
 
   <!--   <script type="text/javascript">
         ;(function(){
@@ -127,43 +127,43 @@
       </div>
   </div>
   <div id="overlay">
-        <div id="progstat"></div>
-        <div id="progress"></div>
-    </div>
+    <div id="progstat"></div>
+    <div id="progress"></div>
+</div>
 
-  <div id="wrapper">
+<div id="wrapper">
 
-<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
-    </div>
-    <!-- /.navbar-header -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+        </div>
+        <!-- /.navbar-header -->
 
-    <ul class="nav navbar-top-links navbar-right">
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="fa fa-user fa-fw"></i>  <span>{{Auth::user()->name}}</span> <i class="fa fa-caret-down"></i>
-          </a>
-          <ul class="dropdown-menu dropdown-user">
-            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-user fa-fw"></i>  <span>{{Auth::user()->name}}</span> <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-user">
+                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                </li>
+                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
             </li>
-            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-            </li>
-            <li class="divider"></li>
-            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-        </li>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
-        </form>
-    </ul>
-</li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+        </ul>
+    </li>
 
 </ul>
 <!-- /.navbar-top-links -->
@@ -175,26 +175,26 @@
             <li>
                 <a href="{{ route('home.index') }}"><i class="fa fa-users" aria-hidden="true"></i> จัดการ ข้อมูลสมาชิก</a>
             </li>
-             <li>
+            <li>
                 <a href="{{ route('foodmenu.all_foodmanu') }}"><i class="fa fa-cutlery"></i> จัดการ เมนูอาหาร</a>
             </li>
-             <li>
+            <li>
                 <a href="/dining_table"><i class="fa fa-wpforms fa-fw"></i> จัดการ โต๊ะอาหาร</a>
             </li>
             <li>
-                 <a href="{{ route('promotion.promotion') }}"><i class="fa fa-bullhorn"></i> จัดการ โปรโมชั่น</a>
-            </li>
-             <li>
-                 <a href="/shop_atmosphere"><i class="fa fa-picture-o"></i> จัดการ รูปภาพบรรยากาศ</a>
-            </li>
-            <li>
-                 <a href="/reservation"><i class="fa fa-cutlery"></i> แสดงรายงาน การจอง</a>
-            </li>
+               <a href="{{ route('promotion.promotion') }}"><i class="fa fa-bullhorn"></i> จัดการ โปรโมชั่น</a>
+           </li>
+           <li>
+               <a href="/shop_atmosphere"><i class="fa fa-picture-o"></i> จัดการ รูปภาพบรรยากาศ</a>
+           </li>
+           <li>
+               <a href="/report_reservation"><i class="fa fa-cutlery"></i> แสดงรายงาน การจอง</a>
+           </li>
 
 
-        </ul>
-    </div>
-    <!-- /.sidebar-collapse -->
+       </ul>
+   </div>
+   <!-- /.sidebar-collapse -->
 </div>
 <!-- /.navbar-static-side -->
 </nav>

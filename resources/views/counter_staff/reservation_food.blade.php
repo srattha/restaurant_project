@@ -7,26 +7,22 @@
   <div class="panel panel-default">
    <div class="panel-heading" style="padding: 20px 15px;">
     <div class="row">
-     <div class="col-md-12">
+     <div class="col-md-6">
        เมนูอาหาร
      </div>
-   <!--   <div class="col-md-4">
-      <form class="form-horizontal" method="POST" action="{{ route('counterstaff.index') }}">
-       {{ csrf_field() }}
-       <div class="input-group">
-        <input type="text" name="search" class="form-control" placeholder="Search">
-        <div class="input-group-btn">
-         <button class="btn btn-default" type="submit">
-           <i class="glyphicon glyphicon-search"></i>
-         </button>
-       </div>
-     </div>
-   </form>
- </div> -->
-</div>
+     <div class="col-md-6" style="text-align: right;">
+      <button type="button" class="btn btn-default" onclick="location.href='{{ route('counterstaff.index') }}'"> <i class="fa fa-chevron-left" aria-hidden="true"></i> กลับ</button>
+    </div>
+  </div>
 </div>
 <div class="panel-body">
   <div class="container">
+   @if(session()->has('add_order_details'))
+   <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>เลือกเมนู</strong> {{ session()->get('add_order_details') }} สำเร็จ
+  </div>
+  @endif
     <div class="row">
       <div class="col-md-4">
         <div class="panel panel-success">
@@ -76,11 +72,11 @@
            <i class="fa fa-check hidden"></i> -->
          </label>
          <p>{{$food_type_vegetables->food_name}} ราคา {{$food_type_vegetables->price}}</p>
-        
-      </div>
-      @endforeach
-    </div>
-    <div id="menu1" class="tab-pane fade">
+
+       </div>
+       @endforeach
+     </div>
+     <div id="menu1" class="tab-pane fade">
       <h3>Menu 1</h3>
       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>
@@ -113,9 +109,10 @@
        {{ csrf_field() }}
 
        <input type='hidden'  name="food_id" id="food_id" value="food_id">
-      <input type='hidden'  name="price" id="price" value="price">
-      <input type='hidden'  name="reservation_id" id="reservation_id" value="{{$reservation_id}}">
-      <input type='hidden'  name="orde_date"  value="{{$reserve_date}}">
+       <input type='hidden'  name="price" id="price" value="price">
+       <input type='hidden'  name="reservation_id" id="reservation_id" value="{{$reservation_id}}">
+       <input type='hidden'  name="orde_date"  value="{{$reserve_date}}">
+       <input type='hidden'  name="food_name" id="food_name"  value="food_name">
        <div>
         <input type='button' value='-' class='btn btn-danger qtyminus' field='totalorder' />
         <input type='text' id="" name='totalorder' value='1' class='qty' />
@@ -126,10 +123,10 @@
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">เลือกเมนูอื่น</button>
       <button type="submit" class="btn btn-primary"> สั่ง</button>
-     
-    </div> 
+
+    </div>
   </form>
-  </div>
+</div>
 </div>
 </div>
 
@@ -201,17 +198,18 @@
         });
   });
 
- function order_food($name, $image, $id, $price){
+  function order_food($name, $image, $id, $price){
     var name = $name;
     var image = $image;
     var food_id = $id;
     console.log(food_id)
     var price = $price;
     document.getElementById("name").innerHTML = name;
+    document.getElementById("food_name").value = name;
     document.getElementById("food_id").value = food_id;
     document.getElementById("price").value = price;
     $("#image").attr("src", "/storage/Food_menus/"+image);
 
-        }
-      </script>
-      @endsection
+  }
+</script>
+@endsection

@@ -9,6 +9,7 @@ use App\Food_menus;
 use App\Reservation;
 use App\Order;
 use App\Order_details;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {

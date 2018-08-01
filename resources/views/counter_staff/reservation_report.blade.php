@@ -2,7 +2,7 @@
 @section('css')
 @endsection
 @section('content')
-  
+
 <div class="container page" style="padding:10px;">
  <div class="panel-group">
   <div class="panel panel-default">
@@ -81,9 +81,9 @@
    <td>{{$f->food_detail->price}}</td>
    <td>{{$f->amount}}</td>
  </tr>
-  @endforeach
+ @endforeach
 
-<tr>
+ <tr>
   <td colspan="4">
    <div style="text-align: center;">
     <h5>ยอดรวม</h5>
@@ -96,23 +96,25 @@
 </div>
 <div>
  <form class="form-horizontal" method="POST" action="{{ route('confirm_payment') }}">
-       {{ csrf_field() }}
-       <input type="hidden" name="order" value="{{$order->id}}" />
-       <input type="hidden" name="table_id" value="{{$table_name->id}}" />
-  <div class="row">
-   <div class="col-md-6">
-    <label class="switch">
-      <!-- <input type="hidden" name="is_paid" value="1" /> -->
-      <input type="checkbox" id="IsPaid"  name="is_paid"  value="1">
-      <span class="slider round"></span>
-    </label>
-    <h3><span id="have_not_paid" class="label label-danger">ยังไม่ได้จ่าย</span>
-     <span id="pay" class="label label-success" style="display: none;">จ่าย แล้ว</span>
-   </h3>
- </div>
- <div class="col-md-6" style="text-align: right;">
-  <button type="submit" id="submit" class="btn  btn-primary" style="display: none;"> ยืนยัน</button>
-</div>
+   {{ csrf_field() }}
+   @if($order != "")
+   <input type="hidden" name="order" value="{{$order->id}}" />
+   @endif
+   <input type="hidden" name="table_id" value="{{$table_name->id}}" />
+   <div class="row">
+     <div class="col-md-6">
+      <label class="switch">
+        <!-- <input type="hidden" name="is_paid" value="1" /> -->
+        <input type="checkbox" id="IsPaid"  name="is_paid"  value="1">
+        <span class="slider round"></span>
+      </label>
+      <h3><span id="have_not_paid" class="label label-danger">ยังไม่ได้จ่าย</span>
+       <span id="pay" class="label label-success" style="display: none;">จ่าย แล้ว</span>
+     </h3>
+   </div>
+   <div class="col-md-6" style="text-align: right;">
+    <button type="submit" id="submit" class="btn  btn-primary" style="display: none;"> ยืนยัน</button>
+  </div>
 </div>
 </form>
 </div>
@@ -190,6 +192,6 @@
 
 
 </script>
-      @endsection
+@endsection
 
 

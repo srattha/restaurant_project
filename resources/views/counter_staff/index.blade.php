@@ -25,13 +25,23 @@
                      </div>
                   </div>
                </div>
+
                <div class="panel-body">
+
                   <div class="row">
+                       @if(session()->has('update_table'))
+                       <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <strong>{{ session()->get('update_table') }}</strong>
+                      </div>
+                      @endif
+
                      @foreach ($dining_table as $index => $dining_tables)
                      @if($dining_tables == "")
                         ไม่มีข้อมูล
                       @else
                       <div class="col-xs-12 col-sm-6 col-md-4 col-lg4">
+
                         <div class="offer offer-radius offer-{{$dining_tables->color}}">
                            <div class="shape" style="border-width: 0 70px 50px 0;">
                               <div class="shape-text">
@@ -247,7 +257,7 @@
           e.preventDefault();
          });
 
-        
+
 
 
 

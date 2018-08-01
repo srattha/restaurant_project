@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/pathto/css/sweetalert.css">
 </head>
 <body>
     <div id="app">
@@ -76,5 +77,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="/pathto/js/sweetalert.js"></script>
 </body>
 </html>

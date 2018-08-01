@@ -61,6 +61,16 @@ class AdduserController extends Controller
     public function store(Request $request)
     {
 
+         $user_email = User::where('email', $request->email)->select('email')->first();
+        if ($user_email) {
+           session()->flash('email', 'อีเมล์นีลงทะเบียนแล้ว กรุณาใช้อีเมล์อื่น');
+           return redirect()->route('home.adduser');
+        }
+        //return $request->all();
+        if ($request->password != $request->password_confirmation) {
+            session()->flash('password', 'รหัสไม่ตรงกัน');
+           return redirect()->route('home.adduser');
+        }
         $add_user = new User;
         $add_user->name = $request->name;
         $add_user->user_type_id = $request->users_type_id;
@@ -70,8 +80,10 @@ class AdduserController extends Controller
         $add_user->password = bcrypt($request->password);
         $add_user->save();
         if($add_user){
+            session()->flash('notif', 'เพิ่มสำเร็จ');
           return redirect()->route('home.index');
       }else{
+
           return "error message..";
       }
 
