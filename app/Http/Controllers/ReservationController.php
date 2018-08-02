@@ -20,13 +20,19 @@ class ReservationController extends Controller
 	}
 	public function index()
 	{
-     $user = Auth::user();
-     $users_type_id = $user->user_type_id;
-     switch ($users_type_id) {
+       $user = Auth::user();
+       $users_type_id = $user->user_type_id;
+       switch ($users_type_id) {
         case '1':
         return view('home');
         break;
         case '2':
+         $reservation = Reservation::orderBy('id','desc')->get();
+        foreach ($reservation as $key => $value) {
+            $reservation[$key]['dining_table'] = Dining_table::where('id',$value['dining_table_id'])->first();
+        }
+        return $reservation;
+
         return view('admin.reservations.reservations');
         break;
         case '3':
@@ -39,23 +45,23 @@ class ReservationController extends Controller
     }
 
 }
-  public function create(request $request)
-    {
+public function create(request $request)
+{
 
-    }
+}
 
-    public function search(Request $request, $id){
+public function search(Request $request, $id){
 
-        return $table_name = Dining_table::where('id', $id)->first();
+    return $table_name = Dining_table::where('id', $id)->first();
 
-         $data = [
-               'name' => $table_name,
+    $data = [
+     'name' => $table_name,
 
-         ];
-         return $data;
+ ];
+ return $data;
 
 
-    }
+}
 
     /**
      * Store a newly created resource in storage.
