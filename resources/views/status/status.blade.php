@@ -12,7 +12,7 @@
             <div class="offer offer-default">
               <div class="offer-content">
                 <div class="row">
-
+                  <br>
                   @foreach ($table_status_b as $index => $table_statu)
                   <div class=" col-md-10"> 
                     @if($table_statu->status == 1)
@@ -163,12 +163,12 @@
         <div class=" col-md-1"> 
           @if($table_statu->status == 1)
           
-            <img src="img/sofa1.png" data-color="violet" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" style="width: 150%; height: 160%"  /> 
+            <img src="img/sofa1.png" data-color="violet" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" style="width: 140%; height: 160%"  /> 
             {{$table_statu->name}}
 
             {{$table_statu->seating}}ที่นั่ง
             @else
-            <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 150%; height: 160%" /> 
+            <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 140%; height: 160%" /> 
             @endif
 
           </div>
@@ -178,13 +178,13 @@
           @foreach ($table_status_f as $index => $table_statu)
           <div class=" col-md-1"> 
             @if($table_statu->status == 1)
-           
-              <img src="img/sofa1.png" data-color="violet" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" style="width: 150%; height: 160%"  /> 
+            <div class="center">
+              <img src="img/sofa1.png" data-color="violet" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" style="width: 140%; height: 160%"  /> </div>
               {{$table_statu->name}}
 
               {{$table_statu->seating}}ที่นั่ง
               @else
-              <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 150%; height: 160%" /> 
+              <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 140%; height: 160%" /> 
               @endif
 
             </div>
@@ -194,13 +194,13 @@
             @foreach ($table_status_g as $index => $table_statu)
             <div class=" col-md-1"> 
               @if($table_statu->status == 1)
-            
-                <img src="img/sofa1.png" data-color="violet" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" style="width: 150%; height: 160%"  /> 
+              <div class="center">
+                <img src="img/sofa1.png" data-color="violet" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" style="width: 140%; height: 160%"  /></div> 
                 {{$table_statu->name}}
 
                 {{$table_statu->seating}}ที่นั่ง
                 @else
-                <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 150%; height: 160%" /> 
+                <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 140%; height: 160%" /> 
                 @endif
 
               </div>
@@ -210,13 +210,13 @@
               @foreach ($table_status_h as $index => $table_statu)
               <div class=" col-md-1"> 
                 @if($table_statu->status == 1)
-              
-                  <img src="img/sofa1.png" data-color="violet" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" style="width: 150%; height: 160%"  /> 
+                <div class="center">
+                  <img src="img/sofa1.png" data-color="violet" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" style="width: 140%; height: 160%"  /> </div>
                   {{$table_statu->name}}
 
                   {{$table_statu->seating}}ที่นั่ง
                   @else
-                  <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 150%; height: 160%" /> 
+                  <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 140%; height: 160%" /> 
                   @endif
 
                 </div>
@@ -227,17 +227,18 @@
                 <div class=" col-md-1"> 
                   @if($table_statu->status == 1)
                
-                    <img src="img/sofa1.png" data-color="violet" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" style="width: 150%; height: 160%"  /> 
+                    <img src="img/sofa1.png" data-color="violet" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" style="width: 140%; height: 160%"  /> 
                     {{$table_statu->name}}
 
                     {{$table_statu->seating}}ที่นั่ง
                     @else
-                    <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width:150%; height: 160%" /> 
+                    <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width:140%; height: 160%" /> 
                     @endif
 
                   </div>
 
                   @endforeach
+                  <div class=" col-md-6"></div>
                 </div>
               </div>
             </div>
