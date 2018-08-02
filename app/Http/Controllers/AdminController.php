@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\User;
 use App\User_type;
+use App\Contact;
 class AdminController extends Controller
 {
 
 	public function __construct()
-    {
-        $this->middleware('auth');
-    }
+	{
+		$this->middleware('auth');
+	}
 	public function index()
 	{
 		$user = Auth::user();
@@ -37,4 +38,24 @@ class AdminController extends Controller
 
 
 	}
+
+	public function viweContact(){
+		$contact = Contact::orderBy('id','desc')->get();
+		return view('admin.home.contact', ['contact' => $contact]);
+	}
+
+	public function destroy($id)
+	{
+
+		$contact_delete = Contact::where('id',$id)->delete();
+		if($contact_delete){
+			session()->flash('contact_delete', 'ลบสำเร็จ');
+			return redirect()->route('viewcontact');
+
+		}else{
+			return "error message..";
+		}
+	}
+
+
 }

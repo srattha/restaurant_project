@@ -16,6 +16,8 @@
 });
 // Admin
 Route::get('/admin', 'AdminController@index')->name('home.index');
+Route::get('/viewcontact', 'AdminController@viweContact')->name('viewcontact');
+Route::get('/viewcontact/delete/{id}', 'AdminController@destroy')->name('viewcontact.delete')->where('id', '[0-9]+');
 // User
 Route::get('/adduser', 'AdduserController@index')->name('home.adduser');
 Route::post('adduser', 'AdduserController@store');
@@ -72,12 +74,17 @@ Route::get('/food','FoodController@index');
 Route::get('/status','StatusController@index');
 Route::get('/reser', 'ReserController@index');
 Route::get('/image', 'ImageController@index');
+//Contact
 Route::get('/contact', 'ContactController@index');
+Route::post('contact', 'ContactController@contact')->name('contact');
+
+
 Route::get('/formdata', 'FormdataController@index');
 
 //Book_tableController
 Route::post('book_table', 'Book_tableController@store')->name('booktable');
 Auth::routes();
 
-
+//Home
 Route::get('/', 'HomeController@index')->name('home');
+

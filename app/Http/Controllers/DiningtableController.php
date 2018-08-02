@@ -75,26 +75,29 @@ class DiningtableController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         
+=======
+>>>>>>> d209ea0b49168a84cb8f747ccdd7038cada9e598
         if ($request->status == 1) {
-         $color = "success";
-     }else{
-       $color = "danger";
-   }
-   if ($request->hasFile('file')) {
+           $color = "success";
+       }else{
+         $color = "danger";
+     }
+     if ($request->hasFile('file')) {
 
-     $filename = $request->file->getClientOriginalName();
-     $request->file->storeAs('public/QRcode',$filename);
-     $arr = new Dining_table;
-     $arr->name = $request->name;
-     $arr->qrimage = $filename;
-     $arr->seating = $request->seating;
-     $arr->status = $request->status;
-     $arr->color = $color;
-     $arr->save();
-     if ($arr) {
-         return redirect()->route('diningtable.dining_table');
-     }else{
+       $filename = $request->file->getClientOriginalName();
+       $request->file->storeAs('public/QRcode',$filename);
+       $arr = new Dining_table;
+       $arr->name = $request->name;
+       $arr->qrimage = $filename;
+       $arr->seating = $request->seating;
+       $arr->status = $request->status;
+       $arr->color = $color;
+       $arr->save();
+       if ($arr) {
+           return redirect()->route('diningtable.dining_table');
+       }else{
         return ["satus"=>false,"msg"=>"Can't save data"];
     }
 }else{
@@ -106,8 +109,8 @@ class DiningtableController extends Controller
     $arr->color = $color;
     $arr->save();
     if ($arr) {
-     return redirect()->route('diningtable.dining_table');
- }else{
+       return redirect()->route('diningtable.dining_table');
+   }else{
     return ["satus"=>false,"msg"=>"Can't save data"];
 }
 }
@@ -135,9 +138,9 @@ class DiningtableController extends Controller
     {
         
 
-     $dining_table = Dining_table::where('id', $id)->first();
-     return view('admin.diningtable.edit_dining_table', ['dining_table' => $dining_table]);
- }
+       $dining_table = Dining_table::where('id', $id)->first();
+       return view('admin.diningtable.edit_dining_table', ['dining_table' => $dining_table]);
+   }
 
     /**
      * Update the specified resource in storage.
@@ -148,17 +151,22 @@ class DiningtableController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update = Dining_table::where('id',$id)->first();
-        $update->name = $request->name;
-        $update->seating = $request->seating;
-        $update->status = $request->status;
-        $update->color = 'success';
-        $update->save();
-        if ($update) {
-         return redirect()->route('diningtable.dining_table');
+      if ($request->status == 1) {
+         $color = "success";
      }else{
-        return ["satus"=>false,"msg"=>"Can't save data"];
-    }
+       $color = "danger";
+   }
+   $update = Dining_table::where('id',$id)->first();
+   $update->name = $request->name;
+   $update->seating = $request->seating;
+   $update->status = $request->status;
+   $update->color = $color;
+   $update->save();
+   if ($update) {
+       return redirect()->route('diningtable.dining_table');
+   }else{
+    return ["satus"=>false,"msg"=>"Can't save data"];
+}
 
 }
 

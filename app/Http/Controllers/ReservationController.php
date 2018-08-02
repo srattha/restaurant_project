@@ -9,6 +9,7 @@ use App\Food_menus;
 use App\Reservation;
 use App\Order;
 use App\Order_details;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
@@ -29,11 +30,12 @@ class ReservationController extends Controller
         case '2':
          $reservation = Reservation::orderBy('id','desc')->get();
         foreach ($reservation as $key => $value) {
-            $reservation[$key]['dining_table'] = Dining_table::where('id',$value['dining_table_id'])->first();
+            $reservation[$key]['dining_table'] = Dining_table::where('id',$value['dining_table_id'])->orderBy('id','desc')->get();
+            $reservation[$key]['user'] = User::where('id',$value['user_id'])->orderBy('id','desc')->get();
         }
-        return $reservation;
+        //return $reservation;
 
-        return view('admin.reservations.reservations');
+        return view('admin.reservations.reservations',['reservation'=> $reservation]);
         break;
         case '3':
         return redirect("/counter_staff");
