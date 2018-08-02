@@ -190,6 +190,9 @@
            <li>
                <a href="/report_reservation"><i class="fa fa-cutlery"></i> แสดงรายงาน การจอง</a>
            </li>
+           <li>
+               <a href="{{ route('viewcontact') }}"><i class="fa fa-volume-control-phone" aria-hidden="true"></i> ติดต่อเรา</a>
+           </li>
 
 
        </ul>

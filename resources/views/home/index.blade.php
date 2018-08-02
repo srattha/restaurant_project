@@ -1,5 +1,37 @@
 @extends('layouts.master')
+@section('css')
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
 
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+@endsection
 @section('content')
 <div >
  <img src="img/cc1.jpg" class="img-responsive" />
@@ -40,26 +72,28 @@
  <div class="panel panel-success">
   <div class="panel-heading"><b style="font-size: 20px;">เมนูอาหารแนะนำ</b></div>
   <div class="panel-body">
+
     <div class="list-group">
-      <div class="col-md-6">
-        <div class="thumbnail">
-          <img src="/img/2.jpg" alt="Boats at Phi Phi, Thailand">
-          <div class="caption">
-            <p>โป๊ะแตกทะเลแห้ง</p>
-            <button type="submit" class="btn btn-primary btn-block">สั่ง</button>
+     @foreach ($food_is_recommend as $index => $is_recommend)
+     <div class="col-md-6">
+      <div class="card">
+      <img src="{{ asset('storage/Food_menus/'.$is_recommend->image) }}" alt="" style="width:100%; height: 100px;">
+      <h6>{{$is_recommend->food_name}}</h6>
+      <p><button>Contact</button></p>
+    </div>
+     <!--  <div class="thumbnail">
 
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img src="/img/2.jpg" alt="Boats at Phi Phi, Thailand">
-          <div class="caption">
-            <p>โป๊ะแตกทะเลแห้ง</p>
-            <button type="submit" class="btn btn-primary btn-block">สั่ง</button>
+        <img class="is_recommend" src="{{ asset('storage/Food_menus/'.$is_recommend->image) }}" alt="">
+        <div class="caption">
+          <p></p>
+          <button type="submit" class="btn btn-primary btn-block">สั่ง</button>
 
-          </div>
         </div>
+      </div> -->
       </div>
-      <div class="col-md-6">
+      @endforeach
+
+    <!--   <div class="col-md-6">
         <div class="thumbnail">
           <img src="/img/2.jpg" alt="Boats at Phi Phi, Thailand">
           <div class="caption">
@@ -76,7 +110,7 @@
 
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
@@ -244,26 +278,27 @@ background: #85b910; ">
 --> <div class="col-md-6">
   <h3> ติดต่อเราโดยใช้แบบฟอร์ม</h3>
   <hr>
-  <form>
+     <form method="POST" action="{{ route('contact') }}">
+        {{ csrf_field() }}
     <div class="form-group">
       <label for="exampleInputName1">ชื่อ-สกุล</label>
-      <input type="name" class="form-control" id="exampleInputName1" placeholder="">
+      <input type="name" name="name" class="form-control"  placeholder="">
     </div>
     <div class="form-group">
       <label >อีเมล์</label>
-      <input type="email" class="form-control">
+      <input type="email" name="email" class="form-control">
     </div>
     <div class="form-group">
       <label for="exampleInputCall1">เบอร์โทร</label>
-      <input type="call" class="form-control" id="exampleInputCall1" placeholder="">
+      <input type="call" name="telephone_number" class="form-control" placeholder="เบอร์โทร">
     </div>
     <div class="form-group">
       <label for="exampleInputSubject1">เรื่องที่ติดต่อ</label>
-      <input type="subject" class="form-control" id="exampleInputSubject1" placeholder="">
+      <input type="subject" name="contact" class="form-control"  placeholder="เรื่องที่ติดต่อ">
     </div>
     <div class="form-group">
      <label for="exampleInputMessage1"><br>ข้อความ</br></label>
-     <textarea class="form-control"></textarea>
+     <textarea class="form-control" name="message"></textarea>
    </div>
    <button type="submit" class="btn btn-primary">ยืนยัน</button>
  </form>
