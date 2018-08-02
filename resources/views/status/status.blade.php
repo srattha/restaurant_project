@@ -5,6 +5,8 @@
 <div class="row">
   <h1 style="text-align: center;">สถานะโต๊ะ</h1>
   <div class="row">
+    <div class="col-md-12">
+    <div class="offer offer-default">
     <div class="row" style="padding: 1px;">
       <div class="container">
         <div class="row">
@@ -282,6 +284,8 @@
         </div>
       </div>
     </div>
+  </div>
+  </div>
   </div>
 
 
