@@ -25,7 +25,7 @@ class AdduserController extends Controller
         $users_type_id = $user->user_type_id;
         switch ($users_type_id) {
             case '1':
-            return view('home');
+            return redirect("/");
             break;
             case '2':
             $user_type = User_type::get();

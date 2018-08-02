@@ -75,7 +75,7 @@ class DiningtableController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        
         if ($request->status == 1) {
          $color = "success";
      }else{
@@ -133,6 +133,7 @@ class DiningtableController extends Controller
      */
     public function edit($id)
     {
+        
 
      $dining_table = Dining_table::where('id', $id)->first();
      return view('admin.diningtable.edit_dining_table', ['dining_table' => $dining_table]);

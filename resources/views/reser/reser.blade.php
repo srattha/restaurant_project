@@ -61,7 +61,7 @@ b{
             </div>
             <div class="offer-content">
              
-                
+              
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@ b{
           </div>
           <div class="offer-content">
             
-             
+           
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@ b{
         </div>
         <div class="offer-content">
           
-           
+         
         </div>
       </div>
     </div>
