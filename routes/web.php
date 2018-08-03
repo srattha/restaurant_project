@@ -11,9 +11,9 @@
 |
 */
 
- Route::get('/', function () {
-	return view('home');
-});
+//  Route::get('/', function () {
+// 	return view('home');
+// });
 // Admin
 Route::get('/admin', 'AdminController@index')->name('home.index');
 Route::get('/viewcontact', 'AdminController@viweContact')->name('viewcontact');
@@ -87,4 +87,5 @@ Auth::routes();
 
 //Home
 Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@today')->name('today');
 
