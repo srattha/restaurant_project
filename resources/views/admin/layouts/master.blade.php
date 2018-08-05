@@ -38,7 +38,7 @@
 
     @yield('css')
 
-   <!--  <style type="text/css">
+    <style type="text/css">
     a {
         color: #333333;
         text-decoration: none;
@@ -71,9 +71,9 @@
             color:#333333;
         }
 
-    </style> -->
+    </style>
 
-  <!--   <script type="text/javascript">
+    <script type="text/javascript">
         ;(function(){
             function id(v){ return document.getElementById(v); }
             function loadbar() {
@@ -112,7 +112,7 @@
             }
             document.addEventListener('DOMContentLoaded', loadbar, false);
         }());
-    </script> -->
+    </script>
 
 </head>
 
@@ -141,7 +141,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+            <a class="navbar-brand" href="index.html">PENTOR CAFE Admin</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -169,6 +169,9 @@
 <!-- /.navbar-top-links -->
 
 <div class="navbar-default sidebar" role="navigation">
+    <div style="text-align: center; padding: 10px;">
+        <img src="/img/g1.jpg" class="img-circle">
+    </div>
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
 

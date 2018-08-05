@@ -75,10 +75,6 @@ class DiningtableController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-        
-=======
->>>>>>> d209ea0b49168a84cb8f747ccdd7038cada9e598
         if ($request->status == 1) {
            $color = "success";
        }else{

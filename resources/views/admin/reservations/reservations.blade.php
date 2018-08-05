@@ -8,16 +8,23 @@ td{
 th{
  text-align: center;
 }
+a {
+    color: #333333;
+    text-decoration: none;
+}
 </style>
 @endsection
 @section('content')
 <div class="row">
   <h1 class="page-header">ตาราง รายงานการจอง</h1>
 </div>
-<!-- <div class="row">
- <button type="button" class="btn btn-success" onclick="location.href='{{ route('home.adduser') }}'" ><i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่ม </button>
-</div>
-<br> -->
+ @if(session()->has('reservation_delete'))
+   <br>
+   <div class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>{{ session()->get('reservation_delete') }}</strong>
+  </div>
+  @endif
 <div class="row">
   <table  id="dataTables-example" class="table table-striped table-bordered table-hover" style="width:100%;">
    <thead>
@@ -49,7 +56,7 @@ th{
       <td>{{$reservations->reserve_mobile}}</td>
       <td>{{$reservations->created_at}}</td>
       <td>{{$reservations->updated_at}}</td>
-      <td><button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('home.delete',['id'=>$reservations->id]) }}'"><i class="fa fa-trash-o"></i> Delete</button></td>
+      <td><button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('คุณแน่ใจหรือไม่ ?')) window.location.href = '{{ route('reservations.delete',['id'=>$reservations->id]) }}'"><i class="fa fa-trash-o"></i> Delete</button></td>
     </tr>
 @endforeach
   </tbody>

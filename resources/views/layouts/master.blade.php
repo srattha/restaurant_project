@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Laravel</title>
+  <title>@yield('title')</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="{{ asset('/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -35,7 +35,7 @@
   <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('/assets/css/lightbox.css') }}" rel="stylesheet">
 
-   <!-- jQuery -->
+  <!-- jQuery -->
   <script src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
 
   <!-- Bootstrap Core JavaScript -->
@@ -62,6 +62,10 @@
 
   @yield('css')
   <style>
+  a {
+        color: #333333;
+        text-decoration: none;
+    }
   .navbar-inverse {
     border-radius: 0px;
   }
@@ -157,7 +161,7 @@
   left: 0;
   z-index: 1030;">
   <div class="row" style="margin-top: 15px;">
-    <div class="col-md-6">
+    <div class="col-md-4 col-sm-4 col-xs-4">
       <script language="javascript">
         now = new Date();
         var thday = new Array ("อาทิตย์","จันทร์",
@@ -170,16 +174,14 @@
           thmonth[now.getMonth()]+ " " + (now.getFullYear()+ 543));
         </script>
       </div>
-    <div class="col-md-6">
-      <div class="col-md-6">
-       ติดตามเรา :08-123-456-789
-       <a href="/login"><img src="/img/facebook.png"></a>
-       <a href="/register"><img src="/img/line.png"></a>
+      <div class="col-md-4 col-sm-4 col-xs-4">
+       <i class="fa fa-phone-square" aria-hidden="true"></i> ติดตามเรา :08-123-456-789
      </div>
-     <div class="col-md-6">
-      <div style="text-align: right;">
+     <div class="col-md-4 col-sm-4 col-xs-4">
+      <div >
         @if(Auth::user())
-        <ul class="nav navbar-top-links navbar-right">
+        <div style="margin-top: -16px;">
+         <ul class="nav navbar-top-links navbar-right">
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
               <i class="fa fa-user fa-fw"></i>  <span>{{Auth::user()->name}}</span> <i class="fa fa-caret-down"></i>
@@ -200,45 +202,47 @@
         </li>
 
       </ul>
-      @else
-      <i class="icon-user"></i>
-      <a href="/login">เข้าสู่ระบบ</a>
-      <a href="/register">สมัครสมาชิก</a>
-      @endif
+    </div>
+    
+    @else
+    <i class="icon-user"></i>
+    <a href="/login">เข้าสู่ระบบ</a>
+    <a href="/register">สมัครสมาชิก</a>
+    @endif
 
-    </div>
-    </div>
   </div>
+
+</div>
 </div>
 
-  <div class="row" style="margin-top: 15px;">
-    <nav class="navbar navbar-inverse">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"></a>
-        <img src="/img/g1.jpg" class="img-circle">
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <br>
+<div class="row" style="margin-top: 15px;">
+  <nav class="navbar navbar-inverse">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"></a>
+      <img src="/img/g1.jpg" class="img-circle">
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <br>
 
-        <ul class="nav navbar-nav">
-          <li><a href="/">หน้าแรก</a></li>
-          <li><a href="/food">เมนูอาหาร</a></li>
-          <li><a href="/status">สถานะโต๊ะ</a></li>
-          <li><a href="/reser">โปรโมชั่น</a></li>
-          <li><a href="/image">รูปบรรยากาศภายในร้าน</a></li>
-          <li><a href="/contact">ติดต่อเรา</a></li>
-        </ul>
+      <ul class="nav navbar-nav">
+        <li><a href="/">หน้าแรก</a></li>
+        <li><a href="/food">เมนูอาหาร</a></li>
+        <li><a href="/status">สถานะโต๊ะ</a></li>
+        <li><a href="/reser">โปรโมชั่น</a></li>
+        <li><a href="/image">รูปบรรยากาศภายในร้าน</a></li>
+        <li><a href="/contact">ติดต่อเรา</a></li>
+      </ul>
 
-      </div><!-- /.navbar-collapse -->
+    </div><!-- /.navbar-collapse -->
 
-    </nav>
-  </div>
+  </nav>
+</div>
 </div>
 <br>
 <div class="container" style="

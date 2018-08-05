@@ -53,6 +53,7 @@ Route::post('addpromotion', 'PromotionController@store');
 //reservation
 Route::get('/report_reservation', 'ReservationController@index')->name('reservations.report_reservation');
 Route::post('reservation', 'ReservationController@store')->name('reservations');
+Route::get('reservation/delete/{id}', 'ReservationController@destroy')->name('reservations.delete')->where('id', '[0-9]+');
 
 
 //Counter staff
