@@ -4,9 +4,9 @@
 @section('content')
 <div class="row">
   <h1 style="text-align: center;">สถานะโต๊ะ</h1>
-  <div class="row">
+ <!--  <div class="row">
     <div class="col-md-12">
-    <div class="offer offer-default">
+    <div class="offer offer-default"> -->
     <div class="row" style="padding: 1px;">
       <div class="container">
         <div class="row">
@@ -69,7 +69,7 @@
 
 
 
-            <div class="col-xs-4 col-sm-4 col-md-9 col-lg-10">
+            <div class="col-xs-4 col-sm-4 col-md-9 col-lg-9">
               <div class="offer offer-radius offer-success">
                 <div class="picture">
                   <!-- <div class="shape"> -->
@@ -284,9 +284,9 @@
         </div>
       </div>
     </div>
+  <!-- </div>
   </div>
-  </div>
-  </div>
+  </div> -->
 
 
   @endsection
