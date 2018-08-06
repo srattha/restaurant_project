@@ -77,5 +77,16 @@ public function search(Request $request, $id){
       return $request->all();
   }
 
+  public function destroy($id){
+     $reservation_delete = Reservation::where('id',$id)->delete();
+       if($reservation_delete){
+        session()->flash('reservation_delete', 'ลบรายงานเรียบร้อยแล้ว');
+           return redirect()->route('reservations.report_reservation');
+
+       }else{
+        return "error message..";
+    }
+  }
+
 
 }

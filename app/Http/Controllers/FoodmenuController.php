@@ -147,7 +147,7 @@ class FoodmenuController extends Controller
     {
 
         $edit_menu = Food_menus::where('id', $id)->first();
-        return $food_type = Food_type::get();
+        $food_type = Food_type::get();
         return view('admin.foodmenu.edit_menu', ['edit_menu' => $edit_menu, 'food_type'=> $food_type]);
     }
 
@@ -161,7 +161,7 @@ class FoodmenuController extends Controller
     public function update(Request $request, $id)
     {
 
-       // return $request->all();
+        //return $request->all();
         if ($id) {
 
            if ($request->hasFile('file')) {

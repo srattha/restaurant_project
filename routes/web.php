@@ -11,9 +11,9 @@
 |
 */
 
- Route::get('/', function () {
-	return view('home');
-});
+//  Route::get('/', function () {
+// 	return view('home');
+// });
 // Admin
 Route::get('/admin', 'AdminController@index')->name('home.index');
 Route::get('/viewcontact', 'AdminController@viweContact')->name('viewcontact');
@@ -53,6 +53,7 @@ Route::post('addpromotion', 'PromotionController@store');
 //reservation
 Route::get('/report_reservation', 'ReservationController@index')->name('reservations.report_reservation');
 Route::post('reservation', 'ReservationController@store')->name('reservations');
+Route::get('reservation/delete/{id}', 'ReservationController@destroy')->name('reservations.delete')->where('id', '[0-9]+');
 
 
 //Counter staff
@@ -87,4 +88,5 @@ Auth::routes();
 
 //Home
 Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@today')->name('today');
 

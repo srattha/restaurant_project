@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('title','เมนูอาหาร')
 @section('css')
 <style type="text/css" media="screen">
 td{

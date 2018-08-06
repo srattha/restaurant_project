@@ -126,7 +126,20 @@
 
 </div>
 <div class="print-page">
- dddd
+  <div style="text-align: center; padding: 50px;">
+    <img src="/img/g1.jpg" class="img-circle" style="width: 20%;">
+  </div>
+  <div style="text-align: center; padding: 30px;">
+    <b>ใบแจ้งรายการ</b>
+  </div>
+  <div>
+    <div style="text-align: center;">
+     วันที่: &nbsp;&nbsp;&nbsp;{{$datas}}
+   </div>
+ </div>
+ <div style="text-align:center;padding: 10px;">
+  <b>โต๊ะ: {{$table_name->name}}</b>
+</div>
 </div>
 
 @endsection
