@@ -45,7 +45,7 @@ class CounterstaffController extends Controller
       ]);
       break;
       case '4':
-      return redirect("/counter_staff");
+      return redirect("/chef");
       break;
 
     }

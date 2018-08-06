@@ -1,4 +1,5 @@
 @extends('counter_staff.master')
+@section('title','เมนูอาหาร')
 @section('css')
 @endsection
 @section('content')
@@ -128,9 +129,9 @@
       <div class="col-md-6" style="text-align: right;">
         <div id="rates"></div>
       </div>
-      
+
     </div>
-    
+
 
   </div>
   <div class="modal-footer">
@@ -178,7 +179,7 @@
   });
 
    $('.qtyplus').click(function(e){
-    
+
         // Stop acting like a button
         e.preventDefault();
         // Get the field name
@@ -190,7 +191,7 @@
         if (!isNaN(currentVal)) {
             // Increment
             $('input[name='+fieldName+']').val(currentVal + 1);
-            
+
           } else {
             // Otherwise put a 0 there
             $('input[name='+fieldName+']').val(0);

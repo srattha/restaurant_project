@@ -1,10 +1,11 @@
 @extends('counter_staff.master')
+@section('title','รายงานการจอ')
 @section('css')
 @endsection
 @section('content')
 
 <div class="container page" style="padding:10px;">
- <div class="panel-group">
+ <div class="panel-group ">
   <div class="panel panel-default">
    <div class="panel-heading" style="padding: 20px 15px;">
     <div class="row">
@@ -119,12 +120,11 @@
 </form>
 </div>
 
+</div>
+</div>
+</div>
+</div>
 
-</div>
-</div>
-</div>
-
-</div>
 <div class="print-page">
   <div style="text-align: center; padding: 50px;">
     <img src="/img/g1.jpg" class="img-circle" style="width: 20%;">
@@ -132,13 +132,29 @@
   <div style="text-align: center; padding: 30px;">
     <b>ใบแจ้งรายการ</b>
   </div>
-  <div>
-    <div style="text-align: center;">
-     วันที่: &nbsp;&nbsp;&nbsp;{{$datas}}
-   </div>
+  <div style="margin-left: 145px;">
+   วันที่:<span style="margin-left: 270px;"> {{$datas}}</span>
  </div>
  <div style="text-align:center;padding: 10px;">
   <b>โต๊ะ: {{$table_name->name}}</b>
+</div>
+<hr style="border: 1px dashed black;margin-left: 145px; margin-right: 140px;" />
+<div style="margin-left: 145px;">
+  <span style=" margin-left: 30px;">สิ้นค้า</span><span style=" margin-left: 335px;"> ราคา</span>
+</div>
+<hr style="border: 1px dashed black;margin-left: 145px; margin-right: 140px;" />
+<div style="margin-left: 145px;">
+  @foreach ($food as $index => $f)
+  <br>{{$f->totalorder}}<span style=" margin-left: 24px;">{{$f->food_detail->food_name}}</span>
+  <span style="margin-left: 343px;">80</span>
+  @endforeach
+</div>
+<hr style="border: 1px dashed black;margin-left: 145px; margin-right: 140px;" />
+<div style="margin-left: 145px;">
+  <b>ยอดรวม:</b><span style="margin-left: 340px;"> {{$amount}}</span>
+</div>
+<div style="margin-left: 145px;">
+  <b>หมายเหตุ:</b>
 </div>
 </div>
 
@@ -146,14 +162,6 @@
 @section('javascript')
 <script type="text/javascript">
  $(document).ready(function(){
-   $('#date').datetimepicker({
-    format: "DD-MM-YYYY",
-    defaultDate: new Date()
-  });
-   $('#time').datetimepicker({
-    format: "hh:mm ",
-    defaultDate: new Date()
-  });
    $('#IsPaid').change(function() {
     if(this.checked != true){
       $("#have_not_paid").show();
@@ -167,43 +175,7 @@
       $("#submit").remove('disabled')
     }
   });
-
-   $(".image-checkbox").each(function () {
-    if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
-      $(this).addClass('image-checkbox-checked');
-    }
-    else {
-      $(this).removeClass('image-checkbox-checked');
-    }
-  });
-
-         // sync the state to the input
-         $(".image-checkbox").on("click", function (e) {
-          $(this).toggleClass('image-checkbox-checked');
-          var $checkbox = $(this).find('input[type="checkbox"]');
-          $checkbox.prop("checked",!$checkbox.prop("checked"))
-
-          e.preventDefault();
-        });
-
-
-       });
-
- function data_print($id, $name, $seating){
-
-  var dining_table_id = $id;
-  var name = $name;
-  var seating = $seating;
-  console.log(dining_table_id)
-  document.getElementById("name").innerHTML = name;
-  document.getElementById("dining_table_id").value = dining_table_id;
-  document.getElementById("seating").innerHTML = seating;
-}
-
-
-
-
-
+ });
 </script>
 @endsection
 

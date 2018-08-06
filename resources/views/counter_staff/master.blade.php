@@ -38,7 +38,7 @@
 
 
     @yield('css')
-    <style type="text/css">
+   <!--  <style type="text/css">
     a {
      color: #333333;
      text-decoration: none;
@@ -138,9 +138,10 @@
      .page{
        display: none;
      }
+   }
 
-   </style>
-   <style type="text/css">
+   </style> -->
+  <!--  <style type="text/css">
    .nopad {
      padding-left: 0 !important;
      padding-right: 0 !important;
@@ -271,7 +272,7 @@
           -webkit-transition-delay:.2s;
           transition-delay:.2s;
         }
-      </style>
+      </style> -->
       <script type="text/javascript">
        (function(){
 

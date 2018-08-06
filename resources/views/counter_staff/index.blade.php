@@ -1,4 +1,5 @@
 @extends('counter_staff.master')
+@section('title','สถนะ โต๊ะ')
 @section('css')
 @endsection
 @section('content')

@@ -133,7 +133,7 @@ class AdduserController extends Controller
             $update_user->name = $request->name;
             $update_user->email = $request->email;
             $update_user->telephone_number = $request->telephone_number;
-            $update_user->password = $request->password;
+            $update_user->password = bcrypt($request->password);
             $update_user->user_type_id = $request->users_type_id;
             $update_user->is_active = $request->is_active;
             $update_user->save();

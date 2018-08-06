@@ -90,3 +90,6 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 //Route::get('/', 'HomeController@today')->name('today');
 
+//Chef
+Route::get('/chef', 'ChefController@index')->name('chef');
+

@@ -156,7 +156,7 @@
      <img src="{{ asset('storage/Food_menus/'.$is_recommend->image) }}" alt="" style="width:100%; height: 200px;">
      <div class="overlay">
        <h2>{{$is_recommend->food_name}}</h2>
-       <a class="info" href="#">link here</a>
+       <a class="info" href="/status">สั่ง</a>
      </div>
    </div>
  </div>

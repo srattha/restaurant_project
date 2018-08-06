@@ -1,8 +1,9 @@
 @extends('layouts.master')
+@section('title','เพิ่ม')
 @section('css')
 
 @endsection
-@section('content')            
+@section('content')
 <div class="center-right">
   <div class="container">
     <div class="row">
@@ -10,7 +11,7 @@
         <div class="offer offer-radius offer-success">
           <div class="shape">
             <div class="shape-text">
-              เพิ่ม              
+              เพิ่ม
             </div>
           </div>
           <div class="offer-content">
@@ -23,7 +24,7 @@
                 <div class="form-group">
                   <label for="เบอร์มือถื">เบอร์มือถื:</label>
                   <input type="เบอร์มือถื" class="form-control" id="เบอร์" placeholder=" เบอร์มือถื">
-                </div> 
+                </div>
                 <div class="form-group">
                   <label for="email">อีเมล์:</label>
                   <a><input type="email" class="form-control" id="email" placeholder="อีเมล์"></a>
@@ -67,11 +68,11 @@
                       <option>20</option>
                     </select>
                   </div>
-                </div> 
+                </div>
                 <br>
               <br>
               <br>
-             
+
                 <div class="form-group">
                   <div class="col-xs-4 col-md-4">
                     <label for="sel1">เลือกโซน</label><br>
@@ -84,7 +85,7 @@
                   <br>
                    <br>
                   <br>
-                 
+
                 </div>
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary">ยืนยันการจองโต๊ะ</button>
@@ -104,5 +105,5 @@
 
 
 @endsection
-@section('javascript')        
+@section('javascript')
 @endsection
