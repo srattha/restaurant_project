@@ -25,9 +25,9 @@ class FoodController extends Controller
     public function index()
     {
        // return $food_type = DB::table('food_menu')->where('food_type', 1)->get();
-         $food_type = Food_menus::where('food_type', 1)->get();
-         $food_image = Food_menus::where('food_type', 1)->select('image')->limit(10)->get();
-        $food_type2 = Food_menus::where('food_type', 2)->get();
+         $food_type1 = Food_menus::where('food_type', 1)->get();
+         $food_image1 = Food_menus::where('food_type', 1)->select('image')->limit(10)->get();
+         $food_type2 = Food_menus::where('food_type', 2)->get();
          $food_image2 = Food_menus::where('food_type', 2)->select('image')->limit(6)->get();
          $food_type3 = Food_menus::where('food_type', 3)->get();
          $food_image3 = Food_menus::where('food_type', 3)->select('image')->limit(10)->get();
@@ -41,8 +41,8 @@ class FoodController extends Controller
          $food_image7 = Food_menus::where('food_type', 7)->select('image')->limit(10)->get();
          $food_type8 = Food_menus::where('food_type', 8)->get();
          $food_image8 = Food_menus::where('food_type', 8)->select('image')->limit(10)->get();
-        return view('foodmenu.food', ['food_type' => $food_type,
-                                        'food_image' => $food_image,
+        return view('foodmenu.food', ['food_type1' => $food_type1,
+                                        'food_image1' => $food_image1,
                                         'food_type2' => $food_type2,
                                         'food_image2' => $food_image2,
                                         'food_type3' => $food_type3,
