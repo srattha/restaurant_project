@@ -72,7 +72,7 @@ Route::get('/shop_atmosphere', 'ShopatmosphereController@index')->name('shopatmo
 Route::post('addshop_atmosphere', 'ShopatmosphereController@store')->name('addshopatmosphere');
 
 Route::get('/food','FoodController@index');
-Route::get('/status','StatusController@index');
+Route::get('/status','StatusController@index')->name('status');
 Route::get('/reser', 'ReserController@index');
 Route::get('/image', 'ImageController@index');
 //Contact
@@ -84,7 +84,8 @@ Route::get('/formdata', 'FormdataController@index');
 
 //Book_tableController
 Route::post('book_table', 'Book_tableController@store')->name('booktable');
-Auth::routes();
+Route::get('book_food/{id}', 'Book_tableController@book_food')->name('book_food')->where('id', '[0-9]+');;
+
 
 //Home
 Route::get('/', 'HomeController@index')->name('home');
@@ -94,4 +95,4 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/chef', 'ChefController@index')->name('chef');
 Route::get('/chef_update_is_cook/{id}', 'ChefController@edit')->name('chef_update_is_cook')->where('id', '[0-9]+');
 
-
+Auth::routes();

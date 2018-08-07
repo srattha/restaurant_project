@@ -129,7 +129,7 @@
   });
 
  });
- // setTimeout("location.href = '/chef';",5500);
+  setTimeout("location.href = '/chef';",50000);
 </script>
 @endsection
 

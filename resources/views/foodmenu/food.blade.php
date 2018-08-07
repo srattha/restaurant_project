@@ -19,17 +19,8 @@ h2{
 h5{
   background-color:#666666;
 }
-
 </style>
-
-<title>Bootstrap Example</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <div class="row">
-
   <h1 style="text-align: center;">เมนูอาหาร</h1>
   <div class="container">
     <ul class="nav nav-tabs">
@@ -45,48 +36,35 @@ h5{
 
     <div class="tab-content">
       <div id="menu1" class="tab-pane fade in active">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-3"></div> 
-            <div class="col-md-3">
-              <br>
-              <br>
-              <h3>รายการ</h3>
-            </div>
-            <br>
-            <br>
-            <div class="col-md-3">
-             <h3>ราคา</h3> 
-           </div>
-         </div>
-         <div class="row">
-           <div class="col-md-6">
-            @foreach ($food_image as $index => $food_images)
-            <img src="{{ asset('storage/Food_menus/'.$food_images->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
-            @endforeach 
-          </div>
-          <br>
-          <br>            <br>
-          <br>
-          <div class="row">
-            @foreach ($food_type as $index => $food_types)
-            <div class="col-md-3">
-             <h4> {{$food_types->name}} </h4>
-           </div>
-           <div class="col-md-3">
-            <h4> {{$food_types->rates}} </h4>
-          </div>
+       <br>
+       <div class="row">
+         <div class="col-md-6">
+          @foreach ($food_image as $index => $food_images)
+          <img src="{{ asset('storage/Food_menus/'.$food_images->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
           @endforeach 
         </div>
-
-
+        <div class="col-md-6">
+          <div class="table-responsive">
+           <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>รายการ</th>
+                <th>ราคา</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($food_type as $index => $food_types)
+              <tr>
+                <td>{{$food_types->food_name}}</td>
+                <td>{{$food_types->price}}</td>
+              </tr>
+              @endforeach 
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div> 
-
-
-
+  </div>
   <div id="menu2" class="tab-pane fade">
     <div class="row">
       <div class="col-md-6"></div>
@@ -136,28 +114,28 @@ h5{
 </div>
 
 
-  <div id="menu3" class="tab-pane fade">
-    <div class="row">
-      <div class="col-md-6"></div>
-      <div class="col-md-6">
-        <div class="col-md-6">
-          <h4>รายการ</h4>
-        </div>
-        <div class="col-md-6">
-         <h4>ราคา</h4> 
-       </div>
-     </div> 
-   </div>
-   <div class="row">
+<div id="menu3" class="tab-pane fade">
+  <div class="row">
+    <div class="col-md-6"></div>
     <div class="col-md-6">
-      @foreach ($food_image3 as $index => $food_images3)
-      <img src="{{ asset('storage/Food_menus/'.$food_images3->image) }}" class="img-thumbnail" alt="Cinque Terre"width="200" height="200" style="height: 200px;">
+      <div class="col-md-6">
+        <h4>รายการ</h4>
+      </div>
+      <div class="col-md-6">
+       <h4>ราคา</h4> 
+     </div>
+   </div> 
+ </div>
+ <div class="row">
+  <div class="col-md-6">
+    @foreach ($food_image3 as $index => $food_images3)
+    <img src="{{ asset('storage/Food_menus/'.$food_images3->image) }}" class="img-thumbnail" alt="Cinque Terre"width="200" height="200" style="height: 200px;">
 
-      @endforeach 
-    </div>
-    <br>
-    <br>
-   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-5">
+    @endforeach 
+  </div>
+  <br>
+  <br>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-5">
     <div class="offer offer-warning">
       <div class="shape">
         <div class="shape-text">
@@ -166,22 +144,22 @@ h5{
       </div>
       <div class="offer-content">
         <h3 class="lead">
-      @foreach ($food_type3 as $index => $food_types3)
+          @foreach ($food_type3 as $index => $food_types3)
 
-      <div class="row">
-        <div class="col-md-6">
-         <h4>{{$food_types3->name}} </h4>
-       </div>
+          <div class="row">
+            <div class="col-md-6">
+             <h4>{{$food_types3->name}} </h4>
+           </div>
 
-       <div class="col-md-6">
-         <h4> {{$food_types3->rates}}</h4>
+           <div class="col-md-6">
+             <h4> {{$food_types3->rates}}</h4>
+           </div>
+         </div>  
+         @endforeach 
        </div>
-     </div>  
-     @endforeach 
+     </div>
    </div>
  </div>
-</div>
-</div>
 </div>
 
 <div id="menu4" class="tab-pane fade">
