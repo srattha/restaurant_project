@@ -144,10 +144,14 @@
   <div style="padding-top: 10px;">
 
     <ul class="nav nav-tabs">
-     <li class="active"><a data-toggle="tab" href="#home">ผัก</a></li>
-     <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-     <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-     <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+     <li class="active"><a data-toggle="tab" href="#home">เมนูผัก</a></li>
+     <li><a data-toggle="tab" href="#menu2">เมนูต้ม</a></li>
+     <li><a data-toggle="tab" href="#menu3">เมนูทอด</a></li>
+     <li><a data-toggle="tab" href="#menu4">เมนูยำ</a></li>
+     <li><a data-toggle="tab" href="#menu5">เมนูอาหารจารเดี่ยว</a></li>
+     <li><a data-toggle="tab" href="#menu6">เมนูพิซซ่า</a></li>
+     <li><a data-toggle="tab" href="#menu7">เมนูเครื่องดื่ม</a></li>
+     <li><a data-toggle="tab" href="#menu8">เมนูกาแฟ</a></li>
    </ul>
    <div class="tab-content">
      <div id="home" class="tab-pane fade in active">
@@ -164,16 +168,42 @@
     </div>
     @endforeach
   </div>
-  <div id="menu1" class="tab-pane fade">
-    <h3>Menu 1</h3>
-    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  </div>
   <div id="menu2" class="tab-pane fade">
-    <h3>Menu 2</h3>
-    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    <h3>เมนูต้ม</h3>
+    @foreach ($food_type_vegetable as $index => $food_type_vegetables)
+       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="hovereffect">
+         <img src="{{ asset('storage/Food_menus/'.$food_type_vegetables->image) }}" alt="" style="width:100%; height: 200px;">
+         <div class="overlay">
+          <h2>{{$food_type_vegetables->food_name}} ราคา {{$food_type_vegetables->price}}</h2>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$food_type_vegetables->food_name}}', '{{$food_type_vegetables->image}}', '{{$food_type_vegetables->id}}', '{{$food_type_vegetables->price}}')">สั่งเลย</a>
+        </div>
+      </div>
+    </div>
+    @endforeach
   </div>
   <div id="menu3" class="tab-pane fade">
-    <h3>Menu 3</h3>
+    <h3>เมนูทอด</h3>
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+  </div>
+  <div id="menu4" class="tab-pane fade">
+    <h3>เมนูยำ</h3>
+    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+  </div>
+  <div id="menu5" class="tab-pane fade">
+    <h3>เมนูอาหารจารเดี่ยว</h3>
+    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+  </div>
+  <div id="menu6" class="tab-pane fade">
+    <h3>เมนูพิซซ่า</h3>
+    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+  </div>
+  <div id="menu7" class="tab-pane fade">
+    <h3>เมนูเครื่องดื่ม</h3>
+    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+  </div>
+  <div id="menu8" class="tab-pane fade">
+    <h3>เมนูกาแฟ</h3>
     <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
   </div>
 </div>

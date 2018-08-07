@@ -40,7 +40,10 @@
 
                             {{$table_statu->seating}}ที่นั่ง
                             @else
-                            <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 50%; height: 40%" /> 
+                            <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 50%; height: 40%" />
+                             {{$table_statu->name}}
+
+                          {{$table_statu->seating}}ที่นั่ง  
                             @endif
                           </div>
 
@@ -55,7 +58,9 @@
 
                               {{$table_statu->seating}}ที่นั่ง
                               @else
-                              <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 50%; height: 40%" /> 
+                              <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 50%; height: 40%" />  {{$table_statu->name}}
+
+                          {{$table_statu->seating}}ที่นั่ง 
                               @endif
                             </div>
 
@@ -85,6 +90,9 @@
                                     {{$table_statu->seating}}ที่นั่ง
                                     @else
                                     <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 50%; height: 50%" /> 
+                                     {{$table_statu->name}}
+
+                          {{$table_statu->seating}}ที่นั่ง 
                                     @endif
                                   </div>
 
@@ -165,6 +173,9 @@
                   {{$table_statu->seating}}ที่นั่ง
                   @else
                   <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 140%; height: 160%" /> 
+                   {{$table_statu->name}}
+
+                          {{$table_statu->seating}}ที่นั่ง 
                   @endif
 
                 </div>
@@ -197,6 +208,9 @@
                       {{$table_statu->seating}}ที่นั่ง
                       @else
                       <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 140%; height: 160%" /> 
+                       {{$table_statu->name}}
+
+                          {{$table_statu->seating}}ที่นั่ง 
                       @endif
 
                     </div>
@@ -212,7 +226,10 @@
 
                         {{$table_statu->seating}}ที่นั่ง
                         @else
-                        <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 140%; height: 160%" /> 
+                        <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 140%; height: 160%" />
+                         {{$table_statu->name}}
+
+                          {{$table_statu->seating}}ที่นั่ง  
                         @endif
 
                       </div>
@@ -228,7 +245,10 @@
 
                         {{$table_statu->seating}}ที่นั่ง
                         @else
-                        <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width:140%; height: 160%" /> 
+                        <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width:140%; height: 160%" />
+                         {{$table_statu->name}}
+
+                          {{$table_statu->seating}}ที่นั่ง  
                         @endif
 
                       </div>
@@ -254,7 +274,10 @@
 
                             {{$table_statu->seating}}ที่นั่ง
                             @else
-                            <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width:50%; height: 50%" /> 
+                            <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width:50%; height: 50%" />
+                             {{$table_statu->name}}
+
+                          {{$table_statu->seating}}ที่นั่ง  
                             @endif
                           </div>
                           @endforeach
