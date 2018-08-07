@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Dining_table;
+use App\Reservation;
+use App\Order_details;
+use App\Order;
+use App\Food_menus;
 class ChefController extends Controller
 {
    public function __construct()
@@ -25,7 +30,21 @@ class ChefController extends Controller
             return redirect("/counter_staff");
             break;
             case '4':
-            return view('chef.chef');
+            $table = Dining_table::where('status',0)->get();
+            foreach ($table as $key => $val) {
+               $table[$key]['reservation'] = Reservation::where('dining_table_id',$val->id)->get();
+               foreach ($table[$key]['reservation'] as $key2 => $val2) {
+                     $table[$key]['reservation'][$key2]['order'] = Order::where('reservationld_id',$val2->id)->get();
+                     foreach ($table[$key]['reservation'][$key2]['order'] as $key3 => $val3) {
+                         $table[$key]['reservation'][$key2]['order'][$key3]['order_details'] = Order_details::where('order_id', $val3->id)->where('is_cook',0)->get();
+                        foreach ($table[$key]['reservation'][$key2]['order'][$key3]['order_details'] as $key4 => $val4) {
+                          $table[$key]['reservation'][$key2]['order'][$key3]['order_details'][$key4]['food_details'] = Food_menus::where('id',$val4->food_id)->get();
+                        }
+                     }
+               }
+           }
+           // return $table;
+            return view('chef.chef',['table'=> $table]);
             break;
 
         }
@@ -47,9 +66,10 @@ class ChefController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id)
     {
-       return $request->all();
+
+
     }
 
     /**
@@ -71,7 +91,11 @@ class ChefController extends Controller
      */
     public function edit($id)
     {
-        //
+        $update_is_cook = Order_details::where('id',$id)->update(['is_cook'=> 1]);
+        if ($update_is_cook) {
+            return redirect()->back();
+        }
+
     }
 
     /**

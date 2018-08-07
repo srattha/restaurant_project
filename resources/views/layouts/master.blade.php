@@ -61,7 +61,7 @@
 
 
   @yield('css')
-  <style>
+<!--   <style>
   a {
         color: #333333;
         text-decoration: none;
@@ -103,7 +103,7 @@
     text-align:center;
     color:#333333;
   }
-</style>
+</style> -->
 <script type="text/javascript">
   ;(function(){
     function id(v){ return document.getElementById(v); }
@@ -203,7 +203,7 @@
 
       </ul>
     </div>
-    
+
     @else
     <i class="icon-user"></i>
     <a href="/login">เข้าสู่ระบบ</a>

@@ -119,6 +119,7 @@
      <input type='hidden'  name="price" id="price" value="price">
      <input type='hidden'  name="reservation_id" id="reservation_id" value="{{$reservation_id}}">
      <input type='hidden'  name="orde_date"  value="{{$reserve_date}}">
+     <input type='hidden'  name="dining_table"  value="{{$dining_table}}">
      <input type='hidden'  name="food_name" id="food_name"  value="food_name">
      <div class="row">
       <div class="col-md-6">

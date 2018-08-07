@@ -50,28 +50,45 @@
     </div>
   </div>
 
-  <div class="col-md-12">
-    <div class="card">
-     <img class="image" src="/img/d1.jpg">
-        <!--<div class="image pull-left">
-        </div> -->
-        <div class="content pull-left">
-          <div class="col-md-6">
-            <h4>โต๊ะ</h4>
-            <div class="col-md-6">เมนู</div>
-            <div class="col-md-6">จำนวน</div>
-          </div>
-          <div class="col-md-6" style="text-align: right;    margin-top: 100px;">
-            <button class="btn btn-success btn-read">
-             ยืนยัน
-            </button>
-          </div>
+  <div class="row">
+    @foreach ($table as $index => $val)
+    <div class="panel panel-default">
+      <div class="panel-heading">{{$val->name}}
       </div>
+      <div class="panel-body">
+       <div class="row">
+        <table class="table" style="margin: 0px;">
+          <tr>
+            <th>รูป</th>
+            <th>อาหาร</th>
+            <th>จำนวน</th>
+            <th>เวลา</th>
+            <th>ยืนยัน</th>
+          </tr>
+         @foreach ($val->reservation as $index2 => $val2)
+         @foreach ($val2->order as $index3 => $val3)
+         @foreach ($val3->order_details as $index4 => $val4)
+         @foreach ($val4->food_details as $index5 => $val5)
+         <tr>
+           <td style="width: 100px;"><img src="{{ asset('storage/Food_menus/'.$val5->image) }}" alt="" style="width: 50px;height: 50px;"></td>
+           <td>{{$val5->food_name}}</td>
+           <td>{{$val4->totalorder}}</td>
+           <td>{{$val3->orde_date}}</td>
+           <td><button type="button" class="btn btn-success" onclick="if(confirm('ยืนยัน หรือไม่')) window.location.href = '{{ route('chef_update_is_cook',['id'=>$val4->id]) }}'">ยืนยัน</button></td>
+         </tr>
+         @endforeach
+         @endforeach
+         @endforeach
+         @endforeach
+       </table>
 
-      <div class="clearfix">
-      </div>
-    </div>
-  </div>
+     </div>
+
+
+     </div>
+   </div>
+   @endforeach
+ </div>
 
 
 </div>

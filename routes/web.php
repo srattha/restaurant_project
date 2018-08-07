@@ -92,4 +92,6 @@ Route::get('/', 'HomeController@index')->name('home');
 
 //Chef
 Route::get('/chef', 'ChefController@index')->name('chef');
+Route::get('/chef_update_is_cook/{id}', 'ChefController@edit')->name('chef_update_is_cook')->where('id', '[0-9]+');
+
 

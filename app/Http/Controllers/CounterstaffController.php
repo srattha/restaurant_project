@@ -75,7 +75,7 @@ class CounterstaffController extends Controller
       //  return $request->all();
 
     $price = 0;
-    $reserve_date = $request->reserve_date.$request->time;
+    $reserve_date = $request->reserve_date." ".$request->time;
     $dining_table_id = $request->dining_table_id;
     $users = Auth::user();
     $users_id = $users->id;
