@@ -25,20 +25,17 @@
   <link href="{{ asset('/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
   <!-- styel Css -->
   <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
-  <!-- <link href="{{ asset('/vendor/sweetalert/sweetalert.css') }}" rel="stylesheet">
-    <script src="{{ asset('/vendor/sweetalert/sweetalert.js') }}"></script> -->
-    <!-- jQuery -->
     <script src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/vendor/moment/moment.min.js') }}"></script>
     <script src="{{ asset('/vendor/bootstrapdatapicker/bootstrapdatetimepicker.min.js') }}"></script>
-    <!--   <script src="{{ asset('/vendor/sweetalert/switchery.min.js') }}"></script> -->
+  
 
 
 
     @yield('css')
-   <!--  <style type="text/css">
+    <style type="text/css">
     a {
      color: #333333;
      text-decoration: none;
@@ -140,8 +137,8 @@
      }
    }
 
-   </style> -->
-  <!--  <style type="text/css">
+   </style>
+   <style type="text/css">
    .nopad {
      padding-left: 0 !important;
      padding-right: 0 !important;
@@ -272,7 +269,7 @@
           -webkit-transition-delay:.2s;
           transition-delay:.2s;
         }
-      </style> -->
+      </style>
       <script type="text/javascript">
        (function(){
 

@@ -36,7 +36,7 @@ class ChefController extends Controller
                foreach ($table[$key]['reservation'] as $key2 => $val2) {
                      $table[$key]['reservation'][$key2]['order'] = Order::where('reservationld_id',$val2->id)->get();
                      foreach ($table[$key]['reservation'][$key2]['order'] as $key3 => $val3) {
-                         $table[$key]['reservation'][$key2]['order'][$key3]['order_details'] = Order_details::where('order_id', $val3->id)->where('is_cook',0)->get();
+                         $table[$key]['reservation'][$key2]['order'][$key3]['order_details'] = Order_details::where('order_id', $val3->id)->get();
                         foreach ($table[$key]['reservation'][$key2]['order'][$key3]['order_details'] as $key4 => $val4) {
                           $table[$key]['reservation'][$key2]['order'][$key3]['order_details'][$key4]['food_details'] = Food_menus::where('id',$val4->food_id)->get();
                         }
