@@ -240,6 +240,10 @@
   z-index: 99;
   /* Make sure it does not overlap */
 }
+.navbar {
+    border-radius: 0px;
+    margin-bottom: 0px;
+}
 </style>
 <script type="text/javascript">
   ;(function(){
@@ -293,13 +297,14 @@
   <div class="container" style="
   background: #fff;
   box-shadow: 0 3px 10px rgba(0, 0, 50, 0.1);
-  position: fixed;
+ /* position: fixed;
   right: 0px;
   left: 0;
-  z-index: 1030;">
+  z-index: 1030;*/
+  ">
   <div class="row" style="margin-top: 15px;">
     <div class="col-md-4 col-sm-4 col-xs-4">
-      <script language="javascript">
+     <i class="fa fa-clock-o" aria-hidden="true"></i>  <script language="javascript">
         now = new Date();
         var thday = new Array ("อาทิตย์","จันทร์",
           "อังคาร","พุธ","พฤหัส","ศุกร์","เสาร์");
@@ -342,9 +347,11 @@
     </div>
 
     @else
-    <i class="icon-user"></i>
+    <div style="text-align: right;">
     <a href="/login">เข้าสู่ระบบ</a>
     <a href="/register">สมัครสมาชิก</a>
+    </div>
+
     @endif
 
   </div>
@@ -380,12 +387,11 @@
 
   </nav>
 </div>
-</div>
-<br>
-<div class="container" style="
+
+<!-- <div class="container" style="
 background: #fff;
 box-shadow: 0 3px 10px rgba(0, 0, 50, 0.1);
-padding-top: 140px;">
+padding-top: 140px;"> -->
 @yield('content')
 @yield('javascript')
 @include('layouts.footer')
