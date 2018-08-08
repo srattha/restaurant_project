@@ -81,9 +81,9 @@
                         </div>
                      </div>
                        @endif
-
                      @endforeach
                   </div>
+                  {{ $dining_table->links() }}
 
                   <div id="reservations" class="modal fade" role="dialog">
                      <div class="modal-dialog modal-lg">

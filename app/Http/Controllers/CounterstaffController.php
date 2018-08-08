@@ -34,7 +34,7 @@ class CounterstaffController extends Controller
       return redirect("/admin");
       break;
       case '3':
-      $dining_table = Dining_table::get();
+      $dining_table = Dining_table::paginate(6);
       $food_type = Food_type::get();
             //$food_menus = Food_menus::get();
       $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();

@@ -143,7 +143,7 @@
                                  <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                             </label>
                         </div>
-                        <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+                        <button class="btn btn-lg btn-success btn-block" type="submit"> <i class="fa fa-sign-in" aria-hidden="true"></i> เข้าสู่ระบบ</button>
                     </fieldset>
                 </form>
                 <hr/>

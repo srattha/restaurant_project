@@ -25,22 +25,22 @@
   <link href="{{ asset('/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
   <!-- styel Css -->
   <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
-    <script src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('/vendor/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('/vendor/bootstrapdatapicker/bootstrapdatetimepicker.min.js') }}"></script>
-  
+  <script src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="{{ asset('/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('/vendor/moment/moment.min.js') }}"></script>
+  <script src="{{ asset('/vendor/bootstrapdatapicker/bootstrapdatetimepicker.min.js') }}"></script>
 
 
 
-    @yield('css')
-    <style type="text/css">
-    a {
-     color: #333333;
-     text-decoration: none;
-   }
-   #overlay{
+
+  @yield('css')
+  <style type="text/css">
+  a {
+   color: #333333;
+   text-decoration: none;
+ }
+ /*  #overlay{
      position:fixed;
      z-index:99999;
      top:0;
@@ -67,7 +67,7 @@
      text-align:center;
      color:#333333;
    }
-
+   */
    .switch {
      position: relative;
      display: inline-block;
@@ -137,39 +137,39 @@
      }
    }
 
-   </style>
-   <style type="text/css">
-   .nopad {
-     padding-left: 0 !important;
-     padding-right: 0 !important;
-   }
-   /*image gallery*/
-   .image-checkbox {
-     cursor: pointer;
-     box-sizing: border-box;
-     -moz-box-sizing: border-box;
-     -webkit-box-sizing: border-box;
-     border: 4px solid transparent;
-     margin-bottom: 0;
-     outline: 0;
-   }
-   .image-checkbox input[type="checkbox"] {
-     display: none;
-   }
-   .image-checkbox-checked {
-     border-color: #4783B0;
-   }
-   .image-checkbox .fa {
-     position: absolute;
-     color: #ffffff;
-     background-color: rgba(0,0,0,.5);
-     padding: 10px;
-     top: 0;
-     right: 0;
-   }
-   .image-checkbox-checked .fa {
-     display: block !important;
-   }
+ </style>
+ <style type="text/css">
+ .nopad {
+   padding-left: 0 !important;
+   padding-right: 0 !important;
+ }
+ /*image gallery*/
+ .image-checkbox {
+   cursor: pointer;
+   box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   border: 4px solid transparent;
+   margin-bottom: 0;
+   outline: 0;
+ }
+ .image-checkbox input[type="checkbox"] {
+   display: none;
+ }
+ .image-checkbox-checked {
+   border-color: #4783B0;
+ }
+ .image-checkbox .fa {
+   position: absolute;
+   color: #ffffff;
+   background-color: rgba(0,0,0,.5);
+   padding: 10px;
+   top: 0;
+   right: 0;
+ }
+ .image-checkbox-checked .fa {
+   display: block !important;
+ }
 
       /* button {
         margin: 4px;
@@ -268,6 +268,141 @@
         .hovereffect:hover a.info {
           -webkit-transition-delay:.2s;
           transition-delay:.2s;
+        }
+
+        #overlay {
+          position: fixed;
+          z-index: 999;
+          height: 2em;
+          width: 2em;
+          overflow: show;
+          margin: auto;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+        }
+
+        /* Transparent Overlay */
+        #overlay:before {
+          content: '';
+          display: block;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0,0,0,0.3);
+        }
+
+        /* :not(:required) hides these rules from IE9 and below */
+        #overlay:not(:required) {
+          /* hide "loading..." text */
+          font: 0/0 a;
+          color: transparent;
+          text-shadow: none;
+          background-color: transparent;
+          border: 0;
+        }
+
+        #overlay:not(:required):after {
+          content: '';
+          display: block;
+          font-size: 10px;
+          width: 1em;
+          height: 1em;
+          margin-top: -0.5em;
+          -webkit-animation: spinner 1500ms infinite linear;
+          -moz-animation: spinner 1500ms infinite linear;
+          -ms-animation: spinner 1500ms infinite linear;
+          -o-animation: spinner 1500ms infinite linear;
+          animation: spinner 1500ms infinite linear;
+          border-radius: 0.5em;
+          -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+          box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+        }
+
+        /* Animation */
+
+        @-webkit-keyframes spinner {
+          0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+          }
+        }
+        @-moz-keyframes spinner {
+          0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+          }
+        }
+        @-o-keyframes spinner {
+          0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+          }
+        }
+        @keyframes spinner {
+          0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+          }
+        }
+        .clock-button {
+          background-color: blueviolet;
+          padding: 0.5em;
+          color: white;
+        }
+
+        .clock-placement {
+          position: fixed;
+          /* Fixed/sticky position */
+          top: 20px;
+          /* Place the button at the top of the page */
+          right: 30px;
+          /* Place the button 30px from the right */
+          z-index: 99;
+          /* Make sure it does not overlap */
         }
       </style>
       <script type="text/javascript">

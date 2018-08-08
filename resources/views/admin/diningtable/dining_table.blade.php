@@ -52,14 +52,9 @@
 </div>
 @endforeach
 </div>
+ {{ $dining_table->links() }}
 
 @endsection
 @section('javascript')
-<script>
-  $(document).ready(function() {
-    $('#dataTables-example').DataTable({
-      responsive: true
-    });
-  });
-</script>
+
 @endsection
