@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('title','แก้ไขเมนู')
 @section('css')
 <style>
 div.upload {
@@ -97,7 +98,7 @@ div.upload input {
 </div>
 </div>
 @endsection
-@section('javascript') 
+@section('javascript')
 <script>
     function readURL(input) {
 

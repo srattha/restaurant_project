@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('title','เพิ่ม โปรโมชั่น')
 @section('css')
 <style>
 div.upload {

@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('title','โต๊ะอาหาร')
 @section('css')
 <style type="text/css" media="screen">
 .shape {

@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('title','เพิ่ม โต๊ะอาหาร')
 @section('css')
 <style>
 div.upload {

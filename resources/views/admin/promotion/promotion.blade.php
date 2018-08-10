@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('title','โปรโมชั่น')
 @section('css')
 <style type="text/css" media="screen">
 td{

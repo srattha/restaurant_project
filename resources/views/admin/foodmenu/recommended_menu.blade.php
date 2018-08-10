@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('title','เมนู อาหารแนะนำ')
 @section('css')
 <style type="text/css" media="screen">
 td{
@@ -20,7 +21,7 @@ th{
     <div class="offer offer-default">
       <div class="shape">
         <div class="shape-text">
-          เมนู 
+          เมนู
         </div>
       </div>
       <div class="offer-content">
@@ -50,10 +51,10 @@ th{
             </thead>
             <tbody>
               <tr>
-             
+
 
             </tr>
-           
+
           </tbody>
 
 

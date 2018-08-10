@@ -61,7 +61,10 @@
 
 
   @yield('css')
-<!--   <style>
+
+<style type="text/css">
+  /* Absolute Center Spinner */
+
   a {
         color: #333333;
         text-decoration: none;
@@ -76,36 +79,6 @@
     color: #333;
     text-decoration: none;
   }
-  #overlay{
-    position:fixed;
-    z-index:99999;
-    top:0;
-    left:0;
-    bottom:0;
-    right:0;
-    background:#f5f5f7;
-    transition: 1s 0.4s;
-  }
-  #progress{
-    height:5px;
-    background:#333333;
-    position:absolute;
-    width:0;
-    top:50%;
-  }
-  #progstat{
-    font-size:24px;
-    letter-spacing: 3px;
-    position:absolute;
-    top:50%;
-    margin-top:-40px;
-    width:100%;
-    text-align:center;
-    color:#333333;
-  }
-</style> -->
-<style type="text/css">
-  /* Absolute Center Spinner */
 #overlay {
   position: fixed;
   z-index: 999;

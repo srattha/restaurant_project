@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('title','บรรยากาศ ร้าน')
 @section('css')
 
 <style type="text/css" media="screen">

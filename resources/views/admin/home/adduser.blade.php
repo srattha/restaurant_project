@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-
+@section('title','เพิ่มสมาชิก')
 @section('content')
 <div class="row">
   <div class="col-lg-12">
