@@ -9,7 +9,12 @@ img{
 @endsection
 @section('content')
 <h1 style="text-align: center;">การสั่งของฉัน</h1>
- <button type="button" class="btn btn-success" onclick="location.href='{{ route('book_food',['id'=>$reservation->id]) }}'" ><i class="fa fa-plus-circle" aria-hidden="true"></i> สั่งอาหาร </button>
+@if($order->is_paid != 1)
+<button type="button" class="btn btn-success" onclick="location.href='{{ route('book_food',['id'=>$reservation->id]) }}'" ><i class="fa fa-plus-circle" aria-hidden="true"></i> สั่งอาหาร </button>
+@else
+
+@endif
+ <br>
  <br>
 <div class="table-responsive">
  <table class="table table-striped table-bordered table-hover">
@@ -34,11 +39,7 @@ img{
 </thead>
 <tbody>
 @foreach ($order_details as $index => $orders)
-@if($orders == [])
-ddd
-@else
 
-@endif
  <tr>
   <td> {{$datas}}</td>
   <td>
