@@ -38,10 +38,12 @@ class CounterstaffController extends Controller
       $food_type = Food_type::get();
             //$food_menus = Food_menus::get();
       $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
+     
       return view('counter_staff.index',['dining_table'=> $dining_table,
         'user'=> $user,
         'food_type'=> $food_type,
         'food_type_vegetable'=> $food_type_vegetable,
+        
       ]);
       break;
       case '4':
@@ -211,10 +213,24 @@ public function reservation_food(Request $request, $id)
   $dining_table = Dining_table::where('id', $reservation['dining_table_id'])->first();
   $food_type = Food_type::get();
   $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
+  $food_boiled = DB::table('food_menu')->where('food_type', 2)->get();
+  $f_m_fried = DB::table('food_menu')->where('food_type', 3)->get();
+   $f_m_yum = DB::table('food_menu')->where('food_type',4 )->get();
+   $f_m_dish = DB::table('food_menu')->where('food_type',5)->get();
+   $f_m_piza = DB::table('food_menu')->where('food_type',6)->get();
+   $f_m_beverage = DB::table('food_menu')->where('food_type',7)->get();
+    $f_m_coffee = DB::table('food_menu')->where('food_type',8)->get();   
   return view('counter_staff.reservation_food',['dining_table'=> $dining_table,
     'user'=> $user,
     'food_type'=> $food_type,
     'food_type_vegetable'=> $food_type_vegetable,
+    'food_boiled'=> $food_boiled,
+    'f_m_fried'=> $f_m_fried,
+    'f_m_yum'=>$f_m_yum,
+    'f_m_dish'=>$f_m_dish,
+    'f_m_piza'=>$f_m_piza,
+    'f_m_beverage'=>$f_m_beverage,
+    'f_m_coffee'=>$f_m_coffee,
     'reservation_id'=> $reservation['id'],
     'reserve_date'=> $reservation['reserve_date'],
   ]);
