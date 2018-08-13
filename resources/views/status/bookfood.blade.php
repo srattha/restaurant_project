@@ -89,6 +89,12 @@
           -webkit-transition-delay:.2s;
           transition-delay:.2s;
         }
+        .qty {
+          text-align: center;
+          width: 40px;
+          /* margin: 4px;*/
+          color: #333;
+        }
 </style>
 @endsection
 @section('content')
@@ -170,13 +176,13 @@
   </div>
   <div id="menu2" class="tab-pane fade">
     <h3>เมนูต้ม</h3>
-    @foreach ($food_type_vegetable as $index => $food_type_vegetables)
+    @foreach ($f_m_boiled as $index => $f_menu)
        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <div class="hovereffect">
-         <img src="{{ asset('storage/Food_menus/'.$food_type_vegetables->image) }}" alt="" style="width:100%; height: 200px;">
+         <img src="{{ asset('storage/Food_menus/'.$f_menu->image) }}" alt="" style="width:100%; height: 200px;">
          <div class="overlay">
-          <h2>{{$food_type_vegetables->food_name}} ราคา {{$food_type_vegetables->price}}</h2>
-          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$food_type_vegetables->food_name}}', '{{$food_type_vegetables->image}}', '{{$food_type_vegetables->id}}', '{{$food_type_vegetables->price}}')">สั่งเลย</a>
+          <h2>{{$f_menu->food_name}} ราคา {{$f_menu->price}}</h2>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu->food_name}}', '{{$f_menu->image}}', '{{$f_menu->id}}', '{{$f_menu->price}}')">สั่งเลย</a>
         </div>
       </div>
     </div>
@@ -184,27 +190,87 @@
   </div>
   <div id="menu3" class="tab-pane fade">
     <h3>เมนูทอด</h3>
-    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    @foreach ($f_m_fried as $index => $f_menu_fried)
+       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="hovereffect">
+         <img src="{{ asset('storage/Food_menus/'.$f_menu_fried->image) }}" alt="" style="width:100%; height: 200px;">
+         <div class="overlay">
+          <h2>{{$f_menu_fried->food_name}} ราคา {{$f_menu_fried->price}}</h2>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_fried->food_name}}', '{{$f_menu_fried->image}}', '{{$f_menu_fried->id}}', '{{$f_menu_fried->price}}')">สั่งเลย</a>
+        </div>
+      </div>
+    </div>
+    @endforeach
   </div>
   <div id="menu4" class="tab-pane fade">
     <h3>เมนูยำ</h3>
-    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+     @foreach ($f_m_yum as $index => $f_menu_yum)
+       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="hovereffect">
+         <img src="{{ asset('storage/Food_menus/'.$f_menu_yum->image) }}" alt="" style="width:100%; height: 200px;">
+         <div class="overlay">
+          <h2>{{$f_menu_yum->food_name}} ราคา {{$f_menu_yum->price}}</h2>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_yum->food_name}}', '{{$f_menu_yum->image}}', '{{$f_menu_yum->id}}', '{{$f_menu_yum->price}}')">สั่งเลย</a>
+        </div>
+      </div>
+    </div>
+    @endforeach
   </div>
   <div id="menu5" class="tab-pane fade">
     <h3>เมนูอาหารจารเดี่ยว</h3>
-    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+     @foreach ($f_m_dish as $index => $f_menu_dish)
+       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="hovereffect">
+         <img src="{{ asset('storage/Food_menus/'.$f_menu_dish->image) }}" alt="" style="width:100%; height: 200px;">
+         <div class="overlay">
+          <h2>{{$f_menu_dish->food_name}} ราคา {{$f_menu_dish->price}}</h2>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_dish->food_name}}', '{{$f_menu_dish->image}}', '{{$f_menu_dish->id}}', '{{$f_menu_dish->price}}')">สั่งเลย</a>
+        </div>
+      </div>
+    </div>
+    @endforeach
   </div>
   <div id="menu6" class="tab-pane fade">
     <h3>เมนูพิซซ่า</h3>
-    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    @foreach ($f_m_piza as $index => $f_menu_piza)
+       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="hovereffect">
+         <img src="{{ asset('storage/Food_menus/'.$f_menu_piza->image) }}" alt="" style="width:100%; height: 200px;">
+         <div class="overlay">
+          <h2>{{$f_menu_piza->food_name}} ราคา {{$f_menu_piza->price}}</h2>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_piza->food_name}}', '{{$f_menu_piza->image}}', '{{$f_menu_piza->id}}', '{{$f_menu_piza->price}}')">สั่งเลย</a>
+        </div>
+      </div>
+    </div>
+    @endforeach
   </div>
   <div id="menu7" class="tab-pane fade">
     <h3>เมนูเครื่องดื่ม</h3>
-    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    @foreach ($f_m_beverage as $index => $f_menu_beverage)
+       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="hovereffect">
+         <img src="{{ asset('storage/Food_menus/'.$f_menu_beverage->image) }}" alt="" style="width:100%; height: 200px;">
+         <div class="overlay">
+          <h2>{{$f_menu_beverage->food_name}} ราคา {{$f_menu_beverage->price}}</h2>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_beverage->food_name}}', '{{$f_menu_beverage->image}}', '{{$f_menu_beverage->id}}', '{{$f_menu_beverage->price}}')">สั่งเลย</a>
+        </div>
+      </div>
+    </div>
+    @endforeach
   </div>
   <div id="menu8" class="tab-pane fade">
     <h3>เมนูกาแฟ</h3>
-    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    @foreach ($f_m_coffee as $index => $f_menu_coffee)
+       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="hovereffect">
+         <img src="{{ asset('storage/Food_menus/'.$f_menu_coffee->image) }}" alt="" style="width:100%; height: 200px;">
+         <div class="overlay">
+          <h2>{{$f_menu_coffee->food_name}} ราคา {{$f_menu_coffee->price}}</h2>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_coffee->food_name}}', '{{$f_menu_coffee->image}}', '{{$f_menu_coffee->id}}', '{{$f_menu_coffee->price}}')">สั่งเลย</a>
+        </div>
+      </div>
+    </div>
+    @endforeach
   </div>
 </div>
 
@@ -223,7 +289,7 @@
   <div class="modal-body">
     <img id="image" class="img-responsive" >
     <br>
-    <form class="form-horizontal" method="POST" action="{{ route('order_food') }}">
+    <form class="form-horizontal" method="POST" action="{{ route('order_food_customer') }}">
      {{ csrf_field() }}
 
      <input type='hidden'  name="food_id" id="food_id" value="food_id">

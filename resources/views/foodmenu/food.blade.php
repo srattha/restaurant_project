@@ -18,9 +18,9 @@ h5{
 
 <div class="row">
   <h1 style="text-align: center;">เมนูอาหาร</h1>
-  <div class="container">
+  <div class="tabbable">
     <ul class="nav nav-tabs">
-      <li><a data-toggle="tab" href="#menu1">เมนูผัด</a></li>
+      <li class="active"><a data-toggle="tab" href="#menu1">เมนูผัด</a></li>
       <li><a data-toggle="tab" href="#menu2">เมนูต้ม</a></li>
       <li><a data-toggle="tab" href="#menu3">เมนูทอด</a></li>
       <li><a data-toggle="tab" href="#menu4">เมนูยำ</a></li>
@@ -62,8 +62,7 @@ h5{
     </div>
   </div>
 
-
-  <div id="menu2" class="tab-pane fade in active">
+  <div id="menu2" class="tab-pane fade ">
    <br>
    <div class="row">
      <div class="col-md-6">
@@ -93,7 +92,7 @@ h5{
   </div>
 </div>
 </div>
-<div id="menu3" class="tab-pane fade in active">
+<div id="menu3" class="tab-pane fade ">
  <br>
  <div class="row">
    <div class="col-md-6">
@@ -123,7 +122,7 @@ h5{
 </div>
 </div>
 </div>
-<div id="menu4" class="tab-pane fade in active">
+<div id="menu4" class="tab-pane fade ">
  <br>
  <div class="row">
    <div class="col-md-6">
@@ -153,7 +152,7 @@ h5{
 </div>
 </div>
 </div>
-<div id="menu5" class="tab-pane fade in active">
+<div id="menu5" class="tab-pane fade ">
  <br>
  <div class="row">
    <div class="col-md-6">
@@ -183,7 +182,7 @@ h5{
 </div>
 </div>
 </div>
-<div id="menu6" class="tab-pane fade in active">
+<div id="menu6" class="tab-pane fade ">
  <br>
  <div class="row">
    <div class="col-md-6">
@@ -213,7 +212,7 @@ h5{
 </div>
 </div>
 </div>
-<div id="menu7" class="tab-pane fade in active">
+<div id="menu7" class="tab-pane fade ">
  <br>
  <div class="row">
    <div class="col-md-6">
@@ -243,7 +242,7 @@ h5{
 </div>
 </div>
 </div>
-<div id="menu8" class="tab-pane fade in active">
+<div id="menu8" class="tab-pane fade ">
  <br>
  <div class="row">
    <div class="col-md-6">
@@ -276,6 +275,8 @@ h5{
 </div>
 </div>
 </div>
+
+
 @endsection
 @section('script')
 @endsection
