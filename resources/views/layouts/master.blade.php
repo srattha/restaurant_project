@@ -58,6 +58,7 @@
   <script src="{{ asset('/vendor/datatables-plugins/dataTables.bootstrap.min.js') }}"></script>
   <script src="{{ asset('/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
   <script src="{{ asset('/assets/js/lightbox.js') }}"></script>
+ 
 
 
   @yield('css')
@@ -304,7 +305,7 @@
             <ul class="dropdown-menu dropdown-user">
               <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
               </li>
-              <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+              <li><a href="{{ route('customer_report',['id'=>Auth::user()->id]) }}"><i class="fa fa-gear fa-fw"></i> การสั่งของฉัน</a>
               </li>
               <li class="divider"></li>
               <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -331,7 +332,14 @@
 
 </div>
 </div>
-
+<div class="row">
+  @if(session()->has('reservation'))
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>{{ session()->get('reservation') }}</strong> 
+  </div>
+@endif
+</div>
 <div class="row" style="margin-top: 15px;">
   <nav class="navbar navbar-inverse">
     <div class="navbar-header">

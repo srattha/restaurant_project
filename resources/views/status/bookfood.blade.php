@@ -95,10 +95,13 @@
           /* margin: 4px;*/
           color: #333;
         }
+        a{
+          cursor: pointer;
+        }
 </style>
 @endsection
 @section('content')
-<div class="row" style="padding-top: 30px;">
+<div style="padding-top: 30px;">
  <div class="panel-group">
   <div class="panel panel-default">
    <div class="panel-heading" style="padding: 20px 15px;">
@@ -108,6 +111,7 @@
      </div>
      <div class="col-md-6" style="text-align: right;">
       <button type="button" class="btn btn-default" onclick="location.href='{{ route('status') }}'"> <i class="fa fa-chevron-left" aria-hidden="true"></i> กลับ</button>
+      <button type="button" class="btn btn-default" onclick="location.href='{{ route('customer_report'  ,['id'=>$user->id]) }}'"> <i class="fa fa-chevron-left" aria-hidden="true"></i> การสั่งของฉัน</button>
     </div>
   </div>
 </div>
@@ -124,7 +128,7 @@
       <div class="panel panel-success">
         <div class="panel-heading">จองโดย:</div>
         <div class="panel-body">
-         {{$user}}
+         {{$user->name}}
        </div>
      </div>
    </div>
