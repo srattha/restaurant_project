@@ -36,6 +36,7 @@ img{
       <th>ประเภท</th>
       <th>เมนูแนะนำ</th>
       <th>ราคา</th>
+      <th>ราคา พิเศษ</th>
       <th>status </th>
       <th>created_at</th>
       <th>updated_at</th>
@@ -76,6 +77,7 @@ img{
       @endif
     </td>
     <td>{{$food_menu->price}}</td>
+     <td>{{$food_menu->special_price}}</td>
     <td>{{$food_menu->is_active}}</td>
     <td>{{$food_menu->created_at}}</td>
     <td>{{$food_menu->updated_at}}</td>

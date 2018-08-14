@@ -130,7 +130,20 @@
    @media print{
      .print-page{
        display: block;
+
      }
+     table, td, th {
+      border: none;
+    }
+
+    table {
+      border-collapse: none;
+      width: 100%;
+    }
+
+    th {
+      height: 50px;
+    }
 
      .page{
        display: none;

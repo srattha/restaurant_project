@@ -99,6 +99,7 @@ class FoodmenuController extends Controller
         $arr->is_recommend = $request->is_recommend;
         $arr->food_type = $request->food_type;
         $arr->price = $request->price;
+        $arr->special_price = $request->special_price;
         $arr->is_active = $request->is_active;
         $arr->save();
         if ($arr) {
@@ -116,6 +117,7 @@ class FoodmenuController extends Controller
     $arr->is_recommend = $request->is_recommend;
     $arr->food_type = $request->food_type;
     $arr->price = $request->price;
+    $arr->special_price = $request->special_price;
     $arr->is_active = $request->is_active;
     $arr->save();
     if ($arr) {
@@ -163,7 +165,6 @@ class FoodmenuController extends Controller
 
         //return $request->all();
         if ($id) {
-
            if ($request->hasFile('file')) {
             $filename = $request->file->getClientOriginalName();
             $request->file->storeAs('public/Food_menus',$filename);
@@ -174,6 +175,7 @@ class FoodmenuController extends Controller
             $update_menu->is_recommend = $request->is_recommend;
             $update_menu->food_type = $request->food_type;
             $update_menu->price = $request->price;
+            $update_menu->special_price = $request->special_price;
             $update_menu->is_active = $request->is_active;
             $update_menu->save();
             if ($update_menu) {
@@ -189,6 +191,7 @@ class FoodmenuController extends Controller
         $update_menu->food_type = $request->food_type;
         $update_menu->is_recommend = $request->is_recommend;
         $update_menu->price = $request->price;
+        $update_menu->special_price = $request->special_price;
         $update_menu->is_active = $request->is_active;
         $update_menu->save();
         if ($update_menu) {

@@ -84,7 +84,7 @@ class Book_tableController extends Controller
   }
   public function book_food(Request $request, $id)
 {
-
+return $request->all();
  $reservation = Reservation::where('id', $id)->first();
   $users = Auth::user();
   $users_type_id = $users->user_type_id;
