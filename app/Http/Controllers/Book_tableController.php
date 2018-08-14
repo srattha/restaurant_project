@@ -227,7 +227,7 @@ public function index()
    $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
    $strMonthThai=$strMonthCut[$strMonth];
    $datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
- 
+
    if ($reservation == '') {
      session()->flash('reservation','ไม่มีรายการ');
      return redirect("/");

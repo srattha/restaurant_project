@@ -76,6 +76,11 @@ div.upload input {
           <input type="numbel" class="form-control" value="{{$edit_menu->price}}" name="price" placeholder="ราคา">
         </div>
         <br>
+         <div>
+          <label>ราคา พิเศษ</label>
+          <input type="numbel" class="form-control" value="{{$edit_menu->special_price}}" name="special_price" placeholder="ราคา">
+        </div>
+        <br>
         <div>
           <div class="checkbox">
             <label>

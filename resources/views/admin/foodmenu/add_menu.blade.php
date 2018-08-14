@@ -75,6 +75,10 @@ div.upload input {
           <label>ราคา</label>
           <input type="numbel" class="form-control" name="price" placeholder="ราคา">
         </div>
+        <div>
+          <label>ราคา พิเศษ</label>
+          <input type="numbel" class="form-control" name="special_price" placeholder="ราคา">
+        </div>
         <br>
         <div>
          <div class="checkbox">
