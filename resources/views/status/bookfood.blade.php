@@ -455,9 +455,8 @@
        document.getElementById("big_price").disabled = true;
     }else{
       document.getElementById("special_price").disabled = false;
-<<<<<<< HEAD
       document.getElementById("big_price").disabled = false;
-=======
+
       $("#price").click(function () {
         if (this.checked)
           document.getElementById("special_price").disabled = true;
@@ -470,7 +469,13 @@
         else
           document.getElementById("price").disabled = false;
       });
->>>>>>> 9002e5cc73fe0a08778e3c4981f0b47ef099f13f
+      $("#big_price").click(function () {
+        if (this.checked)
+          document.getElementById("price").disabled = true;
+        else
+          document.getElementById("price").disabled = false;
+      });
+
     }
 
 
