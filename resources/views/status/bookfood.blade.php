@@ -459,20 +459,26 @@
 
       $("#price").click(function () {
         if (this.checked)
+          document.getElementById("big_price").disabled = true;
           document.getElementById("special_price").disabled = true;
         else
           document.getElementById("special_price").disabled = false;
+        document.getElementById("big_price").disabled = false;
       });
       $("#special_price").click(function () {
         if (this.checked)
+           document.getElementById("big_price").disabled = true;
           document.getElementById("price").disabled = true;
         else
+          document.getElementById("big_price").disabled = false;
           document.getElementById("price").disabled = false;
       });
       $("#big_price").click(function () {
         if (this.checked)
+           document.getElementById("special_price").disabled = true;
           document.getElementById("price").disabled = true;
         else
+          document.getElementById("special_price").disabled = false;
           document.getElementById("price").disabled = false;
       });
 
