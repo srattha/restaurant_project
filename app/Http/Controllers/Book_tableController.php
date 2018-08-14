@@ -163,7 +163,11 @@ public function index()
 
     public function order_food(Request $request){
   //return $request->all();
-      $price = $request->price *  $request->totalorder;
+      if ($request->price) {
+       $price = $request->price *  $request->totalorder;
+      }else{
+         $price = $request->special_price *  $request->totalorder;
+      }
       $order = Order::where('reservationld_id', $request->reservation_id)->first();
       if (!$order) {
        $add_order = new Order;

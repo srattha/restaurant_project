@@ -172,7 +172,8 @@
          <img src="{{ asset('storage/Food_menus/'.$food_type_vegetables->image) }}" alt="" style="width:100%; height: 200px;">
          <div class="overlay">
           <h2>{{$food_type_vegetables->food_name}} ราคา {{$food_type_vegetables->price}}</h2>
-          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$food_type_vegetables->food_name}}', '{{$food_type_vegetables->image}}', '{{$food_type_vegetables->id}}', '{{$food_type_vegetables->price}}')">สั่งเลย</a>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$food_type_vegetables->food_name}}',
+           '{{$food_type_vegetables->image}}', '{{$food_type_vegetables->id}}', '{{$food_type_vegetables->price}}',  '{{$food_type_vegetables->special_price}}' )">สั่งเลย</a>
         </div>
       </div>
     </div>
@@ -186,7 +187,7 @@
          <img src="{{ asset('storage/Food_menus/'.$f_menu->image) }}" alt="" style="width:100%; height: 200px;">
          <div class="overlay">
           <h2>{{$f_menu->food_name}} ราคา {{$f_menu->price}}</h2>
-          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu->food_name}}', '{{$f_menu->image}}', '{{$f_menu->id}}', '{{$f_menu->price}}')">สั่งเลย</a>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu->food_name}}', '{{$f_menu->image}}', '{{$f_menu->id}}', '{{$f_menu->price}}', '{{$f_menu->special_price}}')">สั่งเลย</a>
         </div>
       </div>
     </div>
@@ -288,7 +289,7 @@
   <div class="modal-content">
    <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">&times;</button>
-    <h4 class="modal-title"><span id="name"></span>  ราคา <span id="rates"></span> บาท</h4>
+    <h4 class="modal-title"><span id="name"></span></h4>
   </div>
   <div class="modal-body">
     <img id="image" class="img-responsive" >
@@ -297,7 +298,7 @@
      {{ csrf_field() }}
 
      <input type='hidden'  name="food_id" id="food_id" value="food_id">
-     <input type='hidden'  name="price" id="price" value="price">
+    <!--  <input type='hidden'  name="price" id="price" value="price"> -->
      <input type='hidden'  name="reservation_id" id="reservation_id" value="{{$reservation_id}}">
      <input type='hidden'  name="orde_date"  value="{{$reserve_date}}">
      <input type='hidden'  name="dining_table"  value="{{$dining_table}}">
@@ -308,13 +309,31 @@
         <input type='text' id="" name='totalorder' value='1' class='qty' />
         <input type='button' value='+' class=' btn btn-success qtyplus' field='totalorder' />
       </div>
-      <div class="col-md-6" style="text-align: right;">
-        <div id="rates"></div>
-      </div>
-
     </div>
-
-
+    <div class="row">
+      <div class="col-md-3">
+       <div id="rates"></div>
+      </div>
+      <div class="col-md-3">
+         <div id="special_prices"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="checkbox">
+          <input type="hidden" name="price" value="0" />
+          <label><input type="checkbox" id="price" name="price"  value="price"> ธรรมดา</label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="checkbox">
+          <input type="hidden" name="special_price" value="0" />
+          <label>
+            <input type="checkbox" id="special_price" name="special_price"  value="special_price"> พิเศษ
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">เลือกเมนูอื่น</button>
@@ -398,16 +417,25 @@
         });
   });
 
-  function order_food($name, $image, $id, $price){
+  function order_food($name, $image, $id, $price, $special_price){
     var name = $name;
     var image = $image;
     var food_id = $id;
     var price = $price;
+    var special_price = $special_price;
+    if (special_price == "") {
+      special_price = 0;
+       document.getElementById("special_price").disabled = true;
+    }else{
+      document.getElementById("special_price").disabled = false;
+    }
     document.getElementById("name").innerHTML = name;
     document.getElementById("food_name").value = name;
     document.getElementById("food_id").value = food_id;
     document.getElementById("price").value = price;
+    document.getElementById("special_price").value = special_price;
     document.getElementById("rates").innerHTML = price;
+    document.getElementById("special_prices").innerHTML = special_price;
     $("#image").attr("src", "/storage/Food_menus/"+image);
 
   }

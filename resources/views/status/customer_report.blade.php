@@ -29,9 +29,9 @@ img{
    <th>
      <h5>จำนวน</h5>
    </th>
-   <th>
+   <!-- <th>
      <h5>ราคาต่อหน่วย</h5>
-   </th>
+   </th> -->
    <th>
      <h5>จำนวนเงิน</h5>
    </th>
@@ -46,17 +46,17 @@ img{
    <p>{{$orders->food_detail->food_name}}</p>
  </td>
  <td>{{$orders->totalorder}}</td>
- <td>{{$orders->food_detail->price}}</td>
- <td>{{$orders->amount}}</td>
+ <!--  -->
+ <td>{{$orders->amount}} บาท</td>
 </tr>
  @endforeach
 <tr>
-  <td colspan="4">
+  <td colspan="3">
    <div style="text-align: center;">
     <h5>ยอดรวม</h5>
   </div>
 </td>
-<td>{{$amount}}</td>
+<td>{{$amount}} บาท</td>
 </tr>
 </tbody>
 </table>
