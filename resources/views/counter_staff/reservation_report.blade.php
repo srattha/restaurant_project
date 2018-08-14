@@ -1,11 +1,14 @@
 @extends('counter_staff.master')
 @section('title','รายงานการจอ')
 @section('css')
+<style type="text/css">
+
+</style>
 @endsection
 @section('content')
 
-<div class="container page" style="padding:10px;">
- <div class="panel-group ">
+<div class="container" style="padding:10px;">
+ <div class="panel-group page">
   <div class="panel panel-default">
    <div class="panel-heading" style="padding: 20px 15px;">
     <div class="row">
@@ -123,8 +126,6 @@
 </div>
 </div>
 </div>
-</div>
-
 <div class="print-page">
   <div style="text-align: center; padding: 50px;">
     <img src="/img/g1.jpg" class="img-circle" style="width: 20%;">
@@ -132,31 +133,44 @@
   <div style="text-align: center; padding: 30px;">
     <b>ใบแจ้งรายการ</b>
   </div>
-  <div style="margin-left: 145px;">
-   วันที่:<span style="margin-left: 270px;"> {{$datas}}</span>
- </div>
- <div style="text-align:center;padding: 10px;">
-  <b>โต๊ะ: {{$table_name->name}}</b>
+  <div style="text-align:center;padding: 10px;">
+      <b>วันที่: {{$datas}}</b>
+    </div>
+  <div style="text-align:center;padding: 10px;">
+    <b>โต๊ะ: {{$table_name->name}}</b>
+  </div>
+  <table>
+    <tr style="border-bottom: 1px solid #ddd;">
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;สิ้นค้า</td>
+      <td></td>
+      <td style="text-align: right;">ราคา</td>
+    </tr>
+    @foreach ($food as $index => $f)
+    <tr>
+      <td>{{$f->totalorder}}&nbsp;&nbsp;&nbsp;&nbsp;{{$f->food_detail->food_name}}</td>
+      <td></td>
+      <td style="text-align: right;">{{$f->food_detail->price}}</td>
+    </tr>
+    @endforeach
+  </table>
+  <div style="border-bottom: 1px solid #ddd;"></div>
+  <table>
+    <tr>
+      <th><b>ยอดรวม:</b></th>
+      <th></th>
+      <th style="text-align: right;">{{$amount}} บาท</th>
+    </tr>
+     <tr>
+      <th><b>หมายเหตุ:</b></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </table>
 </div>
-<hr style="border: 1px dashed black;margin-left: 145px; margin-right: 140px;" />
-<div style="margin-left: 145px;">
-  <span style=" margin-left: 30px;">สิ้นค้า</span><span style=" margin-left: 335px;"> ราคา</span>
+
 </div>
-<hr style="border: 1px dashed black;margin-left: 145px; margin-right: 140px;" />
-<div style="margin-left: 145px;">
-  @foreach ($food as $index => $f)
-  <br>{{$f->totalorder}}<span style=" margin-left: 24px;">{{$f->food_detail->food_name}}</span>
-  <span style="margin-left: 343px;">80</span>
-  @endforeach
-</div>
-<hr style="border: 1px dashed black;margin-left: 145px; margin-right: 140px;" />
-<div style="margin-left: 145px;">
-  <b>ยอดรวม:</b><span style="margin-left: 340px;"> {{$amount}}</span>
-</div>
-<div style="margin-left: 145px;">
-  <b>หมายเหตุ:</b>
-</div>
-</div>
+
+
 
 @endsection
 @section('javascript')
