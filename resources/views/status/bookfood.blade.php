@@ -427,6 +427,19 @@
             $('input[name='+fieldName+']').val(0);
           }
         });
+
+    $('#price :checkbox').click(function () {
+      var $this = $(this);
+            // $this will contain a reference to the checkbox
+            if ($this.is(':checked')) {
+                // the checkbox was checked
+                alert('checked');
+              } else {
+                // the checkbox was unchecked
+                alert('unchecked');
+              }
+            });
+
   });
 
   function order_food($name, $image, $id, $price, $special_price, $big_price){
@@ -442,8 +455,25 @@
        document.getElementById("big_price").disabled = true;
     }else{
       document.getElementById("special_price").disabled = false;
+<<<<<<< HEAD
       document.getElementById("big_price").disabled = false;
+=======
+      $("#price").click(function () {
+        if (this.checked)
+          document.getElementById("special_price").disabled = true;
+        else
+          document.getElementById("special_price").disabled = false;
+      });
+      $("#special_price").click(function () {
+        if (this.checked)
+          document.getElementById("price").disabled = true;
+        else
+          document.getElementById("price").disabled = false;
+      });
+>>>>>>> 9002e5cc73fe0a08778e3c4981f0b47ef099f13f
     }
+
+
     document.getElementById("name").innerHTML = name;
     document.getElementById("food_name").value = name;
     document.getElementById("food_id").value = food_id;
