@@ -35,8 +35,9 @@ img{
       <th>ชื่อ</th>
       <th>ประเภท</th>
       <th>เมนูแนะนำ</th>
-      <th>ราคา</th>
-      <th>ราคา พิเศษ</th>
+      <th>ราคา เล็ก</th>
+      <th>ราคา กลาง</th>
+      <th>ราคา ใหญ่</th>
       <th>status </th>
       <th>created_at</th>
       <th>updated_at</th>
@@ -78,6 +79,7 @@ img{
     </td>
     <td>{{$food_menu->price}}</td>
      <td>{{$food_menu->special_price}}</td>
+     <td>{{$food_menu->big_price}}</td>
     <td>{{$food_menu->is_active}}</td>
     <td>{{$food_menu->created_at}}</td>
     <td>{{$food_menu->updated_at}}</td>

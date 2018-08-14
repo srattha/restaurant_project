@@ -165,9 +165,12 @@ public function index()
   //return $request->all();
       if ($request->price) {
        $price = $request->price *  $request->totalorder;
-      }else{
+      }else if($request->special_price){
          $price = $request->special_price *  $request->totalorder;
+      }else{
+        $price = $request->big_price *  $request->totalorder;
       }
+      return $price;
       $order = Order::where('reservationld_id', $request->reservation_id)->first();
       if (!$order) {
        $add_order = new Order;

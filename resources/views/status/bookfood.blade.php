@@ -173,7 +173,7 @@
          <div class="overlay">
           <h2>{{$food_type_vegetables->food_name}} ราคา {{$food_type_vegetables->price}}</h2>
           <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$food_type_vegetables->food_name}}',
-           '{{$food_type_vegetables->image}}', '{{$food_type_vegetables->id}}', '{{$food_type_vegetables->price}}',  '{{$food_type_vegetables->special_price}}' )">สั่งเลย</a>
+           '{{$food_type_vegetables->image}}', '{{$food_type_vegetables->id}}', '{{$food_type_vegetables->price}}',  '{{$food_type_vegetables->special_price}}', '{{$food_type_vegetables->big_price}}' )">สั่งเลย</a>
         </div>
       </div>
     </div>
@@ -187,7 +187,7 @@
          <img src="{{ asset('storage/Food_menus/'.$f_menu->image) }}" alt="" style="width:100%; height: 200px;">
          <div class="overlay">
           <h2>{{$f_menu->food_name}} ราคา {{$f_menu->price}}</h2>
-          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu->food_name}}', '{{$f_menu->image}}', '{{$f_menu->id}}', '{{$f_menu->price}}', '{{$f_menu->special_price}}')">สั่งเลย</a>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu->food_name}}', '{{$f_menu->image}}', '{{$f_menu->id}}', '{{$f_menu->price}}', '{{$f_menu->special_price}}','{{$f_menu->big_price}}')">สั่งเลย</a>
         </div>
       </div>
     </div>
@@ -201,7 +201,7 @@
          <img src="{{ asset('storage/Food_menus/'.$f_menu_fried->image) }}" alt="" style="width:100%; height: 200px;">
          <div class="overlay">
           <h2>{{$f_menu_fried->food_name}} ราคา {{$f_menu_fried->price}}</h2>
-          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_fried->food_name}}', '{{$f_menu_fried->image}}', '{{$f_menu_fried->id}}', '{{$f_menu_fried->price}}')">สั่งเลย</a>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_fried->food_name}}', '{{$f_menu_fried->image}}', '{{$f_menu_fried->id}}', '{{$f_menu_fried->price}}','{{$f_menu_fried->special_price}}','{{$f_menu_fried->big_price}}')">สั่งเลย</a>
         </div>
       </div>
     </div>
@@ -215,7 +215,7 @@
          <img src="{{ asset('storage/Food_menus/'.$f_menu_yum->image) }}" alt="" style="width:100%; height: 200px;">
          <div class="overlay">
           <h2>{{$f_menu_yum->food_name}} ราคา {{$f_menu_yum->price}}</h2>
-          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_yum->food_name}}', '{{$f_menu_yum->image}}', '{{$f_menu_yum->id}}', '{{$f_menu_yum->price}}')">สั่งเลย</a>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_yum->food_name}}', '{{$f_menu_yum->image}}', '{{$f_menu_yum->id}}', '{{$f_menu_yum->price}}','{{$f_menu_yum->special_price}}','{{$f_menu_yum->big_price}}')">สั่งเลย</a>
         </div>
       </div>
     </div>
@@ -229,7 +229,7 @@
          <img src="{{ asset('storage/Food_menus/'.$f_menu_dish->image) }}" alt="" style="width:100%; height: 200px;">
          <div class="overlay">
           <h2>{{$f_menu_dish->food_name}} ราคา {{$f_menu_dish->price}}</h2>
-          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_dish->food_name}}', '{{$f_menu_dish->image}}', '{{$f_menu_dish->id}}', '{{$f_menu_dish->price}}')">สั่งเลย</a>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_dish->food_name}}', '{{$f_menu_dish->image}}', '{{$f_menu_dish->id}}', '{{$f_menu_dish->price}}','{{$f_menu_dish->special_price}}','{{$f_menu_dish->big_price}}')">สั่งเลย</a>
         </div>
       </div>
     </div>
@@ -243,7 +243,7 @@
          <img src="{{ asset('storage/Food_menus/'.$f_menu_piza->image) }}" alt="" style="width:100%; height: 200px;">
          <div class="overlay">
           <h2>{{$f_menu_piza->food_name}} ราคา {{$f_menu_piza->price}}</h2>
-          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_piza->food_name}}', '{{$f_menu_piza->image}}', '{{$f_menu_piza->id}}', '{{$f_menu_piza->price}}')">สั่งเลย</a>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_piza->food_name}}', '{{$f_menu_piza->image}}', '{{$f_menu_piza->id}}', '{{$f_menu_piza->price}}','{{$f_menu_piza->special_price}}','{{$f_menu_piza->big_price}}')">สั่งเลย</a>
         </div>
       </div>
     </div>
@@ -257,7 +257,7 @@
          <img src="{{ asset('storage/Food_menus/'.$f_menu_beverage->image) }}" alt="" style="width:100%; height: 200px;">
          <div class="overlay">
           <h2>{{$f_menu_beverage->food_name}} ราคา {{$f_menu_beverage->price}}</h2>
-          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_beverage->food_name}}', '{{$f_menu_beverage->image}}', '{{$f_menu_beverage->id}}', '{{$f_menu_beverage->price}}')">สั่งเลย</a>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_beverage->food_name}}', '{{$f_menu_beverage->image}}', '{{$f_menu_beverage->id}}', '{{$f_menu_beverage->price}}','{{$f_menu_beverage->special_price}}','{{$f_menu_beverage->big_price}}')">สั่งเลย</a>
         </div>
       </div>
     </div>
@@ -271,7 +271,7 @@
          <img src="{{ asset('storage/Food_menus/'.$f_menu_coffee->image) }}" alt="" style="width:100%; height: 200px;">
          <div class="overlay">
           <h2>{{$f_menu_coffee->food_name}} ราคา {{$f_menu_coffee->price}}</h2>
-          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_coffee->food_name}}', '{{$f_menu_coffee->image}}', '{{$f_menu_coffee->id}}', '{{$f_menu_coffee->price}}')">สั่งเลย</a>
+          <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_coffee->food_name}}', '{{$f_menu_coffee->image}}', '{{$f_menu_coffee->id}}', '{{$f_menu_coffee->price}}','{{$f_menu_coffee->special_price}}','{{$f_menu_coffee->big_price}}')">สั่งเลย</a>
         </div>
       </div>
     </div>
@@ -317,22 +317,34 @@
       <div class="col-md-3">
          <div id="special_prices"></div>
       </div>
+      <div class="col-md-3">
+         <div id="big_prices"></div>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-3">
         <div class="checkbox">
           <input type="hidden" name="price" value="0" />
-          <label><input type="checkbox" id="price" name="price"  value="price"> ธรรมดา</label>
+          <label><input type="checkbox" id="price" name="price"  value="price" checked> เล็ก</label>
         </div>
       </div>
       <div class="col-md-3">
         <div class="checkbox">
           <input type="hidden" name="special_price" value="0" />
           <label>
-            <input type="checkbox" id="special_price" name="special_price"  value="special_price"> พิเศษ
+            <input type="checkbox" id="special_price" name="special_price"  value="special_price"> กลาง
           </label>
         </div>
       </div>
+       <div class="col-md-3">
+        <div class="checkbox">
+          <input type="hidden" name="big_price" value="0" />
+          <label>
+            <input type="checkbox" id="big_price" name="big_price"  value="special_price"> ใหญ่
+          </label>
+        </div>
+      </div>
+      
     </div>
   </div>
   <div class="modal-footer">
@@ -417,27 +429,32 @@
         });
   });
 
-  function order_food($name, $image, $id, $price, $special_price){
+  function order_food($name, $image, $id, $price, $special_price, $big_price){
     var name = $name;
     var image = $image;
     var food_id = $id;
     var price = $price;
+    var big_price = $big_price;
     var special_price = $special_price;
-    if (special_price == "") {
+    if (special_price == "" || big_price == "") {
       special_price = 0;
        document.getElementById("special_price").disabled = true;
+       document.getElementById("big_price").disabled = true;
     }else{
       document.getElementById("special_price").disabled = false;
+      document.getElementById("big_price").disabled = false;
     }
     document.getElementById("name").innerHTML = name;
     document.getElementById("food_name").value = name;
     document.getElementById("food_id").value = food_id;
     document.getElementById("price").value = price;
-    document.getElementById("special_price").value = special_price;
     document.getElementById("rates").innerHTML = price;
+    document.getElementById("special_price").value = special_price;
     document.getElementById("special_prices").innerHTML = special_price;
+    document.getElementById("big_price").value = big_price;
+    document.getElementById("big_prices").innerHTML = big_price;
     $("#image").attr("src", "/storage/Food_menus/"+image);
-
+      console.log(big_price)
   }
 </script>
 @endsection

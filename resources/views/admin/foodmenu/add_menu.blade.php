@@ -72,12 +72,17 @@ div.upload input {
         </div>
         <br>
         <div>
-          <label>ราคา</label>
+          <label>ราคา เล็ก</label>
           <input type="numbel" class="form-control" name="price" placeholder="ราคา">
         </div>
         <div>
-          <label>ราคา พิเศษ</label>
+          <label>ราคา กลาง</label>
           <input type="numbel" class="form-control" name="special_price" placeholder="ราคา">
+        </div>
+        <br>
+        <div>
+          <label>ราคา ไหญ่</label>
+          <input type="numbel" class="form-control" name="big_price" placeholder="ราคา">
         </div>
         <br>
         <div>

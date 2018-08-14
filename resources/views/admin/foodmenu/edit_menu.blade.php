@@ -72,13 +72,18 @@ div.upload input {
         </div>
         <br>
         <div>
-          <label>ราคา</label>
+          <label>ราคา เล็ก</label>
           <input type="numbel" class="form-control" value="{{$edit_menu->price}}" name="price" placeholder="ราคา">
         </div>
         <br>
          <div>
-          <label>ราคา พิเศษ</label>
+          <label>ราคา กลาง</label>
           <input type="numbel" class="form-control" value="{{$edit_menu->special_price}}" name="special_price" placeholder="ราคา">
+        </div>
+        <br>
+         <div>
+          <label>ราคา ไหญ่</label>
+          <input type="numbel" class="form-control" value="{{$edit_menu->big_price}}" name="big_price" placeholder="ราคา">
         </div>
         <br>
         <div>
