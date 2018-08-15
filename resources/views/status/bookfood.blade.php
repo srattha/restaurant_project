@@ -443,13 +443,17 @@ a{
   });
 
   function order_food($name, $image, $id, $price, $special_price, $big_price){
+
+    document.getElementById("price").checked = false;
+    document.getElementById("special_price").checked = false;
+    document.getElementById("big_price").checked = false;
     var name = $name;
     var image = $image;
     var food_id = $id;
     var price = $price;
     var big_price = $big_price;
     var special_price = $special_price;
-    
+
     if (special_price == "") {
       special_price = 0;
       console.log(special_price)
@@ -467,7 +471,7 @@ a{
          document.getElementById("special_price").disabled = false;
          //document.getElementById("big_price").disabled = false;
        }
-       
+
      });
       $("#special_price").click(function () {
         if (this.checked){
@@ -477,7 +481,7 @@ a{
         else{
          document.getElementById("price").disabled = false;
        }
-       
+
      });
       $("#big_price").click(function () {
         if (this.checked){
@@ -510,7 +514,7 @@ a{
          document.getElementById("special_price").disabled = false;
          document.getElementById("big_price").disabled = false;
        }
-       
+
      });
       $("#special_price").click(function () {
         if (this.checked){
@@ -522,7 +526,7 @@ a{
          document.getElementById("big_price").disabled = false;
          document.getElementById("price").disabled = false;
        }
-       
+
      });
       $("#big_price").click(function () {
         if (this.checked){
@@ -551,7 +555,7 @@ a{
     document.getElementById("big_price").value = big_price;
     document.getElementById("big_prices").innerHTML = big_price;
     $("#image").attr("src", "/storage/Food_menus/"+image);
-    
+
   }
 </script>
 @endsection
