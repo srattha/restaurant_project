@@ -168,7 +168,7 @@ a{
       <h3>เมนูผัก</h3>
       @foreach ($food_type_vegetable as $index => $food_type_vegetables)
       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <div class="hovereffect">
+        <br><div class="hovereffect">
          <img src="{{ asset('storage/Food_menus/'.$food_type_vegetables->image) }}" alt="" style="width:100%; height: 200px;">
          <div class="overlay">
           <h2>{{$food_type_vegetables->food_name}} ราคา {{$food_type_vegetables->price}}</h2>
@@ -183,7 +183,7 @@ a{
     <h3>เมนูต้ม</h3>
     @foreach ($f_m_boiled as $index => $f_menu)
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-      <div class="hovereffect">
+      <br><div class="hovereffect">
        <img src="{{ asset('storage/Food_menus/'.$f_menu->image) }}" alt="" style="width:100%; height: 200px;">
        <div class="overlay">
         <h2>{{$f_menu->food_name}} ราคา {{$f_menu->price}}</h2>
@@ -197,7 +197,7 @@ a{
   <h3>เมนูทอด</h3>
   @foreach ($f_m_fried as $index => $f_menu_fried)
   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    <div class="hovereffect">
+    <br><div class="hovereffect">
      <img src="{{ asset('storage/Food_menus/'.$f_menu_fried->image) }}" alt="" style="width:100%; height: 200px;">
      <div class="overlay">
       <h2>{{$f_menu_fried->food_name}} ราคา {{$f_menu_fried->price}}</h2>
@@ -211,7 +211,7 @@ a{
   <h3>เมนูยำ</h3>
   @foreach ($f_m_yum as $index => $f_menu_yum)
   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    <div class="hovereffect">
+    <br><div class="hovereffect">
      <img src="{{ asset('storage/Food_menus/'.$f_menu_yum->image) }}" alt="" style="width:100%; height: 200px;">
      <div class="overlay">
       <h2>{{$f_menu_yum->food_name}} ราคา {{$f_menu_yum->price}}</h2>
@@ -225,7 +225,7 @@ a{
   <h3>เมนูอาหารจารเดี่ยว</h3>
   @foreach ($f_m_dish as $index => $f_menu_dish)
   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    <div class="hovereffect">
+    <br><div class="hovereffect">
      <img src="{{ asset('storage/Food_menus/'.$f_menu_dish->image) }}" alt="" style="width:100%; height: 200px;">
      <div class="overlay">
       <h2>{{$f_menu_dish->food_name}} ราคา {{$f_menu_dish->price}}</h2>
@@ -239,7 +239,7 @@ a{
   <h3>เมนูพิซซ่า</h3>
   @foreach ($f_m_piza as $index => $f_menu_piza)
   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    <div class="hovereffect">
+    <br><div class="hovereffect">
      <img src="{{ asset('storage/Food_menus/'.$f_menu_piza->image) }}" alt="" style="width:100%; height: 200px;">
      <div class="overlay">
       <h2>{{$f_menu_piza->food_name}} ราคา {{$f_menu_piza->price}}</h2>
@@ -253,7 +253,7 @@ a{
   <h3>เมนูเครื่องดื่ม</h3>
   @foreach ($f_m_beverage as $index => $f_menu_beverage)
   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    <div class="hovereffect">
+    <br><div class="hovereffect">
      <img src="{{ asset('storage/Food_menus/'.$f_menu_beverage->image) }}" alt="" style="width:100%; height: 200px;">
      <div class="overlay">
       <h2>{{$f_menu_beverage->food_name}} ราคา {{$f_menu_beverage->price}}</h2>
@@ -267,7 +267,7 @@ a{
   <h3>เมนูกาแฟ</h3>
   @foreach ($f_m_coffee as $index => $f_menu_coffee)
   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    <div class="hovereffect">
+    <br><div class="hovereffect">
      <img src="{{ asset('storage/Food_menus/'.$f_menu_coffee->image) }}" alt="" style="width:100%; height: 200px;">
      <div class="overlay">
       <h2>{{$f_menu_coffee->food_name}} ราคา {{$f_menu_coffee->price}}</h2>

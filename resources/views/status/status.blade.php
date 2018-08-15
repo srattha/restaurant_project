@@ -25,14 +25,13 @@ img{
                     onclick="data_print('{{$table_status_b->id}}', '{{$table_status_b->name}}', '{{$table_status_b->seating}}')">
                   </div>
                   {{$table_status_b->name}}
-
-                  {{$table_status_b->seating}} ที่นั่ง
+                  จำนวน {{$table_status_b->seating}} ที่นั่ง
                   @else
                   <div class="center">
                     <img src="img/sofa.png"  class="img-thumbnail" alt="Cinque Terre" width="100">
                   </div>
                   {{$table_status_b->name}}
-                  {{$table_status_b->seating}} ที่นั่ง
+                  จำนวน {{$table_status_b->seating}} ที่นั่ง
                   @endif
                 </div>
 
@@ -43,13 +42,13 @@ img{
                     <img src="img/sofa1.png"  class="img-thumbnail" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
                   </div>
                   {{$table_statu->name}}
-                  {{$table_statu->seating}}ที่นั่ง
+                  จำนวน {{$table_statu->seating}} ที่นั่ง
                   @else
                   <div class="center">
                     <img src="img/sofa.png"  class="img-thumbnail" alt="Cinque Terre" width="100" data-color="violet" alt="Third Image">
                   </div>
                   {{$table_statu->name}}
-                  {{$table_statu->seating}}ที่นั่ง
+                  จำนวน {{$table_statu->seating}} ที่นั่ง
                   @endif
                 </div>
                 @endforeach
@@ -62,13 +61,13 @@ img{
                     onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
                   </div>
                   {{$table_statu->name}}
-
-                  {{$table_statu->seating}}ที่นั่ง
+                  จำนวน {{$table_statu->seating}} ที่นั่ง
                   @else
                   <div class="center">
                     <img src="img/sofa.png" data-color="violet" alt="Third Image"   class="img-thumbnail" alt="Cinque Terre" width="100">  {{$table_statu->name}}
                   </div>
-                  {{$table_statu->seating}}ที่นั่ง
+                  {{$table_statu->name}}
+                  จำนวน {{$table_statu->seating}} ที่นั่ง
                   @endif
                 </div>
 
@@ -79,7 +78,7 @@ img{
           </div>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-9 col-lg-9">
-          <div class="offer offer-radius offer-success">
+          <div class="offer offer-default">
             <div class="picture">
               <!-- <div class="shape"> -->
                 <div class="shape-text">
@@ -95,13 +94,13 @@ img{
                         <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
                       </div>
                       {{$table_statu->name}}
-                      {{$table_statu->seating}}ที่นั่ง
+                      จำนวน {{$table_statu->seating}} ที่นั่ง
                       @else
                       <div class="center">
                         <img src="img/sofa.png" data-color="violet" class="img-thumbnail" alt="Cinque Terre" width="100">
                       </div>
                       {{$table_statu->name}}
-                      {{$table_statu->seating}}ที่นั่ง
+                      จำนวน {{$table_statu->seating}} ที่นั่ง
                       @endif
                     </div>
 
@@ -128,15 +127,13 @@ img{
                       onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
                     </div>
                     {{$table_statu->name}}
-
-                    {{$table_statu->seating}} ที่นั่ง
+                    จำนวน {{$table_statu->seating}} ที่นั่ง
                     @else
                     <div class="center">
                       <img src="img/sofa.png" data-color="violet" class="img-thumbnail" alt="Cinque Terre" width="100">
                     </div>
                     {{$table_statu->name}}
-
-                    {{$table_statu->seating}}ที่นั่ง
+                    จำนวน {{$table_statu->seating}} ที่นั่ง
                     @endif
                   </div>
 
@@ -150,7 +147,7 @@ img{
                       onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" >
                     </div>
                     {{$table_statu->name}}
-                    {{$table_statu->seating}} ที่นั่ง
+                    จำนวน {{$table_statu->seating}} ที่นั่ง
                     @else
                     <div class="center">
                       <img src="img/sofa.png" data-color="violet" class="img-thumbnail" width="100" alt="Third Image" >
@@ -167,14 +164,13 @@ img{
                       onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
                     </div>
                       {{$table_statu->name}}
-                      {{$table_statu->seating}}ที่นั่ง
+                      จำนวน {{$table_statu->seating}} ที่นั่ง
                       @else
                       <div class="center">
                       <img src="img/sofa.png" data-color="violet" alt="Third Image"  class="img-thumbnail" width="100">
                     </div>
                       {{$table_statu->name}}
-
-                      {{$table_statu->seating}}ที่นั่ง
+                      จำนวน {{$table_statu->seating}} ที่นั่ง
                       @endif
 
                     </div>
@@ -182,18 +178,18 @@ img{
                     @endforeach
 
                     @foreach ($table_status_h as $index => $table_statu)
-                    <div class=" col-md-1">
+                    <div class=" col-md-2">
                       @if($table_statu->status == 1)
                       <div class="center">
-                        <img src="img/sofa1.png" data-color="violet" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" style="width: 140%; height: 160%"  /> </div>
+                        <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations"
+                        onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                         </div>
                         {{$table_statu->name}}
-
-                        {{$table_statu->seating}}ที่นั่ง
+                        จำนวน {{$table_statu->seating}} ที่นั่ง
                         @else
-                        <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width: 140%; height: 160%" />
+                        <img src="img/sofa.png" data-color="violet" alt="Third Image" class="img-thumbnail" width="100">
                         {{$table_statu->name}}
-
-                        {{$table_statu->seating}}ที่นั่ง
+                       จำนวน {{$table_statu->seating}} ที่นั่ง
                         @endif
 
                       </div>
@@ -201,28 +197,29 @@ img{
                       @endforeach
 
                       @foreach ($table_status_i as $index => $table_statu)
-                      <div class=" col-md-1">
+                      <div class=" col-md-2">
                         @if($table_statu->status == 1)
+                        <div class="center">
+                          <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations"
+                          onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                        </div>
+                        {{$table_statu->name}} จำนวน {{$table_statu->seating}} ที่นั่ง
 
-                        <img src="img/sofa1.png" data-color="violet" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" style="width: 140%; height: 160%"  />
-                        {{$table_statu->name}}
-
-                        {{$table_statu->seating}}ที่นั่ง
                         @else
-                        <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width:140%; height: 160%" />
-                        {{$table_statu->name}}
+                        <img src="img/sofa.png" data-color="violet" alt="Third Image" class="img-thumbnail" width="100">
+                        {{$table_statu->name}} จำนวน {{$table_statu->seating}} ที่นั่ง
 
-                        {{$table_statu->seating}}ที่นั่ง
                         @endif
 
                       </div>
 
                       @endforeach
-                      <div class=" col-md-6"></div>
+
                     </div>
                   </div>
                 </div>
               </div>
+
               <div class="col-md-12">
                 <div class="offer offer-default">
                   <div class="offer-content">
@@ -233,20 +230,20 @@ img{
                         <div class=" col-md-4">
                           @if($table_statu->status == 1)
                           <div class="center">
-                            <img src="img/sofa1.png" data-color="violet" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" style="width: 50%; height: 50%"  /> </div>
+                            <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations"
+                             onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                           </div>
                             {{$table_statu->name}}
-
-                            {{$table_statu->seating}}ที่นั่ง
+                            จำนวน {{$table_statu->seating}} ที่นั่ง
                             @else
-                            <img src="img/sofa.png" data-color="violet" alt="Third Image" style="width:50%; height: 50%" />
+                            <img src="img/sofa.png" data-color="violet" class="img-thumbnail" width="100">
                             {{$table_statu->name}}
-
-                            {{$table_statu->seating}}ที่นั่ง
+                            จำนวน {{$table_statu->seating}} ที่นั่ง
                             @endif
                           </div>
                           @endforeach
                         </div>
-                        <div class="col-md-6"></div>
+                        <div class="col-md-2"></div>
                       </div>
                     </div>
                   </div>
@@ -254,8 +251,18 @@ img{
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <img src="img/sofa1.png" class="img-thumbnail" alt="Cinque Terre" width="70"> <b>ว่าง</b>
-                  <img src="img/sofa.png" class="img-thumbnail" alt="Cinque Terre" width="70"> <b>ไม่ว่าง</b>
+                  <div class="col-md-2">
+                    <div class="center">
+                      <img src="img/sofa1.png" class="img-thumbnail" alt="Cinque Terre" width="100">
+                    </div>
+                    <b>ว่าง</b>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="center">
+                      <img src="img/sofa.png" class="img-thumbnail" alt="Cinque Terre" width="100">
+                    </div>
+                    <b>ไม่ว่าง</b>
+                  </div>
                 </div>
               </div>
             </div>
