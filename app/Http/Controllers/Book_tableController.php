@@ -167,10 +167,9 @@ public function index()
        $price = $request->price *  $request->totalorder;
       }else if($request->special_price){
          $price = $request->special_price *  $request->totalorder;
-      }else{
+      }else {
         $price = $request->big_price *  $request->totalorder;
       }
-      return $price;
       $order = Order::where('reservationld_id', $request->reservation_id)->first();
       if (!$order) {
        $add_order = new Order;
@@ -214,9 +213,10 @@ public function index()
   public function customer_report($id){
 
     $amount = 0;
-    $reservation = Reservation::where('user_id', $id)->orderBy('id','desc')->first();
+   $reservation = Reservation::where('user_id', $id)->orderBy('id','desc')->first();
     $table_id= Dining_table::where('id', $reservation['dining_table_id'])->orderBy('id','desc')->first();
-    $order = Order::where('reservationld_id', $reservation['id'])->first();
+     $order = Order::where('reservationld_id', $reservation['id'])->first();
+
     $order_details = Order_details::where('order_Id',$order['id'] )->get();
 
     foreach ($order_details as $key => $order_detail) {
@@ -235,12 +235,19 @@ public function index()
    $strMonthThai=$strMonthCut[$strMonth];
    $datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
 
-   if ($reservation == '') {
+   if ($reservation == '' || $order == '') {
+
+    if ($reservation) {
+       session()->flash('reservation','ไม่มีรายการ');
+      return redirect()->route('book_food',['id'=>$reservation['id']]);
+    }
      session()->flash('reservation','ไม่มีรายการ');
      return redirect("/");
 
    }
-
+if ($order) {
+  # code...
+}
    return view('status.customer_report',['order_details' => $order_details,
     'datas'=> $datas,
     'amount'=>$amount,
