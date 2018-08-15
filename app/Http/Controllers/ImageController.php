@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Shopatmosphere;
 class ImageController extends Controller
 {
     /**
@@ -23,6 +23,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        return view('image.image');
+         $show_image = Shopatmosphere::select('image')->get();
+        return view('image.image',['show_image'=>$show_image,]);
     }
 }

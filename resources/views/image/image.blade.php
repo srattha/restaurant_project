@@ -10,84 +10,17 @@ container{
      background-color: lightblue;
 </style>
 
-<div class="container">
-<div class="row">
-<div class="col-xs-6 col-md-12">
-	<h1 align="center">รูปภาพบรรยากาศ</h1>
-  	 <hr width=18% size=50px color=ff0088>
-  	 <body>
-	<div class="col-xs-6 col-md-3">
-        <div class="thumbnail">
-            <img src="/img/d1.jpg" alt="Boats at Phi Phi, Thailand">
-
-
-        </div>
-        <div class="thumbnail">
-            <img src="/img/d2.jpg" alt="Boats at Phi Phi, Thailand">
-
-        </div>
-        <div class="thumbnail">
-            <img src="/img/d5.jpg" alt="Boats at Phi Phi, Thailand">
-
-        </div>
-
+  	<div class="row">
+  <h3 align="center">รูปภาพบรรยากาศ</h3>
+  <hr width=18% size=50px color=ff0088>
+  @foreach ($show_image as $show_images)
+  <div class="col-md-3 col-lg-3 col-md-3 col-sm-3 col-xs-6 filter">
+    <a class="example-image-link" width="304" height="304" style="height: 100%;" href="{{ asset('storage/Shopatmosphere/'.$show_images->image) }}"
+      data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+      <img class="example-image img-thumbnail" src="{{ asset('storage/Shopatmosphere/'.$show_images->image) }}"  alt="Cinque Terre" width="304" height="304" style="height: 200px;"/></a>
     </div>
-
-	<div class="col-xs-6 col-md-3">
-        <div class="thumbnail">
-            <img src="/img/d3.jpg" alt="Boats at Phi Phi, Thailand">
-
-        </div>
-        <div class="thumbnail">
-            <img src="/img/d4.jpg" alt="Boats at Phi Phi, Thailand">
-
-        </div>
-        <div class="thumbnail">
-            <img src="/img/d7.jpg" alt="Boats at Phi Phi, Thailand">
-
-        </div>
-
-    </div>
-
-	<div class="col-xs-6 col-md-3">
-        <div class="thumbnail">
-            <img src="/img/d5.jpg" alt="Boats at Phi Phi, Thailand">
-
-        </div>
-        <div class="thumbnail">
-            <img src="/img/d6.jpg" alt="Boats at Phi Phi, Thailand">
-
-        </div>
-        <div class="thumbnail">
-            <img src="/img/d14.jpg" alt="Boats at Phi Phi, Thailand">
-
-        </div>
-
-
-    </div>
-
-	<div class="col-xs-6 col-md-3">
-        <div class="thumbnail">
-            <img src="/img/d16.jpg" alt="Boats at Phi Phi, Thailand">
-
-        </div>
-        <div class="thumbnail">
-            <img src="/img/d15.jpg" alt="Boats at Phi Phi, Thailand">
-
-        </div>
-        <div class="thumbnail">
-            <img src="/img/d9.jpg" alt="Boats at Phi Phi, Thailand">
-
-        </div>
-
-    </div>
-</div>
-</div>
-</body>
-</div>
-
-</div>
-</div>
+    @endforeach
+  </div>
 
 
 
