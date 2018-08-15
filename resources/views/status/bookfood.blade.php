@@ -306,7 +306,7 @@ a{
      <div class="row">
       <div class="col-md-6">
         <input type='button' value='-' class='btn btn-danger qtyminus' field='totalorder' />
-        <input type='text' id="" name='totalorder' value='1' class='qty' />
+        <input type='text' id="totalorder" name='totalorder' value='totalorder' class='qty' />
         <input type='button' value='+' class=' btn btn-success qtyplus' field='totalorder' />
       </div>
     </div>
@@ -554,6 +554,8 @@ a{
     document.getElementById("special_prices").innerHTML = special_price;
     document.getElementById("big_price").value = big_price;
     document.getElementById("big_prices").innerHTML = big_price;
+     document.getElementById("totalorder").value = 1;
+
     $("#image").attr("src", "/storage/Food_menus/"+image);
 
   }
