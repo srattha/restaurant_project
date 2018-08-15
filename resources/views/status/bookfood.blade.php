@@ -116,38 +116,46 @@ a{
   </div>
 </div>
 <div class="panel-body">
-  <div>
-   @if(session()->has('add_order_details'))
-   <div class="alert alert-success">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>สั่งเมนู</strong> {{ session()->get('add_order_details') }} สำเร็จ
-  </div>
-  @endif
   <div class="row">
-    <div class="col-md-4">
-      <div class="panel panel-success">
-        <div class="panel-heading">จองโดย:</div>
-        <div class="panel-body">
-         {{$user->name}}
-       </div>
-     </div>
-   </div>
-   <div class="col-md-4">
-    <div class="panel panel-success">
-      <div class="panel-heading">โต๊ะ</div>
-      <div class="panel-body">
-        {{$dining_table->name}}
-      </div>
+    <div class="col-md-12">
+     @if(session()->has('add_order_details'))
+     <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <strong>สั่งเมนู</strong> {{ session()->get('add_order_details') }} สำเร็จ
     </div>
+    @endif
+    @if(session()->has('reservation'))
+    <div class="alert alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <strong>{{ session()->get('reservation') }}</strong>
+    </div>
+    @endif
   </div>
+
   <div class="col-md-4">
     <div class="panel panel-success">
-      <div class="panel-heading">จำนวนที่นั่ง</div>
+      <div class="panel-heading">จองโดย:</div>
       <div class="panel-body">
-        {{$dining_table->seating}}
-      </div>
+       {{$user->name}}
+     </div>
+   </div>
+ </div>
+ <div class="col-md-4">
+  <div class="panel panel-success">
+    <div class="panel-heading">โต๊ะ</div>
+    <div class="panel-body">
+      {{$dining_table->name}}
     </div>
   </div>
+</div>
+<div class="col-md-4">
+  <div class="panel panel-success">
+    <div class="panel-heading">จำนวนที่นั่ง</div>
+    <div class="panel-body">
+      {{$dining_table->seating}}
+    </div>
+  </div>
+</div>
 </div>
 <div>
 
@@ -282,8 +290,6 @@ a{
 </div>
 </div>
 
-</div>
-
 <div id="reservations" class="modal fade" role="dialog">
  <div class="modal-dialog modal-xs">
   <div class="modal-content">
@@ -325,7 +331,7 @@ a{
     <div class="col-md-3">
       <div class="checkbox">
         <input type="hidden" name="price" value="0" />
-        <label><input type="checkbox" id="price" name="price"  value="price"> เล็ก</label>
+        <label><input type="checkbox" id="price" name="price"  value="price" required="เลือก ขนาด"> เล็ก</label>
       </div>
     </div>
     <div class="col-md-3">
@@ -459,105 +465,105 @@ a{
       console.log(special_price)
       document.getElementById("special_price").disabled = true;
      // document.getElementById("big_price").disabled = true;
-    }else{
-      document.getElementById("special_price").disabled = false;
+   }else{
+    document.getElementById("special_price").disabled = false;
      // document.getElementById("big_price").disabled = false;
-      $("#price").click(function () {
-        if (this.checked){
+     $("#price").click(function () {
+      if (this.checked){
         // document.getElementById("big_price").disabled = true;
-         document.getElementById("special_price").disabled = true;
-       }
-       else{
-         document.getElementById("special_price").disabled = false;
+        document.getElementById("special_price").disabled = true;
+      }
+      else{
+       document.getElementById("special_price").disabled = false;
          //document.getElementById("big_price").disabled = false;
        }
 
      });
-      $("#special_price").click(function () {
-        if (this.checked){
-          document.getElementById("price").disabled = true;
-        }
+     $("#special_price").click(function () {
+      if (this.checked){
+        document.getElementById("price").disabled = true;
+      }
 
-        else{
-         document.getElementById("price").disabled = false;
-       }
+      else{
+       document.getElementById("price").disabled = false;
+     }
 
-     });
-      $("#big_price").click(function () {
-        if (this.checked){
-          document.getElementById("special_price").disabled = true;
-          document.getElementById("price").disabled = true;
-        }
+   });
+     $("#big_price").click(function () {
+      if (this.checked){
+        document.getElementById("special_price").disabled = true;
+        document.getElementById("price").disabled = true;
+      }
 
-        else{
-         document.getElementById("special_price").disabled = false;
-         document.getElementById("price").disabled = false;
-       }
+      else{
+       document.getElementById("special_price").disabled = false;
+       document.getElementById("price").disabled = false;
+     }
 
-     });
+   });
 
-    }
+   }
 
-    if (big_price == "") {
-      big_price = 0;
-      document.getElementById("big_price").disabled = true;
-    }else{
-      document.getElementById("special_price").disabled = false;
-      document.getElementById("big_price").disabled = false;
-      document.getElementById("price").disabled = false;
-      $("#price").click(function () {
-        if (this.checked){
-         document.getElementById("big_price").disabled = true;
-         document.getElementById("special_price").disabled = true;
-       }
-       else{
-         document.getElementById("special_price").disabled = false;
-         document.getElementById("big_price").disabled = false;
-       }
+   if (big_price == "") {
+    big_price = 0;
+    document.getElementById("big_price").disabled = true;
+  }else{
+    document.getElementById("special_price").disabled = false;
+    document.getElementById("big_price").disabled = false;
+    document.getElementById("price").disabled = false;
+    $("#price").click(function () {
+      if (this.checked){
+       document.getElementById("big_price").disabled = true;
+       document.getElementById("special_price").disabled = true;
+     }
+     else{
+       document.getElementById("special_price").disabled = false;
+       document.getElementById("big_price").disabled = false;
+     }
 
-     });
-      $("#special_price").click(function () {
-        if (this.checked){
-          document.getElementById("big_price").disabled = true;
-          document.getElementById("price").disabled = true;
-        }
+   });
+    $("#special_price").click(function () {
+      if (this.checked){
+        document.getElementById("big_price").disabled = true;
+        document.getElementById("price").disabled = true;
+      }
 
-        else{
-         document.getElementById("big_price").disabled = false;
-         document.getElementById("price").disabled = false;
-       }
+      else{
+       document.getElementById("big_price").disabled = false;
+       document.getElementById("price").disabled = false;
+     }
 
-     });
-      $("#big_price").click(function () {
-        if (this.checked){
-          document.getElementById("special_price").disabled = true;
-          document.getElementById("price").disabled = true;
-        }
+   });
+    $("#big_price").click(function () {
+      if (this.checked){
+        document.getElementById("special_price").disabled = true;
+        document.getElementById("price").disabled = true;
+      }
 
-        else{
-         document.getElementById("special_price").disabled = false;
-         document.getElementById("price").disabled = false;
-       }
+      else{
+       document.getElementById("special_price").disabled = false;
+       document.getElementById("price").disabled = false;
+     }
 
-     });
-
-    }
-    if (big_price == 0) {
-      document.getElementById("big_price").disabled = true;
-    }
-    document.getElementById("name").innerHTML = name;
-    document.getElementById("food_name").value = name;
-    document.getElementById("food_id").value = food_id;
-    document.getElementById("price").value = price;
-    document.getElementById("rates").innerHTML = price;
-    document.getElementById("special_price").value = special_price;
-    document.getElementById("special_prices").innerHTML = special_price;
-    document.getElementById("big_price").value = big_price;
-    document.getElementById("big_prices").innerHTML = big_price;
-     document.getElementById("totalorder").value = 1;
-
-    $("#image").attr("src", "/storage/Food_menus/"+image);
+   });
 
   }
+  if (big_price == 0) {
+    document.getElementById("big_price").disabled = true;
+  }
+  document.getElementById("name").innerHTML = name;
+  document.getElementById("food_name").value = name;
+  document.getElementById("food_id").value = food_id;
+  document.getElementById("price").value = price;
+  document.getElementById("rates").innerHTML = price;
+  document.getElementById("special_price").value = special_price;
+  document.getElementById("special_prices").innerHTML = special_price;
+  document.getElementById("big_price").value = big_price;
+  document.getElementById("big_prices").innerHTML = big_price;
+  document.getElementById("totalorder").value = 1;
+
+  $("#image").attr("src", "/storage/Food_menus/"+image);
+
+}
 </script>
 @endsection

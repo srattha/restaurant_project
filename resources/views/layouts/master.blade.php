@@ -58,7 +58,7 @@
   <script src="{{ asset('/vendor/datatables-plugins/dataTables.bootstrap.min.js') }}"></script>
   <script src="{{ asset('/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
   <script src="{{ asset('/assets/js/lightbox.js') }}"></script>
- 
+
 
 
   @yield('css')
@@ -336,9 +336,9 @@
   @if(session()->has('reservation'))
   <div class="alert alert-success">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>{{ session()->get('reservation') }}</strong> 
+    <strong>{{ session()->get('reservation') }}</strong>
   </div>
-@endif
+  @endif
 </div>
 <div class="row" style="margin-top: 15px;">
   <nav class="navbar navbar-inverse">

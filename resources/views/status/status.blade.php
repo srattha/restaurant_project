@@ -163,165 +163,171 @@ img{
                       <img src="img/sofa1.png" data-color="violet" alt="Third Image" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations"
                       onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
                     </div>
-                      {{$table_statu->name}}
-                      จำนวน {{$table_statu->seating}} ที่นั่ง
-                      @else
-                      <div class="center">
+                    {{$table_statu->name}}
+                    จำนวน {{$table_statu->seating}} ที่นั่ง
+                    @else
+                    <div class="center">
                       <img src="img/sofa.png" data-color="violet" alt="Third Image"  class="img-thumbnail" width="100">
                     </div>
-                      {{$table_statu->name}}
-                      จำนวน {{$table_statu->seating}} ที่นั่ง
-                      @endif
+                    {{$table_statu->name}}
+                    จำนวน {{$table_statu->seating}} ที่นั่ง
+                    @endif
 
+                  </div>
+
+                  @endforeach
+
+                  @foreach ($table_status_h as $index => $table_statu)
+                  <div class=" col-md-2">
+                    @if($table_statu->status == 1)
+                    <div class="center">
+                      <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations"
+                      onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
                     </div>
+                    {{$table_statu->name}}
+                    จำนวน {{$table_statu->seating}} ที่นั่ง
+                    @else
+                    <div class="center">
+                    <img src="img/sofa.png" data-color="violet" alt="Third Image" class="img-thumbnail" width="100">
+                  </div>
+                    {{$table_statu->name}}
+                    จำนวน {{$table_statu->seating}} ที่นั่ง
+                    @endif
 
-                    @endforeach
+                  </div>
 
-                    @foreach ($table_status_h as $index => $table_statu)
-                    <div class=" col-md-2">
+                  @endforeach
+
+                  @foreach ($table_status_i as $index => $table_statu)
+                  <div class=" col-md-2">
+                    @if($table_statu->status == 1)
+                    <div class="center">
+                      <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations"
+                      onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                    </div>
+                    {{$table_statu->name}} จำนวน {{$table_statu->seating}} ที่นั่ง
+
+                    @else
+                    <div class="center">
+                    <img src="img/sofa.png" data-color="violet" alt="Third Image" class="img-thumbnail" width="100">
+                  </div>
+                    {{$table_statu->name}} จำนวน {{$table_statu->seating}} ที่นั่ง
+
+                    @endif
+
+                  </div>
+
+                  @endforeach
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="offer offer-default">
+              <div class="offer-content">
+                <div class="row">
+                  <div class="col-md-6">
+                    <br>
+                    @foreach ($table_status_k as $index => $table_statu)
+                    <div class=" col-md-4">
                       @if($table_statu->status == 1)
                       <div class="center">
                         <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations"
                         onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
-                         </div>
-                        {{$table_statu->name}}
-                        จำนวน {{$table_statu->seating}} ที่นั่ง
-                        @else
-                        <img src="img/sofa.png" data-color="violet" alt="Third Image" class="img-thumbnail" width="100">
-                        {{$table_statu->name}}
-                       จำนวน {{$table_statu->seating}} ที่นั่ง
-                        @endif
-
                       </div>
-
-                      @endforeach
-
-                      @foreach ($table_status_i as $index => $table_statu)
-                      <div class=" col-md-2">
-                        @if($table_statu->status == 1)
-                        <div class="center">
-                          <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations"
-                          onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
-                        </div>
-                        {{$table_statu->name}} จำนวน {{$table_statu->seating}} ที่นั่ง
-
-                        @else
-                        <img src="img/sofa.png" data-color="violet" alt="Third Image" class="img-thumbnail" width="100">
-                        {{$table_statu->name}} จำนวน {{$table_statu->seating}} ที่นั่ง
-
-                        @endif
-
+                      {{$table_statu->name}}
+                      จำนวน {{$table_statu->seating}} ที่นั่ง
+                      @else
+                      <div class="center">
+                        <img src="img/sofa.png" data-color="violet" class="img-thumbnail" width="100">
                       </div>
-
-                      @endforeach
-
+                      {{$table_statu->name}}
+                      จำนวน {{$table_statu->seating}} ที่นั่ง
+                      @endif
                     </div>
+                    @endforeach
                   </div>
-                </div>
-              </div>
-
-              <div class="col-md-12">
-                <div class="offer offer-default">
-                  <div class="offer-content">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <br>
-                        @foreach ($table_status_k as $index => $table_statu)
-                        <div class=" col-md-4">
-                          @if($table_statu->status == 1)
-                          <div class="center">
-                            <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations"
-                             onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
-                           </div>
-                            {{$table_statu->name}}
-                            จำนวน {{$table_statu->seating}} ที่นั่ง
-                            @else
-                            <img src="img/sofa.png" data-color="violet" class="img-thumbnail" width="100">
-                            {{$table_statu->name}}
-                            จำนวน {{$table_statu->seating}} ที่นั่ง
-                            @endif
-                          </div>
-                          @endforeach
-                        </div>
-                        <div class="col-md-2"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="center">
-                      <img src="img/sofa1.png" class="img-thumbnail" alt="Cinque Terre" width="100">
-                    </div>
-                    <b>ว่าง</b>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="center">
-                      <img src="img/sofa.png" class="img-thumbnail" alt="Cinque Terre" width="100">
-                    </div>
-                    <b>ไม่ว่าง</b>
-                  </div>
+                  <div class="col-md-2"></div>
                 </div>
               </div>
             </div>
           </div>
-          <br>
-          <br>
-
-          <div id="reservations" class="modal fade" role="dialog">
-
-           @if(Auth::user())
-           <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title"><span id="name"></span> จำนวน <span id="seating"></span> ที่ </h4>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-2">
+              <div class="center">
+                <img src="img/sofa1.png" class="img-thumbnail" alt="Cinque Terre" width="100">
+              </div>
+              <b>ว่าง</b>
             </div>
-            <div class="modal-body">
-
-              <div style="padding-top: 10px;">
-               <form class="form-horizontal" method="POST" action="{{ route('booktable') }}">
-                {{ csrf_field() }}
-
-                <input type='hidden'  name="dining_table_id" id="dining_table_id" value="dining_table_id">
-                <div class="form-group">
-                 <div class="col-sm-6">
-                  <label><b>วันที่ </b></label>
-                  <div id="start">
-                   <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                    <input type='text'  name="reserve_date" id="date"  class="form-control first_login"  />
-                  </div>
-                </div>
+            <div class="col-md-2">
+              <div class="center">
+                <img src="img/sofa.png" class="img-thumbnail" alt="Cinque Terre" width="100">
               </div>
-              <div class="col-sm-6">
-                <label><b>เวลา </b></label>
-                <div id="start">
-                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                  <input type='text'  name="time" id="time"  class="form-control first_login"  />
-                </div>
-              </div>
+              <b>ไม่ว่าง</b>
             </div>
           </div>
-          <div>
-           <label><b>เบอร์โทร ติดต่อ </b></label>
-           <div id="start">
-            <div class="input-group">
-             <span class="input-group-addon"><i class="fa fa-phone-square" aria-hidden="true"></i></span>
-             <input type='number'  name="reserve_mobile" id="time"  class="form-control first_login"  / required="">
-           </div>
-         </div>
-       </div>
-       <div class="modal-footer">
-         <button type="submit" class="btn btn-primary swa-confirm"> ตกลง</button>
-         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-       </div>
-     </form>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <div id="reservations" class="modal fade" role="dialog">
+
+     @if(Auth::user())
+     <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><span id="name"></span> จำนวน <span id="seating"></span> ที่ </h4>
+      </div>
+      <div class="modal-body">
+
+        <div style="padding-top: 10px;">
+         <form class="form-horizontal" method="POST" action="{{ route('booktable') }}">
+          {{ csrf_field() }}
+
+          <input type='hidden'  name="dining_table_id" id="dining_table_id" value="dining_table_id">
+          <div class="form-group">
+           <div class="col-sm-6">
+            <label><b>วันที่ </b></label>
+            <div id="start">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+              <input type='text'  name="reserve_date" id="date"  class="form-control first_login"  />
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <label><b>เวลา </b></label>
+          <div id="start">
+           <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+            <input type='text'  name="time" id="time"  class="form-control first_login"  />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+     <label><b>เบอร์โทร ติดต่อ </b></label>
+     <div id="start">
+      <div class="input-group">
+       <span class="input-group-addon"><i class="fa fa-phone-square" aria-hidden="true"></i></span>
+       <input type='number'  name="reserve_mobile" id="time"  class="form-control first_login"  / required="">
+     </div>
    </div>
  </div>
+ <div class="modal-footer">
+   <button type="submit" class="btn btn-primary swa-confirm"> ตกลง</button>
+   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+ </div>
+</form>
+</div>
+</div>
 </div>
 </div>
 
