@@ -44,6 +44,12 @@ class ChefController extends Controller
                }
            }
             //return $table;
+           $current_date = strtotime(Date('Y-m-d H:i:s'));
+           $reserve_date = strtotime("20-08-2018 16:30");
+           $diffdate = round(abs($current_date - $reserve_date) / 60,2);
+           if($diffdate >= 10){
+            echo "เปลี่ยนสถานะ";
+        }
             return view('chef.chef',['table'=> $table]);
             break;
 
