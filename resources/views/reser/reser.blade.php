@@ -50,7 +50,7 @@ b{
 
 
     </div>
-    <div id="menu2" class="tab-pane fade in active">
+    <div id="menu2" class="tab-pane fade ">
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-12">
           <div class="offer offer-default">
@@ -68,7 +68,7 @@ b{
       </div>
 
     </div>
-    <div id="menu3" class="tab-pane fade in active">
+    <div id="menu3" class="tab-pane fade ">
      <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-12">
         <div class="offer offer-default">
@@ -87,7 +87,7 @@ b{
 
 
   </div>
-  <div id="menu4" class="tab-pane fade in active">
+  <div id="menu4" class="tab-pane fade ">
    <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-12">
       <div class="offer offer-default">
@@ -106,7 +106,7 @@ b{
 
 
 </div>
-<div id="menu5" class="tab-pane fade in active">
+<div id="menu5" class="tab-pane fade ">
  <div class="row">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-12">
     <div class="offer offer-default">

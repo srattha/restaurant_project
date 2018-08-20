@@ -28,6 +28,7 @@ h5{
       <li><a data-toggle="tab" href="#menu6">เมนูพิซซ่า</a></li>
       <li><a data-toggle="tab" href="#menu7">เมนูเครื่องดื่ม</a></li>
       <li><a data-toggle="tab" href="#menu8">เมนูกาแฟ</a></li>
+       <li><a data-toggle="tab" href="#menu9">อิตาเลี่ยนโซดา</a></li>
     </ul>
 
     <div class="tab-content">
@@ -76,7 +77,8 @@ h5{
         <thead>
           <tr>
             <th>รายการ</th>
-            <th>ราคา</th>
+           <th>ราคาธรรมดา</th>
+           <th>ราคาพิเศษ</th>            
           </tr>
         </thead>
         <tbody>
@@ -84,6 +86,8 @@ h5{
           <tr>
             <td>{{$food_types2->food_name}}</td>
             <td>{{$food_types2->price}}</td>
+            <td>{{$food_types2->special_price}}</td>
+            <td>{{$food_types2->big_price}}</td>
           </tr>
           @endforeach 
         </tbody>
@@ -106,7 +110,8 @@ h5{
       <thead>
         <tr>
           <th>รายการ</th>
-          <th>ราคา</th>
+          <th>ราคาธรรมดา</th>
+            <th>ราคาพิเศษ</th>
         </tr>
       </thead>
       <tbody>
@@ -114,6 +119,7 @@ h5{
         <tr>
           <td>{{$food_types3->food_name}}</td>
           <td>{{$food_types3->price}}</td>
+          <td>{{$food_types3->special_price}}</td>
         </tr>
         @endforeach 
       </tbody>
@@ -166,7 +172,8 @@ h5{
       <thead>
         <tr>
           <th>รายการ</th>
-          <th>ราคา</th>
+          <th>ราคาธรรมดา</th>
+          <th>ราคาพิเศษ</th>
         </tr>
       </thead>
       <tbody>
@@ -174,6 +181,7 @@ h5{
         <tr>
           <td>{{$food_types5->food_name}}</td>
           <td>{{$food_types5->price}}</td>
+          <td>{{$food_types5->special_price}}</td>
         </tr>
         @endforeach 
       </tbody>
@@ -256,7 +264,9 @@ h5{
       <thead>
         <tr>
           <th>รายการ</th>
-          <th>ราคา</th>
+          <th>ร้อน</th>
+          <th>เย็น</th>
+          <th>ปั่น</th>
         </tr>
       </thead>
       <tbody>
@@ -264,6 +274,38 @@ h5{
         <tr>
           <td>{{$food_types8->food_name}}</td>
           <td>{{$food_types8->price}}</td>
+          <td>{{$food_types8->special_price}}</td>
+          <td>{{$food_types8->big_price}}</td>
+        </tr>
+        @endforeach 
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+<div id="menu9" class="tab-pane fade ">
+ <br>
+ <div class="row">
+   <div class="col-md-6">
+    @foreach ($food_image9 as $index => $food_images9)
+    <img src="{{ asset('storage/Food_menus/'.$food_images9->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+    @endforeach 
+  </div>
+  <div class="col-md-6">
+    <div class="table-responsive">
+     <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>รายการ</th>
+          <th>ราคา</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach ($food_type9 as $index => $food_types9)
+        <tr>
+          <td>{{$food_types9->food_name}}</td>
+          <td>{{$food_types9->price}}</td>
         </tr>
         @endforeach 
       </tbody>

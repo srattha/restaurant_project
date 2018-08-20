@@ -291,7 +291,7 @@
         </script>
       </div>
       <div class="col-md-4 col-sm-4 col-xs-4">
-       <i class="fa fa-phone-square" aria-hidden="true"></i> ติดตามเรา :08-123-456-789
+       <i class="fa fa-phone-square" aria-hidden="true"></i> ติดตามเรา : 055-030-280 
      </div>
      <div class="col-md-4 col-sm-4 col-xs-4">
       <div >
