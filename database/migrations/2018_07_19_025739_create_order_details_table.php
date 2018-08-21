@@ -20,6 +20,7 @@ class CreateOrderDetailsTable extends Migration
             $table->string('totalorder');
              $table->string('amount');
             $table->string('is_cook');
+            $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
         });
     }

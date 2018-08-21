@@ -19,6 +19,7 @@ class CreateReservationsTable extends Migration
             $table->integer('user_id');
             $table->string('reserve_date');
             $table->string('reserve_mobile');
+            $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
         });
     }

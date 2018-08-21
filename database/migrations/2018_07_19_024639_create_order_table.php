@@ -19,7 +19,7 @@ class CreateOrderTable extends Migration
             $table->string('orde_date');
             $table->string('is_paid');
             $table->string('vat');
-             $table->tinyInteger('is_active')->default(1);
+            $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
         });
     }

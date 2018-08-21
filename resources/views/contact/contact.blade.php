@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title','ติดต่อเรา')
 @section('content')
 <div class="row">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
