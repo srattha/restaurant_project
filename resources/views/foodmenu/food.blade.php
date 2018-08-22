@@ -79,7 +79,17 @@ h5{
         <thead>
           <tr>
             <th>รายการ</th>
+<<<<<<< HEAD
             <th>ราคา</th>
+=======
+<<<<<<< HEAD
+            <th>ราคาธรรมดา</th>
+            <th>ราคาพิเศษ</th>            
+=======
+           <th>ราคาธรรมดา</th>
+           <th>ราคาพิเศษ</th>
+>>>>>>> 3377de080a2ffa4fd9df824f70666bd1b0686419
+>>>>>>> 82decd4f0f674211245609f373a38c3a92462c11
           </tr>
         </thead>
         <tbody>
@@ -280,6 +290,35 @@ h5{
       </tbody>
     </table>
   </div>
+</div>
+ <div class="col-md-6">
+  @foreach ($food_image10 as $index => $food_images10)
+  <img src="{{ asset('storage/Food_menus/'.$food_images10->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+  @endforeach 
+</div>
+<div class="col-md-6">
+  <div class="table-responsive">
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>รายการ</th>
+        <th>ร้อน</th>
+        <th>เย็น</th>
+        <th>ปั่น</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($food_type10 as $index => $food_types10)
+      <tr>
+        <td>{{$food_types10->food_name}}</td>
+        <td>{{$food_types10->price}}</td>
+         <td>{{$food_types10->special_price}}</td>
+          <td>{{$food_types10->big_price}}</td>
+      </tr>
+      @endforeach 
+    </tbody>
+  </table>
+</div>
 </div>
 </div>
 </div>

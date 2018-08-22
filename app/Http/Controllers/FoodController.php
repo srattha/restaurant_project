@@ -43,8 +43,13 @@ class FoodController extends Controller
          $food_image8 = Food_menus::where('food_type', 8)->select('image')->limit(2)->get();
          $food_type9 = Food_menus::where('food_type', 9)->get();
          $food_image9 = Food_menus::where('food_type', 9)->select('image')->limit(2)->get();
+<<<<<<< HEAD
          $food_type0= Food_menus::where('is_recommend', 1)->get();
          $food_image0 = Food_menus::where('is_recommend', 1)->select('image')->limit(2)->get();
+=======
+         $food_type10 = Food_menus::where('food_type', 10)->get();
+         $food_image10 = Food_menus::where('food_type', 10)->select('image')->limit(2)->get();
+>>>>>>> 82decd4f0f674211245609f373a38c3a92462c11
         return view('foodmenu.food', ['food_type1' => $food_type1,
                                         'food_image1' => $food_image1,
                                         'food_type2' => $food_type2,
@@ -63,8 +68,13 @@ class FoodController extends Controller
                                         'food_image8' => $food_image8,
                                         'food_type9' => $food_type9,
                                         'food_image9' => $food_image9,
+<<<<<<< HEAD
                                         'food_type0' => $food_type0,
                                         'food_image0' => $food_image0,
+=======
+                                        'food_type10' => $food_type10,
+                                        'food_image10' => $food_image10,
+>>>>>>> 82decd4f0f674211245609f373a38c3a92462c11
 
 
          ]);
