@@ -116,21 +116,26 @@
    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+     @foreach( $promotion as $p)
+     <li data-target="#carousel-example-generic" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+     @endforeach
    </ol>
    <!-- Wrapper for slides -->
    <div class="carousel-inner" role="listbox">
-     <div class="item active">
-      <img class="d-block w-100" src="img/cc6.jpg" data-color="violet" alt="Third Image" style="width: 100%; height: 100%" />
-    </div>
-    <div class="item">
-      <img src="img/cc2.jpg" data-color="violet" alt="Third Image" style="width: 100%; height: 100%" />
-    </div>
-    <div class="item">
-      <img src="img/cc5.jpg" data-color="violet" alt="Third Image" style="width: 100%; height: 100%" />
-    </div>
+    @foreach( $promotion as $p )
+       <div class="item {{ $loop->first ? 'active' : '' }}">
+         <div class="hovereffect">
+           <img src="{{ asset('storage/promotion/'.$p->qrimage) }}" alt="" style="width:100%; height: 100%;">
+           <div class="overlay">
+             <h2>{{$p->name}}</h2>
+             <a class="info" href="/status">ดูทั้งหมด</a>
+           </div>
+           <div class="carousel-caption d-none d-md-block">
+             <h3>{{$p->explain}}</h3>
+           </div>
+         </div>
+       </div>
+    @endforeach
   </div>
 </div>
 </div>
@@ -138,8 +143,6 @@
  <div class="panel panel-success">
   <div class="panel-heading"><b style="font-size: 20px;">เวลาเปิดบริการ</b></div>
   <div class="panel-body">
-
-
   </div>
 </div>
 </div>
@@ -150,6 +153,7 @@
    <h3 align="center">เมนูอาหารแนะนำ</h3>
    <hr width=18% size=50px color=ff0088>
  </div>
+
  <div>
    @foreach ($food_is_recommend as $index => $is_recommend)
    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -157,7 +161,7 @@
      <img src="{{ asset('storage/Food_menus/'.$is_recommend->image) }}" alt="" style="width:100%; height: 200px;">
      <div class="overlay">
        <h2>{{$is_recommend->food_name}}</h2>
-       <a class="info" href="/status">สั่ง</a>
+       <a class="info" href="/food">ดูทั้งหมด</a>
      </div>
    </div>
  </div>

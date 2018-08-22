@@ -285,8 +285,9 @@
   z-index: 1030;*/
   ">
   <div class="row" style="margin-top: 15px;">
-    <div class="col-md-4 col-sm-4 col-xs-4">
-     <i class="fa fa-clock-o" aria-hidden="true"></i>  <script language="javascript">
+    <div class="col-md-5 col-sm-5 col-xs-5">
+     <i class="fa fa-clock-o" aria-hidden="true"></i>
+     <script language="javascript">
         now = new Date();
         var thday = new Array ("อาทิตย์","จันทร์",
           "อังคาร","พุธ","พฤหัส","ศุกร์","เสาร์");
@@ -295,10 +296,20 @@
           "ตุลาคม","พฤศจิกายน","ธันวาคม");
 
         document.write("วัน" + thday[now.getDay()]+ "ที่ "+ now.getDate()+ " " +
-          thmonth[now.getMonth()]+ " " + (now.getFullYear()+ 543));
+          thmonth[now.getMonth()]+ " " + (now.getFullYear()+ 543)+ " เวลา ");
         </script>
+        <script language="javascript">
+           setInterval(function() {
+          var d = new Date();
+          document.getElementById("demo").innerHTML =
+          d.getHours() % 24+" : "+d.getMinutes()+" : "+d.getSeconds();
+
+        });
+         </script>
+         <p id="demo" style="display: initial;"></p>
       </div>
-      <div class="col-md-4 col-sm-4 col-xs-4">
+
+      <div class="col-md-3 col-sm-3 col-xs-3">
        <i class="fa fa-phone-square" aria-hidden="true"></i> ติดตามเรา : 055-030-280
      </div>
      <div class="col-md-4 col-sm-4 col-xs-4">
