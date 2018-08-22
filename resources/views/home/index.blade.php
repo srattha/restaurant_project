@@ -128,7 +128,7 @@
            <img src="{{ asset('storage/promotion/'.$p->qrimage) }}" alt="" style="width:100%; height: 100%;">
            <div class="overlay">
              <h2>{{$p->name}}</h2>
-             <a class="info" href="/status">ดูทั้งหมด</a>
+             <a class="info" href="/reser">ดูทั้งหมด</a>
            </div>
            <div class="carousel-caption d-none d-md-block">
              <h3>{{$p->explain}}</h3>
@@ -157,6 +157,7 @@
  <div>
    @foreach ($food_is_recommend as $index => $is_recommend)
    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <br>
     <div class="hovereffect">
      <img src="{{ asset('storage/Food_menus/'.$is_recommend->image) }}" alt="" style="width:100%; height: 200px;">
      <div class="overlay">
