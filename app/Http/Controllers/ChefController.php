@@ -9,7 +9,6 @@ use App\Reservation;
 use App\Order_details;
 use App\Order;
 use App\Food_menus;
-use Illuminate\Console\Scheduling\Schedule;
 class ChefController extends Controller
 {
    public function __construct()
@@ -31,9 +30,6 @@ class ChefController extends Controller
             return redirect("/counter_staff");
             break;
             case '4':
-             $schedule->call(function () {
-            return "ff";
-        })->weekly()->mondays()->at('10:00');
              // $current_date = strtotime(Date('Y-m-d H:i:s'));
       // $reserve_date = strtotime("20-08-2018 16:30");
       // $diffdate = round(abs($current_date - $reserve_date) / 60,2);
@@ -144,12 +140,5 @@ class ChefController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-     protected function schedule(Schedule $schedule)
-    {
-        $schedule->call(function () {
-            return "ff";
-        })->weekly()->mondays()->at('10:00');
     }
 }

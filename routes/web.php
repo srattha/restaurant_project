@@ -49,7 +49,9 @@ Route::get('/dining_table/delete/{id}', 'DiningtableController@destroy')->name('
 Route::get('/promotion', 'PromotionController@index')->name('promotion.promotion');
 Route::get('/addpromotion', 'PromotionController@create')->name('promotion.addpromotion');
 Route::post('addpromotion', 'PromotionController@store');
-
+Route::get('/promotion/edit/{id}', 'PromotionController@edit')->name('promotion.editpromotion')->where('id', '[0-9]+');
+Route::post('/promotion/update/{id}', 'PromotionController@update')->name('promotion.update')->where('id', '[0-9]+');
+Route::get('/promotion/delete/{id}', 'PromotionController@destroy')->name('promotion.delete')->where('id', '[0-9]+');
 //reservation
 Route::get('/report_reservation', 'ReservationController@index')->name('reservations.report_reservation');
 Route::post('reservation', 'ReservationController@store')->name('reservations');
