@@ -9,6 +9,7 @@ use App\Reservation;
 use App\Order_details;
 use App\Order;
 use App\Food_menus;
+use Illuminate\Console\Scheduling\Schedule;
 class ChefController extends Controller
 {
    public function __construct()
@@ -30,6 +31,9 @@ class ChefController extends Controller
             return redirect("/counter_staff");
             break;
             case '4':
+             $schedule->call(function () {
+            return "ff";
+        })->weekly()->mondays()->at('10:00');
              // $current_date = strtotime(Date('Y-m-d H:i:s'));
       // $reserve_date = strtotime("20-08-2018 16:30");
       // $diffdate = round(abs($current_date - $reserve_date) / 60,2);
@@ -47,11 +51,11 @@ class ChefController extends Controller
                    $reserve_date = strtotime(Date($reserve));
                    $diffdate = round(abs($current_date - $reserve_date) / 60,2);
                    if($diffdate >= 10){
-                    $update_reservation = Reservation::where('dining_table_id',$val2->dining_table_id)->update(["is_active"=> 0]);
-                    $update_table = Dining_table::where('id', $val2->dining_table_id)->first();
-                    $update_table->status = 1;
-                    $update_table->color = "success";
-                    $update_table->save();
+                    // $update_reservation = Reservation::where('dining_table_id',$val2->dining_table_id)->update(["is_active"=> 0]);
+                    // $update_table = Dining_table::where('id', $val2->dining_table_id)->first();
+                    // $update_table->status = 1;
+                    // $update_table->color = "success";
+                    // $update_table->save();
 
                 }
                      $table[$key]['reservation'][$key2]['order'] = Order::where('reservationld_id',$val2->id)->get();
@@ -140,5 +144,12 @@ class ChefController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+     protected function schedule(Schedule $schedule)
+    {
+        $schedule->call(function () {
+            return "ff";
+        })->weekly()->mondays()->at('10:00');
     }
 }
