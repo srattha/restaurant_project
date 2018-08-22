@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title','เมนูอาหาร')
 @section('css')
 <style type="text/css">
 h4{
@@ -38,7 +39,7 @@ h5{
          <div class="col-md-6">
           @foreach ($food_image1 as $index => $food_images1)
           <img src="{{ asset('storage/Food_menus/'.$food_images1->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
-          @endforeach 
+          @endforeach
         </div>
         <div class="col-md-6">
           <div class="table-responsive">
@@ -55,7 +56,7 @@ h5{
                 <td>{{$food_types1->food_name}}</td>
                 <td>{{$food_types1->price}}</td>
               </tr>
-              @endforeach 
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -69,7 +70,7 @@ h5{
      <div class="col-md-6">
       @foreach ($food_image2 as $index => $food_images2)
       <img src="{{ asset('storage/Food_menus/'.$food_images2->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
-      @endforeach 
+      @endforeach
     </div>
     <div class="col-md-6">
       <div class="table-responsive">
@@ -77,8 +78,13 @@ h5{
         <thead>
           <tr>
             <th>รายการ</th>
+<<<<<<< HEAD
             <th>ราคาธรรมดา</th>
             <th>ราคาพิเศษ</th>            
+=======
+           <th>ราคาธรรมดา</th>
+           <th>ราคาพิเศษ</th>
+>>>>>>> 3377de080a2ffa4fd9df824f70666bd1b0686419
           </tr>
         </thead>
         <tbody>
@@ -89,7 +95,7 @@ h5{
             <td>{{$food_types2->special_price}}</td>
             <td>{{$food_types2->big_price}}</td>
           </tr>
-          @endforeach 
+          @endforeach
         </tbody>
       </table>
     </div>
@@ -102,7 +108,7 @@ h5{
    <div class="col-md-6">
     @foreach ($food_image3 as $index => $food_images3)
     <img src="{{ asset('storage/Food_menus/'.$food_images3->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
-    @endforeach 
+    @endforeach
   </div>
   <div class="col-md-6">
     <div class="table-responsive">
@@ -121,7 +127,7 @@ h5{
           <td>{{$food_types3->price}}</td>
           <td>{{$food_types3->special_price}}</td>
         </tr>
-        @endforeach 
+        @endforeach
       </tbody>
     </table>
   </div>
@@ -134,7 +140,7 @@ h5{
    <div class="col-md-6">
     @foreach ($food_image4 as $index => $food_images4)
     <img src="{{ asset('storage/Food_menus/'.$food_images4->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
-    @endforeach 
+    @endforeach
   </div>
   <div class="col-md-6">
     <div class="table-responsive">
@@ -151,7 +157,7 @@ h5{
           <td>{{$food_types4->food_name}}</td>
           <td>{{$food_types4->price}}</td>
         </tr>
-        @endforeach 
+        @endforeach
       </tbody>
     </table>
   </div>
@@ -164,7 +170,7 @@ h5{
    <div class="col-md-6">
     @foreach ($food_image5 as $index => $food_images5)
     <img src="{{ asset('storage/Food_menus/'.$food_images5->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
-    @endforeach 
+    @endforeach
   </div>
   <div class="col-md-6">
     <div class="table-responsive">
@@ -183,7 +189,7 @@ h5{
           <td>{{$food_types5->price}}</td>
           <td>{{$food_types5->special_price}}</td>
         </tr>
-        @endforeach 
+        @endforeach
       </tbody>
     </table>
   </div>
@@ -196,7 +202,7 @@ h5{
    <div class="col-md-6">
     @foreach ($food_image6 as $index => $food_images6)
     <img src="{{ asset('storage/Food_menus/'.$food_images6->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
-    @endforeach 
+    @endforeach
   </div>
   <div class="col-md-6">
     <div class="table-responsive">
@@ -213,7 +219,7 @@ h5{
           <td>{{$food_types6->food_name}}</td>
           <td>{{$food_types6->price}}</td>
         </tr>
-        @endforeach 
+        @endforeach
       </tbody>
     </table>
   </div>
@@ -226,7 +232,7 @@ h5{
    <div class="col-md-6">
     @foreach ($food_image7 as $index => $food_images7)
     <img src="{{ asset('storage/Food_menus/'.$food_images7->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
-    @endforeach 
+    @endforeach
   </div>
   <div class="col-md-6">
     <div class="table-responsive">
@@ -243,7 +249,7 @@ h5{
           <td>{{$food_types7->food_name}}</td>
           <td>{{$food_types7->price}}</td>
         </tr>
-        @endforeach 
+        @endforeach
       </tbody>
     </table>
   </div>
@@ -285,7 +291,7 @@ h5{
    <div class="col-md-6">
     @foreach ($food_image8 as $index => $food_images8)
     <img src="{{ asset('storage/Food_menus/'.$food_images8->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
-    @endforeach 
+    @endforeach
   </div>
   <div class="col-md-6">
     <div class="table-responsive">
@@ -306,7 +312,7 @@ h5{
           <td>{{$food_types8->special_price}}</td>
           <td>{{$food_types8->big_price}}</td>
         </tr>
-        @endforeach 
+        @endforeach
       </tbody>
     </table>
   </div>
@@ -319,7 +325,7 @@ h5{
    <div class="col-md-6">
     @foreach ($food_image9 as $index => $food_images9)
     <img src="{{ asset('storage/Food_menus/'.$food_images9->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
-    @endforeach 
+    @endforeach
   </div>
   <div class="col-md-6">
     <div class="table-responsive">
@@ -336,7 +342,7 @@ h5{
           <td>{{$food_types9->food_name}}</td>
           <td>{{$food_types9->price}}</td>
         </tr>
-        @endforeach 
+        @endforeach
       </tbody>
     </table>
   </div>

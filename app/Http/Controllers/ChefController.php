@@ -30,10 +30,30 @@ class ChefController extends Controller
             return redirect("/counter_staff");
             break;
             case '4':
+             // $current_date = strtotime(Date('Y-m-d H:i:s'));
+      // $reserve_date = strtotime("20-08-2018 16:30");
+      // $diffdate = round(abs($current_date - $reserve_date) / 60,2);
+      // if($diffdate >= 10){
+      //   echo "เปลี่ยนสถานะ";
+      // }
+      // return;
+      // return $currenttime = $date." ".$time;
             $table = Dining_table::where('status',0)->get();
             foreach ($table as $key => $val) {
-               $table[$key]['reservation'] = Reservation::where('dining_table_id',$val->id)->get();
+               $table[$key]['reservation'] = Reservation::where('dining_table_id',$val->id)->where('is_active',1)->get();
                foreach ($table[$key]['reservation'] as $key2 => $val2) {
+                   $reserve = $val2->reserve_date;
+                   $current_date = strtotime(Date('Y-m-d H:i'));
+                   $reserve_date = strtotime(Date($reserve));
+                   $diffdate = round(abs($current_date - $reserve_date) / 60,2);
+                   if($diffdate >= 10){
+                    // $update_reservation = Reservation::where('dining_table_id',$val2->dining_table_id)->update(["is_active"=> 0]);
+                    // $update_table = Dining_table::where('id', $val2->dining_table_id)->first();
+                    // $update_table->status = 1;
+                    // $update_table->color = "success";
+                    // $update_table->save();
+
+                }
                      $table[$key]['reservation'][$key2]['order'] = Order::where('reservationld_id',$val2->id)->get();
                      foreach ($table[$key]['reservation'][$key2]['order'] as $key3 => $val3) {
                          $table[$key]['reservation'][$key2]['order'][$key3]['order_details'] = Order_details::where('order_id', $val3->id)->where('is_cook',0)->get();
@@ -44,6 +64,7 @@ class ChefController extends Controller
                }
            }
             //return $table;
+
             return view('chef.chef',['table'=> $table]);
             break;
 

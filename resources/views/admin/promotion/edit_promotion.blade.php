@@ -38,19 +38,19 @@ div.upload input {
         <h3 class="lead">
           โปรโมชั่น
         </h3>
-        <form class="form-horizontal" method="POST" action="{{ route('promotion.addpromotion') }}"  enctype="multipart/form-data">
+       <form class="form-horizontal" method="POST" action="{{ route('promotion.update',['id'=>$edit_promotion->id]) }}"  enctype="multipart/form-data">
           {{ csrf_field() }}
           <div>
             <label for="exampleInputFile">รูป</label>
             <div class="upload">
               <input type="file"  id="imgInp" name="file"/ >
             </div>
-            <img id="blah" src="/assets/img/no-img.png" style="width: 25%; height: 25%;">
+            <img id="blah" src="{{ asset('storage/promotion/'.$edit_promotion->qrimage) }}" style="width: 25%; height: 25%;">
           </div>
           <br>
           <div>
             <label>ชื่อ</label>
-            <input type="text" class="form-control" name="name" placeholder="ชื่อ">
+            <input type="text" class="form-control" name="name" value="{{$edit_promotion->name}}" placeholder="ชื่อ">
           </div>
           <div>
             <label>ประเภท</label>
@@ -62,16 +62,18 @@ div.upload input {
           </div>
           <div>
             <label>ราคา</label>
-            <input type="text" class="form-control" name="price" placeholder="ราคา">
+            <input type="text" class="form-control" name="price" value="{{$edit_promotion->price}}" placeholder="ราคา">
           </div>
           <div>
              <label for="exampleInputMessage1"><br>คำอธิบาย</br></label>
-             <textarea class="form-control" name="explain"></textarea>
+             <textarea class="form-control" name="explain">{{$edit_promotion->explain}}</textarea>
           </div>
           <div>
            <div class="checkbox">
-            <input type="hidden" name="is_active" value="0" />
-            <label><input type="checkbox" name="is_active"  value="1"> เปิด/ปิด</label>
+            <label>
+              <input type="hidden" name="is_active" value="0" />
+              <input type="checkbox" name="is_active" value="1" {{ $edit_promotion->is_active ? 'checked' : '' }}> <span class="label label-default">เปิด / ปิด</span>
+            </label>
           </div>
         </div>
         <div style="text-align: right;padding-top: 10px;">

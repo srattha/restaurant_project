@@ -64,8 +64,10 @@ th{
       <td>{{$users->created_at}}</td>
       <td>{{$users->updated_at}}</td>
       <td style="align-content: center;">
-        <button type="button" class="btn btn-info btn-xs" onclick="location.href='{{ route('home.edituser',['id'=>$users->id]) }}'"><i class="fa fa-pencil-square-o"></i> Edit</button>
-        <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('home.delete',['id'=>$users->id]) }}'"><i class="fa fa-trash-o"></i> Delete</button>
+        <div class="btn-group">
+          <button type="button" class="btn btn-info btn-xs" onclick="location.href='{{ route('home.edituser',['id'=>$users->id]) }}'"><i class="fa fa-pencil-square-o"></i> Edit</button>
+          <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('home.delete',['id'=>$users->id]) }}'"><i class="fa fa-trash-o"></i> Delete</button>
+        </div>
       </tr>
       @endforeach
     </tbody>

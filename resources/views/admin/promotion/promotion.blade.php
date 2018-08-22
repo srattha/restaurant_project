@@ -31,9 +31,11 @@ img{
   <table id="dataTables-example" class="table table-striped table-bordered" style="width:100%;">
    <thead>
     <tr>
-      <th>#</th>
       <th>รูป</th>
+      <th>ชื่อ</th>
       <th>คำอธิบาย</th>
+      <th>ประเภท</th>
+      <th>ราคา</th>
       <th>status </th>
       <th>created_at</th>
       <th>updated_at</th>
@@ -41,12 +43,40 @@ img{
     </tr>
   </thead>
   <tbody>
+    @foreach ($promotion as $index => $p)
+    <tr>
+      <td>
+        <img src="{{ asset('storage/promotion/'.$p->qrimage) }}" alt="">
+      </td>
+      <td>{{$p->name}}</td>
+      <td>{{$p->explain}}</td>
+      <td>
+        @if($p->promotion_type_id == 1)
+        <span class="label label-default">โปรเดอะฮักกระชากใจ</span>
+        @elseif ($p->promotion_type_id == 2)
+        <span class="label label-warning">โปรสหายหมื่นจอก</span>
+        @elseif ($p->promotion_type_id == 3)
+        <span class="label label-warning">โปรลูกหมูสามตัว</span>
+        @elseif ($p->promotion_type_id == 4)
+        <span class="label label-warning">ยำประเจ็ท</span>
+        @else
+        <span class="label label-warning">ทอดสะพาน</span>
+        @endif
+      </td>
+      <td>{{$p->price}}</td>
+      <td>{{$p->is_active}}</td>
+      <td>{{$p->created_at}}</td>
+      <td>{{$p->updated_at}}</td>
 
-   <tr>
-
-  </tr>
-
-</tbody>
+      <td style="align-content: center;">
+        <div class="btn-group">
+          <button type="button" class="btn btn-info btn-xs" onclick="location.href='{{ route('promotion.editpromotion',['id'=>$p->id]) }}'"><i class="fa fa-pencil-square-o"></i> Edit</button>
+          <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('promotion.delete',['id'=>$p->id]) }}'"><i class="fa fa-trash-o"></i> Delete</button>
+        </div>
+      </td>
+    </tr>
+    @endforeach
+  </tbody>
 </table>
 </div>
 

@@ -16,6 +16,7 @@ class CreateShopatmospheresTable extends Migration
         Schema::create('shopatmospheres', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image');
+            $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
         });
     }

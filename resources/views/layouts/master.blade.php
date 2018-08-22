@@ -80,6 +80,9 @@
     color: #333;
     text-decoration: none;
   }
+  li:hover {
+    background-color: #555;
+}
 #overlay {
   position: fixed;
   z-index: 999;
@@ -218,6 +221,10 @@
     border-radius: 0px;
     margin-bottom: 0px;
 }
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #fff;
+    background-color: #555;
+}
 </style>
 <script type="text/javascript">
   ;(function(){
@@ -258,6 +265,7 @@
     }
     document.addEventListener('DOMContentLoaded', loadbar, false);
   }());
+
 </script>
 
 
@@ -291,7 +299,7 @@
         </script>
       </div>
       <div class="col-md-4 col-sm-4 col-xs-4">
-       <i class="fa fa-phone-square" aria-hidden="true"></i> ติดตามเรา : 055-030-280 
+       <i class="fa fa-phone-square" aria-hidden="true"></i> ติดตามเรา : 055-030-280
      </div>
      <div class="col-md-4 col-sm-4 col-xs-4">
       <div >
@@ -356,17 +364,18 @@
       <br>
 
       <ul class="nav navbar-nav">
-        <li><a href="/">หน้าแรก</a></li>
-        <li><a href="/food">เมนูอาหาร</a></li>
-        <li><a href="/status">สถานะโต๊ะ</a></li>
-        <li><a href="/reser">โปรโมชั่น</a></li>
-        <li><a href="/image">รูปบรรยากาศภายในร้าน</a></li>
-        <li><a href="/contact">ติดต่อเรา</a></li>
+        <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}"  style="color: rgba(255,255,255,0.9);">หน้าแรก</a></li>
+        <li class="{{ Request::is('food') ? 'active' : '' }}"><a href="{{ url('/food') }}" style="color: rgba(255,255,255,0.9);">เมนูอาหาร</a></li>
+        <li class="{{ Request::is('status') ? 'active' : '' }}"><a href="{{ url('/status') }}" style="color: rgba(255,255,255,0.9);">สถานะโต๊ะ</a></li>
+        <li class="{{ Request::is('reser') ? 'active' : '' }}"><a href="{{ url('/reser') }}" style="color: rgba(255,255,255,0.9);">โปรโมชั่น</a></li>
+        <li class="{{ Request::is('image') ? 'active' : '' }}"><a href="{{ url('/image') }}" style="color: rgba(255,255,255,0.9);">รูปบรรยากาศภายในร้าน</a></li>
+        <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="{{ url('/contact') }}" style="color: rgba(255,255,255,0.9);">ติดต่อเรา</a></li>
       </ul>
 
-    </div><!-- /.navbar-collapse -->
+    </div>
 
   </nav>
+
 </div>
 
 <!-- <div class="container" style="
