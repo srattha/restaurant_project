@@ -17,11 +17,12 @@ h5{
 @endsection
 @section('content')
 
-<div class="row">
+<!-- <div class="row"> -->
   <h1 style="text-align: center;">เมนูอาหาร</h1>
   <div class="tabbable">
     <ul class="nav nav-tabs">
-      <li class="active"><a data-toggle="tab" href="#menu1">เมนูผัด</a></li>
+      <li class="active"><a data-toggle="tab" href="#menu">เมนูแนะนำ</a></li>
+      <li><a data-toggle="tab" href="#menu1">เมนูผัด</a></li>
       <li><a data-toggle="tab" href="#menu2">เมนูต้ม</a></li>
       <li><a data-toggle="tab" href="#menu3">เมนูทอด</a></li>
       <li><a data-toggle="tab" href="#menu4">เมนูยำ</a></li>
@@ -33,12 +34,12 @@ h5{
     </ul>
 
     <div class="tab-content">
-      <div id="menu1" class="tab-pane fade in active">
+      <div id="menu" class="tab-pane fade in active">
        <br>
        <div class="row">
          <div class="col-md-6">
-          @foreach ($food_image1 as $index => $food_images1)
-          <img src="{{ asset('storage/Food_menus/'.$food_images1->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+          @foreach ($food_image0 as $index => $food_images0)
+          <img src="{{ asset('storage/Food_menus/'.$food_images0->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
           @endforeach
         </div>
         <div class="col-md-6">
@@ -51,10 +52,10 @@ h5{
               </tr>
             </thead>
             <tbody>
-              @foreach ($food_type1 as $index => $food_types1)
+              @foreach ($food_type0 as $index => $food_types0)
               <tr>
-                <td>{{$food_types1->food_name}}</td>
-                <td>{{$food_types1->price}}</td>
+                <td>{{$food_types0->food_name}}</td>
+                <td>{{$food_types0->price}}</td>
               </tr>
               @endforeach
             </tbody>
@@ -64,12 +65,12 @@ h5{
     </div>
   </div>
 
-  <div id="menu2" class="tab-pane fade ">
+  <div id="menu1" class="tab-pane fade">
    <br>
    <div class="row">
      <div class="col-md-6">
-      @foreach ($food_image2 as $index => $food_images2)
-      <img src="{{ asset('storage/Food_menus/'.$food_images2->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+      @foreach ($food_image1 as $index => $food_images1)
+      <img src="{{ asset('storage/Food_menus/'.$food_images1->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
       @endforeach
     </div>
     <div class="col-md-6">
@@ -78,28 +79,56 @@ h5{
         <thead>
           <tr>
             <th>รายการ</th>
-<<<<<<< HEAD
+            <th>ราคา</th>
             <th>ราคาธรรมดา</th>
-            <th>ราคาพิเศษ</th>            
-=======
-           <th>ราคาธรรมดา</th>
-           <th>ราคาพิเศษ</th>
->>>>>>> 3377de080a2ffa4fd9df824f70666bd1b0686419
+            <th>ราคาพิเศษ</th>
           </tr>
         </thead>
         <tbody>
-          @foreach ($food_type2 as $index => $food_types2)
+          @foreach ($food_type1 as $index => $food_types1)
           <tr>
-            <td>{{$food_types2->food_name}}</td>
-            <td>{{$food_types2->price}}</td>
-            <td>{{$food_types2->special_price}}</td>
-            <td>{{$food_types2->big_price}}</td>
+            <td>{{$food_types1->food_name}}</td>
+            <td>{{$food_types1->price}}</td>
           </tr>
           @endforeach
         </tbody>
       </table>
     </div>
   </div>
+</div>
+</div>
+
+<div id="menu2" class="tab-pane fade ">
+ <br>
+ <div class="row">
+   <div class="col-md-6">
+    @foreach ($food_image2 as $index => $food_images2)
+    <img src="{{ asset('storage/Food_menus/'.$food_images2->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+    @endforeach
+  </div>
+  <div class="col-md-6">
+    <div class="table-responsive">
+     <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>รายการ</th>
+          <th>ราคาธรรมดา</th>
+          <th>ราคาพิเศษ</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach ($food_type2 as $index => $food_types2)
+        <tr>
+          <td>{{$food_types2->food_name}}</td>
+          <td>{{$food_types2->price}}</td>
+          <td>{{$food_types2->special_price}}</td>
+          <td>{{$food_types2->big_price}}</td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
+</div>
 </div>
 </div>
 <div id="menu3" class="tab-pane fade ">
@@ -257,7 +286,7 @@ h5{
  <div class="col-md-6">
   @foreach ($food_image10 as $index => $food_images10)
   <img src="{{ asset('storage/Food_menus/'.$food_images10->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
-  @endforeach 
+  @endforeach
 </div>
 <div class="col-md-6">
   <div class="table-responsive">
@@ -278,7 +307,7 @@ h5{
          <td>{{$food_types10->special_price}}</td>
           <td>{{$food_types10->big_price}}</td>
       </tr>
-      @endforeach 
+      @endforeach
     </tbody>
   </table>
 </div>
@@ -351,7 +380,7 @@ h5{
 </div>
 </div>
 </div>
-</div>
+<!-- </div> -->
 
 
 @endsection

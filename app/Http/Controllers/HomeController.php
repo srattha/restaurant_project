@@ -9,6 +9,7 @@ use App\Food_menus;
 use App\Food_type;
 use Carbon\Carbon;
 use App\Shopatmosphere;
+use App\promotion;
 class HomeController extends Controller
 {
     /**
@@ -31,10 +32,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-       $food_is_recommend = Food_menus::where('is_recommend', 1)->select('food_name','image')->limit(4)->orderBy('id','desc')->get();
+      $promotion = promotion::limit(4)->get();
+       $food_is_recommend = Food_menus::where('is_recommend', 1)->select('food_name','image')->limit(8)->orderBy('id','desc')->get();
        $show_image = Shopatmosphere::select('image')->get();
        return view('home.index', ['food_is_recommend'=> $food_is_recommend,
         'show_image'=>$show_image,
+        'promotion' => $promotion
     ]);
 
    }
