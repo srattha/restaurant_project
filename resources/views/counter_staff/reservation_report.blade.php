@@ -149,7 +149,7 @@
     <tr>
       <td>{{$f->totalorder}}&nbsp;&nbsp;&nbsp;&nbsp;{{$f->food_detail->food_name}}</td>
       <td></td>
-      <td style="text-align: right;">{{$f->food_detail->price}}</td>
+      <td style="text-align: right;">{{$f->amount}}</td>
     </tr>
     @endforeach
   </table>
