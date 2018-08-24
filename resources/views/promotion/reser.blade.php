@@ -6,7 +6,7 @@
 <style type="text/css">
 
 b{
-  background-image:url('https://www.google.co.th/search');
+  background:url('img/o.jpg');
 }
 </style>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -44,12 +44,14 @@ b{
               </tr>
             </thead>
             <tbody>
+              <b>
               @foreach ($promotion_type1 as $index => $promotion_types1)
               <tr>
                 <td>{{$promotion_types1->name}}</td>
                 <td>{{$promotion_types1->price}}</td>
               </tr>
               @endforeach
+            </b>
             </tbody>
           </table>
         </div>

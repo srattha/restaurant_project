@@ -104,11 +104,12 @@
   transition-delay:.2s;
 }
 
+
 </style>
 @endsection
 @section('content')
 <div class="row">
-  <img src="img/cc1.jpg" class="img-responsive" />
+  <img src="img/v.jpg" class="img-responsive" />
 </div>
 <br>
 <div class="row">
@@ -143,6 +144,8 @@
  <div class="panel panel-success">
   <div class="panel-heading"><b style="font-size: 20px;">เวลาเปิดบริการ</b></div>
   <div class="panel-body">
+   <h1>12.00 - 24.00 น.</h1>.
+    <h3>หยุดทุกวัน พุธ</h3>
   </div>
 </div>
 </div>
