@@ -13,6 +13,7 @@ use App\User;
 use App\Helper;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 class CounterstaffController extends Controller
 {
 
@@ -34,16 +35,25 @@ class CounterstaffController extends Controller
       return redirect("/admin");
       break;
       case '3':
+     //  return Date("2018-08-15 12:00:00");
+      // $current_date = strtotime(Date('Y-m-d H:i:s'));
+      // $reserve_date = strtotime("20-08-2018 16:30");
+      // $diffdate = round(abs($current_date - $reserve_date) / 60,2);
+      // if($diffdate >= 10){
+      //   echo "เปลี่ยนสถานะ";
+      // }
+      // return;
+      // return $currenttime = $date." ".$time;
       $dining_table = Dining_table::paginate(6);
       $food_type = Food_type::get();
             //$food_menus = Food_menus::get();
       $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
-     
+
       return view('counter_staff.index',['dining_table'=> $dining_table,
         'user'=> $user,
         'food_type'=> $food_type,
         'food_type_vegetable'=> $food_type_vegetable,
-        
+
       ]);
       break;
       case '4':
@@ -215,11 +225,11 @@ public function reservation_food(Request $request, $id)
   $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
   $food_boiled = DB::table('food_menu')->where('food_type', 2)->get();
   $f_m_fried = DB::table('food_menu')->where('food_type', 3)->get();
-   $f_m_yum = DB::table('food_menu')->where('food_type',4 )->get();
-   $f_m_dish = DB::table('food_menu')->where('food_type',5)->get();
-   $f_m_piza = DB::table('food_menu')->where('food_type',6)->get();
-   $f_m_beverage = DB::table('food_menu')->where('food_type',7)->get();
-    $f_m_coffee = DB::table('food_menu')->where('food_type',8)->get();   
+  $f_m_yum = DB::table('food_menu')->where('food_type',4 )->get();
+  $f_m_dish = DB::table('food_menu')->where('food_type',5)->get();
+  $f_m_piza = DB::table('food_menu')->where('food_type',6)->get();
+  $f_m_beverage = DB::table('food_menu')->where('food_type',7)->get();
+  $f_m_coffee = DB::table('food_menu')->where('food_type',8)->get();
   return view('counter_staff.reservation_food',['dining_table'=> $dining_table,
     'user'=> $user,
     'food_type'=> $food_type,
@@ -259,9 +269,9 @@ public function order_food(Request $request){
     $add_order_details->save();
     if ($add_order_details) {
       session()->flash('add_order_details', $request->food_name);
-     return redirect()->route('reservation_food',['id'=>$request->reservation_id]);
-   }
- }
+      return redirect()->route('reservation_food',['id'=>$request->reservation_id]);
+    }
+  }
 
 
 }else{
@@ -274,8 +284,8 @@ public function order_food(Request $request){
   $add_order_details->save();
   if ($add_order_details) {
     session()->flash('add_order_details', $request->food_name);
-   return redirect()->route('reservation_food',['id'=>$request->reservation_id]);
- }
+    return redirect()->route('reservation_food',['id'=>$request->reservation_id]);
+  }
 }
 
 }

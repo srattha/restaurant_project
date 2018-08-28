@@ -165,38 +165,23 @@ public function index()
   //return $request->all();
       if ($request->price) {
        $price = $request->price *  $request->totalorder;
-      }else if($request->special_price){
-         $price = $request->special_price *  $request->totalorder;
-      }else {
-        $price = $request->big_price *  $request->totalorder;
-      }
-      $order = Order::where('reservationld_id', $request->reservation_id)->first();
-      if (!$order) {
-       $add_order = new Order;
-       $add_order->reservationld_id = $request->reservation_id;
-       $add_order->orde_date = $request->orde_date;
-       $add_order->is_paid = 0;
-   // $add_order->amount = $price;
-       $add_order->save();
-       $order_id = $add_order->id;
-       if ($add_order) {
-        $add_order_details = new Order_details;
-        $add_order_details->order_Id = $order_id;
-        $add_order_details->food_id = $request->food_id;
-        $add_order_details->totalorder = $request->totalorder;
-        $add_order_details->amount = $price;
-        $add_order_details->is_cook = 0;
-        $add_order_details->save();
-        if ($add_order_details) {
-          session()->flash('add_order_details', $request->food_name);
-          return redirect()->route('book_food',['id'=>$request->reservation_id]);
-        }
-      }
-
-
-    }else{
+     }else if($request->special_price){
+       $price = $request->special_price *  $request->totalorder;
+     }else {
+      $price = $request->big_price *  $request->totalorder;
+    }
+    $order = Order::where('reservationld_id', $request->reservation_id)->first();
+    if (!$order) {
+     $add_order = new Order;
+     $add_order->reservationld_id = $request->reservation_id;
+     $add_order->orde_date = $request->orde_date;
+     $add_order->is_paid = 0;
+     $add_order->amount = $price;
+     $add_order->save();
+     $order_id = $add_order->id;
+     if ($add_order) {
       $add_order_details = new Order_details;
-      $add_order_details->order_Id = $order['id'];
+      $add_order_details->order_Id = $order_id;
       $add_order_details->food_id = $request->food_id;
       $add_order_details->totalorder = $request->totalorder;
       $add_order_details->amount = $price;
@@ -208,52 +193,64 @@ public function index()
       }
     }
 
+
+  }else{
+    $add_order_details = new Order_details;
+    $add_order_details->order_Id = $order['id'];
+    $add_order_details->food_id = $request->food_id;
+    $add_order_details->totalorder = $request->totalorder;
+    $add_order_details->amount = $price;
+    $add_order_details->is_cook = 0;
+    $add_order_details->save();
+    if ($add_order_details) {
+      session()->flash('add_order_details', $request->food_name);
+      return redirect()->route('book_food',['id'=>$request->reservation_id]);
+    }
   }
 
-  public function customer_report($id){
-
-    $amount = 0;
-   $reservation = Reservation::where('user_id', $id)->orderBy('id','desc')->first();
-    $table_id= Dining_table::where('id', $reservation['dining_table_id'])->orderBy('id','desc')->first();
-     $order = Order::where('reservationld_id', $reservation['id'])->first();
-
-    $order_details = Order_details::where('order_Id',$order['id'] )->get();
-
-    foreach ($order_details as $key => $order_detail) {
-     $order_details[$key]['food_detail'] = Food_menus::where('id',$order_detail->food_id)->first();
-     $amount += $order_detail['amount'];
-
-   }
-   $date = $reservation['reserve_date'];
-   $strYear = date("Y",strtotime($date))+543;
-   $strMonth= date("n",strtotime($date));
-   $strDay= date("j",strtotime($date));
-   $strHour= date("H",strtotime($date));
-   $strMinute= date("i",strtotime($date));
-   $strSeconds= date("s",strtotime($date));
-   $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
-   $strMonthThai=$strMonthCut[$strMonth];
-   $datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
-
-   if ($reservation == '' || $order == '') {
-
-    if ($reservation) {
-       session()->flash('reservation','ไม่มีรายการ');
-      return redirect()->route('book_food',['id'=>$reservation['id']]);
-    }
-     session()->flash('reservation','ไม่มีรายการ');
-     return redirect("/");
-
-   }
-if ($order) {
-  # code...
 }
-   return view('status.customer_report',['order_details' => $order_details,
-    'datas'=> $datas,
-    'amount'=>$amount,
-    'order' =>$order,
-    'reservation' =>$reservation
-  ]);
+
+public function customer_report($id){
+
+  $amount = 0;
+  $reservation = Reservation::where('user_id', $id)->orderBy('id','desc')->where('is_active',1)->first();
+  $table_id= Dining_table::where('id', $reservation['dining_table_id'])->orderBy('id','desc')->first();
+  $order = Order::where('reservationld_id', $reservation['id'])->first();
+
+  $order_details = Order_details::where('order_Id',$order['id'] )->get();
+
+  foreach ($order_details as $key => $order_detail) {
+   $order_details[$key]['food_detail'] = Food_menus::where('id',$order_detail->food_id)->first();
+   $amount += $order_detail['amount'];
 
  }
+ $date = $reservation['reserve_date'];
+ $strYear = date("Y",strtotime($date))+543;
+ $strMonth= date("n",strtotime($date));
+ $strDay= date("j",strtotime($date));
+ $strHour= date("H",strtotime($date));
+ $strMinute= date("i",strtotime($date));
+ $strSeconds= date("s",strtotime($date));
+ $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+ $strMonthThai=$strMonthCut[$strMonth];
+ $datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
+
+ if ($reservation == '' || $order == '') {
+
+  if ($reservation) {
+   session()->flash('reservation','ไม่มีรายการ');
+   return redirect()->route('book_food',['id'=>$reservation['id']]);
+ }
+ session()->flash('reservation','ไม่มีรายการ');
+ return redirect("/");
+
+}
+return view('status.customer_report',['order_details' => $order_details,
+  'datas'=> $datas,
+  'amount'=>$amount,
+  'order' =>$order,
+  'reservation' =>$reservation
+]);
+
+}
 }

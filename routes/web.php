@@ -101,4 +101,7 @@ Route::get('/chef_update_is_cook/{id}', 'ChefController@edit')->name('chef_updat
 //Customer
 Route::post('order_food_customer', 'Book_tableController@order_food')->name('order_food_customer');
 Route::get('customer_report/{id}', 'Book_tableController@customer_report')->name('customer_report')->where('id', '[0-9]+');
+// login facebook
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider')->name('login.facebook');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 Auth::routes();

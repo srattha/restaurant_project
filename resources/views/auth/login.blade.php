@@ -6,39 +6,6 @@
   background-color:#fff;
 }
 
-.btn-facebook {
-  color: #ffffff;
-  -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #2b4b90;
-  *background-color: #133783;
-  background-image: -moz-linear-gradient(top, #3b5998, #133783);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3b5998), to(#133783));
-  background-image: -webkit-linear-gradient(top, #3b5998, #133783);
-  background-image: -o-linear-gradient(top, #3b5998, #133783);
-  background-image: linear-gradient(to bottom, #3b5998, #133783);
-  background-repeat: repeat-x;
-  border-color: #133783 #133783 #091b40;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3b5998', endColorstr='#ff133783', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-}
-
-.btn-facebook:hover,
-.btn-facebook:focus,
-.btn-facebook:active,
-.btn-facebook.active,
-.btn-facebook.disabled,
-.btn-facebook[disabled] {
-  color: #ffffff;
-  background-color: #133783 !important;
-  *background-color: #102e6d !important;
-}
-
-.btn-facebook:active,
-.btn-facebook.active {
-  background-color: #0d2456 \9 !important;
-}
 </style>
 
 @endsection
@@ -108,7 +75,7 @@
     <div class="col-md-4 col-md-offset-4">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">เข้าสู่ระบบ</h3>
+          <h3 class="panel-title"><i class="fa fa-user-circle-o" aria-hidden="true"></i> เข้าสู่ระบบ</h3>
         </div>
         <div class="panel-body">
           <form accept-charset="UTF-8" role="form" method="POST" action="{{ route('login') }}">
@@ -148,7 +115,8 @@
        </form>
        <hr/>
        <center><h4>OR</h4></center>
-       <input class="btn btn-lg btn-facebook btn-block" type="submit" value="Login via facebook">
+       <button class="btn btn-lg btn-block" type="button" onclick="location.href='{{ route('login.facebook') }}'" style=" background-color: #3b5998!important;
+    color: #fff!important;"> <i class="fa fa-facebook-official" aria-hidden="true"></i> Login via facebook</button>
 
      </div>
      <button type="button" class="btn btn-primary btn-block" onclick="location.href='{{ route('register') }}'">ลงทะเบียนใช้งาน</button>

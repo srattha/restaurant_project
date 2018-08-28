@@ -25,6 +25,7 @@ class StatusController extends Controller
      */
     public function index()
     {
+
        // return $table_status = Dining_table::get();
         //โต๊ะ1-12
         $table_status_a = Dining_table::where('id','<=', 12)->get();
