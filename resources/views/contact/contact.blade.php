@@ -14,26 +14,27 @@
     <div class="carousel-inner">
 
       <div class="item active">
-        <img src="/img/c1.jpg" alt="Los Angeles" style="width:100%;">
+        <img src="/img/v.jpg" alt="Los Angeles" style="width:100%;">
         <div class="carousel-caption">
-          <h3><a href="/register">หน้าแรก</a></h3>
-          <p>LA is always so much fun!</p>
+          <h3><a href="/register"></a></h3>
+          <h3>เป็นต่อ ก่อสร้าง&คาเฟ่</h3>
         </div>
       </div>
 
       <div class="item">
         <img src="/img/c20.jpg" alt="Chicago" style="width:100%;">
         <div class="carousel-caption">
-          <h3>Chicago</h3>
-          <p>Thank you, Chicago!</p>
+          <h3>เปิดบริการ</h3>
+          <p>12.00-24.00 ทุกวัน</p>
+          <p>หยุดทุกวันพุธ</p>
         </div>
       </div>
 
       <div class="item">
         <img src="/img/d20.jpg" alt="New York" style="width:100%;">
         <div class="carousel-caption">
-          <h3>New York</h3>
-          <p>We love the Big Apple!</p>
+          <h3>เบอร์โทรติดต่อ</h3>
+          <p>055-030-280</p>
         </div>
       </div>
 

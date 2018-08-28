@@ -9,7 +9,6 @@ b{
 </style> 
 @endsection
 @section('content')
-
  <div class="row">
 <h1 style="text-align: center;">โปรโมชั่น</h1>
   <div class="container">
@@ -21,9 +20,9 @@ b{
       <li><a data-toggle="tab" href="#menu5">ทอดสะพาน</a></li>
     </ul>
 
-
+<b src="img/o.jpg" class="img-responsive" >
     <div class="tab-content">
-     <div id="menu1" class="tab-pane fade in active">
+   <div id="menu1" class="tab-pane fade in active">
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -50,7 +49,7 @@ b{
       </div>
       <div class="col-md-2"></div>
     </div> 
- </div>
+ </div> 
   <div id="menu2" class="tab-pane fade ">
     <div class="row">
       <div class="col-md-3"></div>
