@@ -144,8 +144,8 @@
  <div class="panel panel-success">
   <div class="panel-heading"><b style="font-size: 20px;">เวลาเปิดบริการ</b></div>
   <div class="panel-body">
-   <h1>12.00 - 24.00 น.</h1>.
-    <h3>หยุดทุกวัน พุธ</h3>
+   <h1 class="text-center">12.00 - 24.00 น.</h1>.
+    <h3 class="text-center">หยุดทุกวัน พุธ</h3>
   </div>
 </div>
 </div>
@@ -217,15 +217,15 @@
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9x7E5toahKKgMmeDNLVy3YUbkA5cNxM0&callback=myMap"></script>
           </div>
           <div class="col-md-6">
-            <h3>ข้อมูลติดต่อ </h3>
+            <h3 class="text-center">ข้อมูลติดต่อ </h3>
             <hr>
-             <p>210/10 ถนน พหลโยธิน ต.ไม้งาม</p>
-             <p>อ.เมืองตาก จ.ตาก 63000</p>
-             <p>เบอร์โทร 0955535222</p>
+             <p class="text-center">210/10 ถนน พหลโยธิน ต.ไม้งาม</p>
+             <p class="text-center">อ.เมืองตาก จ.ตาก 63000</p>
+             <p class="text-center">เบอร์โทร 0955535222</p>
 
-            <p><a href="https://www.facebook.com/PentorTK"><img src="/img/facebook.png"></a>
+            <p class="text-center"><a href="https://www.facebook.com/PentorTK"><img src="/img/facebook.png"></a>
              <!--<img src="/img/facebook.png">--></p>
-             <p><a href="/register"><img src="/img/line.png"></a></p>
+             <p class="text-center"><a href="/register"><img src="/img/line.png"></a></p>
              <p>
 
              </p>

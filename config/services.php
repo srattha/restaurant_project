@@ -36,9 +36,9 @@ return [
     ],
 
     'facebook' => [
-    'client_id' => '561213174293763',         // Your GitHub Client ID
-    'client_secret' => '3e4e2cfd12e0f8a754f5255bf794e304', // Your GitHub Client Secret
-    'redirect' => 'http://localhost:9999/login/facebook/callback',
+    'client_id' => '290642448395719',         // Your GitHub Client ID
+    'client_secret' => 'd1bd52cc2f2e22fe11de6d3c0e4aabf5', // Your GitHub Client Secret
+    'redirect' => 'http://localhost:8888/login/facebook/callback',
 ],
 
 ];

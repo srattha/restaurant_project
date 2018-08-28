@@ -25,14 +25,16 @@ class FoodController extends Controller
     public function index()
     {
        // return $food_type = DB::table('food_menu')->where('food_type', 1)->get();
+        $food_type0 = Food_menus::where('food_type', 0)->get();
+         $food_image0 = Food_menus::where('food_type', 0)->select('image')->limit(10)->get();
          $food_type1 = Food_menus::where('food_type', 1)->get();
-         $food_image1 = Food_menus::where('food_type', 1)->select('image')->limit(10)->get();
+         $food_image1 = Food_menus::where('food_type', 1)->select('image')->limit(8)->get();
          $food_type2 = Food_menus::where('food_type', 2)->get();
          $food_image2 = Food_menus::where('food_type', 2)->select('image')->limit(6)->get();
          $food_type3 = Food_menus::where('food_type', 3)->get();
-         $food_image3 = Food_menus::where('food_type', 3)->select('image')->limit(10)->get();
+         $food_image3 = Food_menus::where('food_type', 3)->select('image')->limit(8)->get();
          $food_type4 = Food_menus::where('food_type', 4)->get();
-         $food_image4 = Food_menus::where('food_type', 4)->select('image')->limit(10)->get();
+         $food_image4 = Food_menus::where('food_type', 4)->select('image')->limit(8)->get();
          $food_type5 = Food_menus::where('food_type', 5)->get();
          $food_image5 = Food_menus::where('food_type', 5)->select('image')->limit(6)->get();
          $food_type6 = Food_menus::where('food_type', 6)->get();
@@ -47,7 +49,9 @@ class FoodController extends Controller
          $food_image0 = Food_menus::where('is_recommend', 1)->select('image')->limit(2)->get();
          $food_type10 = Food_menus::where('food_type', 10)->get();
          $food_image10 = Food_menus::where('food_type', 10)->select('image')->limit(2)->get();
-        return view('foodmenu.food', ['food_type1' => $food_type1,
+        return view('foodmenu.food', ['food_type0' => $food_type0,
+                                        'food_image0' => $food_image0,
+                                        'food_type1' => $food_type1,
                                         'food_image1' => $food_image1,
                                         'food_type2' => $food_type2,
                                         'food_image2' => $food_image2,

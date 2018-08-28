@@ -168,15 +168,15 @@ public function index()
      }else if($request->special_price){
        $price = $request->special_price *  $request->totalorder;
      }else {
+     $add_order = new Order;
       $price = $request->big_price *  $request->totalorder;
     }
     $order = Order::where('reservationld_id', $request->reservation_id)->first();
     if (!$order) {
-     $add_order = new Order;
+    $add_order = new Order;
      $add_order->reservationld_id = $request->reservation_id;
      $add_order->orde_date = $request->orde_date;
      $add_order->is_paid = 0;
-     $add_order->amount = $price;
      $add_order->save();
      $order_id = $add_order->id;
      if ($add_order) {
@@ -213,7 +213,7 @@ public function index()
 public function customer_report($id){
 
   $amount = 0;
-  $reservation = Reservation::where('user_id', $id)->orderBy('id','desc')->where('is_active',1)->first();
+   $reservation = Reservation::where('user_id', $id)->orderBy('id','desc')->where('is_active',1)->first();
   $table_id= Dining_table::where('id', $reservation['dining_table_id'])->orderBy('id','desc')->first();
   $order = Order::where('reservationld_id', $reservation['id'])->first();
 
