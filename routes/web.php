@@ -104,4 +104,6 @@ Route::get('customer_report/{id}', 'Book_tableController@customer_report')->name
 // login facebook
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider')->name('login.facebook');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+//receptionist
+Route::get('/receptionist', 'ReceptionistController@index')->name('receptionist');
 Auth::routes();

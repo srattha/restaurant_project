@@ -14,6 +14,15 @@ img{
  height: 70px;
  width: 70px;
 }
+.label-purple {
+    background-color: #673AB7;
+}
+.label-yellow {
+    background-color: #FFFF00;
+}
+.label-purple {
+    background-color: #673AB7;
+}
 </style>
 @endsection
 @section('content')
@@ -57,17 +66,21 @@ img{
       @elseif ($food_menu->food_type == 2)
       <span class="label label-warning">อาหารประเภท ต้ม</span>
       @elseif ($food_menu->food_type == 3)
-      <span class="label label-warning">อาหารประเภท ทอด</span>
+      <span class="label label-purple">อาหารประเภท ทอด</span>
       @elseif ($food_menu->food_type == 4)
-      <span class="label label-warning">อาหารประเภท ยำ</span>
+      <span class="label label-info">อาหารประเภท ยำ</span>
       @elseif ($food_menu->food_type == 5)
-      <span class="label label-warning">อาหารจานเดียว</span>
+      <span class="label label-danger">อาหารจานเดียว</span>
       @elseif ($food_menu->food_type == 6)
-      <span class="label label-warning">พิซซ่า</span>
+      <span class="label label-primary">พิซซ่า</span>
       @elseif ($food_menu->food_type == 7)
-      <span class="label label-warning">เครื่องดื่ม</span>
+      <span class="label label-success">เครื่องดื่ม</span>
+      @elseif ($food_menu->food_type == 8)
+      <span class="label label-yellow">กาแฟ</span>
+      @elseif ($food_menu->food_type == 9)
+      <span class="label label-warning">อิตาเลี่ยนโซดา</span>
       @else
-      <span class="label label-warning">กาแฟ</span>
+      <span class="label label-warning">เครื่องดื่ม1</span>
       @endif
     </td>
     <td>

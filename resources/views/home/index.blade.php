@@ -144,8 +144,8 @@
  <div class="panel panel-success">
   <div class="panel-heading"><b style="font-size: 20px;">เวลาเปิดบริการ</b></div>
   <div class="panel-body">
-   <h1 class="text-center">12.00 - 24.00 น.</h1>.
-    <h3 class="text-center">หยุดทุกวัน พุธ</h3>
+   <h1 class="text-center">12:00 น. - 24:00 น.</h1>.
+    <h3 class="text-center">หยุดทุกวันพุธ</h3>
   </div>
 </div>
 </div>
