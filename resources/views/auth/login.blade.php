@@ -116,10 +116,10 @@
        <hr/>
        <center><h4>OR</h4></center>
        <button class="btn btn-lg btn-block" type="button" onclick="location.href='{{ route('login.facebook') }}'" style=" background-color: #3b5998!important;
-    color: #fff!important;"> <i class="fa fa-facebook-official" aria-hidden="true"></i> Login via facebook</button>
+       color: #fff!important;"> <i class="fa fa-facebook-official" aria-hidden="true"></i> Login facebook</button>
 
      </div>
-     <button type="button" class="btn btn-primary btn-block" onclick="location.href='{{ route('register') }}'">ลงทะเบียนใช้งาน</button>
+     <button type="button" class="btn btn-lg btn-primary btn-block" onclick="location.href='{{ route('register') }}'">ลงทะเบียนใช้งาน</button>
    </div>
  </div>
 </div>
