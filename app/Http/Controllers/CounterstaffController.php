@@ -163,7 +163,7 @@ public function reservation_report(Request $request, $id)
 
   $amount = 0;
   $table_name = Dining_table::where('id',$id)->first();
-  $reservation = Reservation::where('dining_table_id', $id)->orderBy('id','desc')->first();
+   $reservation = Reservation::where('dining_table_id', $id)->orderBy('id','desc')->first();
   $order = Order::where('reservationld_id', $reservation['id'])->first();
   $order_details = Order_details::where('order_Id',$order['id'] )->get();
 
@@ -173,8 +173,8 @@ public function reservation_report(Request $request, $id)
  }
 
 //return $order_details;
- $user_id =  $reservation['user_id'];
- $user = User::where('id', $user_id)->first();
+  $user_id =  $reservation['user_id'];
+$user = User::where('id', $user_id)->first();
  $date = $reservation['reserve_date'];
  $reserve_mobile =$reservation['reserve_mobile'];
 
