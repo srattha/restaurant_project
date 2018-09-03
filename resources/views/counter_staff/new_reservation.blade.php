@@ -77,7 +77,7 @@
      <input type='hidden'  name="reservations_id"  value="{{$reservations->id}}">
      <input type='hidden'  name="dining_tables_id" value="{{$dining_tables->id}}">
      <button class="btn btn-success" type="submit">
-       <i class="fa fa-check" aria-hidden="true"></i> ยืนยันสถานะ
+      <i class="fa fa-check" aria-hidden="true"></i> ยกเลิกการจอง
      </button>
 
    </form>
