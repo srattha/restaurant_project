@@ -62,9 +62,6 @@ class CounterstaffController extends Controller
 
     }
 
-
-
-
   }
 
   public function search(Request $request){
@@ -291,7 +288,7 @@ public function order_food(Request $request){
 }
 
 public function confirm_payment(Request $request){
-  //return $request->all();
+ // return $request->all();
   if ($request->order) {
    $update_order = Order::where('id', $request->order)->first();
    $update_order->is_paid = $request->is_paid;
@@ -320,11 +317,30 @@ public function confirm_payment(Request $request){
    return ["satus"=>false,"msg"=>"Can't update_table data"];
  }
 }
+}
 
+public function new_reservation (){
+  $reservation = Reservation::where('is_active',1)->orderBy('id','desc')->get();
+  foreach ($reservation as $key => $value) {
+    $reservation[$key]['dining_table'] = Dining_table::where('id',$value['dining_table_id'])->orderBy('id','desc')->get();
+    $reservation[$key]['user'] = User::where('id',$value['user_id'])->orderBy('id','desc')->get();
+  }
+  return view('counter_staff.new_reservation',['reservation' => $reservation]);
+}
 
-
-
-
+public function confirm_reservation (Request $request){
+  $update_reservation = Reservation::where('id',$request->reservations_id)->update(['is_active' => 0]);
+  $update_table = Dining_table::where('id', $request->dining_tables_id)->first();
+  $update_table->status = 1;
+  $update_table->color = "success";
+  $update_table->save();
+  if ($update_table) {
+   session()->flash('update_table', 'ยืยันสถานะสำเร็จ');
+   return redirect()->route('counterstaff.new_reservation');
+ }else{
+   return ["satus"=>false,"msg"=>"Can't update_table data"];
+ }
+ return $request->all();
 }
 
 

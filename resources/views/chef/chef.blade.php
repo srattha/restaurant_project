@@ -80,8 +80,6 @@
              @else
              <h3><span class="label label-default">ทำแล้ว</span></h3>
              @endif
-
-
          </tr>
          @endforeach
          @endforeach
