@@ -108,4 +108,5 @@ Route::get('login/facebook', 'Auth\LoginController@redirectToProvider')->name('l
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 //receptionist
 Route::get('/receptionist', 'ReceptionistController@index')->name('receptionist');
+Route::get('/serving', 'ServingController@index')->name('serving');
 Auth::routes();

@@ -14,7 +14,7 @@ img{
    <div class="panel-heading" style="padding: 20px 15px;">
     <div class="row">
      <div class="col-md-1">
-      สถนะ โต๊ะ
+      สถานะ โต๊ะ
     </div>
     <div class="col-md-4">
 

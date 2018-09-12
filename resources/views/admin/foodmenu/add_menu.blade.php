@@ -93,7 +93,7 @@ div.upload input {
       </div>
       <div style="text-align: right;padding-top: 10px;">
         <button type="submit" class="btn btn-primary">
-          OK
+          ตกลง
         </button>
       </div>
 
