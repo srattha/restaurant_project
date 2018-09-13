@@ -36,10 +36,10 @@ img{
       <th>คำอธิบาย</th>
       <th>ประเภท</th>
       <th>ราคา</th>
-      <th>status </th>
-      <th>created_at</th>
-      <th>updated_at</th>
-      <th class="text-center">Actions</th>
+      <th>สถานะการใช้งาน</th>
+      <th>เวลาสร้าง</th>
+      <th>เวลาแก้ไข</th>
+      <th class="text-center">แก้ไขข้อมูล</th>
     </tr>
   </thead>
   <tbody>
@@ -70,8 +70,8 @@ img{
 
       <td style="align-content: center;">
         <div class="btn-group">
-          <button type="button" class="btn btn-info btn-xs" onclick="location.href='{{ route('promotion.editpromotion',['id'=>$p->id]) }}'"><i class="fa fa-pencil-square-o"></i> Edit</button>
-          <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('promotion.delete',['id'=>$p->id]) }}'"><i class="fa fa-trash-o"></i> Delete</button>
+          <button type="button" class="btn btn-info btn-xs" onclick="location.href='{{ route('promotion.editpromotion',['id'=>$p->id]) }}'"><i class="fa fa-pencil-square-o"></i> แก้ไขข้อมูล</button>
+          <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('promotion.delete',['id'=>$p->id]) }}'"><i class="fa fa-trash-o"></i> ลบข้อมูล</button>
         </div>
       </td>
     </tr>

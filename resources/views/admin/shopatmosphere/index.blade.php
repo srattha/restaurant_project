@@ -17,6 +17,15 @@ div.upload input {
   opacity: 0 !important;
   overflow: hidden !important;
 }
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
 
 </style>
 @endsection
@@ -30,12 +39,19 @@ div.upload input {
 <div class="row">
   <form id="form1" runat="server" method="POST" action="{{ route('addshopatmosphere') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
-    <div class="upload">
-      <input type='file' name="file" id="imgInp" />
+    <div>
+      <label for="file-upload" class="custom-file-upload">
+        <i class="fa fa-cloud-upload"></i> เพิ่มรูปภาพ
+      </label>
+      <input id="file-upload" type="file"/>
+      <input type="file" id="imgInp" name="file"/>
+      
+      <br>
+      <br>
     </div>
     <img id="blah" src="/assets/img/no-img.png" style="width: 25%; height: 25%;">
     <br>
-    <hr>
+    
     <div class="form-group" id="button_submit" style="display: none;">
      <button  type="submit" class="btn btn-success"><i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่ม </button>
    </div>
@@ -53,10 +69,24 @@ div.upload input {
 
     @endforeach
   </div>
+  {{ $show_image->links() }}
 
   @endsection
   @section('javascript')
   <script>
+    jQuery(document).ready(function($){
+      $cf = $('#phonenumber');
+      $cf.blur(function(e){
+        phone = $(this).val();
+        phone = phone.replace(/[^0-9]/g,'');
+        if (phone.length != 10)
+        {
+          alert('Phone number must be 10 digits.');
+          $('#phonenumber').val('');
+          $('#phonenumber').focus();
+        }
+      });
+    });
     function readURL(input) {
 
       if (input.files && input.files[0]) {

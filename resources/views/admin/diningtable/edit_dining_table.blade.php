@@ -16,7 +16,6 @@
       </div>
       <div class="offer-content">
         <h3 class="lead">
-          A default offer
         </h3>
         <form class="form-horizontal" method="POST" action="{{ route('diningtable.update_dining_table',['id'=>$dining_table->id]) }}">
           {{ csrf_field() }}

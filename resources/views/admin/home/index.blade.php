@@ -35,11 +35,11 @@ th{
       <th>ชื่อ</th>
       <th>เบอร์โทร</th>
       <th>อีเมล</th>
-      <th>สถนะ</th>
-      <th>status </th>
-      <th>created_at</th>
-      <th>updated_at</th>
-      <th class="text-center">Actions</th>
+      <th>สถานะ</th>
+      <th>สถานะการใช้งาน </th>
+      <th>เวลาสร้าง</th>
+      <th>เวลาแก้ไข</th>
+      <th class="text-center">แก้ไขข้อมูล</th>
     </tr>
   </thead>
   <tbody>
@@ -65,8 +65,8 @@ th{
       <td>{{$users->updated_at}}</td>
       <td style="align-content: center;">
         <div class="btn-group">
-          <button type="button" class="btn btn-info btn-xs" onclick="location.href='{{ route('home.edituser',['id'=>$users->id]) }}'"><i class="fa fa-pencil-square-o"></i> Edit</button>
-          <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('home.delete',['id'=>$users->id]) }}'"><i class="fa fa-trash-o"></i> Delete</button>
+          <button type="button" class="btn btn-info btn-xs" onclick="location.href='{{ route('home.edituser',['id'=>$users->id]) }}'"><i class="fa fa-pencil-square-o"></i> แก้ไขข้อมูล</button>
+          <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('home.delete',['id'=>$users->id]) }}'"><i class="fa fa-trash-o"></i> ลบข้อมูล</button>
         </div>
       </tr>
       @endforeach

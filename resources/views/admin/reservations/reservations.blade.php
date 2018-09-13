@@ -35,9 +35,9 @@ a {
       <th>ลูกค้าที่จอง</th>
       <th>วันที่จอง</th>
       <th>เบอร์ติดต่อ </th>
-      <th>created_at</th>
-      <th>updated_at</th>
-       <th class="text-center">Actions</th>
+      <th>เวลาสร้าง</th>
+      <th>เวลาแก้ไข</th>
+       <th class="text-center">ลบข้อมูล</th>
     </tr>
   </thead>
   <tbody>
@@ -56,7 +56,7 @@ a {
       <td>{{$reservations->reserve_mobile}}</td>
       <td>{{$reservations->created_at}}</td>
       <td>{{$reservations->updated_at}}</td>
-      <td><button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('คุณแน่ใจหรือไม่ ?')) window.location.href = '{{ route('reservations.delete',['id'=>$reservations->id]) }}'"><i class="fa fa-trash-o"></i> Delete</button></td>
+      <td><button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('คุณแน่ใจหรือไม่ ?')) window.location.href = '{{ route('reservations.delete',['id'=>$reservations->id]) }}'"><i class="fa fa-trash-o"></i> ลบข้อมูล</button></td>
     </tr>
 @endforeach
   </tbody>

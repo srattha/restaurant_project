@@ -63,7 +63,7 @@
             <th>อาหาร</th>
             <th>จำนวน</th>
             <th>เวลา</th>
-            <th>ยืนยัน</th>
+            <th>สถานะ</th>
           </tr>
          @foreach ($val->reservation as $index2 => $val2)
          @foreach ($val2->order as $index3 => $val3)
@@ -76,7 +76,7 @@
            <td>{{$val3->orde_date}} .น</td>
            <td>
             @if($val4->is_cook == 0)
-             <button type="button" class="btn btn-success" onclick="if(confirm('ยืนยัน หรือไม่')) window.location.href = '{{ route('chef_update_is_cook',['id'=>$val4->id]) }}'">ยืนยัน</button></td>
+             <button type="button" class="btn btn-success" onclick="if(confirm('ยืนยัน หรือไม่')) window.location.href = '{{ route('chef_update_is_cook',['id'=>$val4->id]) }}'">สถานะ</button></td>
              @else
              <h3><span class="label label-default">ทำแล้ว</span></h3>
              @endif

@@ -21,14 +21,14 @@ img{
                 <div class="col-md-10 col-xs-6">
                   @if($table_status_b->status == 1)
                   <div class="center">
-                    <img src="img/sofa1.png"  class="img-thumbnail" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations"
+                    <img src="img/sofa1.png"  class="img-thumbnail img-responsive" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations"
                     onclick="data_print('{{$table_status_b->id}}', '{{$table_status_b->name}}', '{{$table_status_b->seating}}')">
                   </div>
                   {{$table_status_b->name}}
                   จำนวน {{$table_status_b->seating}} ที่นั่ง
                   @else
                   <div class="center">
-                    <img src="img/sofa.png"  class="img-thumbnail" alt="Cinque Terre" width="100">
+                    <img src="img/sofa.png"  class="img-thumbnail img-responsive" alt="Cinque Terre" width="100">
                   </div>
                   {{$table_status_b->name}}
                   จำนวน {{$table_status_b->seating}} ที่นั่ง
@@ -39,13 +39,13 @@ img{
                 <div class=" col-md-10">
                   @if($table_statu->status == 1)
                   <div class="center">
-                    <img src="img/sofa1.png"  class="img-thumbnail" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                    <img src="img/sofa1.png"  class="img-thumbnail img-responsive" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
                   </div>
                   {{$table_statu->name}}
                   จำนวน {{$table_statu->seating}} ที่นั่ง
                   @else
                   <div class="center">
-                    <img src="img/sofa.png"  class="img-thumbnail" alt="Cinque Terre" width="100" data-color="violet" alt="Third Image">
+                    <img src="img/sofa.png"  class="img-thumbnail img-responsive" alt="Cinque Terre" width="100" data-color="violet" alt="Third Image">
                   </div>
                   {{$table_statu->name}}
                   จำนวน {{$table_statu->seating}} ที่นั่ง
@@ -77,7 +77,7 @@ img{
             </div>
           </div>
         </div>
-        <div class="col-xs-4 col-sm-4 col-md-9 col-lg-9">
+        <div class="col-xs-12 col-sm-4 col-md-9 col-lg-9">
           <div class="offer offer-default">
             <div class="picture">
               <!-- <div class="shape"> -->
@@ -88,7 +88,7 @@ img{
                   <div class="row">
                     <br>
                     @foreach ($table_status_a as $index => $table_statu)
-                    <div class=" col-md-3">
+                    <div class=" col-md-3 col-xs-4">
                       @if($table_statu->status == 1)
                       <div class="center">
                         <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
@@ -318,11 +318,14 @@ img{
       </div>
     </div>
     <div>
-     <label><b>เบอร์โทร ติดต่อ </b></label>
+     <label><b>เบอร์โทร ติดต่อ </b></label> <span style="color: red">*โปรดกรอกหมายเลขโทรศัพท์ 10 หลัก ด้วยรูปแบบดังนี้ 08X-XXX-XXXX *</span>
      <div id="start">
       <div class="input-group">
        <span class="input-group-addon"><i class="fa fa-phone-square" aria-hidden="true"></i></span>
-       <input type='number'  name="reserve_mobile" id="time"  class="form-control first_login"  / required="">
+       <input type="tel" name="reserve_mobile" pattern="^\d{3}-\d{3}-\d{4}$" class="form-control first_login" required="required" title="โปรดกรอกหมายเลขโทรศัพท์ 10 หลัก ด้วยรูปแบบดังนี้ 08X-XXX-XXXX" oninvalid="this.setCustomValidity('โปรดกรอกหมายเลขโทรศัพท์')"
+       onvalid="this.setCustomValidity('')">
+       <!-- <input type='number'  maxlength="10" name="reserve_mobile" class="form-control first_login"  / required="">  -->
+
      </div>
    </div>
  </div>
@@ -379,6 +382,19 @@ img{
   });
 
  });
+
+    $cf = $('#phonenumber');
+    $cf.blur(function(e){
+        phone = $(this).val();
+        phone = phone.replace(/[^0-9]/g,'');
+        if (phone.length != 10)
+        {
+            alert('Phone number must be 10 digits.');
+            $('#phonenumber').val('');
+            $('#phonenumber').focus();
+        }
+    });
+
 
  function data_print($id, $name, $seating){
 

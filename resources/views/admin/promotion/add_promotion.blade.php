@@ -16,6 +16,15 @@ div.upload input {
   opacity: 0 !important;
   overflow: hidden !important;
 }
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
 </style>
 
 @endsection
@@ -36,18 +45,24 @@ div.upload input {
       </div>
       <div class="offer-content">
         <h3 class="lead">
-          โปรโมชั่น
+
         </h3>
         <form class="form-horizontal" method="POST" action="{{ route('promotion.addpromotion') }}"  enctype="multipart/form-data">
           {{ csrf_field() }}
           <div>
-            <label for="exampleInputFile">รูป</label>
-            <div class="upload">
-              <input type="file"  id="imgInp" name="file"/ >
+            <label for="file-upload" class="custom-file-upload">
+              <i class="fa fa-cloud-upload"></i> เพิ่มรูปภาพ
+            </label>
+            <input id="file-upload" type="file"/>
+            <input type="file" id="imgInp" name="file"/>
+            
+            <br>
+            <br>
+            <div>
+              <img id="blah" src="/assets/img/no-img.png" style="width: 25%; height: 25%;">
             </div>
-            <img id="blah" src="/assets/img/no-img.png" style="width: 25%; height: 25%;">
+            <br>
           </div>
-          <br>
           <div>
             <label>ชื่อ</label>
             <input type="text" class="form-control" name="name" placeholder="ชื่อ">
@@ -65,10 +80,10 @@ div.upload input {
             <input type="text" class="form-control" name="price" placeholder="ราคา">
           </div>
           <div>
-             <label for="exampleInputMessage1"><br>คำอธิบาย</br></label>
-             <textarea class="form-control" name="explain"></textarea>
-          </div>
-          <div>
+           <label for="exampleInputMessage1"><br>คำอธิบาย</br></label>
+           <textarea class="form-control" name="explain"></textarea>
+         </div>
+         <div>
            <div class="checkbox">
             <input type="hidden" name="is_active" value="0" />
             <label><input type="checkbox" name="is_active"  value="1"> เปิด/ปิด</label>
@@ -76,14 +91,14 @@ div.upload input {
         </div>
         <div style="text-align: right;padding-top: 10px;">
           <button type="submit" class="btn btn-primary">
-            OK
-          </button>
-        </div>
+           ตกลง
+         </button>
+       </div>
 
-      </form>
+     </form>
 
-    </div>
-  </div>
+   </div>
+ </div>
 </div>
 </div>
 @endsection

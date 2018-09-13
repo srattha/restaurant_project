@@ -26,7 +26,7 @@ class ShopatmosphereController extends Controller
         return view('home');
         break;
         case '2':
-        $show_image = Shopatmosphere::select('image')->get();
+         $show_image = Shopatmosphere::orderBy('id','desc')->paginate(12);
         return view('admin.shopatmosphere.index', ['show_image' => $show_image]);
         break;
         case '3':

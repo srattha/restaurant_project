@@ -2,19 +2,15 @@
 @section('title','แก้ไขเมนู')
 @section('css')
 <style>
-div.upload {
-  width: 157px;
-  height: 57px;
-  background: url(https://lh6.googleusercontent.com/-dqTIJRTqEAQ/UJaofTQm3hI/AAAAAAAABHo/w7ruR1SOIsA/s157/upload.png);
-  overflow: hidden;
-}
 
-div.upload input {
-  display: block !important;
-  width: 157px !important;
-  height: 57px !important;
-  opacity: 0 !important;
-  overflow: hidden !important;
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
 }
 </style>
 
@@ -40,11 +36,19 @@ div.upload input {
         <form class="form-horizontal" method="POST" action="{{ route('foodmenu.update',['id'=>$edit_menu->id]) }}"  enctype="multipart/form-data">
           {{ csrf_field() }}
           <div>
-            <label for="exampleInputFile">รูป</label>
-            <div class="upload">
-              <input type="file"  id="imgInp" name="file"/ >
+            <label for="file-upload" class="custom-file-upload">
+              <i class="fa fa-cloud-upload"></i> เพิ่มรูปภาพ
+            </label>
+            <input id="file-upload" type="file"/>
+            <input type="file" id="imgInp" name="file"/>
+            
+            <br>
+            <br>
+            <div>
+              <img id="blah" src="{{ asset('storage/Food_menus/'.$edit_menu->image) }}" style="width: 25%; height: 25%;"> 
             </div>
-            <img id="blah" src="{{ asset('storage/Food_menus/'.$edit_menu->image) }}" style="width: 25%; height: 25%;">
+            
+            
           </div>
           <br>
           <div>
@@ -76,12 +80,12 @@ div.upload input {
           <input type="numbel" class="form-control" value="{{$edit_menu->price}}" name="price" placeholder="ราคา">
         </div>
         <br>
-         <div>
+        <div>
           <label>ราคา กลาง</label>
           <input type="numbel" class="form-control" value="{{$edit_menu->special_price}}" name="special_price" placeholder="ราคา">
         </div>
         <br>
-         <div>
+        <div>
           <label>ราคา ไหญ่</label>
           <input type="numbel" class="form-control" value="{{$edit_menu->big_price}}" name="big_price" placeholder="ราคา">
         </div>
@@ -97,7 +101,7 @@ div.upload input {
         </div>
         <div style="text-align: right;padding-top: 10px;">
           <button type="submit" class="btn btn-primary">
-            OK
+            ตกลง
           </button>
         </div>
 
@@ -110,22 +114,22 @@ div.upload input {
 @endsection
 @section('javascript')
 <script>
-    function readURL(input) {
+  function readURL(input) {
 
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
 
-        reader.onload = function(e) {
-          $('#blah').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
+      reader.onload = function(e) {
+        $('#blah').attr('src', e.target.result);
       }
+
+      reader.readAsDataURL(input.files[0]);
     }
+  }
 
-    $("#imgInp").change(function() {
-      readURL(this);
-    });
+  $("#imgInp").change(function() {
+    readURL(this);
+  });
 
-  </script>
+</script>
 @endsection

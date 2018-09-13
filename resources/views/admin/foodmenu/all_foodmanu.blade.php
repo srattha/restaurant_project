@@ -47,10 +47,10 @@ img{
       <th>ราคา เล็ก</th>
       <th>ราคา กลาง</th>
       <th>ราคา ใหญ่</th>
-      <th>status </th>
-      <th>created_at</th>
-      <th>updated_at</th>
-      <th class="text-center">Actions</th>
+      <th>สถานะการใช้งาน </th>
+      <th>เวลาสร้าง</th>
+      <th>เวลาแก้ไข</th>
+      <th class="text-center">แก้ไขข้อมูล</th>
     </tr>
   </thead>
   <tbody>

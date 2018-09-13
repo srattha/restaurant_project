@@ -2,20 +2,30 @@
 @section('title','เพิ่มเมนู อาหาร')
 @section('css')
 <style>
-div.upload {
-  width: 157px;
-  height: 57px;
-  background: url(https://lh6.googleusercontent.com/-dqTIJRTqEAQ/UJaofTQm3hI/AAAAAAAABHo/w7ruR1SOIsA/s157/upload.png);
-  overflow: hidden;
+.fileimg {
+  position: absolute;
+  font-size: 50px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
 }
 
-div.upload input {
+/*div.upload input {
   display: block !important;
   width: 157px !important;
   height: 57px !important;
   opacity: 0 !important;
   overflow: hidden !important;
-}
+}*/
 </style>
 
 @endsection
@@ -36,18 +46,24 @@ div.upload input {
       </div>
       <div class="offer-content">
         <h3 class="lead">
-          เพิ่มเมนู อาหาร
         </h3>
         <form class="form-horizontal" method="POST" action="{{ route('foodmenu.add_menu') }}"  enctype="multipart/form-data">
           {{ csrf_field() }}
           <div>
-            <label for="exampleInputFile">รูป</label>
-            <div class="upload">
-              <input type="file"  id="imgInp" name="file"/ >
-            </div>
+           <label for="file-upload" class="custom-file-upload">
+    <i class="fa fa-cloud-upload"></i> เพิ่มรูปภาพ
+</label>
+<input id="file-upload" type="file"/>
+              <input type="file" id="imgInp" name="file"/>
+            
+            <br>
+           
+            <div>
+            
             <img id="blah" src="/assets/img/no-img.png" style="width: 25%; height: 25%;">
            <!--  <input type="file" name="file" class="form-control"> -->
           </div>
+        </div>
           <br>
           <div>
             <label>ชื่อ</label>

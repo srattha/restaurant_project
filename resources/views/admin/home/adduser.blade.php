@@ -76,7 +76,7 @@
       </div>
       <div style="text-align: right;padding-top: 10px;">
         <button type="submit" class="btn btn-primary">
-          Register
+          ลงทะเบียน
         </button>
       </div>
 

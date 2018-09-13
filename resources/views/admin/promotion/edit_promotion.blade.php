@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title','เพิ่ม โปรโมชั่น')
+@section('title','แก้ไข โปรโมชั่น')
 @section('css')
 <style>
 div.upload {
@@ -16,6 +16,15 @@ div.upload input {
   opacity: 0 !important;
   overflow: hidden !important;
 }
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
 </style>
 
 @endsection
@@ -23,7 +32,7 @@ div.upload input {
 @section('content')
 <div class="row">
   <div class="col-lg-12">
-    <h1 class="page-header">เพิ่ม โปรโมชั่น</h1>
+    <h1 class="page-header">แก้ไข โปรโมชั่น</h1>
   </div>
 </div>
 <div class="row">
@@ -36,18 +45,23 @@ div.upload input {
       </div>
       <div class="offer-content">
         <h3 class="lead">
-          โปรโมชั่น
         </h3>
        <form class="form-horizontal" method="POST" action="{{ route('promotion.update',['id'=>$edit_promotion->id]) }}"  enctype="multipart/form-data">
           {{ csrf_field() }}
           <div>
-            <label for="exampleInputFile">รูป</label>
-            <div class="upload">
-              <input type="file"  id="imgInp" name="file"/ >
-            </div>
+            <label for="file-upload" class="custom-file-upload">
+              <i class="fa fa-cloud-upload"></i> เพิ่มรูปภาพ
+            </label>
+            <input id="file-upload" type="file"/>
+            <input type="file" id="imgInp" name="file"/>
+            
+            <br>
+            <br>
+            <div>
             <img id="blah" src="{{ asset('storage/promotion/'.$edit_promotion->qrimage) }}" style="width: 25%; height: 25%;">
           </div>
           <br>
+        </div>
           <div>
             <label>ชื่อ</label>
             <input type="text" class="form-control" name="name" value="{{$edit_promotion->name}}" placeholder="ชื่อ">
@@ -78,7 +92,7 @@ div.upload input {
         </div>
         <div style="text-align: right;padding-top: 10px;">
           <button type="submit" class="btn btn-primary">
-            OK
+            ตกลง
           </button>
         </div>
 

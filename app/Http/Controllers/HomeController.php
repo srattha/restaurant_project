@@ -34,10 +34,10 @@ class HomeController extends Controller
     {
       $promotion = promotion::limit(4)->get();
        $food_is_recommend = Food_menus::where('is_recommend', 1)->select('food_name','image')->limit(8)->orderBy('id','desc')->get();
-       $show_image = Shopatmosphere::select('image')->get();
+       $show_image = Shopatmosphere::orderBy('id','desc')->paginate(12);
        return view('home.index', ['food_is_recommend'=> $food_is_recommend,
         'show_image'=>$show_image,
-        'promotion' => $promotion
+        'promotion' => $promotion,
     ]);
 
    }

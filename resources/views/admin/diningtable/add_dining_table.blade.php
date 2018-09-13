@@ -16,6 +16,15 @@ div.upload input {
   opacity: 0 !important;
   overflow: hidden !important;
 }
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
 </style>
 
 @endsection
@@ -35,17 +44,20 @@ div.upload input {
       </div>
       <div class="offer-content">
         <h3 class="lead">
-          เพิ่ม โต๊ะอาหาร
         </h3>
         <form class="form-horizontal" method="POST" action="{{ route('diningtable.add_dining_table') }}" enctype="multipart/form-data">
           {{ csrf_field() }}
            <div>
-            <label for="exampleInputFile">รูป QR Code</label>
-            <div class="upload">
-              <input type="file"  id="imgInp" name="file"/>
-            </div>
+            <label for="file-upload" class="custom-file-upload">
+    <i class="fa fa-cloud-upload"></i> เพิ่มรูปภาพ คิวอาร์โค้ด
+</label>
+<input id="file-upload" type="file"/>
+              <input type="file" id="imgInp" name="file"/>
+            <br>
+            <div>
              <img id="blah" src="/assets/img/no-img.png" style="width: 25%; height: 25%;">
           </div>
+        </div>
           <br>
           <div>
             <label>ชื่อ</label>
