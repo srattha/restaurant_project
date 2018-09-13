@@ -347,7 +347,8 @@ img{
     <h4 class="modal-title">กรุณาเข้าสู่ระบบก่อน</h4>
   </div>
   <div class="modal-body">
-    <div class="row">
+    <di
+    v class="row">
       <div class="col-md-6">
         <button type="button" class="btn btn-primary btn-block" onclick="location.href='{{ route('login') }}'">เข้าสู่ระบบ
         </button>

@@ -49,6 +49,7 @@ img{
  <!--  -->
  <td>{{$orders->amount}} บาท</td>
 </tr>
+
  @endforeach
 <tr>
   <td colspan="3">
@@ -60,6 +61,12 @@ img{
 </tr>
 </tbody>
 </table>
+  <div style="text-align: right;padding-top: 10px;">
+          <button type="submit" class="btn btn-primary">
+          ยืนยันการสั่ง
+          </button>
+        </div>
+        <br>
 </div>
 
 
