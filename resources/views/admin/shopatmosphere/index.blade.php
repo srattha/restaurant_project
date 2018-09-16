@@ -40,10 +40,10 @@ input[type="file"] {
   <form id="form1" runat="server" method="POST" action="{{ route('addshopatmosphere') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div>
-      <label for="file-upload" class="custom-file-upload">
+      <label for="imgInp" class="custom-file-upload">
         <i class="fa fa-cloud-upload"></i> เพิ่มรูปภาพ
       </label>
-      <input id="file-upload" type="file"/>
+      
       <input type="file" id="imgInp" name="file"/>
       
       <br>
@@ -51,7 +51,7 @@ input[type="file"] {
     </div>
     <img id="blah" src="/assets/img/no-img.png" style="width: 25%; height: 25%;">
     <br>
-    
+    <br>
     <div class="form-group" id="button_submit" style="display: none;">
      <button  type="submit" class="btn btn-success"><i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่ม </button>
    </div>
@@ -74,21 +74,8 @@ input[type="file"] {
   @endsection
   @section('javascript')
   <script>
-    jQuery(document).ready(function($){
-      $cf = $('#phonenumber');
-      $cf.blur(function(e){
-        phone = $(this).val();
-        phone = phone.replace(/[^0-9]/g,'');
-        if (phone.length != 10)
-        {
-          alert('Phone number must be 10 digits.');
-          $('#phonenumber').val('');
-          $('#phonenumber').focus();
-        }
-      });
-    });
     function readURL(input) {
-
+    console.log(input)
       if (input.files && input.files[0]) {
         var reader = new FileReader();
 

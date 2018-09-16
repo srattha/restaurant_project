@@ -13,9 +13,33 @@ class ReceptionistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {
-        //return view('receptionist.receptionist');
+
+    $users = Auth::user();
+    $users_type_id = $users->user_type_id;
+    $user = $users->name;
+    switch ($users_type_id) {
+      case '1':
+      return redirect("/");
+      break;
+      case '2':
+      return redirect("/admin");
+      break;
+      case '3':
+        return request("/counter_staff");
+      break;
+      case '4':
+      return redirect("/chef");
+      break;
+       case '5':
+           //return view('receptionist.receptionist');
         // return $table_status = Dining_table::get();
         //โต๊ะ1-12
         $table_status_a = Dining_table::where('id','<=', 12)->get();
@@ -41,6 +65,13 @@ class ReceptionistController extends Controller
                                     'table_status_k'=> $table_status_k,
 
     ]);
+      break;
+       case '6':
+      return redirect("/serving");
+      break;
+
+    }
+  
     }
 
     /**

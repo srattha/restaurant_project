@@ -50,11 +50,12 @@ input[type="file"] {
         <form class="form-horizontal" method="POST" action="{{ route('promotion.addpromotion') }}"  enctype="multipart/form-data">
           {{ csrf_field() }}
           <div>
-            <label for="file-upload" class="custom-file-upload">
+            <label for="imgInp" class="custom-file-upload">
               <i class="fa fa-cloud-upload"></i> เพิ่มรูปภาพ
             </label>
-            <input id="file-upload" type="file"/>
-            <input type="file" id="imgInp" name="file"/>
+            <!-- <input id="file-upload" type="file"/>
+            <input type="file" id="imgInp" name="file"/> -->
+             <input type="file"  id="imgInp" name="file"/ >
             
             <br>
             <br>

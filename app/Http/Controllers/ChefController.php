@@ -67,6 +67,10 @@ class ChefController extends Controller
 
             return view('chef.chef',['table'=> $table]);
             break;
+             case '5':
+            return redirect("/receptionist");
+             case '6':
+            return redirect("/serving");
 
         }
     }

@@ -20,10 +20,34 @@ class ServingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
 
     {
-       //return view('serving.serving');
+        $users = Auth::user();
+    $users_type_id = $users->user_type_id;
+    $user = $users->name;
+    switch ($users_type_id) {
+      case '1':
+      return redirect("/");
+      break;
+      case '2':
+      return redirect("/admin");
+      break;
+      case '3':
+        return request("/counter_staff");
+      break;
+      case '4':
+      return redirect("/chef");
+      break;
+       case '5':
+        return redirect("/receptionist");
+      break;
+       case '6':
+      //return view('serving.serving');
           $table_status_a = Dining_table::where('id','<=', 12)->get();
         // //โต๊ะ20-22
         $table_status_b = Dining_table::where('id','=',13)->first();
@@ -35,7 +59,7 @@ class ServingController extends Controller
         $table_status_h = Dining_table::where('id','=',19)->get();
         $table_status_i = Dining_table::where('id','=',20)->get();
         $table_status_k = Dining_table::where('id','>=',21)->get();
-        return view('receptionist.receptionist',['table_status_a'=> $table_status_a,
+        return view('serving.serving',['table_status_a'=> $table_status_a,
                                     'table_status_b'=> $table_status_b,
                                     'table_status_c'=> $table_status_c,
                                     'table_status_d'=> $table_status_d,
@@ -47,6 +71,36 @@ class ServingController extends Controller
                                     'table_status_k'=> $table_status_k,
 
     ]);
+
+           $table = Dining_table::where('status',0)->get();
+            foreach ($table as $key => $val) {
+               $table[$key]['reservation'] = Reservation::where('dining_table_id',$val->id)->where('is_active',1)->get();
+               foreach ($table[$key]['reservation'] as $key2 => $val2) {
+                   $reserve = $val2->reserve_date;
+                   $current_date = strtotime(Date('Y-m-d H:i'));
+                   $reserve_date = strtotime(Date($reserve));
+                   $diffdate = round(abs($current_date - $reserve_date) / 60,2);
+                   if($diffdate >= 10){
+                    // $update_reservation = Reservation::where('dining_table_id',$val2->dining_table_id)->update(["is_active"=> 0]);
+                    // $update_table = Dining_table::where('id', $val2->dining_table_id)->first();
+                    // $update_table->status = 1;
+                    // $update_table->color = "success";
+                    // $update_table->save();
+
+                }
+                     $table[$key]['reservation'][$key2]['order'] = Order::where('reservationld_id',$val2->id)->get();
+                     foreach ($table[$key]['reservation'][$key2]['order'] as $key3 => $val3) {
+                         $table[$key]['reservation'][$key2]['order'][$key3]['order_details'] = Order_details::where('order_id', $val3->id)->where('is_cook',0)->get();
+                        foreach ($table[$key]['reservation'][$key2]['order'][$key3]['order_details'] as $key4 => $val4) {
+                          $table[$key]['reservation'][$key2]['order'][$key3]['order_details'][$key4]['food_details'] = Food_menus::where('id',$val4->food_id)->get();
+                        }
+                     }
+               }
+           }
+      break;
+
+    }
+       
     }
 
     /**

@@ -35,6 +35,9 @@ img{
    <th>
      <h5>จำนวนเงิน</h5>
    </th>
+    <th>
+     <h5></h5>
+   </th>
  </tr>
 </thead>
 <tbody>
@@ -48,6 +51,7 @@ img{
  <td>{{$orders->totalorder}}</td>
  <!--  -->
  <td>{{$orders->amount}} บาท</td>
+ <td><button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('promotion.delete',['id'=>$orders->id]) }}'"><i class="fa fa-trash-o"></i> ลบรายการ</button></td>
 </tr>
 
  @endforeach

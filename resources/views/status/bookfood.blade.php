@@ -355,7 +355,7 @@ a{
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-default" data-dismiss="modal">เลือกเมนูอื่น</button>
-  <button type="submit" class="btn btn-primary"> สั่ง</button>
+  <button type="submit" class="btn btn-primary" onclick="if(confirm('กรุณาเลือก ขนาด')) window.location.href = '{{}}'"> สั่ง</button>
 
 </div>
 </form>
