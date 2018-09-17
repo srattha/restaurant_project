@@ -98,6 +98,30 @@ public function index()
    $f_m_piza = DB::table('food_menu')->where('food_type',6)->get();
    $f_m_beverage = DB::table('food_menu')->where('food_type',7)->get();
    $f_m_coffee = DB::table('food_menu')->where('food_type',8)->get();
+
+  $amount = 0;
+ $reservation = Reservation::where('user_id', $user->id)->orderBy('id','desc')->where('is_active',1)->first();
+  $table_id= Dining_table::where('id', $reservation['dining_table_id'])->orderBy('id','desc')->first();
+  $order = Order::where('reservationld_id', $reservation['id'])->first();
+
+  $order_details = Order_details::where('order_Id',$order['id'] )->get();
+
+  foreach ($order_details as $key => $order_detail) {
+   $order_details[$key]['food_detail'] = Food_menus::where('id',$order_detail->food_id)->first();
+   $amount += $order_detail['amount'];
+
+ }
+ $date = $reservation['reserve_date'];
+ $strYear = date("Y",strtotime($date))+543;
+ $strMonth= date("n",strtotime($date));
+ $strDay= date("j",strtotime($date));
+ $strHour= date("H",strtotime($date));
+ $strMinute= date("i",strtotime($date));
+ $strSeconds= date("s",strtotime($date));
+ $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+ $strMonthThai=$strMonthCut[$strMonth];
+ $datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
+
    return view('status.bookfood',['dining_table'=> $dining_table,
     'user'=> $user,
     'food_type'=> $food_type,
@@ -111,6 +135,11 @@ public function index()
     'f_m_coffee'=>$f_m_coffee,
     'reservation_id'=> $reservation['id'],
     'reserve_date'=> $reservation['reserve_date'],
+    'order_details' => $order_details,
+    'datas'=> $datas,
+  'amount'=>$amount,
+  'order' =>$order,
+  'reservation' =>$reservation
   ]);
 
  }
@@ -161,7 +190,6 @@ public function index()
     }
 
     public function order_food(Request $request){
-  //return $request->all();
       if ($request->price) {
        $price = $request->price *  $request->totalorder;
      }else if($request->special_price){

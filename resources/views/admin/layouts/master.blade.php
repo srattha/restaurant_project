@@ -275,7 +275,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">PENTOR CAFE Admin</a>
+                <a class="navbar-brand" href="index.html">ผู้ดูแลระบบ</a>
               </div>
               <!-- /.navbar-header -->
 

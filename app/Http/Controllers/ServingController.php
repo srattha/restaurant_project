@@ -27,7 +27,7 @@ class ServingController extends Controller
     public function index()
 
     {
-        $users = Auth::user();
+      $users = Auth::user();
     $users_type_id = $users->user_type_id;
     $user = $users->name;
     switch ($users_type_id) {
@@ -47,9 +47,7 @@ class ServingController extends Controller
         return redirect("/receptionist");
       break;
        case '6':
-      //return view('serving.serving');
           $table_status_a = Dining_table::where('id','<=', 12)->get();
-        // //โต๊ะ20-22
         $table_status_b = Dining_table::where('id','=',13)->first();
         $table_status_c = Dining_table::where('id','=',14)->get();
         $table_status_d = Dining_table::where('id','=',15)->get();
@@ -59,20 +57,7 @@ class ServingController extends Controller
         $table_status_h = Dining_table::where('id','=',19)->get();
         $table_status_i = Dining_table::where('id','=',20)->get();
         $table_status_k = Dining_table::where('id','>=',21)->get();
-        return view('serving.serving',['table_status_a'=> $table_status_a,
-                                    'table_status_b'=> $table_status_b,
-                                    'table_status_c'=> $table_status_c,
-                                    'table_status_d'=> $table_status_d,
-                                    'table_status_e'=> $table_status_e,
-                                    'table_status_f'=> $table_status_f,
-                                    'table_status_g'=> $table_status_g,
-                                    'table_status_h'=> $table_status_h,
-                                    'table_status_i'=> $table_status_i,
-                                    'table_status_k'=> $table_status_k,
-
-    ]);
-
-           $table = Dining_table::where('status',0)->get();
+         $table = Dining_table::where('status',0)->get();
             foreach ($table as $key => $val) {
                $table[$key]['reservation'] = Reservation::where('dining_table_id',$val->id)->where('is_active',1)->get();
                foreach ($table[$key]['reservation'] as $key2 => $val2) {
@@ -90,13 +75,30 @@ class ServingController extends Controller
                 }
                      $table[$key]['reservation'][$key2]['order'] = Order::where('reservationld_id',$val2->id)->get();
                      foreach ($table[$key]['reservation'][$key2]['order'] as $key3 => $val3) {
-                         $table[$key]['reservation'][$key2]['order'][$key3]['order_details'] = Order_details::where('order_id', $val3->id)->where('is_cook',0)->get();
+                         $table[$key]['reservation'][$key2]['order'][$key3]['order_details'] = Order_details::where('order_id', $val3->id)->where('is_cook','!=' , 3)->get();
                         foreach ($table[$key]['reservation'][$key2]['order'][$key3]['order_details'] as $key4 => $val4) {
                           $table[$key]['reservation'][$key2]['order'][$key3]['order_details'][$key4]['food_details'] = Food_menus::where('id',$val4->food_id)->get();
                         }
                      }
                }
            }
+           //return $table;
+
+        return view('serving.serving',['table_status_a'=> $table_status_a,
+                                    'table_status_b'=> $table_status_b,
+                                    'table_status_c'=> $table_status_c,
+                                    'table_status_d'=> $table_status_d,
+                                    'table_status_e'=> $table_status_e,
+                                    'table_status_f'=> $table_status_f,
+                                    'table_status_g'=> $table_status_g,
+                                    'table_status_h'=> $table_status_h,
+                                    'table_status_i'=> $table_status_i,
+                                    'table_status_k'=> $table_status_k,
+
+    ],['table'=> $table]);
+
+          
+            // return view('serving.serving',['table'=> $table]);
       break;
 
     }

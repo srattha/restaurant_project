@@ -21,6 +21,7 @@ container{
     </div>
     @endforeach
   </div>
+  {{ $show_image->links() }}
 
 
 

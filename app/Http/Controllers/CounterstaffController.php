@@ -35,15 +35,6 @@ class CounterstaffController extends Controller
       return redirect("/admin");
       break;
       case '3':
-     //  return Date("2018-08-15 12:00:00");
-      // $current_date = strtotime(Date('Y-m-d H:i:s'));
-      // $reserve_date = strtotime("20-08-2018 16:30");
-      // $diffdate = round(abs($current_date - $reserve_date) / 60,2);
-      // if($diffdate >= 10){
-      //   echo "เปลี่ยนสถานะ";
-      // }
-      // return;
-      // return $currenttime = $date." ".$time;
       $dining_table = Dining_table::paginate(6);
       $food_type = Food_type::get();
             //$food_menus = Food_menus::get();
@@ -289,6 +280,8 @@ public function order_food(Request $request){
 
 public function confirm_payment(Request $request){
  // return $request->all();
+    
+              
   if ($request->order) {
    $update_order = Order::where('id', $request->order)->first();
    $update_order->is_paid = $request->is_paid;
@@ -299,8 +292,15 @@ public function confirm_payment(Request $request){
      $update_table->color = "success";
      $update_table->save();
      if ($update_table) {
-      session()->flash('update_table', 'ยืนยันสถานะสำเร็จ');
+       $reservation = Reservation::where('dining_table_id',$request->table_id)->orderBy('id','desc')->first();
+       $Order = Order::where('reservationld_id',$reservation->id)->first();
+       $Order_details = Order_details::where('order_id', $Order->id)->update(['is_cook'=> 3]);
+      
+       if ($Order_details) {
+        session()->flash('update_table', 'ยืนยันสถานะสำเร็จ');
       return redirect()->route('counterstaff.index');
+       }
+      
     }else{
      return ["satus"=>false,"msg"=>"Can't update_table data"];
    }

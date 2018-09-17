@@ -44,8 +44,8 @@ th{
                 <th>ประเภท</th>
                 <th>ราคา</th>
                 <th>สถานะการใช้งาน </th>
-                <th>เวลาสร้าง</th>
-                <th>เวลาแก้ไข</th>
+                <th>เวลาสร้างข้อมูล</th>
+                <th>เวลาแก้ไขข้อมูล</th>
                 <th class="text-center">Actions</th>
               </tr>
             </thead>

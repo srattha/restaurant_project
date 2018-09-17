@@ -35,9 +35,9 @@ img{
    <th>
      <h5>จำนวนเงิน</h5>
    </th>
-    <th>
+    <!-- <th>
      <h5></h5>
-   </th>
+   </th> -->
  </tr>
 </thead>
 <tbody>
@@ -51,7 +51,7 @@ img{
  <td>{{$orders->totalorder}}</td>
  <!--  -->
  <td>{{$orders->amount}} บาท</td>
- <td><button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('promotion.delete',['id'=>$orders->id]) }}'"><i class="fa fa-trash-o"></i> ลบรายการ</button></td>
+ <!-- <td><button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('promotion.delete',['id'=>$orders->id]) }}'"><i class="fa fa-trash-o"></i> ลบรายการ</button></td> -->
 </tr>
 
  @endforeach
@@ -65,11 +65,11 @@ img{
 </tr>
 </tbody>
 </table>
-  <div style="text-align: right;padding-top: 10px;">
+ <!--  <div style="text-align: right;padding-top: 10px;">
           <button type="submit" class="btn btn-primary">
           ยืนยันการสั่ง
           </button>
-        </div>
+        </div> -->
         <br>
 </div>
 
