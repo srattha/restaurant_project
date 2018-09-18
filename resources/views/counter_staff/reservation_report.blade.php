@@ -2,7 +2,14 @@
 @section('title','รายงานการจอ')
 @section('css')
 <style type="text/css">
-
+.panel-warning {
+     border-color: #323232;
+  }
+  .panel-warning>.panel-heading {
+     color: rgba(255,255,255,0.9);
+     background-color: #323232;
+     border-color: #323232;
+  }
 </style>
 @endsection
 @section('content')
@@ -24,7 +31,7 @@
 <div class="panel-body">
   <div class="row">
     <div class="col-md-3">
-      <div class="panel panel-success">
+      <div class="panel panel-warning">
         <div class="panel-heading">วันที่</div>
         <div class="panel-body">
           {{$datas}}
@@ -32,7 +39,7 @@
       </div>
     </div>
     <div class="col-md-3">
-      <div class="panel panel-success">
+      <div class="panel panel-warning">
         <div class="panel-heading">โต๊ะ</div>
         <div class="panel-body">
           {{$table_name->name}}
@@ -40,13 +47,13 @@
       </div>
     </div>
     <div class="col-md-3">
-      <div class="panel panel-success">
+      <div class="panel panel-warning">
         <div class="panel-heading">ชื่อ</div>
         <div class="panel-body">{{$user->name}}</div>
       </div>
     </div>
     <div class="col-md-3">
-      <div class="panel panel-success">
+      <div class="panel panel-warning">
         <div class="panel-heading">เบอร์โทร</div>
         <div class="panel-body">{{$reserve_mobile}}</div>
       </div>
@@ -76,8 +83,8 @@
  </thead>
  <tbody>
    @foreach ($food as $index => $f)
-   <tr>
-    <td>{{$index+1}}</td>
+   <tr >
+    <td class="table-active">{{$index+1}}</td>
     <td>
      <p>{{$f->food_detail->food_name}}</p>
    </td>

@@ -16,6 +16,13 @@ h5{
 b{
   background-image:url('img/z.jpg');
 }
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+  color: rgb(255, 255, 255);
+  cursor: default;
+  background-color: #555;
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  border-bottom-color: transparent;
+}
 </style>
 @endsection
 @section('content')

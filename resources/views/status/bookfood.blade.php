@@ -89,6 +89,14 @@
    a{
    cursor: pointer;
    }
+   .panel-warning {
+     border-color: #323232;
+  }
+  .panel-warning>.panel-heading {
+     color: rgba(255,255,255,0.9);
+     background-color: #323232;
+     border-color: #323232;
+  }
 </style>
 @endsection
 @section('content')
@@ -132,7 +140,7 @@
             <div class="row">
 
                <div class="col-md-4">
-                  <div class="panel panel-success">
+                  <div class="panel panel-warning">
                      <div class="panel-heading">จองโดย:</div>
                      <div class="panel-body">
                         {{$user->name}}
@@ -140,7 +148,7 @@
                   </div>
                </div>
                <div class="col-md-4">
-                  <div class="panel panel-success">
+                  <div class="panel panel-warning">
                      <div class="panel-heading">โต๊ะ</div>
                      <div class="panel-body">
                         {{$dining_table->name}}
@@ -148,7 +156,7 @@
                   </div>
                </div>
                <div class="col-md-4">
-                  <div class="panel panel-success">
+                  <div class="panel panel-warning">
                      <div class="panel-heading">จำนวนที่นั่ง</div>
                      <div class="panel-body">
                         {{$dining_table->seating}}
