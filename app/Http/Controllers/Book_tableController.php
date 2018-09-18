@@ -191,7 +191,8 @@ public function index()
        $order_details_delete = Order_details::where('id',$id )->delete();
       if($order_details_delete){
         session()->flash('order_details_delete', 'ยกเลิกสำเร็จ');
-       return redirect()->route('status.bookfood',['amount'=>$amount]);
+       // return redirect()->route('status.bookfood',['amount'=>$amount]);
+        return redirect()->back();
 
       }else{
         return "error message..";
