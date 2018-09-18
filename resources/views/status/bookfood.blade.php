@@ -158,7 +158,7 @@
                      <tbody>
                         @foreach ($order_details as $index => $orders)
                         <tr>
-                           <td> {{$datas}}</td>
+                           <td> {{$orders->datas}}</td>
                            <td>
                               <p>{{$orders->food_detail->food_name}}</p>
                            </td>
