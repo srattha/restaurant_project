@@ -108,6 +108,29 @@
          </div>
          <div class="panel-body">
             <div class="row">
+               <div class="col-md-12">
+                  @if(session()->has('add_order_details'))
+                  <div class="alert alert-success">
+                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                     <strong>สั่งเมนู</strong> {{ session()->get('add_order_details') }} สำเร็จ
+                  </div>
+                  @endif
+                  @if(session()->has('reservation'))
+                  <div class="alert alert-danger">
+                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                     <strong>{{ session()->get('reservation') }}</strong>
+                  </div>
+                  @endif
+                   @if(session()->has('order_details_delete'))
+                  <div class="alert alert-danger">
+                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                     <strong>{{ session()->get('order_details_delete') }}</strong>
+                  </div>
+                  @endif
+               </div>
+            </div>
+
+
                <div class="table-responsive">
                   <table class="table table-striped table-bordered table-hover">
                      <thead>
@@ -142,7 +165,7 @@
                            <td>{{$orders->totalorder}}</td>
                            <!--  -->
                            <td>{{$orders->amount}} บาท</td>
-                           <td><button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('promotion.delete',['id'=>$orders->id]) }}'"><i class="fa fa-trash-o"></i> ลบรายการ</button></td>
+                           <td><button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('book_food.delete',['id'=>$orders->id, 'orders_amount'=>$orders->amount, 'amount'=>$amount]) }}'"><i class="fa fa-trash-o"></i> ยกเลิกรายการ</button></td>
                         </tr>
                         @endforeach
                         <tr>
@@ -156,22 +179,9 @@
                      </tbody>
                   </table>
                </div>
-            </div>
+
             <div class="row">
-               <div class="col-md-12">
-                  @if(session()->has('add_order_details'))
-                  <div class="alert alert-success">
-                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                     <strong>สั่งเมนู</strong> {{ session()->get('add_order_details') }} สำเร็จ
-                  </div>
-                  @endif
-                  @if(session()->has('reservation'))
-                  <div class="alert alert-danger">
-                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                     <strong>{{ session()->get('reservation') }}</strong>
-                  </div>
-                  @endif
-               </div>
+
                <div class="col-md-4">
                   <div class="panel panel-success">
                      <div class="panel-heading">จองโดย:</div>
@@ -432,9 +442,9 @@
        $("#submit").remove('disabled')
      }
    });
-   
+
     $('.qtyplus').click(function(e){
-   
+
          // Stop acting like a button
          e.preventDefault();
          // Get the field name
@@ -446,7 +456,7 @@
          if (!isNaN(currentVal)) {
              // Increment
              $('input[name='+fieldName+']').val(currentVal + 1);
-   
+
            } else {
              // Otherwise put a 0 there
              $('input[name='+fieldName+']').val(0);
@@ -469,7 +479,7 @@
              $('input[name='+fieldName+']').val(0);
            }
          });
-   
+
      $('#price :checkbox').click(function () {
        var $this = $(this);
              // $this will contain a reference to the checkbox
@@ -481,11 +491,11 @@
                  alert('unchecked');
                }
              });
-   
+
    });
-   
+
    function order_food($name, $image, $id, $price, $special_price, $big_price){
-   
+
      document.getElementById("price").checked = false;
      document.getElementById("special_price").checked = false;
      document.getElementById("big_price").checked = false;
@@ -495,7 +505,7 @@
      var price = $price;
      var big_price = $big_price;
      var special_price = $special_price;
-   
+
      if (special_price == "") {
        special_price = 0;
        console.log(special_price)
@@ -513,33 +523,33 @@
         document.getElementById("special_price").disabled = false;
           //document.getElementById("big_price").disabled = false;
         }
-   
+
       });
       $("#special_price").click(function () {
        if (this.checked){
          document.getElementById("price").disabled = true;
        }
-   
+
        else{
         document.getElementById("price").disabled = false;
       }
-   
+
     });
       $("#big_price").click(function () {
        if (this.checked){
          document.getElementById("special_price").disabled = true;
          document.getElementById("price").disabled = true;
        }
-   
+
        else{
         document.getElementById("special_price").disabled = false;
         document.getElementById("price").disabled = false;
       }
-   
+
     });
-   
+
     }
-   
+
     if (big_price == "") {
      big_price = 0;
      document.getElementById("big_price").disabled = true;
@@ -556,33 +566,33 @@
         document.getElementById("special_price").disabled = false;
         document.getElementById("big_price").disabled = false;
       }
-   
+
     });
      $("#special_price").click(function () {
        if (this.checked){
          document.getElementById("big_price").disabled = true;
          document.getElementById("price").disabled = true;
        }
-   
+
        else{
         document.getElementById("big_price").disabled = false;
         document.getElementById("price").disabled = false;
       }
-   
+
     });
      $("#big_price").click(function () {
        if (this.checked){
          document.getElementById("special_price").disabled = true;
          document.getElementById("price").disabled = true;
        }
-   
+
        else{
         document.getElementById("special_price").disabled = false;
         document.getElementById("price").disabled = false;
       }
-   
+
     });
-   
+
    }
    if (big_price == 0) {
      document.getElementById("big_price").disabled = true;
@@ -597,9 +607,9 @@
    document.getElementById("big_price").value = big_price;
    document.getElementById("big_prices").innerHTML = big_price;
    document.getElementById("totalorder").value = 1;
-   
+
    $("#image").attr("src", "/storage/Food_menus/"+image);
-   
+
    }
 </script>
 @endsection

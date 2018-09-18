@@ -88,7 +88,8 @@ Route::get('/formdata', 'FormdataController@index');
 
 //Book_tableController
 Route::post('book_table', 'Book_tableController@store')->name('booktable');
-Route::get('book_food/{id}', 'Book_tableController@book_food')->name('book_food')->where('id', '[0-9]+');;
+Route::get('book_food/{id}', 'Book_tableController@book_food')->name('book_food')->where('id', '[0-9]+');
+Route::get('/book_food/delete/{id}/{orders_amount}/{amount}', 'Book_tableController@destroy')->name('book_food.delete')->where('id', '[0-9]+');
 
 
 //Home
@@ -109,4 +110,6 @@ Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallba
 //receptionist
 Route::get('/receptionist', 'ReceptionistController@index')->name('receptionist');
 Route::get('/serving', 'ServingController@index')->name('serving');
+
+// User;
 Auth::routes();

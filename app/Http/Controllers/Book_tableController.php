@@ -109,9 +109,10 @@ public function index()
   foreach ($order_details as $key => $order_detail) {
    $order_details[$key]['food_detail'] = Food_menus::where('id',$order_detail->food_id)->first();
    $amount += $order_detail['amount'];
+     $date = $order_detail['created_at'];
 
  }
- $date = $reservation['reserve_date'];
+
  $strYear = date("Y",strtotime($date))+543;
  $strMonth= date("n",strtotime($date));
  $strDay= date("j",strtotime($date));
@@ -120,8 +121,7 @@ public function index()
  $strSeconds= date("s",strtotime($date));
  $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
  $strMonthThai=$strMonthCut[$strMonth];
- $datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
-
+$datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
    return view('status.bookfood',['dining_table'=> $dining_table,
     'user'=> $user,
     'food_type'=> $food_type,
@@ -184,9 +184,18 @@ public function index()
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $orders_amount, $amount)
     {
-        //
+
+      $amount = $amount - $orders_amount;
+       $order_details_delete = Order_details::where('id',$id )->delete();
+      if($order_details_delete){
+        session()->flash('order_details_delete', 'ยกเลิกสำเร็จ');
+       return redirect()->route('status.bookfood',['amount'=>$amount]);
+
+      }else{
+        return "error message..";
+      }
     }
 
     public function order_food(Request $request){
