@@ -129,8 +129,34 @@
                   @endif
                </div>
             </div>
+            <div class="row">
 
-
+               <div class="col-md-4">
+                  <div class="panel panel-success">
+                     <div class="panel-heading">จองโดย:</div>
+                     <div class="panel-body">
+                        {{$user->name}}
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="panel panel-success">
+                     <div class="panel-heading">โต๊ะ</div>
+                     <div class="panel-body">
+                        {{$dining_table->name}}
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="panel panel-success">
+                     <div class="panel-heading">จำนวนที่นั่ง</div>
+                     <div class="panel-body">
+                        {{$dining_table->seating}}
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <br>
                <div class="table-responsive">
                   <table class="table table-striped table-bordered table-hover">
                      <thead>
@@ -165,7 +191,14 @@
                            <td>{{$orders->totalorder}}</td>
                            <!--  -->
                            <td>{{$orders->amount}} บาท</td>
-                           <td><button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('book_food.delete',['id'=>$orders->id, 'orders_amount'=>$orders->amount, 'amount'=>$amount]) }}'"><i class="fa fa-trash-o"></i> ยกเลิกรายการ</button></td>
+                           <td>
+                              @if( $orders->is_cook == 0)
+                              <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('book_food.delete',['id'=>$orders->id, 'orders_amount'=>$orders->amount, 'amount'=>$amount]) }}'"><i class="fa fa-times" aria-hidden="true"></i> ยกเลิกรายการ</button>
+                            @else
+                              <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-check" aria-hidden="true"></i> ทำสำเร็จ</button>
+                            @endif
+
+                           </td>
                         </tr>
                         @endforeach
                         <tr>
@@ -174,39 +207,11 @@
                                  <h5>ยอดรวม</h5>
                               </div>
                            </td>
-                           <td colspan="2">{{$amount}} บาท</td>
+                           <td colspan="2" style="text-align: center;">{{$amount}} บาท</td>
                         </tr>
                      </tbody>
                   </table>
                </div>
-
-            <div class="row">
-
-               <div class="col-md-4">
-                  <div class="panel panel-success">
-                     <div class="panel-heading">จองโดย:</div>
-                     <div class="panel-body">
-                        {{$user->name}}
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="panel panel-success">
-                     <div class="panel-heading">โต๊ะ</div>
-                     <div class="panel-body">
-                        {{$dining_table->name}}
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="panel panel-success">
-                     <div class="panel-heading">จำนวนที่นั่ง</div>
-                     <div class="panel-body">
-                        {{$dining_table->seating}}
-                     </div>
-                  </div>
-               </div>
-            </div>
             <div>
                <div style="padding-top: 10px;">
                   <ul class="nav nav-tabs">
@@ -407,7 +412,7 @@
                      </div>
                      <div class="modal-footer">
                      <button type="button" class="btn btn-default" data-dismiss="modal">เลือกเมนูอื่น</button>
-                     <button type="submit" class="btn btn-primary"> สั่ง</button>
+                     <button type="submit" class="btn btn-primary"> <i class="fa fa-floppy-o" aria-hidden="true"></i> สั่ง</button>
                      </div>
                      </form>
                   </div>

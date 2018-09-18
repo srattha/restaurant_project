@@ -111,5 +111,9 @@ Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallba
 Route::get('/receptionist', 'ReceptionistController@index')->name('receptionist');
 Route::get('/serving', 'ServingController@index')->name('serving');
 
+//Profile
+Route::get('profile/{id}', 'ProfileController@index')->name('profile')->where('id', '[0-9]+');
+Route::post('profile', 'ProfileController@update')->name('profile.update');
+Route::post('editpassword', 'ProfileController@editpassword')->name('profile.editpassword');
 // User;
 Auth::routes();

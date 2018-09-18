@@ -73,10 +73,10 @@
            <td style="width: 100px;"><img src="{{ asset('storage/Food_menus/'.$val5->image) }}" alt="" style="width: 50px;height: 50px;"></td>
            <td>{{$val5->food_name}}</td>
            <td>{{$val4->totalorder}}</td>
-           <td>{{$val3->orde_date}} .น</td>
+           <td>{{$val4->date}}</td>
            <td>
             @if($val4->is_cook == 0)
-             <button type="button" class="btn btn-success" onclick="if(confirm('ยืนยัน หรือไม่')) window.location.href = '{{ route('chef_update_is_cook',['id'=>$val4->id]) }}'">สถานะ</button></td>
+             <button type="button" class="btn btn-success" onclick="if(confirm('ยืนยัน หรือไม่')) window.location.href = '{{ route('chef_update_is_cook',['id'=>$val4->id]) }}'"> <i class="fa fa-check" aria-hidden="true"></i> สถานะ</button></td>
              @else
              <h3><span class="label label-default">ทำแล้ว</span></h3>
              @endif
