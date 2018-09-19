@@ -32,8 +32,12 @@ class DiningtableController extends Controller
             return redirect("/counter_staff");
             break;
             case '4':
-            return redirect("/counter_staff");
+            return redirect("/chef");
             break;
+            case '5':
+            return redirect("/receptionist");
+            case '6':
+            return redirect("/serving");
 
         }
 
