@@ -7,8 +7,10 @@ use App\Food_menus;
 use App\Food_type;
 use App\User_type;
 use BD;
+use File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Storage;
 class FoodmenuController extends Controller
 {
     /**
@@ -221,6 +223,9 @@ class FoodmenuController extends Controller
      */
     public function destroy($id)
     {
+        $image = Food_menus::where('id',$id)->first();
+       $file = $image->image;
+        Storage::Delete('public/Food_menus/'.$file);
         $menu_delete = Food_menus::where('id',$id)->delete();
         if($menu_delete){
             return redirect()->route('foodmenu.all_foodmanu');

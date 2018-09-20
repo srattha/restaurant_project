@@ -2,6 +2,8 @@
 @extends('layouts.master')
 @section('title','หน้าแรก')
 @section('css')
+<link href="{{ asset('/vendor/magicscroll/thumbs2.css') }}" rel="stylesheet">
+<link href="{{ asset('/vendor/magicscroll/thumbnail-slider.css') }}" rel="stylesheet">
 <style>
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -156,6 +158,7 @@
    <h3 align="center">เมนูอาหารแนะนำ</h3>
    <hr width=18% size=50px color=ff0088>
  </div>
+<<<<<<< HEAD
 
  <div>
   
@@ -174,8 +177,27 @@
  </div>
  @endforeach
 
+=======
+ <div id="thumbnail-slider">
+  <div class="inner">
+    <ul>
+      @foreach ($food_is_recommend as $index => $is_recommend)
+      <li>
+        <a href="/food">
+          <div class="hovereffect">
+            <img class="thumb" src="{{ asset('storage/Food_menus/'.$is_recommend->image) }}" alt="" >
+            <div class="overlay" style="cursor: pointer;">
+             <h2>{{$is_recommend->food_name}}</h2>
+             <!-- <a class="info" href="/food">ดูทั้งหมด</a> -->
+           </div>
+         </div>
+       </a>
+     </li>
+     @endforeach
+   </ul>
+ </div>
+>>>>>>> 2489ee4d98c5f1178d6f1079ea529aca4b3a4511
 </div>
-
 </div>
 <br>
 <div class="row">
@@ -264,8 +286,9 @@
            </form>
          </div>
        </div>
-
+       <br>
+       <br>
        @endsection
        @section('javascript')
-       <br>
+       <script src="{{ asset('/vendor/magicscroll/thumbnail-slider.js') }}"></script>
        @endsection
