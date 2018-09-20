@@ -59,7 +59,7 @@
 }
 
     #thumbnail-slider ul li:after {
-        content:"เมนูแนะนำ";
+        /*content:"เมนูแนะนำ";*/
         display:block;
         position:absolute;
         top:7px;
@@ -76,7 +76,7 @@
     }
     #thumbnail-slider ul li.active:after {
         font-size:10px;
-        background-color:#C00;
+       /* background-color:#C00;*/
     }
 
 #thumbnail-slider li:hover {
@@ -165,6 +165,6 @@
     }
 
     #thumbnail-slider-prev, #thumbnail-slider-next {
-        display:none;
+        /*display:none;*/
     }
 }
