@@ -97,6 +97,13 @@
      background-color: #323232;
      border-color: #323232;
   }
+  .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+  color: rgb(255, 255, 255);
+  cursor: default;
+  background-color: #555;
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  border-bottom-color: transparent;
+}
 </style>
 @endsection
 @section('content')
@@ -206,7 +213,7 @@
                            <td>{{$orders->amount}} บาท</td>
                            <td>
                               @if( $orders->is_cook == 0)
-                              <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('book_food.delete',['id'=>$orders->id, 'orders_amount'=>$orders->amount, 'amount'=>$amount]) }}'"><i class="fa fa-times" aria-hidden="true"></i> ยกเลิกรายการ</button>
+                              <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('ยืนยันการลบรายการ ?')) window.location.href = '{{ route('book_food.delete',['id'=>$orders->id, 'orders_amount'=>$orders->amount, 'amount'=>$amount]) }}'"><i class="fa fa-times" aria-hidden="true"></i> ยกเลิกรายการ</button>
                             @else
                               <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-check" aria-hidden="true"></i> ทำสำเร็จ</button>
                             @endif
@@ -372,6 +379,7 @@
                            <li><a data-toggle="tab" href="#promotion5">ทอดสะพาน</a></li>
                         </ul>
                      </div>
+                     <div class="tab-content">
                       <div id="promotion1" class="tab-pane fad in active">
                         @foreach ($promotion_type1 as $index => $p1)
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -386,7 +394,64 @@
                         </div>
                         @endforeach
                      </div>
+                     <div id="promotion2" class="tab-pane fade">
+                        @foreach ($promotion_type2 as $index => $pp2)
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                           <br>
+                           <div class="hovereffect">
+                              <img src="{{ asset('storage/Food_menus/'.$pp2->qrimage) }}" alt="" style="width:100%; height: 200px;">
+                              <div class="overlay">
+                                 <h2>{{$pp2->name}} ราคา {{$pp2->price}}</h2>
+                                 <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$pp2->name}}', '{{$pp2->qrimage}}', '{{$pp2->id}}', '{{$pp2->price}}', '','', '{{$pp2->promotion_type_id}}')">สั่งเลย</a>
+                              </div>
+                           </div>
+                        </div>
+                        @endforeach
+                     </div>
+                     <div id="promotion3" class="tab-pane fade">
+                        @foreach ($promotion_type3 as $index => $p3)
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                           <br>
+                           <div class="hovereffect">
+                              <img src="{{ asset('storage/Food_menus/'.$p3->qrimage) }}" alt="" style="width:100%; height: 200px;">
+                              <div class="overlay">
+                                 <h2>{{$p3->name}} ราคา {{$p3->price}}</h2>
+                                 <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$p3->name}}', '{{$p3->qrimage}}', '{{$p3->id}}', '{{$p3->price}}', '','', '{{$p3->promotion_type_id}}')">สั่งเลย</a>
+                              </div>
+                           </div>
+                        </div>
+                        @endforeach
+                     </div>
+                      <div id="promotion4" class="tab-pane fade">
+                        @foreach ($promotion_type4 as $index => $p4)
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                           <br>
+                           <div class="hovereffect">
+                              <img src="{{ asset('storage/Food_menus/'.$p4->qrimage) }}" alt="" style="width:100%; height: 200px;">
+                              <div class="overlay">
+                                 <h2>{{$p4->name}} ราคา {{$p4->price}}</h2>
+                                 <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$p4->name}}', '{{$p4->qrimage}}', '{{$p4->id}}', '{{$p4->price}}', '','', '{{$p4->promotion_type_id}}')">สั่งเลย</a>
+                              </div>
+                           </div>
+                        </div>
+                        @endforeach
+                     </div>
+                      <div id="promotion5" class="tab-pane fade">
+                        @foreach ($promotion_type5 as $index => $p5)
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                           <br>
+                           <div class="hovereffect">
+                              <img src="{{ asset('storage/Food_menus/'.$p5->qrimage) }}" alt="" style="width:100%; height: 200px;">
+                              <div class="overlay">
+                                 <h2>{{$p5->name}} ราคา {{$p5->price}}</h2>
+                                 <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$p5->name}}', '{{$p5->qrimage}}', '{{$p5->id}}', '{{$p5->price}}', '','', '{{$p5->promotion_type_id}}')">สั่งเลย</a>
+                              </div>
+                           </div>
+                        </div>
+                        @endforeach
+                     </div>
                   </div>
+               </div>
                  </div>
                   </div>
                </div>

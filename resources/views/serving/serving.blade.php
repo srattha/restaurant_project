@@ -449,7 +449,23 @@ img{
             @foreach ($val->reservation as $index2 => $val2)
             @foreach ($val2->order as $index3 => $val3)
             @foreach ($val3->order_details as $index4 => $val4)
-            @foreach ($val4->food_details as $index5 => $val5)
+            @if($val4->food_id == null)
+            @foreach ($val4->promotion as $index5 => $val5)
+            <tr>
+             <td style="width: 100px;"><img src="{{ asset('storage/Food_menus/'.$val5->image) }}" alt="" style="width: 50px;height: 50px;"></td>
+             <td>{{$val5->name}}</td>
+             <td>{{$val4->totalorder}}</td>
+             <td>{{$val3->orde_date}} .น</td>
+             <td>
+              @if($val4->is_cook == 0)
+              <h3><span class="label label-warning">รอทำ</span></h3>
+              @else
+              <h3><span class="label label-success">ทำแล้ว</span></h3>
+              @endif
+            </tr>
+            @endforeach
+            @else
+             @foreach ($val4->food_details as $index5 => $val5)
             <tr>
              <td style="width: 100px;"><img src="{{ asset('storage/Food_menus/'.$val5->image) }}" alt="" style="width: 50px;height: 50px;"></td>
              <td>{{$val5->food_name}}</td>
@@ -463,6 +479,8 @@ img{
               @endif
             </tr>
             @endforeach
+            @endif
+
             @endforeach
             @endforeach
             @endforeach
@@ -475,10 +493,9 @@ img{
     </div>
     @endforeach
   </div>
-
-
 </div>
 </div>
+
 </div>
 </div>
 </div>
