@@ -59,7 +59,11 @@
 }
 
     #thumbnail-slider ul li:after {
+<<<<<<< HEAD
         content:"เมนูแนะนำ";
+=======
+        /*content:"เมนูแนะนำ";*/
+>>>>>>> d0032674938570865586de58eb90ba2ca9bb2534
         display:block;
         position:absolute;
         top:7px;
@@ -76,7 +80,11 @@
     }
     #thumbnail-slider ul li.active:after {
         font-size:10px;
+<<<<<<< HEAD
         background-color:#C00;
+=======
+       /* background-color:#C00;*/
+>>>>>>> d0032674938570865586de58eb90ba2ca9bb2534
     }
 
 #thumbnail-slider li:hover {
@@ -165,6 +173,10 @@
     }
 
     #thumbnail-slider-prev, #thumbnail-slider-next {
+<<<<<<< HEAD
         display:none;
+=======
+        /*display:none;*/
+>>>>>>> d0032674938570865586de58eb90ba2ca9bb2534
     }
 }
