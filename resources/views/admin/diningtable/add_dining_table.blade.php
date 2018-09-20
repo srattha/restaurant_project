@@ -49,9 +49,9 @@ input[type="file"] {
           {{ csrf_field() }}
            <div>
             <label for="imgInp" class="custom-file-upload">
-    <i class="fa fa-cloud-upload"></i> เพิ่มรูปภาพ คิวอาร์โค้ด
-</label>
-<input id="file-upload" type="file"/>
+              <i class="fa fa-cloud-upload"></i> เพิ่มรูปภาพ คิวอาร์โค้ด
+            </label>
+              <input id="file-upload" type="file"/>
               <input type="file" id="imgInp" name="file"/>
             <br>
             <div>
