@@ -79,11 +79,11 @@
     @elseif ($user->user_type_id == 3)
     <span class="label label-success">พนักงานเคาน์เตอร์</span>
     @elseif ($user->user_type_id == 4)
-    <span class="label label-warning">กุ๊ก</span>
+    <span class="label label-warning">พ่อครัวแม่ครัว</span>
     @elseif ($user->user_type_id == 5)
-    <span class="label label-warning">กุ๊ก</span>
+    <span class="label label-warning">พนักงานต้อนรับ</span>
     @elseif ($user->user_type_id == 6)
-    <span class="label label-warning">กุ๊ก</span>
+    <span class="label label-warning">พนักงานเสริฟ</span>
     @else
 
     @endif
