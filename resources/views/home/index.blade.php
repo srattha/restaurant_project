@@ -2,6 +2,7 @@
 @extends('layouts.master')
 @section('title','หน้าแรก')
 @section('css')
+<link href="{{ asset('/vendor/magicscroll/magicscroll.css') }}" rel="stylesheet">
 <style>
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -103,7 +104,190 @@
   -webkit-transition-delay:.2s;
   transition-delay:.2s;
 }
+.cfg-btn {
+  background-color: rgb(55, 181, 114);
+  color: #fff;
+  border: 0;
+  box-shadow: 0 0 1px 0px rgba(0,0,0,0.3);
+  outline:0;
+  cursor: pointer;
+  width: 200px;
+  padding: 10px;
+  font-size: 1em;
+  position: relative;
+  display: inline-block;
+  margin: 10px auto;
+}
+.cfg-btn:hover:not([disabled]) {
+  background-color: rgb(37, 215, 120);
+}
+.mobile-magic .cfg-btn:hover:not([disabled]) { background: rgb(55, 181, 114); }
+.cfg-btn[disabled] { opacity: .5; color: #808080; background: #ddd; }
 
+.cfg-btn.btn-preview,
+.cfg-btn.btn-preview:active,
+.cfg-btn.btn-preview:focus {
+  font-size: 1em;
+  position: relative;
+  display: block;
+  margin: 10px auto;
+}
+
+.cfg-btn,
+.preview,
+.app-figure,
+.api-controls,
+.wizard-settings,
+.wizard-settings .inner,
+.wizard-settings .footer,
+.wizard-settings input,
+.wizard-settings select {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.preview,
+.wizard-settings {
+  padding: 10px;
+  border: 0;
+  min-height: 1px;
+}
+.preview {
+  position: relative;
+}
+
+.api-controls {
+  text-align: center;
+}
+.api-controls button,
+.api-controls button:active,
+.api-controls button:focus {
+ width: 80px; font-size: .7em;
+ white-space: nowrap;
+}
+
+.app-figure {
+  width: 80% !important;
+  margin: 50px auto; border: 0px solid red;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+}
+.selectors { margin-top: 10px; }
+
+.app-code-sample {
+  max-width: 80%;
+  margin: 80px auto 0;
+  text-align: center;
+  position: relative;
+}
+.app-code-sample input[type="radio"] {
+  display: none;
+}
+.app-code-sample label {
+  display: inline-block;
+  padding: 2px 12px;
+  margin: 0;
+  font-size: .8em;
+  text-decoration: none;
+  cursor: pointer;
+  color: #666;
+  border: 1px solid rgba(136, 136, 136, 0.5);
+  background-color: transparent;
+}
+.app-code-sample label:hover {
+  color: #fff;
+  background-color: rgb(253, 154, 30);
+  border-color: rgb(253, 154, 30);
+}
+.app-code-sample input[type="radio"]:checked+label {
+  color: #fff;
+  background-color: rgb(110, 110, 110) !important;
+  border-color: rgba(110, 110, 110, 0.7) !important;
+}
+.app-code-sample label:first-of-type {
+  border-radius: 4px 0 0 4px;
+  border-right-color: transparent;
+}
+.app-code-sample label:last-of-type {
+  border-radius: 0 4px 4px 0;
+  border-left-color: transparent;
+}
+
+.app-code-sample .app-code-holder {
+  padding: 0;
+  position: relative;
+  border: 1px solid #eee;
+  border-radius: 0px;
+  background-color: #fafafa;
+  margin: 15px 0;
+}
+.app-code-sample .app-code-holder > div {
+  display: none;
+}
+.app-code-sample .app-code-holder pre {
+  text-align: left;
+  white-space: pre-line;
+  border: 0px solid #eee;
+  border-radius: 0px;
+  background-color: transparent;
+  padding: 25px 50px 25px 25px;
+  margin: 0;
+  min-height: 25px;
+}
+.app-code-sample input[type="radio"]:nth-of-type(1):checked ~ .app-code-holder > div:nth-of-type(1) {
+  display: block;
+}
+.app-code-sample input[type="radio"]:nth-of-type(2):checked ~ .app-code-holder > div:nth-of-type(2) {
+  display: block;
+}
+
+.app-code-sample .app-code-holder .cfg-btn-copy {
+  display: none;
+  z-index: -1;
+  position: absolute;
+  top:10px; right: 10px;
+  width: 44px;
+  font-size: .65em;
+  white-space: nowrap;
+  margin: 0;
+  padding: 4px;
+}
+.copy-msg {
+  font: normal 11px/1.2em 'Helvetica Neue', Helvetica, 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, sans-serif;
+  color: #2a4d14;
+  border: 1px solid #2a4d14;
+  border-radius: 4px;
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  width: 200px;
+  max-width: 70%;
+  padding: 4px;
+  margin: 0px auto;
+  text-align: center;
+}
+.copy-msg-failed {
+  color: #b80c09;
+  border-color: #b80c09;
+  width: 430px;
+}
+.mobile-magic .app-code-sample .cfg-btn-copy { display: none; }
+#code-to-copy { position: absolute; width: 0; height: 0; top: -10000px; }
+.lt-ie9-magic .app-code-sample { display: none; }
+
+@media screen and (max-width: 600px) {
+  .api-controls button, .api-controls button:active, .api-controls button:focus {
+    width: 70px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .api-controls .sep { content: ''; display: table; }
+}
+@media screen and (min-width: 1600px) {
+  .preview { padding: 10px 160px; }
+}
 
 </style>
 @endsection
@@ -124,20 +308,20 @@
    <!-- Wrapper for slides -->
    <div class="carousel-inner" role="listbox">
     @foreach( $promotion as $p )
-       <div class="item {{ $loop->first ? 'active' : '' }}">
-         <div class="hovereffect">
-           <img src="{{ asset('storage/promotion/'.$p->qrimage) }}" alt="" style="width:100%; height: 100%;">
-           <div class="overlay">
-             <h2>{{$p->name}}</h2>
-             <a class="info" href="/reser">ดูทั้งหมด</a>
-           </div>
-           <div class="carousel-caption d-none d-md-block">
-             <h3>{{$p->explain}}</h3>
-           </div>
-         </div>
+    <div class="item {{ $loop->first ? 'active' : '' }}">
+     <div class="hovereffect">
+       <img src="{{ asset('storage/promotion/'.$p->qrimage) }}" alt="" style="width:100%; height: 100%;">
+       <div class="overlay">
+         <h2>{{$p->name}}</h2>
+         <a class="info" href="/reser">ดูทั้งหมด</a>
        </div>
-    @endforeach
-  </div>
+       <div class="carousel-caption d-none d-md-block">
+         <h3>{{$p->explain}}</h3>
+       </div>
+     </div>
+   </div>
+   @endforeach
+ </div>
 </div>
 </div>
 <div class="col-md-6">
@@ -145,8 +329,8 @@
   <div class="panel-heading"><b style="font-size: 20px;">เวลาเปิดบริการ</b></div>
   <div class="panel-body">
    <h1 class="text-center">12:00 น. - 24:00 น.</h1>.
-    <h3 class="text-center">หยุดทุกวันพุธ</h3>
-  </div>
+   <h3 class="text-center">หยุดทุกวันพุธ</h3>
+ </div>
 </div>
 </div>
 </div>
@@ -219,9 +403,9 @@
           <div class="col-md-6">
             <h3 class="text-center">ข้อมูลติดต่อ </h3>
             <hr>
-             <p class="text-center">210/10 ถนน พหลโยธิน ต.ไม้งาม</p>
-             <p class="text-center">อ.เมืองตาก จ.ตาก 63000</p>
-             <p class="text-center">เบอร์โทร 0955535222</p>
+            <p class="text-center">210/10 ถนน พหลโยธิน ต.ไม้งาม</p>
+            <p class="text-center">อ.เมืองตาก จ.ตาก 63000</p>
+            <p class="text-center">เบอร์โทร 0955535222</p>
 
             <p class="text-center"><a href="https://www.facebook.com/PentorTK"><img src="/img/facebook.png"></a>
              <!--<img src="/img/facebook.png">--></p>
@@ -261,7 +445,39 @@
          </div>
        </div>
 
-       @endsection
-       @section('javascript')
-       <br>
-       @endsection
+       <div class="preview col">
+
+        <div class="app-figure">
+          <div class="MagicScroll">
+            <a><img
+              srcset="http://magictoolbox.sirv.com/images/magicscroll/allstar-1-1b.jpg?canvas.height=180&canvas.width=280 2x" src="http://magictoolbox.sirv.com/images/magicscroll/allstar-1-1b.jpg?scale.height=130&canvas.height=90&canvas.width=140" />All Star Plaid</a>
+              <a><img
+                srcset="http://magictoolbox.sirv.com/images/magicscroll/allstar-2-1b.jpg?canvas.height=180&canvas.width=280 2x" src="http://magictoolbox.sirv.com/images/magicscroll/allstar-2-1b.jpg?scale.height=130&canvas.height=90&canvas.width=140" />All Star Green</a>
+                <a><img
+                  srcset="http://magictoolbox.sirv.com/images/magicscroll/allstar-3-1b.jpg?canvas.height=180&canvas.width=280 2x" src="http://magictoolbox.sirv.com/images/magicscroll/allstar-3-1b.jpg?scale.height=130&canvas.height=90&canvas.width=140" />All Star Tartan</a>
+                  <a><img
+                    srcset="http://magictoolbox.sirv.com/images/magicscroll/allstar-4-1b.jpg?canvas.height=180&canvas.width=280 2x" src="http://magictoolbox.sirv.com/images/magicscroll/allstar-4-1b.jpg?scale.height=130&canvas.height=90&canvas.width=140" />All Star Pink</a>
+                    <a><img
+                      srcset="http://magictoolbox.sirv.com/images/magicscroll/allstar-5-1b.jpg?canvas.height=180&canvas.width=280 2x" src="http://magictoolbox.sirv.com/images/magicscroll/allstar-5-1b.jpg?scale.height=130&canvas.height=90&canvas.width=140" />All Star Black</a>
+                      <a><img
+                        srcset="http://magictoolbox.sirv.com/images/magicscroll/allstar-6-1b.jpg?canvas.height=180&canvas.width=280 2x" src="http://magictoolbox.sirv.com/images/magicscroll/allstar-6-1b.jpg?scale.height=130&canvas.height=90&canvas.width=140" />All Star Orange</a>
+                        <a><img
+                          srcset="http://magictoolbox.sirv.com/images/magicscroll/allstar-7-1b.jpg?canvas.height=180&canvas.width=280 2x" src="http://magictoolbox.sirv.com/images/magicscroll/allstar-7-1b.jpg?scale.height=130&canvas.height=90&canvas.width=140" />All Star Charcoal</a>
+                          <a><img
+                            srcset="http://magictoolbox.sirv.com/images/magicscroll/allstar-8-1b.jpg?canvas.height=180&canvas.width=280 2x" src="http://magictoolbox.sirv.com/images/magicscroll/allstar-8-1b.jpg?scale.height=130&canvas.height=90&canvas.width=140" />All Star Navy</a>
+                            <a><img
+                              srcset="http://magictoolbox.sirv.com/images/magicscroll/allstar-9-1b.jpg?canvas.height=180&canvas.width=280 2x" src="http://magictoolbox.sirv.com/images/magicscroll/allstar-9-1b.jpg?scale.height=130&canvas.height=90&canvas.width=140" />All Star Red</a>
+                            </div>
+                          </div>
+                        </div>
+
+                        @endsection
+                        @section('javascript')
+                        <script src="{{ asset('/vendor/magicscroll/magicscroll.js') }}"></script>
+                        <script>
+
+                          var MagicScrollOptions = {};
+                          magicJS.extend(MagicScrollOptions, callbacks);
+
+                        </script>
+                        @endsection
