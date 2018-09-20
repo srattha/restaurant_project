@@ -265,7 +265,8 @@
            </form>
          </div>
        </div>
-
+       <br>
+       <br>
        @endsection
        @section('javascript')
        <script src="{{ asset('/vendor/magicscroll/thumbnail-slider.js') }}"></script>
