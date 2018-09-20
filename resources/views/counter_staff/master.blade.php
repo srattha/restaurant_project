@@ -476,7 +476,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/counter_staff">PENTOR CAFE</a>
+      <a class="navbar-brand" href="/counter_staff">เป็นต่อ ก่อสร้าง&คาเฟ่</a>
     </div>
     <!-- /.navbar-header -->
     <ul class="nav navbar-top-links navbar-right">

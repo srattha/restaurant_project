@@ -49,19 +49,20 @@ input[type="file"] {
        <form class="form-horizontal" method="POST" action="{{ route('promotion.update',['id'=>$edit_promotion->id]) }}"  enctype="multipart/form-data">
           {{ csrf_field() }}
           <div>
-            <label for="file-upload" class="custom-file-upload">
+            <label for="imgInp" class="custom-file-upload">
               <i class="fa fa-cloud-upload"></i> เพิ่มรูปภาพ
             </label>
-            <input id="file-upload" type="file"/>
-            <input type="file" id="imgInp" name="file"/>
+            <!-- <input id="file-upload" type="file"/>
+            <input type="file" id="imgInp" name="file"/> -->
+             <input type="file"  id="imgInp" name="file"/ >
             
             <br>
             <br>
             <div>
-            <img id="blah" src="{{ asset('storage/promotion/'.$edit_promotion->qrimage) }}" style="width: 25%; height: 25%;">
+              <img id="blah" src="/assets/img/no-img.png" style="width: 25%; height: 25%;">
+            </div>
+            <br>
           </div>
-          <br>
-        </div>
           <div>
             <label>ชื่อ</label>
             <input type="text" class="form-control" name="name" value="{{$edit_promotion->name}}" placeholder="ชื่อ">

@@ -158,18 +158,22 @@
  </div>
 
  <div>
+  
    @foreach ($food_is_recommend as $index => $is_recommend)
    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
     <br>
     <div class="hovereffect">
+      <div class="MagicScroll" data-options="width: 640; items: fit; step: 1;">
      <img src="{{ asset('storage/Food_menus/'.$is_recommend->image) }}" alt="" style="width:100%; height: 200px;">
+     </div>
      <div class="overlay">
        <h2>{{$is_recommend->food_name}}</h2>
-       <a class="info" href="/food">ดูทั้งหมด</a>
+       <!-- <a class="info" href="/food">ดูทั้งหมด</a> -->
      </div>
    </div>
  </div>
  @endforeach
+
 </div>
 
 </div>
