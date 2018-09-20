@@ -10,6 +10,8 @@ use App\Food_type;
 use App\Food_menus;
 use App\Order_details;
 use App\Order;
+use App\promotion_type;
+use App\promotion;
 use Illuminate\Support\Facades\DB;
 class Book_tableController extends Controller
 {
@@ -103,30 +105,52 @@ public function index()
    $f_m_beverage = DB::table('food_menu')->where('food_type',7)->get();
    $f_m_coffee = DB::table('food_menu')->where('food_type',8)->get();
 
-  $amount = 0;
- $reservation = Reservation::where('user_id', $user->id)->orderBy('id','desc')->where('is_active',1)->first();
-  $table_id= Dining_table::where('id', $reservation['dining_table_id'])->orderBy('id','desc')->first();
-  $order = Order::where('reservationld_id', $reservation['id'])->first();
+   $amount = 0;
+   $reservation = Reservation::where('user_id', $user->id)->orderBy('id','desc')->where('is_active',1)->first();
+   $table_id= Dining_table::where('id', $reservation['dining_table_id'])->orderBy('id','desc')->first();
+   $order = Order::where('reservationld_id', $reservation['id'])->first();
 
-  $order_details = Order_details::where('order_Id',$order['id'] )->get();
+   $order_details = Order_details::where('order_Id',$order['id'] )->get();
 
-  foreach ($order_details as $key => $order_detail) {
-   $order_details[$key]['food_detail'] = Food_menus::where('id',$order_detail->food_id)->first();
-   $amount += $order_detail['amount'];
-   $date = $order_detail['created_at'];
-   $strYear = date("Y",strtotime($date))+543;
-   $strMonth= date("n",strtotime($date));
-   $strDay= date("j",strtotime($date));
-   $strHour= date("H",strtotime($date));
-   $strMinute= date("i",strtotime($date));
-   $strSeconds= date("s",strtotime($date));
-   $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
-   $strMonthThai=$strMonthCut[$strMonth];
-   $order_details[$key]['datas'] = $strDay.' '.$strMonthThai.' '.$strYear.' '.$strHour.':'.$strMinute.' '.'น.';
+   foreach ($order_details as $key => $order_detail) {
 
- }
+     $order_details[$key]['food_detail'] = Food_menus::where('id',$order_detail->food_id)->first();
+     $amount += $order_detail['amount'];
+     $date = $order_detail['created_at'];
+     $strYear = date("Y",strtotime($date))+543;
+     $strMonth= date("n",strtotime($date));
+     $strDay= date("j",strtotime($date));
+     $strHour= date("H",strtotime($date));
+     $strMinute= date("i",strtotime($date));
+     $strSeconds= date("s",strtotime($date));
+     $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+     $strMonthThai=$strMonthCut[$strMonth];
+     $order_details[$key]['datas'] = $strDay.' '.$strMonthThai.' '.$strYear.' '.$strHour.':'.$strMinute.' '.'น.';
+     if ($order_detail->food_id == null) {
+      $order_details[$key]['promotion'] = Promotion::where('id',$order_detail->promotion_id)->first();
+      $date = $order_detail['created_at'];
+      $strYear = date("Y",strtotime($date))+543;
+      $strMonth= date("n",strtotime($date));
+      $strDay= date("j",strtotime($date));
+      $strHour= date("H",strtotime($date));
+      $strMinute= date("i",strtotime($date));
+      $strSeconds= date("s",strtotime($date));
+      $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+      $strMonthThai=$strMonthCut[$strMonth];
+      $order_details[$key]['datas'] = $strDay.' '.$strMonthThai.' '.$strYear.' '.$strHour.':'.$strMinute.' '.'น.';
+    }
 
-   return view('status.bookfood',['dining_table'=> $dining_table,
+
+  }
+  //return $order_details;
+
+  $promotion_type1 = Promotion::where('promotion_type_id', 1)->get();
+  $promotion_type2 = Promotion::where('promotion_type_id', 2)->get();
+  $promotion_type3 = Promotion::where('promotion_type_id', 3)->get();
+  $promotion_type4 = Promotion::where('promotion_type_id', 4)->get();
+  $promotion_type5 = Promotion::where('promotion_type_id', 5)->get();
+
+  return view('status.bookfood',['dining_table'=> $dining_table,
     'user'=> $user,
     'food_type'=> $food_type,
     'food_type_vegetable'=> $food_type_vegetable,
@@ -141,12 +165,17 @@ public function index()
     'reserve_date'=> $reservation['reserve_date'],
     'order_details' => $order_details,
     // 'datas'=> $datas,
-  'amount'=>$amount,
-  'order' =>$order,
-  'reservation' =>$reservation
+    'amount'=>$amount,
+    'order' =>$order,
+    'reservation' =>$reservation,
+    'promotion_type1' => $promotion_type1,
+    'promotion_type2' => $promotion_type2,
+    'promotion_type3' => $promotion_type3,
+    'promotion_type4' => $promotion_type4,
+    'promotion_type5' => $promotion_type5,
   ]);
 
- }
+}
 
     /**
      * Display the specified resource.
@@ -192,7 +221,7 @@ public function index()
     {
 
       $amount = $amount - $orders_amount;
-       $order_details_delete = Order_details::where('id',$id )->delete();
+      $order_details_delete = Order_details::where('id',$id )->delete();
       if($order_details_delete){
         session()->flash('order_details_delete', 'ยกเลิกสำเร็จ');
        // return redirect()->route('status.bookfood',['amount'=>$amount]);
@@ -204,25 +233,54 @@ public function index()
     }
 
     public function order_food(Request $request){
-      if ($request->price) {
+     if ($request->price) {
        $price = $request->price *  $request->totalorder;
      }else if($request->special_price){
        $price = $request->special_price *  $request->totalorder;
      }else {
-     $add_order = new Order;
-      $price = $request->big_price *  $request->totalorder;
+       $add_order = new Order;
+       $price = $request->big_price *  $request->totalorder;
+     }
+     $order = Order::where('reservationld_id', $request->reservation_id)->first();
+     if (!$order) {
+      $add_order = new Order;
+      $add_order->reservationld_id = $request->reservation_id;
+      $add_order->orde_date = $request->orde_date;
+      $add_order->is_paid = 0;
+      $add_order->save();
+      $order_id = $add_order->id;
+      if ($add_order) {
+       if ($request->promotion_type_id == "undefined") {
+         $add_order_details = new Order_details;
+         $add_order_details->order_Id = $order_id;
+         $add_order_details->food_id = $request->food_id;
+         $add_order_details->totalorder = $request->totalorder;
+         $add_order_details->amount = $price;
+         $add_order_details->is_cook = 0;
+         $add_order_details->save();
+         if ($add_order_details) {
+          session()->flash('add_order_details', $request->food_name);
+          return redirect()->route('book_food',['id'=>$request->reservation_id]);
+        }
+      }else{
+        $add_order_details = new Order_details;
+        $add_order_details->order_Id = $order_id;
+        $add_order_details->promotion_id = $request->food_id;
+        $add_order_details->totalorder = $request->totalorder;
+        $add_order_details->amount = $price;
+        $add_order_details->is_cook = 0;
+        $add_order_details->save();
+        if ($add_order_details) {
+          session()->flash('add_order_details', $request->food_name);
+          return redirect()->route('book_food',['id'=>$request->reservation_id]);
+        }
+      }
     }
-    $order = Order::where('reservationld_id', $request->reservation_id)->first();
-    if (!$order) {
-    $add_order = new Order;
-     $add_order->reservationld_id = $request->reservation_id;
-     $add_order->orde_date = $request->orde_date;
-     $add_order->is_paid = 0;
-     $add_order->save();
-     $order_id = $add_order->id;
-     if ($add_order) {
+
+  }else{
+    if ($request->promotion_type_id == "undefined") {
       $add_order_details = new Order_details;
-      $add_order_details->order_Id = $order_id;
+      $add_order_details->order_Id = $order['id'];
       $add_order_details->food_id = $request->food_id;
       $add_order_details->totalorder = $request->totalorder;
       $add_order_details->amount = $price;
@@ -232,20 +290,18 @@ public function index()
         session()->flash('add_order_details', $request->food_name);
         return redirect()->route('book_food',['id'=>$request->reservation_id]);
       }
-    }
-
-
-  }else{
-    $add_order_details = new Order_details;
-    $add_order_details->order_Id = $order['id'];
-    $add_order_details->food_id = $request->food_id;
-    $add_order_details->totalorder = $request->totalorder;
-    $add_order_details->amount = $price;
-    $add_order_details->is_cook = 0;
-    $add_order_details->save();
-    if ($add_order_details) {
-      session()->flash('add_order_details', $request->food_name);
-      return redirect()->route('book_food',['id'=>$request->reservation_id]);
+    }else{
+      $add_order_details = new Order_details;
+      $add_order_details->order_Id = $order['id'];
+      $add_order_details->promotion_id = $request->food_id;
+      $add_order_details->totalorder = $request->totalorder;
+      $add_order_details->amount = $price;
+      $add_order_details->is_cook = 0;
+      $add_order_details->save();
+      if ($add_order_details) {
+        session()->flash('add_order_details', $request->food_name);
+        return redirect()->route('book_food',['id'=>$request->reservation_id]);
+      }
     }
   }
 
@@ -254,7 +310,7 @@ public function index()
 public function customer_report($id){
 
   $amount = 0;
-   $reservation = Reservation::where('user_id', $id)->orderBy('id','desc')->where('is_active',1)->first();
+  $reservation = Reservation::where('user_id', $id)->orderBy('id','desc')->where('is_active',1)->first();
   $table_id= Dining_table::where('id', $reservation['dining_table_id'])->orderBy('id','desc')->first();
   $order = Order::where('reservationld_id', $reservation['id'])->first();
 
@@ -263,6 +319,19 @@ public function customer_report($id){
   foreach ($order_details as $key => $order_detail) {
    $order_details[$key]['food_detail'] = Food_menus::where('id',$order_detail->food_id)->first();
    $amount += $order_detail['amount'];
+   if ($order_detail->food_id == null) {
+     $order_details[$key]['promotion'] = Promotion::where('id',$order_detail->promotion_id)->first();
+     $date = $order_detail['created_at'];
+     $strYear = date("Y",strtotime($date))+543;
+     $strMonth= date("n",strtotime($date));
+     $strDay= date("j",strtotime($date));
+     $strHour= date("H",strtotime($date));
+     $strMinute= date("i",strtotime($date));
+     $strSeconds= date("s",strtotime($date));
+     $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+     $strMonthThai=$strMonthCut[$strMonth];
+     $order_details[$key]['datas'] = $strDay.' '.$strMonthThai.' '.$strYear.' '.$strHour.':'.$strMinute.' '.'น.';
+   }
 
  }
  $date = $reservation['reserve_date'];
@@ -286,6 +355,8 @@ public function customer_report($id){
  return redirect("/");
 
 }
+
+//return $order_details;
 return view('status.customer_report',['order_details' => $order_details,
   'datas'=> $datas,
   'amount'=>$amount,

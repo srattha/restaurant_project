@@ -68,6 +68,22 @@
          @foreach ($val->reservation as $index2 => $val2)
          @foreach ($val2->order as $index3 => $val3)
          @foreach ($val3->order_details as $index4 => $val4)
+         @if($val4->food_id == null)
+          @foreach ($val4->promotion as $index5 => $val5)
+         <tr>
+           <td style="width: 100px;"><img src="{{ asset('storage/Food_menus/'.$val5->image) }}" alt="" style="width: 50px;height: 50px;"></td>
+           <td>{{$val5->name}}</td>
+           <td>{{$val4->totalorder}}</td>
+           <td>{{$val4->date}}</td>
+           <td>
+            @if($val4->is_cook == 0)
+            <button type="button" class="btn btn-success" onclick="if(confirm('ยืนยัน หรือไม่')) window.location.href = '{{ route('chef_update_is_cook',['id'=>$val4->id]) }}'"> <i class="fa fa-check" aria-hidden="true"></i> สถานะ</button></td>
+            @else
+            <h3><span class="label label-default">ทำแล้ว</span></h3>
+            @endif
+          </tr>
+          @endforeach
+         @else
          @foreach ($val4->food_details as $index5 => $val5)
          <tr>
            <td style="width: 100px;"><img src="{{ asset('storage/Food_menus/'.$val5->image) }}" alt="" style="width: 50px;height: 50px;"></td>
@@ -76,12 +92,14 @@
            <td>{{$val4->date}}</td>
            <td>
             @if($val4->is_cook == 0)
-             <button type="button" class="btn btn-success" onclick="if(confirm('ยืนยัน หรือไม่')) window.location.href = '{{ route('chef_update_is_cook',['id'=>$val4->id]) }}'"> <i class="fa fa-check" aria-hidden="true"></i> สถานะ</button></td>
-             @else
-             <h3><span class="label label-default">ทำแล้ว</span></h3>
-             @endif
-         </tr>
-         @endforeach
+            <button type="button" class="btn btn-success" onclick="if(confirm('ยืนยัน หรือไม่')) window.location.href = '{{ route('chef_update_is_cook',['id'=>$val4->id]) }}'"> <i class="fa fa-check" aria-hidden="true"></i> สถานะ</button></td>
+            @else
+            <h3><span class="label label-default">ทำแล้ว</span></h3>
+            @endif
+          </tr>
+          @endforeach
+         @endif
+  
          @endforeach
          @endforeach
          @endforeach
@@ -127,7 +145,7 @@
   });
 
  });
-  setTimeout("location.href = '/chef';",50000);
+  setTimeout("location.href = '/chef';",10000);
 </script>
 @endsection
 

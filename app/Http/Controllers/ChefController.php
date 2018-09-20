@@ -9,6 +9,8 @@ use App\Reservation;
 use App\Order_details;
 use App\Order;
 use App\Food_menus;
+use App\promotion_type;
+use App\promotion;
 class ChefController extends Controller
 {
  public function __construct()
@@ -70,6 +72,10 @@ public function index()
                 $strMonthThai=$strMonthCut[$strMonth];
                 $table[$key]['reservation'][$key2]['order'][$key3]['order_details'][$key4]['date'] = $strDay.' '.$strMonthThai.' '.$strYear.' '.$strHour.':'.$strMinute.' '.'น.';
                 $table[$key]['reservation'][$key2]['order'][$key3]['order_details'][$key4]['food_details'] = Food_menus::where('id',$val4->food_id)->get();
+
+                if ($val4->food_id == null) {
+                   $table[$key]['reservation'][$key2]['order'][$key3]['order_details'][$key4]['promotion'] = promotion::where('id',$val4->promotion_id)->get();
+                }
             }
         }
     }

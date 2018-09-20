@@ -194,7 +194,12 @@
                         <tr>
                            <td> {{$orders->datas}}</td>
                            <td>
-                              <p>{{$orders->food_detail->food_name}}</p>
+                               @if($orders->food_detail == null)
+                               <p>{{$orders->promotion->name}}</p>
+                                @else
+                                 <p>{{$orders->food_detail->food_name}}</p>
+                                @endif
+                             
                            </td>
                            <td>{{$orders->totalorder}}</td>
                            <!--  -->
@@ -231,6 +236,7 @@
                      <li><a data-toggle="tab" href="#menu6">เมนูพิซซ่า</a></li>
                      <li><a data-toggle="tab" href="#menu7">เมนูเครื่องดื่ม</a></li>
                      <li><a data-toggle="tab" href="#menu8">เมนูกาแฟ</a></li>
+                     <li><a data-toggle="tab" href="#menu9">โปรโมชั่น</a></li>
                   </ul>
                   <div class="tab-content">
                      <div id="home" class="tab-pane fade in active">
@@ -354,6 +360,34 @@
                         </div>
                         @endforeach
                      </div>
+                      <div id="menu9" class="tab-pane fade">
+                        <h3>โปรโมชั่น</h3>
+                       <div class="row">
+                        <div class="container">
+                          <ul class="nav nav-tabs">
+                           <li class="active"><a data-toggle="tab" href="#promotion1">โปรเดอะฮักกระชากใจ</a></li>
+                           <li><a data-toggle="tab" href="#promotion2">โปรสหายหมื่นจอก</a></li>
+                           <li><a data-toggle="tab" href="#promotion3">โปรลูกหมูสามตัว</a></li>
+                           <li><a data-toggle="tab" href="#promotion4">ยำประเจ็ท</a></li>
+                           <li><a data-toggle="tab" href="#promotion5">ทอดสะพาน</a></li>
+                        </ul>
+                     </div>
+                      <div id="promotion1" class="tab-pane fad in active">
+                        @foreach ($promotion_type1 as $index => $p1)
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                           <br>
+                           <div class="hovereffect">
+                              <img src="{{ asset('storage/Food_menus/'.$p1->qrimage) }}" alt="" style="width:100%; height: 200px;">
+                              <div class="overlay">
+                                 <h2>{{$p1->name}} ราคา {{$p1->price}}</h2>
+                                 <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$p1->name}}', '{{$p1->qrimage}}', '{{$p1->id}}', '{{$p1->price}}', '','', '{{$p1->promotion_type_id}}')">สั่งเลย</a>
+                              </div>
+                           </div>
+                        </div>
+                        @endforeach
+                     </div>
+                  </div>
+                 </div>
                   </div>
                </div>
             </div>
@@ -375,6 +409,8 @@
                            <input type='hidden'  name="orde_date"  value="{{$reserve_date}}">
                            <input type='hidden'  name="dining_table"  value="{{$dining_table}}">
                            <input type='hidden'  name="food_name" id="food_name"  value="food_name">
+                          <!--  <input type='hidden'  name="promotion_id" id="promotion_id"  value="food_name"> -->
+                           <input type='hidden'  name="promotion_type_id" id="promotion_type_id"  value="promotion_type_id">
                            <div class="row">
                               <div class="col-md-6">
                                  <input type='button' value='-' class='btn btn-danger qtyminus' field='totalorder' />
@@ -507,7 +543,7 @@
 
    });
 
-   function order_food($name, $image, $id, $price, $special_price, $big_price){
+   function order_food($name, $image, $id, $price, $special_price, $big_price, $promotion_type_id){
 
      document.getElementById("price").checked = false;
      document.getElementById("special_price").checked = false;
@@ -518,10 +554,18 @@
      var price = $price;
      var big_price = $big_price;
      var special_price = $special_price;
+     var promotion_type_id = $promotion_type_id;
+
+     if (big_price == undefined) {
+      big_price = 0;
+     }
+     if (special_price == undefined) {
+        special_price = 0;
+     }
 
      if (special_price == "") {
        special_price = 0;
-       console.log(special_price)
+       console.log(promotion_type_id)
        document.getElementById("special_price").disabled = true;
       // document.getElementById("big_price").disabled = true;
     }else{
@@ -620,6 +664,7 @@
    document.getElementById("big_price").value = big_price;
    document.getElementById("big_prices").innerHTML = big_price;
    document.getElementById("totalorder").value = 1;
+   document.getElementById("promotion_type_id").value = promotion_type_id;
 
    $("#image").attr("src", "/storage/Food_menus/"+image);
 

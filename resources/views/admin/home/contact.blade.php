@@ -32,9 +32,9 @@ th{
       <th>อีเมล</th>
       <th>เรื่องที่ติดต่อ</th>
       <th>ข้อความ </th>
-      <th>เวลาสร้าง</th>
-      <th>เวลาแก้ไข</th>
-      <th class="text-center">Actions</th>
+      <th>เวลาสร้างข้อมูล</th>
+      <th>เวลาแก้ไขข้อมูล</th>
+      <th class="text-center">ลบข้อมูล</th>
     </tr>
   </thead>
   <tbody>
@@ -49,7 +49,7 @@ th{
       <td>{{$contacts->created_at}}</td>
       <td>{{$contacts->updated_at}}</td>
       <td style="align-content: center;">
-        <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('viewcontact.delete',['id'=>$contacts->id]) }}'"><i class="fa fa-trash-o"></i> ลบข้อมูล</button>
+        <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('คุณแน่ใจหรือไม่ ?')) window.location.href = '{{ route('viewcontact.delete',['id'=>$contacts->id]) }}'"><i class="fa fa-trash-o"></i> ลบข้อมูล</button>
       </tr>
       @endforeach
     </tbody>

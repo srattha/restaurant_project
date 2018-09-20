@@ -42,16 +42,21 @@ img{
 </thead>
 <tbody>
 @foreach ($order_details as $index => $orders)
-
  <tr>
   <td> {{$datas}}</td>
   <td>
+   @if($orders->food_detail == null)
+   
+   <p>{{$orders->promotion->name}}</p>
+   @else
    <p>{{$orders->food_detail->food_name}}</p>
+   @endif
+  
  </td>
  <td>{{$orders->totalorder}}</td>
  <!--  -->
  <td>{{$orders->amount}} บาท</td>
- <!-- <td><button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('promotion.delete',['id'=>$orders->id]) }}'"><i class="fa fa-trash-o"></i> ลบรายการ</button></td> -->
+
 </tr>
 
  @endforeach
