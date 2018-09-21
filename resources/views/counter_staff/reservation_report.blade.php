@@ -83,6 +83,18 @@
  </thead>
  <tbody>
    @foreach ($food as $index => $f)
+   @if($f->food_detail == null)
+    <tr >
+    <td class="table-active">{{$index+1}}</td>
+    <td>
+      <p>{{$f->promotion->name}}</p>
+   </td>
+   <td>{{$f->totalorder}}</td>
+   <td>{{$f->promotion->price}}</td>
+   <td>{{$f->amount}}</td>
+ </tr>
+
+   @else
    <tr >
     <td class="table-active">{{$index+1}}</td>
     <td>
@@ -92,6 +104,8 @@
    <td>{{$f->food_detail->price}}</td>
    <td>{{$f->amount}}</td>
  </tr>
+   @endif
+
  @endforeach
 
  <tr>
@@ -153,11 +167,20 @@
       <td style="text-align: right;">ราคา</td>
     </tr>
     @foreach ($food as $index => $f)
-    <tr>
+    @if($f->food_detail == null)
+      <tr>
+      <td>{{$f->totalorder}}&nbsp;&nbsp;&nbsp;&nbsp;{{$f->promotion->name}}</td>
+      <td></td>
+      <td style="text-align: right;">{{$f->amount}}</td>
+    </tr>
+    @else
+   <tr>
       <td>{{$f->totalorder}}&nbsp;&nbsp;&nbsp;&nbsp;{{$f->food_detail->food_name}}</td>
       <td></td>
       <td style="text-align: right;">{{$f->amount}}</td>
     </tr>
+    @endif
+
     @endforeach
   </table>
   <div style="border-bottom: 1px solid #ddd;"></div>

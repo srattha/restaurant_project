@@ -13,7 +13,8 @@ use App\User;
 use App\Helper;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
+use App\promotion_type;
+use App\promotion;
 class CounterstaffController extends Controller
 {
 
@@ -152,34 +153,46 @@ class CounterstaffController extends Controller
 
 public function reservation_report(Request $request, $id)
 {
-
   $amount = 0;
   $table_name = Dining_table::where('id',$id)->first();
-   $reservation = Reservation::where('dining_table_id', $id)->orderBy('id','desc')->first();
+  $reservation = Reservation::where('dining_table_id', $id)->orderBy('id','desc')->first();
   $order = Order::where('reservationld_id', $reservation['id'])->first();
   $order_details = Order_details::where('order_Id',$order['id'] )->get();
 
   foreach ($order_details as $key => $order_detail) {
    $order_details[$key]['food_detail'] = Food_menus::where('id',$order_detail->food_id)->first();
    $amount += $order_detail['amount'];
- }
+   if ($order_detail->food_id == null) {
+    $order_details[$key]['promotion'] = Promotion::where('id',$order_detail->promotion_id)->first();
+    $date = $order_detail['created_at'];
+    $strYear = date("Y",strtotime($date))+543;
+    $strMonth= date("n",strtotime($date));
+    $strDay= date("j",strtotime($date));
+    $strHour= date("H",strtotime($date));
+    $strMinute= date("i",strtotime($date));
+    $strSeconds= date("s",strtotime($date));
+    $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+    $strMonthThai=$strMonthCut[$strMonth];
+    $order_details[$key]['datas'] = $strDay.' '.$strMonthThai.' '.$strYear.' '.$strHour.':'.$strMinute.' '.'น.';
+  }
+}
 
 //return $order_details;
-  $user_id =  $reservation['user_id'];
+$user_id =  $reservation['user_id'];
 $user = User::where('id', $user_id)->first();
- $date = $reservation['reserve_date'];
- $reserve_mobile =$reservation['reserve_mobile'];
+$date = $reservation['reserve_date'];
+$reserve_mobile =$reservation['reserve_mobile'];
 
- $strYear = date("Y",strtotime($date))+543;
- $strMonth= date("n",strtotime($date));
- $strDay= date("j",strtotime($date));
- $strHour= date("H",strtotime($date));
- $strMinute= date("i",strtotime($date));
- $strSeconds= date("s",strtotime($date));
- $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
- $strMonthThai=$strMonthCut[$strMonth];
- $datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
- return view('counter_staff.reservation_report',['table_name'=> $table_name,
+$strYear = date("Y",strtotime($date))+543;
+$strMonth= date("n",strtotime($date));
+$strDay= date("j",strtotime($date));
+$strHour= date("H",strtotime($date));
+$strMinute= date("i",strtotime($date));
+$strSeconds= date("s",strtotime($date));
+$strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+$strMonthThai=$strMonthCut[$strMonth];
+$datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
+return view('counter_staff.reservation_report',['table_name'=> $table_name,
   'user'=> $user,
   'datas'=> $datas,
   'order'=> $order,
@@ -284,8 +297,8 @@ public function order_food(Request $request){
 
 public function confirm_payment(Request $request){
  // return $request->all();
-    
-              
+
+
   if ($request->order) {
    $update_order = Order::where('id', $request->order)->first();
    $update_order->is_paid = $request->is_paid;
@@ -299,12 +312,12 @@ public function confirm_payment(Request $request){
        $reservation = Reservation::where('dining_table_id',$request->table_id)->orderBy('id','desc')->first();
        $Order = Order::where('reservationld_id',$reservation->id)->first();
        $Order_details = Order_details::where('order_id', $Order->id)->update(['is_cook'=> 3]);
-      
+
        if ($Order_details) {
         session()->flash('update_table', 'ยืนยันสถานะสำเร็จ');
-      return redirect()->route('counterstaff.index');
-       }
-      
+        return redirect()->route('counterstaff.index');
+      }
+
     }else{
      return ["satus"=>false,"msg"=>"Can't update_table data"];
    }
