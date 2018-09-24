@@ -106,17 +106,19 @@
 
             </div>
             <div class="checkbox">
-              <label>
+              <!-- <label>
                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-             </label>
+             </label> -->
+             <br>
            </div>
            <button class="btn btn-lg btn-success btn-block" type="submit"> <i class="fa fa-sign-in" aria-hidden="true"></i> เข้าสู่ระบบ</button>
          </fieldset>
        </form>
        <hr/>
-       <center><h4>OR</h4></center>
+       <center><h4></h4></center>
+       <br>
        <button class="btn btn-lg btn-block" type="button" onclick="location.href='{{ route('login.facebook') }}'" style=" background-color: #3b5998!important;
-       color: #fff!important;"> <i class="fa fa-facebook-official" aria-hidden="true"></i> Login facebook</button>
+       color: #fff!important;"> <i class="fa fa-facebook-official" aria-hidden="true"></i> เข้าระบบด้วย เฟสบุ๊ก</button>
 
      </div>
      <button type="button" class="btn btn-lg btn-primary btn-block" onclick="location.href='{{ route('register') }}'">ลงทะเบียนใช้งาน</button>

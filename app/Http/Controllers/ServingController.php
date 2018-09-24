@@ -80,10 +80,11 @@ class ServingController extends Controller
                          $table[$key]['reservation'][$key2]['order'][$key3]['order_details'] = Order_details::where('order_id', $val3->id)->where('is_cook','!=' , 3)->get();
                         foreach ($table[$key]['reservation'][$key2]['order'][$key3]['order_details'] as $key4 => $val4) {
                           $table[$key]['reservation'][$key2]['order'][$key3]['order_details'][$key4]['food_details'] = Food_menus::where('id',$val4->food_id)->get();
-                        }
-                        if ($val4->food_id == null) {
+                           if ($val4->food_id == null) {
                    $table[$key]['reservation'][$key2]['order'][$key3]['order_details'][$key4]['promotion'] = promotion::where('id',$val4->promotion_id)->get();
                 }
+                        }
+                       
                      }
                }
            }

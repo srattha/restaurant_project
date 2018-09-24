@@ -2,55 +2,7 @@
 @section('title','ติดต่อเรา')
 @section('content')
 <div class="row">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-
-      <div class="item active">
-        <img src="/img/v.jpg" alt="Los Angeles" style="width:100%;">
-        <div class="carousel-caption">
-          <h3><a href="/register"></a></h3>
-          <h3>เป็นต่อ ก่อสร้าง&คาเฟ่</h3>
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="/img/c20.jpg" alt="Chicago" style="width:100%;">
-        <div class="carousel-caption">
-          <h3>เปิดบริการ</h3>
-          <p>12.00-24.00 ทุกวัน</p>
-          <p>หยุดทุกวันพุธ</p>
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="/img/d20.jpg" alt="New York" style="width:100%;">
-        <div class="carousel-caption">
-          <h3>เบอร์โทรติดต่อ</h3>
-          <p>055-030-280</p>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-
+  <img src="img/v.jpg" class="img-responsive" />
 </div>
 
 <div class="row">
@@ -95,13 +47,13 @@
         <div class="col-md-6">
           <h3 class="text-center">ข้อมูลติดต่อ </h3>
             <hr>
-             <p class="text-center">210/10 ถนน พหลโยธิน ต.ไม้งาม</p>
-             <p class="text-center">อ.เมืองตาก จ.ตาก 63000</p>
-             <p class="text-center">เบอร์โทร 0955535222</p>
+             <h3 class="text-center">210/10 ถนน พหลโยธิน ต.ไม้งาม</h3>
+             <h3 class="text-center">อ.เมืองตาก จ.ตาก 63000</h3>
+             <h3 class="text-center"><i class="fa fa-phone-square" aria-hidden="true"></i> เบอร์โทร 0955535222</h3>
 
-            <p class="text-center"><a href="https://www.facebook.com/PentorTK"><img src="/img/facebook.png"></a>
+            <p class="text-center"><a href="https://www.facebook.com/PentorTK"><img src="/img/facebook.png"> Facebook </a>
              <!--<img src="/img/facebook.png">--></p>
-             <p class="text-center"><a href="/register"><img src="/img/line.png"></a></p>
+             <p class="text-center"><a href="/register"><img src="/img/line.png"></a> Line </p>
 
          </div>
          <div class="col-md-6">
@@ -129,7 +81,7 @@
              <label for="exampleInputMessage1"><br>ข้อความ</br></label>
              <textarea class="form-control" name="message"></textarea>
            </div>
-           <button type="submit" class="btn btn-primary">ยืนยัน</button>
+           <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> ยืนยัน</button>
          </form>
 
        </div>

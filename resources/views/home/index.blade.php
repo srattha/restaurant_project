@@ -221,15 +221,17 @@
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9x7E5toahKKgMmeDNLVy3YUbkA5cNxM0&callback=myMap"></script>
           </div>
           <div class="col-md-6">
+            
             <h3 class="text-center">ข้อมูลติดต่อ </h3>
             <hr>
-             <p class="text-center">210/10 ถนน พหลโยธิน ต.ไม้งาม</p>
-             <p class="text-center">อ.เมืองตาก จ.ตาก 63000</p>
-             <p class="text-center">เบอร์โทร 0955535222</p>
+            <br>
+             <h3 class="text-center">210/10 ถนน พหลโยธิน ต.ไม้งาม</h3>
+             <h3 class="text-center">อ.เมืองตาก จ.ตาก 63000</h3>
+             <h3 class="text-center"><i class="fa fa-phone-square" aria-hidden="true"></i>เบอร์โทร 0955535222</h3>
 
-            <p class="text-center"><a href="https://www.facebook.com/PentorTK"><img src="/img/facebook.png"></a>
+            <p class="text-center"><a href="https://www.facebook.com/PentorTK"><img src="/img/facebook.png"> Facebook</a>
              <!--<img src="/img/facebook.png">--></p>
-             <p class="text-center"><a href="/register"><img src="/img/line.png"></a></p>
+             <p class="text-center"><a href="/register"><img src="/img/line.png"> Line </a></p>
              <p>
 
              </p>
@@ -260,7 +262,7 @@
                <label for="exampleInputMessage1"><br>ข้อความ</br></label>
                <textarea class="form-control" name="message"></textarea>
              </div>
-             <button type="submit" class="btn btn-primary">ยืนยัน</button>
+             <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> ยืนยัน </button>
            </form>
          </div>
        </div>
