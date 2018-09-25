@@ -144,11 +144,14 @@
   </div>
 </div>
 <div>
- <label><b>เบอร์โทร ติดต่อ </b></label>
+ <label><b>เบอร์โทร ติดต่อ </b></label> <span style="color: red">*โปรดกรอกหมายเลขโทรศัพท์ 10 หลัก ด้วยรูปแบบดังนี้ 08X-XXX-XXXX *</span>
  <div id="start">
   <div class="input-group">
    <span class="input-group-addon"><i class="fa fa-phone-square" aria-hidden="true"></i></span>
-   <input type='number'  name="reserve_mobile" id="time"  class="form-control first_login"  / required="">
+   <input type="tel" name="reserve_mobile" pattern="^\d{3}-\d{3}-\d{4}$" class="form-control first_login" required="required" title="โปรดกรอกหมายเลขโทรศัพท์ 10 หลัก ด้วยรูปแบบดังนี้ 08X-XXX-XXXX" oninvalid="this.setCustomValidity('โปรดกรอกหมายเลขโทรศัพท์')"
+   onvalid="this.setCustomValidity('')">
+   <!-- <input type='number'  maxlength="10" name="reserve_mobile" class="form-control first_login"  / required="">  -->
+
  </div>
 </div>
 </div>

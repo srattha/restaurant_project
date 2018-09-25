@@ -26,6 +26,7 @@
   <link href="{{ asset('/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
   <!-- styel Css -->
   <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Sriracha" rel="stylesheet">
   <script src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
   <!-- Bootstrap Core JavaScript -->
   <script src="{{ asset('/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -41,6 +42,9 @@
    color: #333333;
    text-decoration: none;
  }
+ body{
+    font-family: 'Sriracha', cursive;
+  }
  /*  #overlay{
      position:fixed;
      z-index:99999;

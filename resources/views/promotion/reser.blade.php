@@ -20,7 +20,7 @@ b{
       <li><a data-toggle="tab" href="#menu5">ทอดสะพาน</a></li>
     </ul>
 
-<b src="img/o.jpg" class="img-responsive" >
+<!-- <b src="img/o.jpg" class="img-responsive" > -->
     <div class="tab-content">
    <div id="menu1" class="tab-pane fade in active">
       <div class="row">

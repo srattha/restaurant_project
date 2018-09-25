@@ -68,8 +68,18 @@ a {
 <script>
   $(document).ready(function() {
     $('#dataTables-example').DataTable({
-      responsive: true
+      responsive: true,
+      dom: 'Bfrtip',
+        buttons: [
+            {
+                text: 'My button',
+                action: function ( e, dt, node, config ) {
+                    alert( 'Button activated' );
+                }
+            }
+        ]
     });
+    
   });
 </script>
 @endsection

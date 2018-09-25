@@ -92,7 +92,7 @@
            <td>{{$val4->date}}</td>
            <td>
             @if($val4->is_cook == 0)
-            <button type="button" class="btn btn-success" onclick="if(confirm('ยืนยัน หรือไม่')) window.location.href = '{{ route('chef_update_is_cook',['id'=>$val4->id]) }}'"> <i class="fa fa-check" aria-hidden="true"></i> สถานะ</button></td>
+            <button type="button" class="btn btn-success" onclick="if(confirm('ยืนยัน สถานะ')) window.location.href = '{{ route('chef_update_is_cook',['id'=>$val4->id]) }}'"> <i class="fa fa-check" aria-hidden="true"></i> สถานะ</button></td>
             @else
             <h3><span class="label label-default">ทำแล้ว</span></h3>
             @endif

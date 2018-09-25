@@ -34,7 +34,7 @@
   <!-- styel Css -->
   <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('/assets/css/lightbox.css') }}" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Sriracha" rel="stylesheet">
   <!-- jQuery -->
   <script src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
 
@@ -65,6 +65,9 @@
 
 <style type="text/css">
   /* Absolute Center Spinner */
+  body{
+    font-family: 'Sriracha', cursive;
+  }
 
   a {
         color: #333333;
@@ -341,8 +344,8 @@
 
     @else
     <div style="text-align: right;">
-    <a href="/login">เข้าสู่ระบบ</a>
-    <a href="/register">สมัครสมาชิก</a>
+    <a href="/login"><i class="fa fa-user-circle" aria-hidden="true"></i> เข้าสู่ระบบ</a>
+    <a href="/register"><i class="fa fa-user-plus" aria-hidden="true"></i> สมัครสมาชิก</a>
     </div>
 
     @endif

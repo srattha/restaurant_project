@@ -106,7 +106,6 @@
   transition-delay:.2s;
 }
 
-
 </style>
 @endsection
 @section('content')
@@ -143,14 +142,15 @@
 </div>
 </div>
 <div class="col-md-6">
- <div class="panel panel-success">
+ <di
+ v class="panel panel-success">
   <div class="panel-heading"><b style="font-size: 20px;">เวลาเปิดบริการ</b></div>
   <div class="panel-body">
    <h1 class="text-center">12:00 น. - 24:00 น.</h1>.
-    <h3 class="text-center">หยุดทุกวันพุธ</h3>
+    <h3 class="text-center" style="font-family: 'Sriracha', cursive;">หยุดทุกวันพุธ</h3>
   </div>
 </div>
-</div>
+<!-- </div> -->
 </div>
 <br>
 <div class="row" style="background: #F1F3F5;">
@@ -178,6 +178,7 @@
  </div>
 </div>
 <br>
+</div>
 <div class="row">
   <h3 align="center">รูปภาพบรรยากาศ</h3>
   <hr width=18% size=50px color=ff0088>

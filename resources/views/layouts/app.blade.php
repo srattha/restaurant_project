@@ -14,6 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Sriracha" rel="stylesheet">
 </head>
 <body style="background-color: #636b6f;">
     <div id="app" style="padding-top: 10%;">
@@ -67,7 +68,11 @@
 
     @yield('content')
 </div>
-
+<style type="text/css">
+    body{
+        font-family: 'Sriracha', cursive;
+    }
+</style>
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 </body>

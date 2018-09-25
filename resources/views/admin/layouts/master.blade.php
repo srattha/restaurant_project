@@ -35,10 +35,13 @@
   <!-- styel Css -->
   <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('/assets/css/lightbox.css') }}" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Maitree|Sriracha" rel="stylesheet">
   @yield('css')
 
   <style type="text/css">
+  body{
+    font-family: 'Maitree', serif;
+  }
   a {
     color: #333333;
     text-decoration: none;
