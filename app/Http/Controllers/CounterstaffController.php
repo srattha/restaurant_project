@@ -61,8 +61,10 @@ class CounterstaffController extends Controller
   }
 
   public function search(Request $request){
-    $search = $request->search;
-    $dining_table = Dining_table::where('name', 'LIKE', '%' . $search . '%')->get();
+
+    if ($request->search) {
+     $search = $request->search;
+    $dining_table = Dining_table::where('name', 'LIKE', '%' . $search . '%')->paginate(6);
     $food_type = Food_type::get();
     $food_type_vegetable = DB::table('food_menu')->where('food_type', 1)->get();
     $users = Auth::user();
@@ -73,6 +75,10 @@ class CounterstaffController extends Controller
       'food_type'=> $food_type,
       'food_type_vegetable'=> $food_type_vegetable
     ]);
+    }else{
+      return redirect("/counter_staff");
+    }
+
   }
 
   public function store(Request $request)
@@ -98,7 +104,8 @@ class CounterstaffController extends Controller
       $update_dining_table->save();
       $dining_id = $update_dining_table->id;
       if ($update_dining_table) {
-       return redirect()->route('reservation_food',['id'=>$reservation_id]);
+        return redirect()->route('counterstaff.index');
+       // return redirect()->route('reservation_food',['id'=>$reservation_id]);
             // $users = Auth::user();
             // $users_type_id = $users->user_type_id;
             // $user = $users->name;
@@ -310,13 +317,20 @@ public function confirm_payment(Request $request){
      $update_table->save();
      if ($update_table) {
        $reservation = Reservation::where('dining_table_id',$request->table_id)->orderBy('id','desc')->first();
-       $Order = Order::where('reservationld_id',$reservation->id)->first();
-       $Order_details = Order_details::where('order_id', $Order->id)->update(['is_cook'=> 3]);
+       if ($reservation) {
+        $update_reservation = Reservation::where('id',$reservation->id)->update(['is_active'=> 0]);
+        if ($update_reservation) {
+          $Order = Order::where('reservationld_id',$reservation->id)->first();
+          $Order_details = Order_details::where('order_id', $Order->id)->update(['is_cook'=> 3]);
 
-       if ($Order_details) {
-        session()->flash('update_table', 'ยืนยันสถานะสำเร็จ');
-        return redirect()->route('counterstaff.index');
-      }
+          if ($Order_details) {
+            session()->flash('update_table', 'ยืนยันสถานะสำเร็จ');
+            return redirect()->route('counterstaff.index');
+          }
+        }
+
+       }
+
 
     }else{
      return ["satus"=>false,"msg"=>"Can't update_table data"];
@@ -328,8 +342,13 @@ public function confirm_payment(Request $request){
   $update_table->color = "success";
   $update_table->save();
   if ($update_table) {
-   session()->flash('update_table', 'ยืยันสถานะสำเร็จ');
-   return redirect()->route('counterstaff.index');
+     $reservation = Reservation::where('dining_table_id',$request->table_id)->orderBy('id','desc')->first();
+       if ($reservation) {
+        $update_reservation = Reservation::where('id',$reservation->id)->update(['is_active'=> 0]);
+         session()->flash('update_table', 'ยืยันสถานะสำเร็จ');
+         return redirect()->route('counterstaff.index');
+      }
+
  }else{
    return ["satus"=>false,"msg"=>"Can't update_table data"];
  }

@@ -67,7 +67,6 @@
 ไม่มีข้อมูล
 @else
 <div class="col-xs-12 col-sm-6 col-md-4 col-lg4">
-
   <div class="offer offer-radius offer-{{$dining_tables->color}}">
    <div class="shape" style="border-width: 0 70px 50px 0;">
     <div class="shape-text">
@@ -107,7 +106,6 @@
 </div>
 @endif
 @endforeach
-{{ $dining_table->links() }}
 
 <div id="reservations" class="modal fade" role="dialog">
  <div class="modal-dialog modal-lg">
@@ -165,7 +163,10 @@
 </div>
 </div>
 </div>
+{{ $dining_table->links() }}
 </div>
+
+
 </div>
 </div>
 <!-- </div> -->

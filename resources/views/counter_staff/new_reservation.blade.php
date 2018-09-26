@@ -56,7 +56,7 @@
     <th>ลูกค้าที่จอง</th>
     <th>วันที่จอง</th>
     <th>เบอร์ติดต่อ </th>
-    <th class="text-center">Actions</th>
+    <th class="text-center">ยกเลิกการจอง</th>
   </tr>
 </thead>
 <tbody>
@@ -78,9 +78,9 @@
      <input type='hidden'  name="dining_tables_id" value="{{$dining_tables->id}}">
      <button class="btn btn-success" type="submit">
       <i class="fa fa-check" aria-hidden="true"></i> ยกเลิกการจอง
-     </button>
+    </button>
 
-   </form>
+  </form>
 
           <!--   <button type="button" class="btn btn btn-success"
             onclick="if(confirm('คุณแน่ใจหรือไม่ ?')) window.location.href = '{{ route('confirm_reservation.update',['id'=>$dining_tables->id]) }}'"><i class="fa fa-check" aria-hidden="true"></i> ยืนยันสถานะ</button></td> -->
