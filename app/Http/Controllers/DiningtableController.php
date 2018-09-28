@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Dining_table;
 use Illuminate\Support\Facades\Auth;
+use Endroid\QrCode\ErrorCorrectionLevel;
+use Endroid\QrCode\LabelAlignment;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Response\QrCodeResponse;
 class DiningtableController extends Controller
 {
     /**
@@ -79,41 +83,39 @@ class DiningtableController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->status == 1) {
-           $color = "success";
-       }else{
-         $color = "danger";
-     }
-     if ($request->hasFile('file')) {
+      $chars = array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+      $serial = '';
+      $max = count($chars)-1;
+      for($i=0;$i<20;$i++){
+          $serial .= (!($i % 5) && $i ? '-' : '').$chars[rand(0, $max)];
+      }
+      $qrcode = $serial;
+      if ($request->status == 1) {
+       $color = "success";
+   }else{
+     $color = "danger";
+ }
 
-       $filename = $request->file->getClientOriginalName();
-       $request->file->storeAs('public/QRcode',$filename);
-       $arr = new Dining_table;
-       $arr->name = $request->name;
-       $arr->qrimage = $filename;
-       $arr->seating = $request->seating;
-       $arr->status = $request->status;
-       $arr->color = $color;
-       $arr->save();
-       if ($arr) {
-           return redirect()->route('diningtable.dining_table');
-       }else{
-        return ["satus"=>false,"msg"=>"Can't save data"];
-    }
-}else{
-    $arr = new Dining_table;
-    $arr->name = $request->name;
-    $arr->qrimage = "noimage.png";
-    $arr->seating = $request->seating;
-    $arr->status = $request->status;
-    $arr->color = $color;
-    $arr->save();
-    if ($arr) {
+
+   // Create a basic QR code
+ $host_url = "http://localhost:9999";
+ $qrCode = new QrCode($host_url."/QrCode/".$qrcode);
+ $qrCode->setSize(300);
+// Save it to a file
+ $qrCode->writeFile("./storage/QRcode/qr-".$qrcode.".png");
+ $arr = new Dining_table;
+ $arr->name = $request->name;
+   $arr->qrimage = "qr-".$qrcode.".png"; //$filename;
+   $arr->seating = $request->seating;
+   $arr->status = $request->status;
+   $arr->qrcode = $qrcode;
+   $arr->color = $color;
+   $arr->save();
+   if ($arr) {
        return redirect()->route('diningtable.dining_table');
    }else{
     return ["satus"=>false,"msg"=>"Can't save data"];
-}
-}
+   }
 
 }
 

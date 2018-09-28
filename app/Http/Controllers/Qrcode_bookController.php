@@ -19,16 +19,18 @@ class Qrcode_bookController extends Controller
  {
 
  }
- public function index($id)
+ public function index($code)
  {
+  $dining_table_id = Dining_table::where('qrcode',$code)->select('id')->first()->id;
   $today = date("d/m/Y");
   $time = date("h:i");
   $reserve_date = $today." ".$time;
-  $dining_table_id = $id;
-  $dining_table = Dining_table::where('id',$dining_table_id)->where('status',0)->first();
+  $qrcode = $code;
+   $dining_table = Dining_table::where('qrcode',$qrcode)->where('status',0)->first();
   if ($dining_table) {
     return view('qrcode.table_busy');
   }
+
   $add_reservation = new Reservation;
   $add_reservation->dining_table_id = $dining_table_id;
   // $add_reservation->user_id = $users_id;
