@@ -185,11 +185,13 @@ public function reservation_report(Request $request, $id)
 }
 
 //return $order_details;
-$user_id =  $reservation['user_id'];
-$user = User::where('id', $user_id)->first();
+ $user_id =  $reservation['user_id'];
+ $user = User::where('id', $user_id)->select('name')->first();
+if (!$user_id) {
+  $user = ['name'=> Qrcode];
+}
 $date = $reservation['reserve_date'];
 $reserve_mobile =$reservation['reserve_mobile'];
-
 $strYear = date("Y",strtotime($date))+543;
 $strMonth= date("n",strtotime($date));
 $strDay= date("j",strtotime($date));

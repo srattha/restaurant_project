@@ -49,7 +49,9 @@
     <div class="col-md-3">
       <div class="panel panel-warning">
         <div class="panel-heading">ชื่อ</div>
-        <div class="panel-body">{{$user->name}}</div>
+        <div class="panel-body">
+          {{$user}}
+        </div>
       </div>
     </div>
     <div class="col-md-3">

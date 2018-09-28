@@ -116,8 +116,9 @@ Route::get('profile/{id}', 'ProfileController@index')->name('profile')->where('i
 Route::post('profile', 'ProfileController@update')->name('profile.update');
 Route::post('editpassword', 'ProfileController@editpassword')->name('profile.editpassword');
 // User;
-Route::get('Qrcode_book_food/{id}', 'Qrcode_bookController@index')->name('Qrcode')->where('id', '[0-9]+');
+Route::get('Qrcode/{id}', 'Qrcode_bookController@index')->name('Qrcode')->where('id', '[0-9]+');
 Route::get('Qrcode_book_food/{id}', 'Qrcode_bookController@Qrcode_book_food')->name('Qrcode_book_food')->where('id', '[0-9]+');
 Route::post('Qrcode_order_food', 'Qrcode_bookController@order_food')->name('Qrcode_order_food');
+Route::get('/Qrcode_order_food/delete/{id}/{orders_amount}/{amount}', 'Qrcode_bookController@destroy')->name('qrcode_book_food.delete')->where('id', '[0-9]+');
 
 Auth::routes();

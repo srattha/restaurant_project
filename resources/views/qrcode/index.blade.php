@@ -701,7 +701,7 @@
                            <td>{{$orders->amount}} บาท</td>
                            <td>
                              @if( $orders->is_cook == 0)
-                             <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('ยืนยันการลบรายการ ?')) window.location.href = '{{ route('book_food.delete',['id'=>$orders->id, 'orders_amount'=>$orders->amount, 'amount'=>$amount]) }}'"><i class="fa fa-times" aria-hidden="true"></i> ยกเลิกรายการ</button>
+                             <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('ยืนยันการลบรายการ ?')) window.location.href = '{{ route('qrcode_book_food.delete',['id'=>$orders->id, 'orders_amount'=>$orders->amount, 'amount'=>$amount]) }}'"><i class="fa fa-times" aria-hidden="true"></i> ยกเลิกรายการ</button>
                              @else
                              <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-check" aria-hidden="true"></i> ทำสำเร็จ</button>
                              @endif
