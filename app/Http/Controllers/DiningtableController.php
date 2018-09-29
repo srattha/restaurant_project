@@ -18,32 +18,32 @@ class DiningtableController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+      $this->middleware('auth');
     }
     public function index()
     {
-        $user = Auth::user();
-        $users_type_id = $user->user_type_id;
-        switch ($users_type_id) {
-            case '1':
-            return view('home');
-            break;
-            case '2':
-            $dining_table = Dining_table::paginate(8);
-            return view('admin.diningtable.dining_table',['dining_table'=> $dining_table]);
-            break;
-            case '3':
-            return redirect("/counter_staff");
-            break;
-            case '4':
-            return redirect("/chef");
-            break;
-            case '5':
-            return redirect("/receptionist");
-            case '6':
-            return redirect("/serving");
+      $user = Auth::user();
+      $users_type_id = $user->user_type_id;
+      switch ($users_type_id) {
+        case '1':
+        return view('home');
+        break;
+        case '2':
+        $dining_table = Dining_table::paginate(8);
+        return view('admin.diningtable.dining_table',['dining_table'=> $dining_table]);
+        break;
+        case '3':
+        return redirect("/counter_staff");
+        break;
+        case '4':
+        return redirect("/chef");
+        break;
+        case '5':
+        return redirect("/receptionist");
+        case '6':
+        return redirect("/serving");
 
-        }
+      }
 
 
     }
@@ -55,23 +55,23 @@ class DiningtableController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
-        $users_type_id = $user->user_type_id;
-        switch ($users_type_id) {
-            case '1':
-            return view('home');
-            break;
-            case '2':
-            return view('admin.diningtable.add_dining_table');
-            break;
-            case '3':
-            return redirect("/counter_staff");
-            break;
-            case '4':
-            return redirect("/counter_staff");
-            break;
+      $user = Auth::user();
+      $users_type_id = $user->user_type_id;
+      switch ($users_type_id) {
+        case '1':
+        return view('home');
+        break;
+        case '2':
+        return view('admin.diningtable.add_dining_table');
+        break;
+        case '3':
+        return redirect("/counter_staff");
+        break;
+        case '4':
+        return redirect("/counter_staff");
+        break;
 
-        }
+      }
 
     }
 
@@ -87,24 +87,24 @@ class DiningtableController extends Controller
       $serial = '';
       $max = count($chars)-1;
       for($i=0;$i<20;$i++){
-          $serial .= (!($i % 5) && $i ? '-' : '').$chars[rand(0, $max)];
+        $serial .= (!($i % 5) && $i ? '-' : '').$chars[rand(0, $max)];
       }
       $qrcode = $serial;
       if ($request->status == 1) {
        $color = "success";
-   }else{
-     $color = "danger";
- }
+     }else{
+       $color = "danger";
+     }
 
 
    // Create a basic QR code
- $host_url = "http://localhost:9999";
- $qrCode = new QrCode($host_url."/QrCode/".$qrcode);
- $qrCode->setSize(300);
+     $host_url = "http://localhost:9999";
+     $qrCode = new QrCode($host_url."/QrCode/".$qrcode);
+     $qrCode->setSize(300);
 // Save it to a file
- $qrCode->writeFile("./storage/QRcode/qr-".$qrcode.".png");
- $arr = new Dining_table;
- $arr->name = $request->name;
+     $qrCode->writeFile("./storage/QRcode/qr-".$qrcode.".png");
+     $arr = new Dining_table;
+     $arr->name = $request->name;
    $arr->qrimage = "qr-".$qrcode.".png"; //$filename;
    $arr->seating = $request->seating;
    $arr->status = $request->status;
@@ -112,10 +112,10 @@ class DiningtableController extends Controller
    $arr->color = $color;
    $arr->save();
    if ($arr) {
-       return redirect()->route('diningtable.dining_table');
+     return redirect()->route('diningtable.dining_table');
    }else{
     return ["satus"=>false,"msg"=>"Can't save data"];
-   }
+  }
 
 }
 
@@ -140,8 +140,8 @@ class DiningtableController extends Controller
     {
 
 
-       $dining_table = Dining_table::where('id', $id)->first();
-       return view('admin.diningtable.edit_dining_table', ['dining_table' => $dining_table]);
+     $dining_table = Dining_table::where('id', $id)->first();
+     return view('admin.diningtable.edit_dining_table', ['dining_table' => $dining_table]);
    }
 
     /**
@@ -153,24 +153,39 @@ class DiningtableController extends Controller
      */
     public function update(Request $request, $id)
     {
+      $chars = array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+      $serial = '';
+      $max = count($chars)-1;
+      for($i=0;$i<20;$i++){
+        $serial .= (!($i % 5) && $i ? '-' : '').$chars[rand(0, $max)];
+      }
+      $qrcode = $serial;
       if ($request->status == 1) {
-         $color = "success";
+       $color = "success";
      }else{
        $color = "danger";
-   }
-   $update = Dining_table::where('id',$id)->first();
-   $update->name = $request->name;
-   $update->seating = $request->seating;
-   $update->status = $request->status;
-   $update->color = $color;
-   $update->save();
-   if ($update) {
+     }
+     $host_url = "https://cpanel.hostinger.in.th/";
+     $qrCode = new QrCode($host_url."/QrCode/".$qrcode);
+     $qrCode->setSize(300);
+// Save it to a file
+     $qrCode->writeFile("./storage/QRcode/qr-".$qrcode.".png");
+     
+     $update = Dining_table::where('id',$id)->first();
+     $update->name = $request->name;
+     $update->seating = $request->seating;
+     $update->qrimage = "qr-".$qrcode.".png";
+     $update->status = $request->status;
+     $update->qrcode = $qrcode;
+     $update->color = $color;
+     $update->save();
+     if ($update) {
        return redirect()->route('diningtable.dining_table');
-   }else{
-    return ["satus"=>false,"msg"=>"Can't save data"];
-}
+     }else{
+      return ["satus"=>false,"msg"=>"Can't save data"];
+    }
 
-}
+  }
 
     /**
      * Remove the specified resource from storage.
@@ -180,12 +195,12 @@ class DiningtableController extends Controller
      */
     public function destroy($id)
     {
-        $dining_table_delete = Dining_table::where('id',$id)->delete();
-        if($dining_table_delete){
-            return redirect()->route('diningtable.dining_table');
+      $dining_table_delete = Dining_table::where('id',$id)->delete();
+      if($dining_table_delete){
+        return redirect()->route('diningtable.dining_table');
 
-        }else{
-            return ["satus"=>false,"msg"=>"Can't delete data"];
-        }
+      }else{
+        return ["satus"=>false,"msg"=>"Can't delete data"];
+      }
     }
-}
+  }

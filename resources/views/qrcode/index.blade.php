@@ -633,7 +633,7 @@
                                 เมนูอาหาร
                             </div>
                             <div class="col-md-6" style="text-align: right;">
-                                <button type="button" class="btn btn-default" onclick="location.href='{{ route('status') }}'"> <i class="fa fa-chevron-left" aria-hidden="true"></i> กลับ</button>
+                                <button type="button" class="btn btn-default" onclick="location.href='{{ route('status') }}'"> <i class="fa fa-chevron-left" aria-hidden="true"></i> หน้าหลัก</button>
                                 <!--  -->
                             </div>
                         </div>
