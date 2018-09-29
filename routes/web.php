@@ -110,6 +110,7 @@ Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallba
 //receptionist
 Route::get('/receptionist', 'ReceptionistController@index')->name('receptionist');
 Route::get('/serving', 'ServingController@index')->name('serving');
+Route::post('/serving_book', 'ServingController@store')->name('serving_book');
 
 //Profile
 Route::get('profile/{id}', 'ProfileController@index')->name('profile')->where('id', '[0-9]+');

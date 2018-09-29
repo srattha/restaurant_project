@@ -11,6 +11,7 @@
   <title>@yield('title')</title>
   <!-- Bootstrap Core CSS -->
   <link href="{{ asset('/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('/vendor/bootstrapdatapicker/bootstrap-datetimepicker.css') }}" rel="stylesheet">
   <!-- MetisMenu CSS -->
   <link href="{{ asset('/vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
   <!-- Toastr CSS -->

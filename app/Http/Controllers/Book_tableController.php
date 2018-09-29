@@ -64,6 +64,7 @@ public function index()
      */
     public function store(Request $request)
     {
+      //return $request->all();
      $price = 0;
      $reserve_date = $request->reserve_date." ".$request->time;
      $dining_table_id = $request->dining_table_id;

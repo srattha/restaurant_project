@@ -29,7 +29,7 @@ class ServingController extends Controller
     public function index()
 
     {
-      $users = Auth::user();
+     $users = Auth::user();
     $users_type_id = $users->user_type_id;
     $user = $users->name;
     switch ($users_type_id) {
@@ -129,7 +129,32 @@ class ServingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    $price = 0;
+    $reserve_date = $request->reserve_date." ".$request->time;
+    $dining_table_id = $request->dining_table_id;
+    $users = Auth::user();
+    $users_id = $users->id;
+    $add_reservation = new Reservation;
+    $add_reservation->dining_table_id = $dining_table_id;
+    $add_reservation->user_id = $users_id;
+    $add_reservation->reserve_date = $reserve_date;
+    $add_reservation->reserve_mobile = $request->reserve_mobile;
+    $add_reservation->save();
+    $reservation_id = $add_reservation->id;
+    if($add_reservation){
+      $update_dining_table = Dining_table::where('id',$dining_table_id)->first();
+      $update_dining_table->status = 0;
+      $update_dining_table->color = 'danger';
+      $update_dining_table->save();
+      $dining_id = $update_dining_table->id;
+      if ($update_dining_table) {
+        return redirect()->back();
+     }else{
+      return ["satus"=>false,"msg"=>"Can't save data"];
+    }
+  }else{
+    return "error message..";
+  }
     }
 
     /**

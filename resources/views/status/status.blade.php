@@ -19,6 +19,8 @@ img{
               <div class="row">
                 <br>
                 <div class="col-md-10 col-xs-6">
+                  <div class="text-center"><h4>โซนหน้าร้าน</h4></div> 
+                  <br>
                   @if($table_status_b->status == 1)
                   <div class="center">
                     <img src="img/sofa1.png"  class="img-thumbnail img-responsive" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations"
@@ -87,6 +89,8 @@ img{
                 <div class="offer-content">
                   <div class="row">
                     <br>
+                    <div class="text-center"><h4>โซนห้องแอร์</h4></div> 
+                    <br>
                     @foreach ($table_status_a as $index => $table_statu)
                     <div class=" col-md-3 col-xs-4">
                       @if($table_statu->status == 1)
@@ -117,6 +121,8 @@ img{
             <div class="offer offer-default">
               <div class="offer-content">
                 <div class="row">
+                 <br>
+                  <div class="text-center"><h4>โซนหน้าร้าน</h4></div> 
                   <br>
                   <div class="col-md-1"> </div>
                   @foreach ($table_status_e as $index => $table_statu)
@@ -228,6 +234,8 @@ img{
             <div class="offer offer-default">
               <div class="offer-content">
                 <div class="row">
+                  <br>
+                  <div class="text-center"><h4>โซนสนามหญ้า</h4></div>
                   <div class="col-md-6">
                     <br>
                     @foreach ($table_status_k as $index => $table_statu)
@@ -303,7 +311,7 @@ img{
             <div id="start">
              <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-              <input type='text'  name="reserve_date" id="date"  class="form-control first_login"  />
+              <input type='text'  name="reserve_date" id="date"  class="form-control "  />
             </div>
           </div>
         </div>
@@ -312,7 +320,7 @@ img{
           <div id="start">
            <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-            <input type='text'  name="time" id="time"  class="form-control first_login"  />
+            <input type='text'  name="time" id="time"  class="form-control "  />
           </div>
         </div>
       </div>
@@ -365,9 +373,8 @@ img{
 
 @endif
 
+</div>
 
-</div>
-</div>
 
 @endsection
 @section('javascript')
@@ -378,23 +385,11 @@ img{
     defaultDate: new Date()
   });
    $('#time').datetimepicker({
-    format: "hh:mm ",
+    format: "HH:mm",
     defaultDate: new Date()
   });
 
  });
-
-    $cf = $('#phonenumber');
-    $cf.blur(function(e){
-        phone = $(this).val();
-        phone = phone.replace(/[^0-9]/g,'');
-        if (phone.length != 10)
-        {
-            alert('Phone number must be 10 digits.');
-            $('#phonenumber').val('');
-            $('#phonenumber').focus();
-        }
-    });
 
 
  function data_print($id, $name, $seating){

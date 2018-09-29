@@ -138,7 +138,7 @@
      </h3>
    </div>
    <div class="col-md-6" style="text-align: right;">
-    <button type="submit" id="submit" class="btn  btn-primary" style="display: none;"> ยืนยัน</button>
+    <button type="submit" id="submit" class="btn  btn-primary" style="display: none;"><i class="fa fa-check-square" aria-hidden="true"></i> ยืนยัน</button>
   </div>
 </div>
 </form>

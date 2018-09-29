@@ -10,7 +10,8 @@
 
   <!-- Bootstrap Core CSS -->
   <link href="{{ asset('/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <!--  <link href="{{ asset('/vendor/bootstrap/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet"> -->
+  <link href="{{ asset('/vendor/bootstrapdatapicker/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+   
 
   <!-- MetisMenu CSS -->
   <link href="{{ asset('/vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
@@ -83,7 +84,7 @@
     color: #333;
     text-decoration: none;
   }
-  li:hover {
+  .hovermenu:hover {
     background-color: #555;
 }
 #overlay {
@@ -327,8 +328,11 @@
             <ul class="dropdown-menu dropdown-user">
               <li><a href="{{ route('profile',['id'=>1]) }}"><i class="fa fa-user fa-fw"></i>โปรไฟล์</a>
               </li>
+              @if(Auth::user()->user_type_id == 1)
               <li><a href="{{ route('customer_report',['id'=>Auth::user()->id]) }}"><i class="fa fa-gear fa-fw"></i> การสั่งของฉัน</a>
               </li>
+              @else
+               @endif
               <li class="divider"></li>
               <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
               document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ</a>
@@ -378,12 +382,12 @@
       <br>
 
       <ul class="nav navbar-nav">
-        <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}"  style="color: rgba(255,255,255,0.9);">หน้าแรก</a></li>
-        <li class="{{ Request::is('food') ? 'active' : '' }}"><a href="{{ url('/food') }}" style="color: rgba(255,255,255,0.9);">เมนูอาหาร</a></li>
-        <li class="{{ Request::is('status') ? 'active' : '' }}"><a href="{{ url('/status') }}" style="color: rgba(255,255,255,0.9);">สถานะโต๊ะ</a></li>
-        <li class="{{ Request::is('reser') ? 'active' : '' }}"><a href="{{ url('/reser') }}" style="color: rgba(255,255,255,0.9);">โปรโมชั่น</a></li>
-        <li class="{{ Request::is('image') ? 'active' : '' }}"><a href="{{ url('/image') }}" style="color: rgba(255,255,255,0.9);">รูปบรรยากาศภายในร้าน</a></li>
-        <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="{{ url('/contact') }}" style="color: rgba(255,255,255,0.9);">ติดต่อเรา</a></li>
+        <li class="{{ Request::is('/') ? 'active' : '' }} hovermenu"><a href="{{ url('/') }}"  style="color: rgba(255,255,255,0.9);">หน้าแรก</a></li>
+        <li class="{{ Request::is('food') ? 'active' : '' }} hovermenu"><a href="{{ url('/food') }}" style="color: rgba(255,255,255,0.9);">เมนูอาหาร</a></li>
+        <li class="{{ Request::is('status') ? 'active' : '' }} hovermenu"><a href="{{ url('/status') }}" style="color: rgba(255,255,255,0.9);">สถานะโต๊ะ</a></li>
+        <li class="{{ Request::is('reser') ? 'active' : '' }} hovermenu"><a href="{{ url('/reser') }}" style="color: rgba(255,255,255,0.9);">โปรโมชั่น</a></li>
+        <li class="{{ Request::is('image') ? 'active' : '' }} hovermenu"><a href="{{ url('/image') }}" style="color: rgba(255,255,255,0.9);">รูปบรรยากาศภายในร้าน</a></li>
+        <li class="{{ Request::is('contact') ? 'active' : '' }} hovermenu"><a href="{{ url('/contact') }}" style="color: rgba(255,255,255,0.9);">ติดต่อเรา</a></li>
       </ul>
 
     </div>

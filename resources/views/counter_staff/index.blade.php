@@ -32,7 +32,7 @@
    <div class="panel-heading" style="padding: 20px 15px;">
     <div class="row">
      <div class="col-md-1">
-      สถนะ โต๊ะ
+      สถานะ โต๊ะ
     </div>
     <div class="col-md-4">
       <form class="form-horizontal" method="POST" action="{{ route('counterstaff.index') }}">
@@ -154,7 +154,7 @@
 </div>
 </div>
 <div class="modal-footer">
- <button type="submit" class="btn btn-primary swa-confirm"> ตกลง</button>
+ <button type="submit" class="btn btn-primary swa-confirm"><i class="fa fa-floppy-o" aria-hidden="true"></i> ตกลง</button>
  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 </div>
 </form>
@@ -186,7 +186,7 @@
             defaultDate: new Date()
           });
            $('#time').datetimepicker({
-            format: "hh:mm ",
+            format: "HH:mm ",
             defaultDate: new Date()
           });
            $('#IsPaid').change(function() {

@@ -55,6 +55,8 @@ img{
                     <div class="row">
                       <br>
                       <div class="col-md-10 col-xs-6">
+                        <div class="text-center"><h4>โซนหน้าร้าน</h4></div> 
+                        <br>
                         @if($table_status_b->status == 1)
                         <div class="center">
                           <img src="img/sofa1.png"  class="img-thumbnail img-responsive" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations"
@@ -123,6 +125,8 @@ img{
                       <div class="offer-content">
                         <div class="row">
                           <br>
+                           <div class="text-center"><h4>โซนห้องแอร์</h4></div> 
+                            <br>
                           @foreach ($table_status_a as $index => $table_statu)
                           <div class=" col-md-3 col-xs-4">
                             @if($table_statu->status == 1)
@@ -153,9 +157,11 @@ img{
                   <div class="offer offer-default">
                     <div class="offer-content">
                       <div class="row">
+                         <br>
+                         <div class="text-center"><h4>โซนหน้าร้าน</h4></div> 
                         <br>
                         <div class="col-md-1"> </div>
-                        @foreach ($table_status_e as $index => $table_statu)
+                       @foreach ($table_status_e as $index => $table_statu)
                         <div class="col-md-2">
                           @if($table_statu->status == 1)
                           <div class="center">
@@ -264,6 +270,8 @@ img{
                   <div class="offer offer-default">
                     <div class="offer-content">
                       <div class="row">
+                        <br>
+                        <div class="text-center"><h4>โซนสนามหญ้า</h4></div> 
                         <div class="col-md-6">
                           <br>
                           @foreach ($table_status_k as $index => $table_statu)
@@ -329,7 +337,7 @@ img{
             <div class="modal-body">
 
               <div style="padding-top: 10px;">
-               <form class="form-horizontal" method="POST" action="{{ route('booktable') }}">
+               <form class="form-horizontal" method="POST" action="{{ route('serving_book') }}">
                 {{ csrf_field() }}
 
                 <input type='hidden'  name="dining_table_id" id="dining_table_id" value="dining_table_id">

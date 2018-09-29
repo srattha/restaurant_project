@@ -24,6 +24,9 @@ footer ul li a:hover{
   color:#7dabdb;
   text-decoration:none;
 }
+.hovermenu:hover {
+    background-color: #555;
+}
 
 .footer-top{
   padding-bottom:50px;
@@ -107,12 +110,12 @@ a {
             </div> -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}"  style="color: rgba(255,255,255,0.9);">หน้าแรก</a></li>
-                <li class="{{ Request::is('food') ? 'active' : '' }}"><a href="{{ url('/food') }}" style="color: rgba(255,255,255,0.9);">เมนูอาหาร</a></li>
-                <li class="{{ Request::is('status') ? 'active' : '' }}"><a href="{{ url('/status') }}" style="color: rgba(255,255,255,0.9);">สถานะโต๊ะ</a></li>
-                <li class="{{ Request::is('reser') ? 'active' : '' }}"><a href="{{ url('/reser') }}" style="color: rgba(255,255,255,0.9);">โปรโมชั่น</a></li>
-                <li class="{{ Request::is('image') ? 'active' : '' }}"><a href="{{ url('/image') }}" style="color: rgba(255,255,255,0.9);">รูปบรรยากาศภายในร้าน</a></li>
-                <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="{{ url('/contact') }}" style="color: rgba(255,255,255,0.9);">ติดต่อเรา</a></li>
+                <li class="{{ Request::is('/') ? 'active' : '' }} hovermenu"><a href="{{ url('/') }}"  style="color: rgba(255,255,255,0.9);">หน้าแรก</a></li>
+                <li class="{{ Request::is('food') ? 'active' : '' }} hovermenu"><a href="{{ url('/food') }}" style="color: rgba(255,255,255,0.9);">เมนูอาหาร</a></li>
+                <li class="{{ Request::is('status') ? 'active' : '' }} hovermenu"><a href="{{ url('/status') }}" style="color: rgba(255,255,255,0.9);">สถานะโต๊ะ</a></li>
+                <li class="{{ Request::is('reser') ? 'active' : '' }} hovermenu"><a href="{{ url('/reser') }}" style="color: rgba(255,255,255,0.9);">โปรโมชั่น</a></li>
+                <li class="{{ Request::is('image') ? 'active' : '' }} hovermenu"><a href="{{ url('/image') }}" style="color: rgba(255,255,255,0.9);">รูปบรรยากาศภายในร้าน</a></li>
+                <li class="{{ Request::is('contact') ? 'active' : '' }} hovermenu"><a href="{{ url('/contact') }}" style="color: rgba(255,255,255,0.9);">ติดต่อเรา</a></li>
               </ul>
 
             </div>
