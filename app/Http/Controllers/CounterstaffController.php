@@ -185,11 +185,14 @@ public function reservation_report(Request $request, $id)
 }
 
 //return $order_details;
-$user_id =  $reservation['user_id'];
-$user = User::where('id', $user_id)->first();
+ $user_id =  $reservation['user_id'];
+ $user = User::where('id', $user_id)->select('name')->first();
+ $name = "qrcode";
+if (!$user) {
+  $user = ['name' =>$name];
+}
 $date = $reservation['reserve_date'];
-$reserve_mobile =$reservation['reserve_mobile'];
-
+$reserve_mobile = $reservation['reserve_mobile'];
 $strYear = date("Y",strtotime($date))+543;
 $strMonth= date("n",strtotime($date));
 $strDay= date("j",strtotime($date));
@@ -199,6 +202,7 @@ $strSeconds= date("s",strtotime($date));
 $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
 $strMonthThai=$strMonthCut[$strMonth];
 $datas = $strDay.'&nbsp;'.$strMonthThai.'&nbsp;'.$strYear.'&nbsp;'.$strHour.':'.$strMinute.'&nbsp;'.'น.';
+
 return view('counter_staff.reservation_report',['table_name'=> $table_name,
   'user'=> $user,
   'datas'=> $datas,
