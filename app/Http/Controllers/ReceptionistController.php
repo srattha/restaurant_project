@@ -41,10 +41,10 @@ class ReceptionistController extends Controller
        case '5':
            //return view('receptionist.receptionist');
         // return $table_status = Dining_table::get();
-        //โต๊ะ1-12
+       //โต๊ะ1-12
         $table_status_a = Dining_table::where('id','<=', 12)->get();
         //โต๊ะ20-22
-        $table_status_b = Dining_table::where('id','=',13)->first();
+        $table_status_b = Dining_table::where('id','=',13)->get();
         $table_status_c = Dining_table::where('id','=',14)->get();
         $table_status_d = Dining_table::where('id','=',15)->get();
         $table_status_e = Dining_table::where('id','=',16)->get();
@@ -63,7 +63,6 @@ class ReceptionistController extends Controller
                                     'table_status_h'=> $table_status_h,
                                     'table_status_i'=> $table_status_i,
                                     'table_status_k'=> $table_status_k,
-
     ]);
       break;
        case '6':

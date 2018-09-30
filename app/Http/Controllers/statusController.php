@@ -30,7 +30,7 @@ class StatusController extends Controller
         //โต๊ะ1-12
         $table_status_a = Dining_table::where('id','<=', 12)->get();
         //โต๊ะ20-22
-        $table_status_b = Dining_table::where('id','=',13)->first();
+        $table_status_b = Dining_table::where('id','=',13)->get();
         $table_status_c = Dining_table::where('id','=',14)->get();
         $table_status_d = Dining_table::where('id','=',15)->get();
         $table_status_e = Dining_table::where('id','=',16)->get();

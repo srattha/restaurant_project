@@ -239,7 +239,7 @@
                      <li><a data-toggle="tab" href="#menu2">เมนูต้ม</a></li>
                      <li><a data-toggle="tab" href="#menu3">เมนูทอด</a></li>
                      <li><a data-toggle="tab" href="#menu4">เมนูยำ</a></li>
-                     <li><a data-toggle="tab" href="#menu5">เมนูอาหารจารเดี่ยว</a></li>
+                     <li><a data-toggle="tab" href="#menu5">เมนูอาหารจานเดี่ยว</a></li>
                      <li><a data-toggle="tab" href="#menu6">เมนูพิซซ่า</a></li>
                      <li><a data-toggle="tab" href="#menu7">เมนูเครื่องดื่ม</a></li>
                      <li><a data-toggle="tab" href="#menu8">เมนูกาแฟ</a></li>
@@ -308,7 +308,7 @@
                         @endforeach
                      </div>
                      <div id="menu5" class="tab-pane fade">
-                        <h3>เมนูอาหารจารเดี่ยว</h3>
+                        <h3>เมนูอาหารจานเดี่ยว</h3>
                         @foreach ($f_m_dish as $index => $f_menu_dish)
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                            <br>

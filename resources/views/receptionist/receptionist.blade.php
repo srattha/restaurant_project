@@ -5,6 +5,10 @@
 img{
   cursor: pointer;
 }
+.tadel-center {
+    text-align: center;
+    font-size: 2ex;
+}
 </style>
 @endsection
 @section('content')
@@ -24,283 +28,275 @@ img{
 </div>
 
 <div class="panel-body">
-  <div class="row" style="padding: 1px;">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="offer offer-default">
-            <div class="offer-content">
-              <div class="row">
-                <br>
-                <div class="col-md-10 col-xs-6">
-                  <div class="text-center"><h4>โซนหน้าร้าน</h4></div> 
-                  <br>
-                  @if($table_status_b->status == 1)
-                  <div class="center">
-                    <img src="img/sofa1.png"  class="img-thumbnail" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations"
-                    onclick="data_print('{{$table_status_b->id}}', '{{$table_status_b->name}}', '{{$table_status_b->seating}}')">
-                  </div>
-                  {{$table_status_b->name}}
-                  จำนวน {{$table_status_b->seating}} ที่นั่ง
-                  @else
-                  <div class="center">
-                    <img src="img/sofa.png"  class="img-thumbnail" alt="Cinque Terre" width="100">
-                  </div>
-                  {{$table_status_b->name}}
-                  จำนวน {{$table_status_b->seating}} ที่นั่ง
-                  @endif
+  <div class="row">
+    <h1 style="text-align: center;">สถานะโต๊ะ</h1>
+    <div class="row" style="padding: 1px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="offer offer-default">
+                        <div class="offer-content">
+                            <div class="row">
+                                <div class="text-center">
+                                    <br>
+                                    <h4>โซนหน้าร้าน</h4></div>
+                                    <br>
+                                    @foreach ($table_status_b as $index => $table_statu)
+                                    @if($table_statu->status == 1)
+                                    <div class="tadel-center">
+                                        <img src="img/sofa1.png" class="img-thumbnail img-responsive" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                                    </div>
+                                    <div class="tadel-center">
+                                        {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง 
+                                    </div>
+                                        @else
+                                    
+                                    <div class="tadel-center">
+                                        <img src="img/sofa.png" class="img-thumbnail img-responsive" alt="Cinque Terre" width="100">
+                                    </div>
+                                    <div class="tadel-center">
+                                        {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง
+                                    </div>
+                                         @endif
+                                    
+
+                                    @endforeach
+
+
+                                    @foreach ($table_status_c as $index => $table_statu)
+                                    <div>
+                                        @if($table_statu->status == 1)
+                                        <div class="tadel-center">
+                                            <img src="img/sofa1.png" class="img-thumbnail img-responsive" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                                        </div>
+                                        <div class="tadel-center">
+                                            {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง 
+                                            </div>
+                                            @else
+                                        
+                                        <div class="tadel-center">
+                                            <img src="img/sofa.png" class="img-thumbnail img-responsive" alt="Cinque Terre" width="100" data-color="violet" alt="Third Image">
+                                        </div>
+                                        <div class="tadel-center">
+                                        {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง 
+                                    </div>
+                                        @endif
+                                    </div>
+                                    @endforeach 
+                                    @foreach ($table_status_d as $index => $table_statu)
+                                    <div>
+                                        @if($table_statu->status == 1)
+                                        <div class="tadel-center">
+                                            <img src="img/sofa1.png" data-color="violet" alt="Third Image" class="img-thumbnail" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                                        </div>
+                                        <div class="tadel-center">
+                                            {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง
+                                        </div>
+
+                                        @else
+                                        <div class="tadel-center">
+                                            <img src="img/sofa.png" data-color="violet" alt="Third Image" class="img-thumbnail" alt="Cinque Terre" width="100">
+                                        </div>
+                                        <div class="tadel-center">
+                                            {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง 
+                                            </div>
+                                            @endif
+                                        
+
+                                        @endforeach
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                        <div class="offer offer-default">
+                            <div class="picture">
+                                <!-- <div class="shape"> -->
+                                    <div class="shape-text">
+                                    </div>
+                                    <!--  </div> -->
+                                    <div class="offer-content">
+                                        <div class="row">
+                                            <br>
+                                            <div class="tadel-center">
+                                                <h4>โซนห้องแอร์</h4></div>
+                                                <br> @foreach ($table_status_a as $index => $table_statu)
+                                                <div class=" col-md-3 col-xs-4">
+                                                    @if($table_statu->status == 1)
+                                                    <div class="tadel-center">
+                                                        <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                                                    </div>
+                                                    <div class="tadel-center">
+                                                        {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง
+                                                    </div>
+
+                                                    @else
+                                                    <div class="tadel-center">
+                                                        <img src="img/sofa.png" data-color="violet" class="img-thumbnail" alt="Cinque Terre" width="100">
+                                                    </div>
+                                                    <div class="tadel-center">
+                                                        {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง
+                                                    </div>
+
+                                                    @endif
+                                                </div>
+
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="offer offer-default">
+                                    <div class="offer-content">
+                                        <div class="row">
+                                            <br>
+                                            <div class="text-center">
+                                                <h4>โซนหน้าร้าน</h4></div>
+                                                <br>
+                                                <div class="col-md-1"> </div>
+                                                @foreach ($table_status_e as $index => $table_statu)
+                                                <div class="col-md-2 col-xs-6">
+                                                    @if($table_statu->status == 1)
+                                                    <div class="center">
+                                                        <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                                                    </div>
+                                                    {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @else
+                                                    <div class="center">
+                                                        <img src="img/sofa.png" data-color="violet" class="img-thumbnail" alt="Cinque Terre" width="100">
+                                                    </div>
+                                                    {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @endif
+                                                </div>
+
+                                                @endforeach @foreach ($table_status_f as $index => $table_statu)
+                                                <div class=" col-md-2 col-xs-6">
+                                                    @if($table_statu->status == 1)
+                                                    <div class="center">
+                                                        <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" alt="Third Image" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                                                    </div>
+                                                    {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @else
+                                                    <div class="center">
+                                                        <img src="img/sofa.png" data-color="violet" class="img-thumbnail" width="100" alt="Third Image">
+                                                    </div>
+                                                    @endif
+                                                </div>
+                                                @endforeach @foreach ($table_status_g as $index => $table_statu)
+                                                <div class=" col-md-2 col-xs-6">
+                                                    @if($table_statu->status == 1)
+                                                    <div class="center">
+                                                        <img src="img/sofa1.png" data-color="violet" alt="Third Image" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                                                    </div>
+                                                    {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @else
+                                                    <div class="center">
+                                                        <img src="img/sofa.png" data-color="violet" alt="Third Image" class="img-thumbnail" width="100">
+                                                    </div>
+                                                    {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @endif
+
+                                                </div>
+
+                                                @endforeach @foreach ($table_status_h as $index => $table_statu)
+                                                <div class=" col-md-2 col-xs-6">
+                                                    @if($table_statu->status == 1)
+                                                    <div class="center">
+                                                        <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                                                    </div>
+                                                    {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @else
+                                                    <div class="center">
+                                                        <img src="img/sofa.png" data-color="violet" alt="Third Image" class="img-thumbnail" width="100">
+                                                    </div>
+                                                    {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @endif
+
+                                                </div>
+
+                                                @endforeach @foreach ($table_status_i as $index => $table_statu)
+                                                <div class=" col-md-2 col-xs-6">
+                                                    @if($table_statu->status == 1)
+                                                    <div class="center">
+                                                        <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                                                    </div>
+                                                    {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @else
+                                                    <div class="center">
+                                                        <img src="img/sofa.png" data-color="violet" alt="Third Image" class="img-thumbnail" width="100">
+                                                    </div>
+                                                    {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @endif
+
+                                                </div>
+
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="offer offer-default">
+                                        <div class="offer-content">
+                                            <div class="row">
+                                                <br>
+                                                <div class="text-center">
+                                                    <h4>โซนสนามหญ้า</h4></div>
+                                                    <div class="col-md-6">
+                                                        <br> @foreach ($table_status_k as $index => $table_statu)
+                                                        <div class=" col-md-4 col-xs-4">
+                                                            @if($table_statu->status == 1)
+                                                            <div class="tadel-center">
+                                                                <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
+                                                            </div>
+                                                            <div class="tadel-center">
+                                                                {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @else
+                                                            </div>
+                                                            <div class="tadel-center">
+                                                                <img src="img/sofa.png" data-color="violet" class="img-thumbnail" width="100">
+                                                            </div>
+                                                            <div class="tadel-center">
+                                                                {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @endif
+                                                            </div>
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
+                                                    <div class="col-md-2"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-2 col-xs-6">
+                                     <div class="tadel-center">
+                                        <img src="img/sofa1.png" class="img-thumbnail" alt="Cinque Terre" width="100">
+                                    </div>
+                                    <div class="tadel-center">
+                                        <b>ว่าง</b>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-6">
+                                    <div class="tadel-center">
+                                        <img src="img/sofa.png" class="img-thumbnail" alt="Cinque Terre" width="100">
+                                    </div>
+                                    <div class="tadel-center">
+                                        <b>ไม่ว่าง</b>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="center">
+                                        <h5>หมายเหตุ: จองแล้วต้องมาถึงภายในครึ่งชั่วโมง หากเกินครึ่งชั่วโมงหลังการจองระบบจะถือว่าสละสิทธิ์</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                @foreach ($table_status_c as $index => $table_statu)
-                <div class=" col-md-10">
-                  @if($table_statu->status == 1)
-                  <div class="center">
-                    <img src="img/sofa1.png"  class="img-thumbnail" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
-                  </div>
-                  {{$table_statu->name}}
-                  จำนวน {{$table_statu->seating}} ที่นั่ง
-                  @else
-                  <div class="center">
-                    <img src="img/sofa.png"  class="img-thumbnail" alt="Cinque Terre" width="100" data-color="violet" alt="Third Image">
-                  </div>
-                  {{$table_statu->name}}
-                  จำนวน {{$table_statu->seating}} ที่นั่ง
-                  @endif
-                </div>
-                @endforeach
-
-                @foreach ($table_status_d as $index => $table_statu)
-                <div class=" col-md-10">
-                  @if($table_statu->status == 1)
-                  <div class="center">
-                    <img src="img/sofa1.png" data-color="violet" alt="Third Image"  class="img-thumbnail" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations"
-                    onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
-                  </div>
-                  {{$table_statu->name}}
-                  จำนวน {{$table_statu->seating}} ที่นั่ง
-                  @else
-                  <div class="center">
-                    <img src="img/sofa.png" data-color="violet" alt="Third Image"   class="img-thumbnail" alt="Cinque Terre" width="100">  {{$table_statu->name}}
-                  </div>
-                  {{$table_statu->name}}
-                  จำนวน {{$table_statu->seating}} ที่นั่ง
-                  @endif
-                </div>
-
-                @endforeach
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-4 col-sm-4 col-md-9 col-lg-9">
-          <div class="offer offer-default">
-            <div class="picture">
-              <!-- <div class="shape"> -->
-                <div class="shape-text">
-                </div>
-                <!--  </div> -->
-                <div class="offer-content">
-                  <div class="row">
-                    <br>
-                    <div class="text-center"><h4>โซนห้องแอร์</h4></div> 
-                    <br>
-                    @foreach ($table_status_a as $index => $table_statu)
-                    <div class=" col-md-3">
-                      @if($table_statu->status == 1)
-                      <div class="center">
-                        <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
-                      </div>
-                      {{$table_statu->name}}
-                      จำนวน {{$table_statu->seating}} ที่นั่ง
-                      @else
-                      <div class="center">
-                        <img src="img/sofa.png" data-color="violet" class="img-thumbnail" alt="Cinque Terre" width="100">
-                      </div>
-                      {{$table_statu->name}}
-                      จำนวน {{$table_statu->seating}} ที่นั่ง
-                      @endif
-                    </div>
-
-                    @endforeach
-
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="offer offer-default">
-              <div class="offer-content">
-                <div class="row">
-                  <br>
-                  <div class="text-center"><h4>โซนหน้าร้าน</h4></div> 
-                  <br>
-                  <div class="col-md-1"> </div>
-                  @foreach ($table_status_e as $index => $table_statu)
-                  <div class="col-md-2">
-                    @if($table_statu->status == 1)
-                    <div class="center">
-                      <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" alt="Cinque Terre" width="100" data-toggle="modal" data-target="#reservations"
-                      onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
-                    </div>
-                    {{$table_statu->name}}
-                    จำนวน {{$table_statu->seating}} ที่นั่ง
-                    @else
-                    <div class="center">
-                      <img src="img/sofa.png" data-color="violet" class="img-thumbnail" alt="Cinque Terre" width="100">
-                    </div>
-                    {{$table_statu->name}}
-                    จำนวน {{$table_statu->seating}} ที่นั่ง
-                    @endif
-                  </div>
-
-                  @endforeach
-
-                  @foreach ($table_status_f as $index => $table_statu)
-                  <div class=" col-md-2">
-                    @if($table_statu->status == 1)
-                    <div class="center">
-                      <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100"  alt="Third Image" data-toggle="modal" data-target="#reservations"
-                      onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')" >
-                    </div>
-                    {{$table_statu->name}}
-                    จำนวน {{$table_statu->seating}} ที่นั่ง
-                    @else
-                    <div class="center">
-                      <img src="img/sofa.png" data-color="violet" class="img-thumbnail" width="100" alt="Third Image" >
-                    </div>
-                    @endif
-                  </div>
-                  @endforeach
-
-                  @foreach ($table_status_g as $index => $table_statu)
-                  <div class=" col-md-2">
-                    @if($table_statu->status == 1)
-                    <div class="center">
-                      <img src="img/sofa1.png" data-color="violet" alt="Third Image" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations"
-                      onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
-                    </div>
-                    {{$table_statu->name}}
-                    จำนวน {{$table_statu->seating}} ที่นั่ง
-                    @else
-                    <div class="center">
-                      <img src="img/sofa.png" data-color="violet" alt="Third Image"  class="img-thumbnail" width="100">
-                    </div>
-                    {{$table_statu->name}}
-                    จำนวน {{$table_statu->seating}} ที่นั่ง
-                    @endif
-
-                  </div>
-
-                  @endforeach
-
-                  @foreach ($table_status_h as $index => $table_statu)
-                  <div class=" col-md-2">
-                    @if($table_statu->status == 1)
-                    <div class="center">
-                      <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations"
-                      onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
-                    </div>
-                    {{$table_statu->name}}
-                    จำนวน {{$table_statu->seating}} ที่นั่ง
-                    @else
-                    <div class="center">
-                      <img src="img/sofa.png" data-color="violet" alt="Third Image" class="img-thumbnail" width="100">
-                    </div>
-                    {{$table_statu->name}}
-                    จำนวน {{$table_statu->seating}} ที่นั่ง
-                    @endif
-
-                  </div>
-
-                  @endforeach
-
-                  @foreach ($table_status_i as $index => $table_statu)
-                  <div class=" col-md-2">
-                    @if($table_statu->status == 1)
-                    <div class="center">
-                      <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations"
-                      onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
-                    </div>
-                    {{$table_statu->name}} จำนวน {{$table_statu->seating}} ที่นั่ง
-
-                    @else
-                    <div class="center">
-                      <img src="img/sofa.png" data-color="violet" alt="Third Image" class="img-thumbnail" width="100">
-                    </div>
-                    {{$table_statu->name}} จำนวน {{$table_statu->seating}} ที่นั่ง
-
-                    @endif
-
-                  </div>
-
-                  @endforeach
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="offer offer-default">
-              <div class="offer-content">
-                <div class="row">
-                  <br>
-                  <div class="text-center"><h4>โซนสนามหญ้า</h4></div>
-                  <div class="col-md-6">
-                    <br>
-                    @foreach ($table_status_k as $index => $table_statu)
-                    <div class=" col-md-4">
-                      @if($table_statu->status == 1)
-                      <div class="center">
-                        <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations"
-                        onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
-                      </div>
-                      {{$table_statu->name}}
-                      จำนวน {{$table_statu->seating}} ที่นั่ง
-                      @else
-                      <div class="center">
-                        <img src="img/sofa.png" data-color="violet" class="img-thumbnail" width="100">
-                      </div>
-                      {{$table_statu->name}}
-                      จำนวน {{$table_statu->seating}} ที่นั่ง
-                      @endif
-                    </div>
-                    @endforeach
-                  </div>
-                  <div class="col-md-2"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="col-md-2">
-              <div class="center">
-                <img src="img/sofa1.png" class="img-thumbnail" alt="Cinque Terre" width="100">
-              </div>
-              <b>ว่าง</b>
-            </div>
-            <div class="col-md-2">
-              <div class="center">
-                <img src="img/sofa.png" class="img-thumbnail" alt="Cinque Terre" width="100">
-              </div>
-              <b>ไม่ว่าง</b>
-            </div>
-            <div class="col-md-8">
-              <div class="center">
-                <h5>หมายเหตุ: จองแล้วต้องมาถึงภายในครึ่งชั่วโมง หากเกินครึ่งชั่วโมงหลังการจองระบบจะถือว่าสละสิทธิ์</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
 
     <div id="reservations" class="modal fade" role="dialog">
 

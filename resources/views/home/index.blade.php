@@ -233,7 +233,9 @@
             <p class="text-center"><a href="https://www.facebook.com/PentorTK"><img src="/img/facebook.png"> Facebook</a>
              <!--<img src="/img/facebook.png">--></p>
              <p class="text-center"><a href="/register"><img src="/img/line.png"> Line </a></p>
-             <p>
+             <br>
+             <br>
+             <p class="text-center"><img src="/img/g1.jpg" class="img-circle">
 
              </p>
 

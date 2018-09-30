@@ -28,7 +28,7 @@
   <div class="offer offer-radius offer-{{$dining_tables->color}}">
     <div class="shape">
       <div class="shape-text">
-        <i class="fa fa-window-close fa-2x" aria-hidden="true" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('diningtable.delete',['id'=>$dining_tables->id]) }}'"></i>
+        <i class="fa fa-window-close fa-2x" aria-hidden="true" onclick="if(confirm('ยืนยันการลบ ?')) window.location.href = '{{ route('diningtable.delete',['id'=>$dining_tables->id]) }}'"></i>
       </div>
     </div>
     <div class="offer-content">

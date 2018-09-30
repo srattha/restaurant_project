@@ -58,8 +58,8 @@ b{
          <table class="table table-striped">
           <thead>
             <tr>
-              <th>รายการ</th>
-              <th>ราคา</th>
+              <th class="text-primary">รายการ</th>
+              <th class="text-primary">ราคา</th>
             </tr>
           </thead>
           <tbody>
@@ -84,8 +84,8 @@ b{
      <table class="table table-striped">
       <thead>
         <tr>
-          <th>รายการ</th>
-          <th>ราคา</th>
+          <th class="text-primary">รายการ</th>
+          <th class="text-primary">ราคา</th>
         </tr>
       </thead>
       <tbody>
@@ -110,8 +110,8 @@ b{
      <table class="table table-striped">
       <thead>
         <tr>
-          <th>รายการ</th>
-          <th>ราคา</th>
+          <th class="text-primary">รายการ</th>
+          <th class="text-primary">ราคา</th>
         </tr>
       </thead>
       <tbody>
@@ -136,8 +136,8 @@ b{
      <table class="table table-striped">
       <thead>
         <tr>
-          <th>รายการ</th>
-          <th>ราคา</th>
+          <th class="text-primary">รายการ</th>
+          <th class="text-primary">ราคา</th>
         </tr>
       </thead>
       <tbody>
