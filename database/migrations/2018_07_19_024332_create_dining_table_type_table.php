@@ -17,6 +17,7 @@ class CreateDiningTableTypeTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('qrimage');
+            $table->string('qrcode');
             $table->string('seating');
             $table->string('color');
             $table->string('status');

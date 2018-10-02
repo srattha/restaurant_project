@@ -20,6 +20,8 @@ class CreateFoodMenusesTable extends Migration
             $table->string('is_recommend');
             $table->string('food_type');
             $table->string('price');
+            $table->string('special_price')->nullable();
+            $table->string('big_price')->nullable();
             $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
         });
