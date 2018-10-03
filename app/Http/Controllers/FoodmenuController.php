@@ -95,22 +95,23 @@ class FoodmenuController extends Controller
      */
     public function store(Request $request)
     {
-
        if ($request->hasFile('file')) {
-
-        $filename = $request->file->getClientOriginalName();
-        $request->file->storeAs('public/Food_menus',$filename);
-        $arr = new Food_menus;
-        $arr->image = $filename;
-        $arr->food_name = $request->food_name;
-        $arr->is_recommend = $request->is_recommend;
-        $arr->food_type = $request->food_type;
-        $arr->price = $request->price;
-        $arr->special_price = $request->special_price;
-         $arr->big_price = $request->big_price;
-        $arr->is_active = $request->is_active;
-        $arr->save();
-        if ($arr) {
+        $file = $request->file('file');
+     $extension = $file->getClientOriginalExtension(); // you can also use file name
+     $fileName = time().'.'.$extension;
+     $path = public_path().'/storage/Food_menus';
+     $uplaod = $file->move($path,$fileName);
+     $arr = new Food_menus;
+     $arr->image = $fileName;
+     $arr->food_name = $request->food_name;
+     $arr->is_recommend = $request->is_recommend;
+     $arr->food_type = $request->food_type;
+     $arr->price = $request->price;
+     $arr->special_price = $request->special_price;
+     $arr->big_price = $request->big_price;
+     $arr->is_active = $request->is_active;
+     $arr->save();
+     if ($arr) {
          return redirect()->route('foodmenu.all_foodmanu');
      }else{
         return ["satus"=>false,"msg"=>"Can't save data"];
@@ -175,42 +176,47 @@ class FoodmenuController extends Controller
         //return $request->all();
         if ($id) {
            if ($request->hasFile('file')) {
-            $filename = $request->file->getClientOriginalName();
-            $request->file->storeAs('public/Food_menus',$filename);
+            // $filename = $request->file->getClientOriginalName();
+            // $request->file->storeAs('public/Food_menus',$filename);
             // $arr = new Food_menus;
-            $update_menu = Food_menus::where('id',$id)->first();
-            $update_menu->image = $filename;
-            $update_menu->food_name = $request->food_name;
-            $update_menu->is_recommend = $request->is_recommend;
-            $update_menu->food_type = $request->food_type;
-            $update_menu->price = $request->price;
-            $update_menu->special_price = $request->special_price;
-             $update_menu->big_price = $request->big_price;
-            $update_menu->is_active = $request->is_active;
-            $update_menu->save();
-            if ($update_menu) {
-             return redirect()->route('foodmenu.all_foodmanu');
-         }else{
-            return ["satus"=>false,"msg"=>"Can't update data"];
-        }
-
-
-    }else{
-        $update_menu = Food_menus::where('id',$id)->first();
-        $update_menu->food_name = $request->food_name;
-        $update_menu->food_type = $request->food_type;
-        $update_menu->is_recommend = $request->is_recommend;
-        $update_menu->price = $request->price;
-        $update_menu->special_price = $request->special_price;
-         $update_menu->big_price = $request->big_price;
-        $update_menu->is_active = $request->is_active;
-        $update_menu->save();
-        if ($update_menu) {
-            return redirect()->route('foodmenu.all_foodmanu');
-        }
-
+            $file = $request->file('file');
+     $extension = $file->getClientOriginalExtension(); // you can also use file name
+     $fileName = time().'.'.$extension;
+     $path = public_path().'/storage/Food_menus';
+     $uplaod = $file->move($path,$fileName);
+     $update_menu = Food_menus::where('id',$id)->first();
+     $update_menu->image = $fileName;
+     $update_menu->food_name = $request->food_name;
+     $update_menu->is_recommend = $request->is_recommend;
+     $update_menu->food_type = $request->food_type;
+     $update_menu->price = $request->price;
+     $update_menu->special_price = $request->special_price;
+     $update_menu->big_price = $request->big_price;
+     $update_menu->is_active = $request->is_active;
+     $update_menu->save();
+     if ($update_menu) {
+         return redirect()->route('foodmenu.all_foodmanu');
+     }else{
         return ["satus"=>false,"msg"=>"Can't update data"];
     }
+
+
+}else{
+    $update_menu = Food_menus::where('id',$id)->first();
+    $update_menu->food_name = $request->food_name;
+    $update_menu->food_type = $request->food_type;
+    $update_menu->is_recommend = $request->is_recommend;
+    $update_menu->price = $request->price;
+    $update_menu->special_price = $request->special_price;
+    $update_menu->big_price = $request->big_price;
+    $update_menu->is_active = $request->is_active;
+    $update_menu->save();
+    if ($update_menu) {
+        return redirect()->route('foodmenu.all_foodmanu');
+    }
+
+    return ["satus"=>false,"msg"=>"Can't update data"];
+}
 }
 
 }
@@ -224,7 +230,7 @@ class FoodmenuController extends Controller
     public function destroy($id)
     {
         $image = Food_menus::where('id',$id)->first();
-       $file = $image->image;
+        $file = $image->image;
         Storage::Delete('public/Food_menus/'.$file);
         $menu_delete = Food_menus::where('id',$id)->delete();
         if($menu_delete){

@@ -38,7 +38,7 @@ return [
     'facebook' => [
     'client_id' => '290642448395719',         // Your GitHub Client ID
     'client_secret' => 'd1bd52cc2f2e22fe11de6d3c0e4aabf5', // Your GitHub Client Secret
-    'redirect' => 'http://localhost:8888/login/facebook/callback',
+    'redirect' => 'https://www.torpentorcafe.com/login/facebook/callback',
 ],
 
 ];

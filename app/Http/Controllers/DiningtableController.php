@@ -98,7 +98,7 @@ class DiningtableController extends Controller
 
 
    // Create a basic QR code
-     $host_url = "http://localhost:9999";
+     $host_url = "http://www.torpentorcafe.com";
      $qrCode = new QrCode($host_url."/QrCode/".$qrcode);
      $qrCode->setSize(300);
 // Save it to a file
@@ -165,12 +165,12 @@ class DiningtableController extends Controller
      }else{
        $color = "danger";
      }
-     $host_url = "https://cpanel.hostinger.in.th/";
+     $host_url = "http://www.torpentorcafe.com";
      $qrCode = new QrCode($host_url."/QrCode/".$qrcode);
      $qrCode->setSize(300);
 // Save it to a file
      $qrCode->writeFile("./storage/QRcode/qr-".$qrcode.".png");
-     
+
      $update = Dining_table::where('id',$id)->first();
      $update->name = $request->name;
      $update->seating = $request->seating;

@@ -19,14 +19,14 @@ class ShopatmosphereController extends Controller
 
     public function index()
     {
-       $user = Auth::user();
-       $users_type_id = $user->user_type_id;
-       switch ($users_type_id) {
+     $user = Auth::user();
+     $users_type_id = $user->user_type_id;
+     switch ($users_type_id) {
         case '1':
         return view('home');
         break;
         case '2':
-         $show_image = Shopatmosphere::orderBy('id','desc')->paginate(12);
+        $show_image = Shopatmosphere::orderBy('id','desc')->paginate(12);
         return view('admin.shopatmosphere.index', ['show_image' => $show_image]);
         break;
         case '3':
@@ -37,10 +37,10 @@ class ShopatmosphereController extends Controller
         break;
         case '5':
         return redirect("/receptionist");
-      break;
-      case '6':
+        break;
+        case '6':
         return redirect("/serving");
-      break;
+        break;
 
     }
 
@@ -66,14 +66,19 @@ class ShopatmosphereController extends Controller
     public function store(Request $request)
     {
         if ($request->hasFile('file')) {
-         $filename = $request->file->getClientOriginalName();
-         $request->file->storeAs('public/Shopatmosphere',$filename);
-         $arr = new Shopatmosphere;
-         $arr->image = $filename;
-         $arr->save();
-         if ($arr) {
-             return redirect()->route('shopatmosphere.index');
-         }else{
+         // $filename = $request->file->getClientOriginalName();
+         // $request->file->storeAs('public/Shopatmosphere',$filename);
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension(); // you can also use file name
+            $fileName = time().'.'.$extension;
+            $path = public_path().'/storage/Shopatmosphere';
+            $uplaod = $file->move($path,$fileName);
+            $arr = new Shopatmosphere;
+            $arr->image = $fileName;
+            $arr->save();
+            if ($arr) {
+               return redirect()->route('shopatmosphere.index');
+           }else{
             return ["satus"=>false,"msg"=>"Can't save data"];
         }
     }

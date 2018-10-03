@@ -10,8 +10,8 @@ use App\Food_type;
 use App\Food_menus;
 use App\Order_details;
 use App\Order;
-use App\promotion_type;
-use App\promotion;
+use App\Promotion_type;
+use App\Promotion;
 use Illuminate\Support\Facades\DB;
 class Qrcode_bookController extends Controller
 {
