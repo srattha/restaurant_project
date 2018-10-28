@@ -56,8 +56,12 @@ th{
         <span class="label label-primary">ผู้ดูแลระบบ</span>
         @elseif ($users->user_type_id == 3)
         <span class="label label-success">พนักงานเคาน์เตอร์</span>
+        @elseif ($users->user_type_id == 4)
+        <span class="label label-primary">ห้องครัว</span>
+        @elseif ($users->user_type_id == 5)
+        <span class="label label-success">พนักงานต้อนรับ</span>
         @else
-        <span class="label label-warning">กุ๊ก</span>
+        <span class="label label-warning">พนักงานเสริฟ</span>
         @endif
       </td>
       <td>{{$users->is_active}}</td>

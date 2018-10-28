@@ -59,6 +59,8 @@ img{
         <span class="label label-warning">โปรลูกหมูสามตัว</span>
         @elseif ($p->promotion_type_id == 4)
         <span class="label label-warning">ยำประเจ็ท</span>
+        @elseif ($p->promotion_type_id == 5)
+        <span class="label label-warning">อาหาร</span>
         @else
         <span class="label label-warning">ทอดสะพาน</span>
         @endif
@@ -71,7 +73,7 @@ img{
       <td style="align-content: center;">
         <div class="btn-group">
           <button type="button" class="btn btn-info btn-xs" onclick="location.href='{{ route('promotion.editpromotion',['id'=>$p->id]) }}'"><i class="fa fa-pencil-square-o"></i> แก้ไขข้อมูล</button>
-          <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('Are you sure ?')) window.location.href = '{{ route('promotion.delete',['id'=>$p->id]) }}'"><i class="fa fa-trash-o"></i> ลบข้อมูล</button>
+          <button type="button" class="btn btn btn-danger btn-xs" onclick="if(confirm('ยืนยันการลบ ?')) window.location.href = '{{ route('promotion.delete',['id'=>$p->id]) }}'"><i class="fa fa-trash-o"></i> ลบข้อมูล</button>
         </div>
       </td>
     </tr>

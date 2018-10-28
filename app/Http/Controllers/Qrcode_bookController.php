@@ -28,12 +28,13 @@ class Qrcode_bookController extends Controller
   $qrcode = $code;
    $dining_table = Dining_table::where('qrcode',$qrcode)->where('status',0)->first();
   if ($dining_table) {
+
     return view('qrcode.table_busy');
   }
 
   $add_reservation = new Reservation;
   $add_reservation->dining_table_id = $dining_table_id;
-  // $add_reservation->user_id = $users_id;
+  $add_reservation->user_id = 2;
   $add_reservation->reserve_date = $reserve_date;
   $add_reservation->save();
   $reservation_id = $add_reservation->id;
@@ -107,6 +108,7 @@ class Qrcode_bookController extends Controller
    $f_m_piza = DB::table('food_menu')->where('food_type',6)->get();
    $f_m_beverage = DB::table('food_menu')->where('food_type',7)->get();
    $f_m_coffee = DB::table('food_menu')->where('food_type',8)->get();
+   $f_m_soda = DB::table('food_menu')->where('food_type',9)->get();
 
    $amount = 0;
    //$reservation = Reservation::where('id',1)->orderBy('id','desc')->where('is_active',1)->first();
@@ -164,6 +166,7 @@ class Qrcode_bookController extends Controller
     'f_m_piza'=>$f_m_piza,
     'f_m_beverage'=>$f_m_beverage,
     'f_m_coffee'=>$f_m_coffee,
+    'f_m_soda'=>$f_m_soda,
     'reservation_id'=> $reservation['id'],
     'reserve_date'=> $reservation['reserve_date'],
     'order_details' => $order_details,

@@ -1,5 +1,5 @@
 @extends('counter_staff.master')
-@section('title','สถนะ โต๊ะ')
+@section('title','สถานะ โต๊ะ')
 @section('css')
 <style type="text/css">
 img{
@@ -16,13 +16,21 @@ img{
  <div class="panel-group">
   <div class="panel panel-default">
    <div class="panel-heading" style="padding: 20px 15px;">
-    <div class="row">
-     <div class="col-md-1">
-      สถานะ โต๊ะ
-    </div>
-    <div class="col-md-4">
-
-
+     <div class="row">
+    <div style="text-align: center;">
+     <script language="javascript">
+      now = new Date();
+      var thday = new Array ("อาทิตย์","จันทร์",
+        "อังคาร","พุธ","พฤหัส","ศุกร์","เสาร์");
+      var thmonth = new Array ("มกราคม","กุมภาพันธ์","มีนาคม",
+        "เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน",
+        "ตุลาคม","พฤศจิกายน","ธันวาคม");
+      d = Date.now();
+      d = new Date(d);
+      d = (d.getHours() > 24 ? d.getHours() - 24 : d.getHours())+':'+d.getMinutes()+' '+(d.getHours() >= 24 ? "PM" : "AM");
+      document.write("วัน" + thday[now.getDay()]+ "ที่ "+ now.getDate()+ " " +
+        thmonth[now.getMonth()]+ " " + (now.getFullYear()+ 543) + " เวลา " + (d));
+      </script>
     </div>
   </div>
 </div>
@@ -252,14 +260,17 @@ img{
                                                                 <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
                                                             </div>
                                                             <div class="tadel-center">
-                                                                {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @else
-                                                            </div>
+                                                                {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง 
+                                                                </div>
+                                                                @else
+                                                            
                                                             <div class="tadel-center">
                                                                 <img src="img/sofa.png" data-color="violet" class="img-thumbnail" width="100">
                                                             </div>
                                                             <div class="tadel-center">
-                                                                {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @endif
-                                                            </div>
+                                                                {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง 
+                                                                </div>
+                                                                @endif                                                          
                                                         </div>
                                                         @endforeach
                                                     </div>

@@ -10,8 +10,8 @@ use App\Food_type;
 use App\Food_menus;
 use App\Order_details;
 use App\Order;
-use App\promotion_type;
-use App\promotion;
+use App\Promotion_type;
+use App\Promotion;
 use Illuminate\Support\Facades\DB;
 class Book_tableController extends Controller
 {
@@ -105,6 +105,8 @@ public function index()
    $f_m_piza = DB::table('food_menu')->where('food_type',6)->get();
    $f_m_beverage = DB::table('food_menu')->where('food_type',7)->get();
    $f_m_coffee = DB::table('food_menu')->where('food_type',8)->get();
+   $f_m_soda = DB::table('food_menu')->where('food_type',9)->get();
+   $f_m_spin = DB::table('food_menu')->where('food_type',10)->get();
 
    $amount = 0;
    $reservation = Reservation::where('user_id', $user->id)->orderBy('id','desc')->where('is_active',1)->first();
@@ -162,6 +164,8 @@ public function index()
     'f_m_piza'=>$f_m_piza,
     'f_m_beverage'=>$f_m_beverage,
     'f_m_coffee'=>$f_m_coffee,
+    'f_m_soda'=>$f_m_soda,
+    'f_m_spin'=>$f_m_spin,
     'reservation_id'=> $reservation['id'],
     'reserve_date'=> $reservation['reserve_date'],
     'order_details' => $order_details,

@@ -13,8 +13,8 @@ use App\User;
 use App\Helper;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\promotion_type;
-use App\promotion;
+use App\Promotion_type;
+use App\Promotion;
 class CounterstaffController extends Controller
 {
 

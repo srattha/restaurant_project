@@ -1,4 +1,6 @@
-@extends('layouts.master') @section('title','สถานะโต๊ะ') @section('css')
+@extends('layouts.master') 
+@section('title','สถานะโต๊ะ')
+ @section('css')
 <style type="text/css">
 img {
     cursor: pointer;
@@ -9,7 +11,8 @@ img {
     font-size: 2ex;
 }
 </style>
-@endsection @section('content')
+@endsection
+ @section('content')
 <div class="row">
     <h1 style="text-align: center;">สถานะโต๊ะ</h1>
     <div class="row" style="padding: 1px;">
@@ -233,15 +236,20 @@ img {
                                                             <div class="tadel-center">
                                                                 <img src="img/sofa1.png" data-color="violet" class="img-thumbnail" width="100" data-toggle="modal" data-target="#reservations" onclick="data_print('{{$table_statu->id}}', '{{$table_statu->name}}', '{{$table_statu->seating}}')">
                                                             </div>
-                                                            <div class="tadel-center">
-                                                                {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @else
-                                                            </div>
+                                                               <div class="tadel-center">
+                                                                {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง 
+                                                                </div>
+                                                                @else
+                                                            
                                                             <div class="tadel-center">
                                                                 <img src="img/sofa.png" data-color="violet" class="img-thumbnail" width="100">
                                                             </div>
                                                             <div class="tadel-center">
-                                                                {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง @endif
+                                                                {{$table_statu->name}} {{$table_statu->seating}} ที่นั่ง 
                                                             </div>
+
+                                                                @endif
+                                                                                                                    
                                                         </div>
                                                         @endforeach
                                                     </div>

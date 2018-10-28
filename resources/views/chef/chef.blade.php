@@ -41,7 +41,7 @@
         "ตุลาคม","พฤศจิกายน","ธันวาคม");
       d = Date.now();
       d = new Date(d);
-      d = (d.getHours() > 12 ? d.getHours() - 12 : d.getHours())+':'+d.getMinutes()+' '+(d.getHours() >= 12 ? "PM" : "AM");
+      d = (d.getHours() > 24 ? d.getHours() - 24 : d.getHours())+':'+d.getMinutes()+' '+(d.getHours() >= 24 ? "PM" : "AM");
       document.write("วัน" + thday[now.getDay()]+ "ที่ "+ now.getDate()+ " " +
         thmonth[now.getMonth()]+ " " + (now.getFullYear()+ 543) + " เวลา " + (d));
       </script>

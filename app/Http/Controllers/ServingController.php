@@ -10,8 +10,8 @@ use App\Reservation;
 use App\Order;
 use App\Order_details;
 use App\User;
-use App\promotion_type;
-use App\promotion;
+use App\Promotion_type;
+use App\Promotion;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -82,7 +82,7 @@ class ServingController extends Controller
                         foreach ($table[$key]['reservation'][$key2]['order'][$key3]['order_details'] as $key4 => $val4) {
                           $table[$key]['reservation'][$key2]['order'][$key3]['order_details'][$key4]['food_details'] = Food_menus::where('id',$val4->food_id)->get();
                            if ($val4->food_id == null) {
-                   $table[$key]['reservation'][$key2]['order'][$key3]['order_details'][$key4]['promotion'] = promotion::where('id',$val4->promotion_id)->get();
+                   $table[$key]['reservation'][$key2]['order'][$key3]['order_details'][$key4]['promotion'] = Promotion::where('id',$val4->promotion_id)->get();
                 }
                         }
                        

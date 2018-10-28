@@ -243,7 +243,8 @@
                      <li><a data-toggle="tab" href="#menu6">เมนูพิซซ่า</a></li>
                      <li><a data-toggle="tab" href="#menu7">เมนูเครื่องดื่ม</a></li>
                      <li><a data-toggle="tab" href="#menu8">เมนูกาแฟ</a></li>
-                     <li><a data-toggle="tab" href="#menu9">โปรโมชั่น</a></li>
+                     <li><a data-toggle="tab" href="#menu9">อิตาเลี่ยนโซดา</a></li>
+                     <li><a data-toggle="tab" href="#menu10">โปรโมชั่น</a></li>
                   </ul>
                   <div class="tab-content">
                      <div id="home" class="tab-pane fade in active">
@@ -351,7 +352,20 @@
                            </div>
                         </div>
                         @endforeach
+                        @foreach ($f_m_spin as $index => $f_menu_spin)
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                           <br>
+                           <div class="hovereffect">
+                              <img src="{{ asset('storage/Food_menus/'.$f_menu_spin->image) }}" alt="" style="width:100%; height: 200px;">
+                              <div class="overlay">
+                                 <h2>{{$f_menu_spin->food_name}} ราคา {{$f_menu_spin->price}}</h2>
+                                 <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_spin->food_name}}', '{{$f_menu_spin->image}}', '{{$f_menu_spin->id}}', '{{$f_menu_spin->price}}','{{$f_menu_spin->special_price}}','{{$f_menu_spin->big_price}}')">สั่งเลย</a>
+                              </div>
+                           </div>
+                        </div>
+                        @endforeach
                      </div>
+
                      <div id="menu8" class="tab-pane fade">
                         <h3>เมนูกาแฟ</h3>
                         @foreach ($f_m_coffee as $index => $f_menu_coffee)
@@ -367,7 +381,23 @@
                         </div>
                         @endforeach
                      </div>
-                      <div id="menu9" class="tab-pane fade">
+                     <div id="menu9" class="tab-pane fade">
+                        <h3>อิตาเลี่ยนโซดา</h3>
+                        @foreach ($f_m_soda as $index => $f_menu_soda)
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                           <br>
+                           <div class="hovereffect">
+                              <img src="{{ asset('storage/Food_menus/'.$f_menu_soda->image) }}" alt="" style="width:100%; height: 200px;">
+                              <div class="overlay">
+                                 <h2>{{$f_menu_soda->food_name}} ราคา {{$f_menu_soda->price}}</h2>
+                                 <a class="info" data-toggle="modal" data-target="#reservations" onclick="order_food('{{$f_menu_soda->food_name}}', '{{$f_menu_soda->image}}', '{{$f_menu_soda->id}}', '{{$f_menu_soda->price}}','{{$f_menu_soda->special_price}}','{{$f_menu_soda->big_price}}')">สั่งเลย</a>
+                              </div>
+                           </div>
+                        </div>
+                        @endforeach
+                     </div>
+
+                      <div id="menu10" class="tab-pane fade">
                         <h3>โปรโมชั่น</h3>
                        <div class="row">
                         <div class="container">
@@ -484,24 +514,24 @@
                               </div>
                            </div>
                            <div class="row">
-                              <div class="col-md-3">
+                              <div class="col-md-4 col-xs-4">
                                  <div id="rates"></div>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-4 col-xs-4">
                                  <div id="special_prices"></div>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-4 col-xs-4">
                                  <div id="big_prices"></div>
                               </div>
                            </div>
                            <div class="row">
-                              <div class="col-md-3">
+                              <div class="col-md-4 col-xs-4">
                                  <div class="checkbox">
                                     <input type="hidden" name="price" value="0" />
                                     <label><input type="checkbox" id="price" name="price"  value="price" required="เลือก ขนาด"> เล็ก</label>
                                  </div>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-4 col-xs-4">
                                  <div class="checkbox">
                                     <input type="hidden" name="special_price" value="0" />
                                     <label>
@@ -509,7 +539,7 @@
                                     </label>
                                  </div>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-4 col-xs-4">
                                  <div class="checkbox">
                                     <input type="hidden" name="big_price" value="0" />
                                     <label>
@@ -734,5 +764,6 @@
    $("#image").attr("src", "/storage/Food_menus/"+image);
 
    }
+   setTimeout("location.href = '/chef';",10000);
 </script>
 @endsection

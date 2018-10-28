@@ -132,7 +132,7 @@ a {
  <div class="container">
 
    <div class="row text-center">
-    <p>Copyright © 2018 </p>
+    <p>Copyright © 2018 Deverloped By </p>
   </div>
 
 </div>

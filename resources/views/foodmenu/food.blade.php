@@ -36,7 +36,7 @@ b{
       <li><a data-toggle="tab" href="#menu2">เมนูต้ม</a></li>
       <li><a data-toggle="tab" href="#menu3">เมนูทอด</a></li>
       <li><a data-toggle="tab" href="#menu4">เมนูยำ</a></li>
-      <li><a data-toggle="tab" href="#menu5">เมนูอาหารจารเดียว</a></li>
+      <li><a data-toggle="tab" href="#menu5">เมนูอาหารจานเดียว</a></li>
       <li><a data-toggle="tab" href="#menu6">เมนูพิซซ่า</a></li>
       <li><a data-toggle="tab" href="#menu7">เมนูเครื่องดื่ม</a></li>
       <li><a data-toggle="tab" href="#menu8">เมนูกาแฟ</a></li>
@@ -46,9 +46,11 @@ b{
       <div id="menu" class="tab-pane fade in active">
        <br>
        <div class="row">
-         <div class="col-md-6">
+         <div class="col-md-6 col-sm-6">
           @foreach ($food_image0 as $index => $food_images0)
+          <div class="col-xs-6">
           <img src="{{ asset('storage/Food_menus/'.$food_images0->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+        </div>
           @endforeach
         </div>
         <div class="col-md-6">
@@ -77,9 +79,11 @@ b{
   <div id="menu1" class="tab-pane fade">
    <br>
    <div class="row">
-     <div class="col-md-6">
+     <div class="col-md-6 col-sm-6">
       @foreach ($food_image1 as $index => $food_images1)
+      <div class="col-xs-6">
       <img src="{{ asset('storage/Food_menus/'.$food_images1->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+    </div>
       @endforeach
     </div>
     <div class="col-md-6">
@@ -108,9 +112,11 @@ b{
 <div id="menu2" class="tab-pane fade ">
  <br>
  <div class="row">
-   <div class="col-md-6">
+   <div class="col-md-6 col-sm-6">
     @foreach ($food_image2 as $index => $food_images2)
+     <div class="col-xs-6">
     <img src="{{ asset('storage/Food_menus/'.$food_images2->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+  </div>
     @endforeach
   </div>
   <div class="col-md-6">
@@ -142,9 +148,11 @@ b{
 <div id="menu3" class="tab-pane fade ">
  <br>
  <div class="row">
-   <div class="col-md-6">
+   <div class="col-md-6 col-sm-6">
     @foreach ($food_image3 as $index => $food_images3)
+     <div class="col-xs-6">
     <img src="{{ asset('storage/Food_menus/'.$food_images3->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+  </div>
     @endforeach
   </div>
   <div class="col-md-6">
@@ -174,9 +182,11 @@ b{
 <div id="menu4" class="tab-pane fade ">
  <br>
  <div class="row">
-   <div class="col-md-6">
+   <div class="col-md-6 col-sm-6">
     @foreach ($food_image4 as $index => $food_images4)
+     <div class="col-xs-6">
     <img src="{{ asset('storage/Food_menus/'.$food_images4->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+  </div>
     @endforeach
   </div>
   <div class="col-md-6">
@@ -204,9 +214,11 @@ b{
 <div id="menu5" class="tab-pane fade ">
  <br>
  <div class="row">
-   <div class="col-md-6">
+   <div class="col-md-6 col-sm-6">
     @foreach ($food_image5 as $index => $food_images5)
+     <div class="col-xs-6">
     <img src="{{ asset('storage/Food_menus/'.$food_images5->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+  </div>
     @endforeach
   </div>
   <div class="col-md-6">
@@ -236,9 +248,11 @@ b{
 <div id="menu6" class="tab-pane fade ">
  <br>
  <div class="row">
-   <div class="col-md-6">
+   <div class="col-md-6 col-sm-6">
     @foreach ($food_image6 as $index => $food_images6)
+     <div class="col-xs-6">
     <img src="{{ asset('storage/Food_menus/'.$food_images6->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+  </div>
     @endforeach
   </div>
   <div class="col-md-6">
@@ -266,9 +280,11 @@ b{
 <div id="menu7" class="tab-pane fade ">
  <br>
  <div class="row">
-   <div class="col-md-6">
+   <div class="col-md-6 col-sm-6">
     @foreach ($food_image7 as $index => $food_images7)
+     <div class="col-xs-6">
     <img src="{{ asset('storage/Food_menus/'.$food_images7->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+  </div>
     @endforeach
   </div>
   <div class="col-md-6">
@@ -291,9 +307,11 @@ b{
     </table>
   </div>
 </div>
- <div class="col-md-6">
+ <div class="col-md-6 col-sm-6">
   @foreach ($food_image10 as $index => $food_images10)
+   <div class="col-xs-6">
   <img src="{{ asset('storage/Food_menus/'.$food_images10->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+</div>
   @endforeach
 </div>
 <div class="col-md-6">
@@ -325,9 +343,11 @@ b{
 <div id="menu8" class="tab-pane fade ">
  <br>
  <div class="row">
-   <div class="col-md-6">
+   <div class="col-md-6 col-sm-6">
     @foreach ($food_image8 as $index => $food_images8)
+     <div class="col-xs-6">
     <img src="{{ asset('storage/Food_menus/'.$food_images8->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+  </div>
     @endforeach
   </div>
   <div class="col-md-6">
@@ -359,9 +379,11 @@ b{
 <div id="menu9" class="tab-pane fade ">
  <br>
  <div class="row">
-   <div class="col-md-6">
+   <div class="col-md-6 col-sm-6">
     @foreach ($food_image9 as $index => $food_images9)
+     <div class="col-xs-6">
     <img src="{{ asset('storage/Food_menus/'.$food_images9->image) }}" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" style="height: 200px;">
+  </div>
     @endforeach
   </div>
   <div class="col-md-6">

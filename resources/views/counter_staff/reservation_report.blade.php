@@ -1,4 +1,5 @@
-@extends('counter_staff.master') @section('title','รายงานการจอ') @section('css')
+@extends('counter_staff.master') 
+@section('title','รายงานการจอ') @section('css')
 <style type="text/css">
 .panel-warning {
     border-color: #323232;
